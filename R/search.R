@@ -5,11 +5,13 @@
 
 nomis_search <- function(search, keyword=FALSE){
   
-  mydata <- dplyr::if_else(keyword==FALSE,
-                           jsonlite::fromJSON(paste0("https://www.nomisweb.co.uk/api/v01/dataset/def.sdmx.json?search=*", search, "*"), flatten = TRUE),
-                           jsonlite::fromJSON(paste0("https://www.nomisweb.co.uk/api/v01/dataset/def.sdmx.json?search=keywords-", search, "*"), flatten = TRUE))
+  query <- dplyr::if_else(keyword==FALSE,
+                           paste0("/def.sdmx.json?search=*", search, "*"),
+                           paste0("/def.sdmx.json?search=keywords-", search, "*")
   
-  df <- mydata$structure$keyfamilies$keyfamily
+  )
+                          
+  df <- nomis_query_util(query)
   
   
 }

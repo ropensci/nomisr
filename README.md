@@ -3,7 +3,7 @@
 nomisr
 ======
 
-The goal of nomisr is to ...
+`nomisr` is for accessing [nomis](https://www.nomisweb.co.uk/) data on UK labour market statistics with R.
 
 Installation
 ------------

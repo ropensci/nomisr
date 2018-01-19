@@ -1,10 +1,24 @@
 
 
 
+#' Retrieve nomis datasets
+#'
+#' @param id The ID of the dataset to retrieve.
+#'
+#' @return A data frame
+#' @export
+#'
+#' @examples \donotrun{
+#' 
+#' 
+#' }
 nomis_data_access <- function(id){
+  
+  if(missing(id)) stop("Dataset ID must be specified")
 
-  q <- jsonlite::fromJSON("https://www.nomisweb.co.uk/api/v01/dataset/NM_1_1.jsonstat.json?", flatten = T)
-
+  query <- paste0("/",id,".jsonstat.json?")
+  
+  df <- nomis_collect_util(query)
 
 }
 

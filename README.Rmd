@@ -1,27 +1,35 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-nomisr
-======
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# nomisr
 
 The goal of nomisr is to ...
 
-Installation
-------------
+## Installation
 
 You can install nomisr from github with:
 
-``` r
+```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("evanodell/nomisr")
 ```
-
 <!--
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
 
-
-```r
+```{r example}
 ## basic example code
 ```
 -->

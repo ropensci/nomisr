@@ -1,0 +1,3 @@
+useDynLib(nomisr, .registration=TRUE)
+exportPattern("^[[:alpha:]]+")
+importFrom(Rcpp, evalCpp)

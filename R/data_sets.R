@@ -26,4 +26,6 @@ nomis_data_info <- function(id){
   
   df <- nomis_query_util(query)
   
+  df
+  
 }

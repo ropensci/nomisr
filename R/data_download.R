@@ -19,6 +19,8 @@ nomis_get_data <- function(id){
   query <- paste0("/",id,".jsonstat.json?")
   
   df <- nomis_collect_util(query)
+  
+  df
 
 }
 

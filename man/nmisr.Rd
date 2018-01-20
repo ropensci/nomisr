@@ -4,9 +4,8 @@
 \name{nmisr}
 \alias{nmisr}
 \alias{nmisr-package}
-\title{nomisr: Access nomis data on UK labour market statistics with R
-Documentation available at \url{https://www.nomisweb.co.uk/api/v01/help}}
+\title{nomisr: Access nomis data on UK labour market statistics with R}
 \description{
-nomisr: Access nomis data on UK labour market statistics with R
-Documentation available at \url{https://www.nomisweb.co.uk/api/v01/help}
+Full API documentation available at 
+\url{https://www.nomisweb.co.uk/api/v01/help}
 }

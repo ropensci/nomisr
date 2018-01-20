@@ -1,16 +1,18 @@
 
-## retrieve all available data sets or the information available in a specific dataset based on its ID
-
-
-#' Title
+#' Discovering data availability
+#' 
+#' Retrieve all available data sets or the information available in a specific 
+#' dataset based on its ID.
 #'
-#' @param id Dataset ID
+#' @param id Dataset ID. If empty, returns data on all available datasets.
 #'
 # @return
 #' @export
 #'
-# @examples
-nomis_data <- function(id){
+#' @examples \donotrun{
+#' x <- nomis_data_info()
+#' }
+nomis_data_info <- function(id){
   
   if(missing(id)){
     
@@ -25,7 +27,3 @@ nomis_data <- function(id){
   df <- nomis_query_util(query)
   
 }
-
-
-
-

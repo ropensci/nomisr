@@ -1,6 +1,5 @@
 
 
-
 #' Retrieve nomis datasets
 #'
 #' @param id The ID of the dataset to retrieve.
@@ -10,9 +9,10 @@
 #'
 #' @examples \donotrun{
 #' 
+#' x <- nomis_get_data()
 #' 
 #' }
-nomis_data_access <- function(id){
+nomis_get_data <- function(id){
   
   if(missing(id)) stop("Dataset ID must be specified")
 

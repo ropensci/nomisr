@@ -20,10 +20,8 @@ nomis_get_data <- function(id){
   
   df <- nomis_collect_util(query)
   
+  if(nrow(df)==0) stop("API request did not return any results")
+  
   df
 
 }
-
-
-#results <- fromJSONstat("https://www.nomisweb.co.uk/api/v01/dataset/NM_1_1.jsonstat.json?")
-##investigate this JSONstat package further - currently 2 years since anything has been done to it, it is still the best way forward?

@@ -4,8 +4,13 @@
 \name{nmisr}
 \alias{nmisr}
 \alias{nmisr-package}
-\title{nomisr: Access nomis data on UK labour market statistics with R}
+\title{nomisr: Access UK labour market statistics from nomis with R}
 \description{
 Full API documentation available at 
 \url{https://www.nomisweb.co.uk/api/v01/help}
+}
+\details{
+The `nomisr` package uses the `rjstat` package to convert API responses to 
+data frames. As a consequence, some metadata is not included. To access
+metadata, use the `nomis_data_info()` function.
 }

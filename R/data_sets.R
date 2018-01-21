@@ -26,6 +26,8 @@ nomis_data_info <- function(id){
   
   df <- nomis_query_util(query)
   
+  if(nrow(df)==0) stop("API request did not return any results")
+  
   df
   
 }

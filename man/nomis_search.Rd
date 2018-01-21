@@ -2,24 +2,28 @@
 % Please edit documentation in R/search.R
 \name{nomis_search}
 \alias{nomis_search}
-\title{Search nomis}
+\title{Search nomis datasets}
 \usage{
 nomis_search(search, keywords = FALSE)
 }
 \arguments{
-\item{search}{The term to search for.}
+\item{search}{A string to search for in the name and description of 
+datasets.}
 
-\item{keywords}{If \code{TRUE}, searches only in dataset keywords. Defaults 
-to \code{FALSE}.}
+\item{keywords}{If \code{TRUE}, searches in dataset keywords. Defaults to 
+\code{FALSE}.}
 }
 \value{
 A tibble with the search results.
 }
 \description{
-Function for searching for datasets on given topics
+A function to search for datasets on given topics. The search string by 
+default looks in the names and descriptions of datasets.
 }
 \examples{
 \\donotrun{
+
+x <- nomis_search("")
 
 }
 }

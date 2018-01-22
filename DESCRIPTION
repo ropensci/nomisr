@@ -1,6 +1,6 @@
 Package: nomisr
 Type: Package
-Title: Access nomis data on UK labour market statistics with R
+Title: Access nomis UK labour market data on with R
 Version: 0.0.0.9001
 Date: 2018-01-21
 Authors@R: person("Evan Odell", email="evanodell91@gmail.com",

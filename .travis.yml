@@ -11,7 +11,7 @@ apt_packages:
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get install ibcurl4-openssl-dev
+  - sudo apt-get install libcurl4-openssl-dev
 
 r_packages:
   - devtools

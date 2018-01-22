@@ -9,12 +9,15 @@ nomis_data_info(id)
 \arguments{
 \item{id}{Dataset ID. If empty, returns data on all available datasets.}
 }
+\value{
+A tibble
+}
 \description{
 Retrieve all available data sets or the information available in a specific 
 dataset based on its ID.
 }
 \examples{
-\\donotrun{
+\dontrun{
 x <- nomis_data_info()
 }
 }

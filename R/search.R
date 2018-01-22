@@ -13,7 +13,7 @@
 #' @return A tibble with the search results.
 #' @export
 #'
-#' @examples \donotrun{
+#' @examples \dontrun{
 #' 
 #' x <- nomis_search("")
 #' 

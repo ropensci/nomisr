@@ -14,6 +14,6 @@
 #' @import jsonlite
 #' @import tibble
 #' @import rjstat
+#' @import dplyr
 # @useDynLib nomisr
-#' @importFrom Rcpp sourceCpp
 NULL

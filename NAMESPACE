@@ -3,7 +3,7 @@
 export(nomis_data_info)
 export(nomis_get_data)
 export(nomis_search)
+import(dplyr)
 import(jsonlite)
 import(rjstat)
 import(tibble)
-importFrom(Rcpp,sourceCpp)

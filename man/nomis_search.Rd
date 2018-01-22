@@ -21,7 +21,7 @@ A function to search for datasets on given topics. The search string by
 default looks in the names and descriptions of datasets.
 }
 \examples{
-\\donotrun{
+\dontrun{
 
 x <- nomis_search("")
 

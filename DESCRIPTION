@@ -1,7 +1,7 @@
 Package: nomisr
 Type: Package
 Title: Access nomis data on UK labour market statistics with R
-Version: 0.0.1
+Version: 0.0.10.9001
 Date: 2018-01-21
 Authors@R: person("Evan Odell", email="evanodell91@gmail.com",
   role=c("aut", "cre"),
@@ -9,14 +9,13 @@ Authors@R: person("Evan Odell", email="evanodell91@gmail.com",
 Author: Evan Odell [aut, cre]
 Maintainer: Evan Odell <evanodell91@gmail.com>
 Description: Access UK labour market official statistics from the nomis
-  database through R
-License: GPL-3
+    database through R.
+License: MIT + file LICENSE
 Imports: 
-  Rcpp (>= 0.12.14),
   jsonlite,
   tibble,
-  rjstat
-LinkingTo: Rcpp
+  rjstat,
+  dplyr
 RoxygenNote: 6.0.1
 Suggests: 
   knitr,

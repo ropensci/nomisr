@@ -7,7 +7,7 @@
 #' @return A data frame
 #' @export
 #'
-#' @examples \donotrun{
+#' @examples \dontrun{
 #' 
 #' x <- nomis_get_data()
 #' 

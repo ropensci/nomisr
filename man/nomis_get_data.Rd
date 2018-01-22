@@ -16,7 +16,7 @@ A data frame
 Retrieve nomis datasets
 }
 \examples{
-\\donotrun{
+\dontrun{
 
 x <- nomis_get_data()
 

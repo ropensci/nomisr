@@ -6,10 +6,10 @@
 #'
 #' @param id Dataset ID. If empty, returns data on all available datasets.
 #'
-# @return
+#' @return A tibble
 #' @export
 #'
-#' @examples \donotrun{
+#' @examples \dontrun{
 #' x <- nomis_data_info()
 #' }
 nomis_data_info <- function(id){

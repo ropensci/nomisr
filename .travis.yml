@@ -7,6 +7,12 @@ r:
 sudo: required
 cache: packages
 
+apt_packages: 
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install ibcurl4-openssl-dev
+
 r_packages:
   - devtools
   - withr
@@ -15,3 +21,6 @@ r_packages:
 
 after_success:
   - Rscript -e 'covr::codecov(quiet=FALSE)'
+
+notifications:
+  email: false

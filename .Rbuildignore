@@ -5,3 +5,4 @@
 ^\.travis\.yml$
 ^\.Rhistory$
 ^appveyor\.yml$
+^_pkgdown\.yml$

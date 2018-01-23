@@ -1,0 +1,46 @@
+template:
+  params:
+   bootswatch: journal
+   ganalytics: UA-90706059-1
+
+
+authors:
+  Evan Odell:
+    href: https://evanodell.com
+
+
+name:
+navbar:
+  left:
+    - text: "Docs Home"
+      href: http://docs.evanodell.com
+    - text: "News"
+      href: news/index.html
+    - text: "Reference"
+      href: reference/index.html
+    - text: "Articles"
+      href: articles/index.html
+    - text: "Packages"
+      menu:
+        - text: "Documentation Home"
+          href: http://docs.evanodell.com
+        - text: "---------"
+        - text: "hansard"
+          href: http://docs.evanodell.com/hansard
+        - text: "mnis"
+          href: http://docs.evanodell.com/mnis
+        - text: "parlitools"
+          href: http://docs.evanodell.com/parlitools
+        - text: "nomisr"
+          href: http://docs.evanodell.com/nomisr
+        - text: "emisc"
+          href: http://docs.evanodell.com/emisc
+
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/EvanOdell/nomisr
+    - icon: fa-home fa-lg
+      href: http://evanodell.com
+
+
+

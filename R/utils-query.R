@@ -1,7 +1,5 @@
 
-## utility function to query - may need to expand as time goes on
-
-# the basic url for all data queries
+## utility function for queries on available data
 
 
 nomis_query_util <- function(query){

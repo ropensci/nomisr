@@ -7,10 +7,11 @@
 nomis_data_info(id)
 }
 \arguments{
-\item{id}{Dataset ID. If empty, returns data on all available datasets.}
+\item{id}{Dataset ID. If empty, returns data on all available datasets. 
+If the ID of a dataset, returns metadata for that particular dataset.}
 }
 \value{
-A tibble
+A tibble with all available datasets and their metadata.
 }
 \description{
 Retrieve all available data sets or the information available in a specific 
@@ -18,6 +19,8 @@ dataset based on its ID.
 }
 \examples{
 \dontrun{
+
 x <- nomis_data_info()
+
 }
 }

@@ -4,14 +4,18 @@
 #' Retrieve all available data sets or the information available in a specific 
 #' dataset based on its ID.
 #'
-#' @param id Dataset ID. If empty, returns data on all available datasets.
+#' @param id Dataset ID. If empty, returns data on all available datasets. 
+#' If the ID of a dataset, returns metadata for that particular dataset.
 #'
-#' @return A tibble
+#' @return A tibble with all available datasets and their metadata.
 #' @export
 #'
 #' @examples \dontrun{
+#' 
 #' x <- nomis_data_info()
+#' 
 #' }
+
 nomis_data_info <- function(id){
   
   if(missing(id)){

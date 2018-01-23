@@ -4,21 +4,34 @@
 \alias{nomis_get_data}
 \title{Retrieve nomis datasets}
 \usage{
-nomis_get_data(id)
+nomis_get_data(id, time = NULL, exclude_missing = FALSE)
 }
 \arguments{
 \item{id}{The ID of the dataset to retrieve.}
+
+\item{time}{Parameter for selecting common dates. Accepts one of 
+\code{NULL} (returns all data),  \code{"latest"} (returns the latest 
+available data), \code{"previous"} ( the date prior to "latest"), 
+\code{"prevyear"} (the date one year prior to "latest") or \code{"first"} 
+(the oldest available data for this dataset).}
+
+\item{exclude_missing}{If \code{TRUE}, excludes all missing values. 
+Defaults to \code{FALSE}.}
 }
 \value{
-A data frame
+A tibble containing the selected dataset.
 }
 \description{
-Retrieve nomis datasets
+Retrieves specific datasets from nomis, based on their ID. To find dataset 
+IDs, use \code{\link{nomis_data_info}}. Datasets are retrived in csv format
+ and parsed with the \code{read_csv} function from the \code{readr} package.
 }
 \examples{
 \dontrun{
 
-x <- nomis_get_data()
+x <- nomis_get_data(id="NM_1_1")
+
+y <- nomis_get_data(id="NM_1_1", time="latest")
 
 }
 }

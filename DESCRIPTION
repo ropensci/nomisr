@@ -15,7 +15,8 @@ Imports:
   jsonlite,
   tibble,
   readr,
-  dplyr
+  dplyr,
+  curl
 RoxygenNote: 6.0.1
 Suggests: 
   knitr,

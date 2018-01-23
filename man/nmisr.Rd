@@ -6,6 +6,9 @@
 \alias{nmisr-package}
 \title{nomisr: Access UK labour market statistics from nomis with R}
 \description{
+Requests can return up to 25,000 rows of data at a time.
+}
+\details{
 Full API documentation available at 
 \url{https://www.nomisweb.co.uk/api/v01/help}
 }

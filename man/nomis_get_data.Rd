@@ -4,16 +4,33 @@
 \alias{nomis_get_data}
 \title{Retrieve nomis datasets}
 \usage{
-nomis_get_data(id, time = NULL, exclude_missing = FALSE)
+nomis_get_data(id, time = NULL, geography = NULL, measures = NULL,
+  sex = NULL, exclude_missing = FALSE)
 }
 \arguments{
 \item{id}{The ID of the dataset to retrieve.}
 
 \item{time}{Parameter for selecting common dates. Accepts one of 
 \code{NULL} (returns all data),  \code{"latest"} (returns the latest 
-available data), \code{"previous"} ( the date prior to "latest"), 
-\code{"prevyear"} (the date one year prior to "latest") or \code{"first"} 
-(the oldest available data for this dataset).}
+available data), \code{"previous"} (the date prior to \code{"latest"}), 
+\code{"prevyear"} (the date one year prior to \code{"latest"}) or 
+\code{"first"} (the oldest available data for the dataset). 
+Defaults to \code{NULL}.}
+
+\item{geography}{The code of the geographic area to return data for. If 
+\code{NULL}, returns data for all available geographic areas, subject to 
+other parameters. Defaults to \code{NULL}.}
+
+\item{measures}{The code for the statistical measure(s) to include in the 
+data. Accepts a single string or number, or a list of strings or numbers. 
+If \code{NULL}, returns data for all available statistical measures subject 
+to other parameters. Defaults to \code{NULL}.}
+
+\item{sex}{The code for sexes included in the dataset. Accepts a string or 
+number, or a vector of strings or numbers. \code{7} will return results for 
+males and females, \code{6} only females and \code{5} only males. 
+Defaults to \code{NULL}, equivalent to \code{c(5,6,7)} for datasets where 
+sex is an option.}
 
 \item{exclude_missing}{If \code{TRUE}, excludes all missing values. 
 Defaults to \code{FALSE}.}
@@ -23,8 +40,13 @@ A tibble containing the selected dataset.
 }
 \description{
 Retrieves specific datasets from nomis, based on their ID. To find dataset 
-IDs, use \code{\link{nomis_data_info}}. Datasets are retrived in csv format
- and parsed with the \code{read_csv} function from the \code{readr} package.
+IDs, use \code{\link{nomis_data_info}}. Datasets are retrived in csv format 
+and parsed with the \code{read_csv} function from the \code{readr} package.
+}
+\details{
+To find the code options for a given dataset, use \code{\link{nomis_codes}}.
+
+This can be a very slow process if calling significant amounts of data.
 }
 \examples{
 \dontrun{
@@ -32,6 +54,8 @@ IDs, use \code{\link{nomis_data_info}}. Datasets are retrived in csv format
 x <- nomis_get_data(id="NM_1_1")
 
 y <- nomis_get_data(id="NM_1_1", time="latest")
+
+z <- nomis_get_data(id="NM_1_1", time="latest", geography="TYPE499", measures=c(20100, 20201), sex=5)
 
 }
 }

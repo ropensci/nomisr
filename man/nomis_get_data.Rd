@@ -5,7 +5,7 @@
 \title{Retrieve nomis datasets}
 \usage{
 nomis_get_data(id, time = NULL, geography = NULL, measures = NULL,
-  sex = NULL, exclude_missing = FALSE)
+  sex = NULL, exclude_missing = FALSE, additional_queries = NULL)
 }
 \arguments{
 \item{id}{The ID of the dataset to retrieve.}
@@ -34,6 +34,10 @@ sex is an option.}
 
 \item{exclude_missing}{If \code{TRUE}, excludes all missing values. 
 Defaults to \code{FALSE}.}
+
+\item{additional_queries}{Any other additional queries to pass to the API.
+See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on 
+query structure. Defaults to \code{NULL}.}
 }
 \value{
 A tibble containing the selected dataset.
@@ -55,7 +59,8 @@ x <- nomis_get_data(id="NM_1_1")
 
 y <- nomis_get_data(id="NM_1_1", time="latest")
 
-z <- nomis_get_data(id="NM_1_1", time="latest", geography="TYPE499", measures=c(20100, 20201), sex=5)
+z <- nomis_get_data(id="NM_1_1", time="latest", geography="TYPE499", 
+                    measures=c(20100, 20201), sex=5)
 
 }
 }

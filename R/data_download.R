@@ -31,6 +31,9 @@
 #' sex is an option.
 #' @param exclude_missing If \code{TRUE}, excludes all missing values. 
 #' Defaults to \code{FALSE}.
+#' @param additional_queries Any other additional queries to pass to the API.
+#' See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on 
+#' query structure. Defaults to \code{NULL}.
 #'
 #' @return A tibble containing the selected dataset.
 #' @export
@@ -41,10 +44,12 @@
 #' 
 #' y <- nomis_get_data(id="NM_1_1", time="latest")
 #' 
-#' z <- nomis_get_data(id="NM_1_1", time="latest", geography="TYPE499", measures=c(20100, 20201), sex=5)
+#' z <- nomis_get_data(id="NM_1_1", time="latest", geography="TYPE499", 
+#'                     measures=c(20100, 20201), sex=5)
 #' 
 #' }
-nomis_get_data <- function(id, time=NULL, geography=NULL, measures=NULL, sex=NULL, exclude_missing=FALSE){
+nomis_get_data <- function(id, time=NULL, geography=NULL, measures=NULL,
+                           sex=NULL, exclude_missing=FALSE, additional_queries=NULL){
   
   if(missing(id)){
     stop("Dataset ID must be specified")
@@ -70,11 +75,13 @@ nomis_get_data <- function(id, time=NULL, geography=NULL, measures=NULL, sex=NUL
                                   "&ExcludeMissingValues=true",
                                   "")
   
-  query <- paste0("/",id,".data.csv?", time_query, geography_query, measures_query, sex_query, exclude_query)
+  query <- paste0("/",id,".data.csv?", time_query, geography_query, 
+                  measures_query, sex_query, additional_queries, exclude_query)
   
   df <- nomis_collect_util(query)
   
-  if(df$RECORD_COUNT[1]>25000) {# test for length and retrieve all data if amount available is over the limit of 25000
+  if(df$RECORD_COUNT[1]>25000) {
+# test for length and retrieve all data if amount available is over the limit of 25000
     
     record_count <- df$RECORD_COUNT[1]
     
@@ -101,3 +108,4 @@ nomis_get_data <- function(id, time=NULL, geography=NULL, measures=NULL, sex=NUL
   df
 
 }
+

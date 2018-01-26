@@ -1,6 +1,6 @@
 Package: nomisr
 Type: Package
-Title: Access Nomis UK labour market data on with R
+Title: Access Nomis UK Labour Market Data with R
 Version: 0.0.1
 Date: 2018-01-23
 Authors@R: person("Evan Odell", email="evanodell91@gmail.com",
@@ -11,7 +11,8 @@ Maintainer: Evan Odell <evanodell91@gmail.com>
 Description: Access UK official statistics from the Nomis database through R. 
     Nomis includes data from the Census, the Labour Force Survey, DWP benefit 
     statistics and other economic and demographic data from the Office for 
-    National Statistics.
+    National Statistics. Full <https://www.nomisweb.co.uk/api/v01/help> for
+    full API documentation.
 URL: https://github.com/EvanOdell/nomisr
 BugReports: https://github.com/EvanOdell/nomisr/issues
 License: MIT + file LICENSE

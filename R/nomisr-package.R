@@ -1,6 +1,6 @@
 
 
-#' nomisr: Access Nomis UK labour market data on with R
+#' nomisr: Access Nomis UK Labour Market Data with R
 #' 
 #' Access UK official statistics from the Nomis database through R. Nomis 
 #' includes data from the Census, the Labour Force Survey, DWP benefit

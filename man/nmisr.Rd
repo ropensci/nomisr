@@ -4,7 +4,7 @@
 \name{nmisr}
 \alias{nmisr}
 \alias{nmisr-package}
-\title{nomisr: Access Nomis UK labour market data on with R}
+\title{nomisr: Access Nomis UK Labour Market Data with R}
 \description{
 Access UK official statistics from the Nomis database through R. Nomis 
 includes data from the Census, the Labour Force Survey, DWP benefit

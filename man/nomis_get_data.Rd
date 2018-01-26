@@ -4,32 +4,62 @@
 \alias{nomis_get_data}
 \title{Retrieve nomis datasets}
 \usage{
-nomis_get_data(id, time = NULL, geography = NULL, measures = NULL,
-  sex = NULL, exclude_missing = FALSE, additional_queries = NULL)
+nomis_get_data(id, time = NULL, date = NULL, geography = NULL,
+  measures = NULL, sex = NULL, exclude_missing = FALSE,
+  additional_queries = NULL)
 }
 \arguments{
 \item{id}{The ID of the dataset to retrieve.}
 
-\item{time}{Parameter for selecting common dates. Accepts one of 
-\code{NULL} (returns all data),  \code{"latest"} (returns the latest 
-available data), \code{"previous"} (the date prior to \code{"latest"}), 
-\code{"prevyear"} (the date one year prior to \code{"latest"}) or 
-\code{"first"} (the oldest available data for the dataset). 
-Defaults to \code{NULL}.}
+\item{time}{Parameter for selecting dates and date ranges. There are two 
+styles of values that can be used to query time. 
+
+The first is one or more of `"latest"` (returns the latest available data), 
+`"previous"` (the date prior to `"latest"`), `"prevyear"` (the date one 
+year prior to `"latest"`) or `"first"` (the oldest available data for the 
+dataset). 
+
+The second style is to use or a specific date or multiple dates, in the 
+style of the time variable codelist, which can be found using the 
+`\link{nomis_codes}` function.
+
+Values for the `time` and `date` parameters should not be used at the 
+same time. If they are, the function will retrieve data based on the 
+the `date` parameter.
+
+Defaults to `NULL`.}
+
+\item{date}{Parameter for selecting specific dates. There are two styles 
+of values that can be used to query time. 
+
+The first is one or more of `"latest"` (returns the latest available data), 
+`"previous"` (the date prior to `"latest"`), `"prevyear"` (the date one 
+year prior to `"latest"`) or `"first"` (the oldest available data for the 
+dataset). 
+
+The second style is to use or a specific date or multiple dates, in the 
+style of the time variable codelist, which can be found using the 
+`\link{nomis_codes}` function.
+
+Values for the `time` and `date` parameters should not be used at the 
+same time. If they are, the function will retrieve data based on the 
+the `date` parameter.
+
+Defaults to `NULL`.}
 
 \item{geography}{The code of the geographic area to return data for. If 
-\code{NULL}, returns data for all available geographic areas, subject to 
-other parameters. Defaults to \code{NULL}.}
+`NULL`, returns data for all available geographic areas, subject to 
+other parameters. Defaults to `NULL`.}
 
 \item{measures}{The code for the statistical measure(s) to include in the 
 data. Accepts a single string or number, or a list of strings or numbers. 
-If \code{NULL}, returns data for all available statistical measures subject 
-to other parameters. Defaults to \code{NULL}.}
+If `NULL`, returns data for all available statistical measures subject 
+to other parameters. Defaults to `NULL`.}
 
 \item{sex}{The code for sexes included in the dataset. Accepts a string or 
 number, or a vector of strings or numbers. \code{7} will return results for 
 males and females, \code{6} only females and \code{5} only males. 
-Defaults to \code{NULL}, equivalent to \code{c(5,6,7)} for datasets where 
+Defaults to `NULL`, equivalent to \code{c(5,6,7)} for datasets where 
 sex is an option.}
 
 \item{exclude_missing}{If \code{TRUE}, excludes all missing values. 
@@ -37,20 +67,29 @@ Defaults to \code{FALSE}.}
 
 \item{additional_queries}{Any other additional queries to pass to the API.
 See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on 
-query structure. Defaults to \code{NULL}.}
+query structure. Defaults to `NULL`.}
 }
 \value{
 A tibble containing the selected dataset.
 }
 \description{
 Retrieves specific datasets from nomis, based on their ID. To find dataset 
-IDs, use \code{\link{nomis_data_info}}. Datasets are retrived in csv format 
-and parsed with the \code{read_csv} function from the \code{readr} package.
+IDs, use `\link{nomis_data_info}`. Datasets are retrived in csv format 
+and parsed with the `read_csv` function from the `readr` package.
 }
 \details{
-To find the code options for a given dataset, use \code{\link{nomis_codes}}.
+To find the code options for a given dataset, use `\link{nomis_codes}`.
 
 This can be a very slow process if calling significant amounts of data.
+
+Note the difference between the `time` and `date` parameters. The `time` 
+and `date` parameters should not be used at the same time. If they are, 
+the function will retrieve data based on the the `date` parameter. If given
+more than one query, `time` will return all data available between those 
+queries, inclusively, while `date` will only return data for the exact 
+queries specified. So `time=c("first","latest")` will return all data,
+while `date=c("first","latest")` will return only the first and latest
+data published.
 }
 \examples{
 \dontrun{
@@ -61,6 +100,11 @@ y <- nomis_get_data(id="NM_1_1", time="latest")
 
 z <- nomis_get_data(id="NM_1_1", time="latest", geography="TYPE499", 
                     measures=c(20100, 20201), sex=5)
+# Return data for each country
+
+a <- nomis_get_data(id="NM_1_1", time="latest", geography="1879048226", 
+                    measures=c(20100, 20201), sex=5)
+# Return data for Wigan
 
 }
 }

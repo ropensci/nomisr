@@ -11,7 +11,8 @@
 #' @param id The ID of the particular dataset. If both \code{id} and 
 #' \code{code} are left empty, returns all available codes for all datasets.
 #' @param code The variable name to return options for. If left empty, 
-#' returns all options for the dataset specified by \code{id}.
+#' returns all options for the dataset specified by \code{id}. 
+#' Codes are not case sensitive.
 #'
 #' @return A list of options.
 #' @export
@@ -36,11 +37,7 @@ nomis_codes <- function(id, code){
 
   } else {
     
-  qq <- paste0("https://www.nomisweb.co.uk/api/v01/dataset/",id,"/",code,"/TYPE.def.sdmx.json?")
-    
-  a <- jsonlite::fromJSON(qq, flatten=TRUE)
-  
-  x <- as.data.frame(a$structure$codelists$codelist$code)
+  x <- as.data.frame(jsonlite::fromJSON(paste0("https://www.nomisweb.co.uk/api/v01/dataset/",id,"/",code,"/TYPE.def.sdmx.json?"), flatten=TRUE)$structure$codelists$codelist$code)
   
   df <- tibble::tibble(
     description=x$description.value,

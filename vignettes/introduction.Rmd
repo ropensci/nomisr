@@ -16,6 +16,12 @@ knitr::opts_chunk$set(
 )
 ```
 
+# Introduction to Nomis
+
+Nomis provides free access to up-to-date official statistics from the Office for National Statistics (ONS).
+
+There is a lot of data available through Nomis, and there are some limits to the amount of data that can be retrieved within a certain period of time, although those are not published. For more details, see the [full API documentation](https://www.nomisweb.co.uk/api/v01/help) from Nomis.
+
 
 ## Querying data availability
 
@@ -52,8 +58,7 @@ datasets.
 
 
 ## Downloading data
-
-A stand
+<!-- Include instructions on using this -->
 
 ```{r, echo=FALSE, results='asis'}
  library(nomisr)

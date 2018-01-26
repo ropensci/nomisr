@@ -1,8 +1,15 @@
 
 
-#' nomisr: Access UK labour market statistics from nomis with R
+#' nomisr: Access Nomis UK labour market data on with R
 #' 
-#' Requests can return up to 25,000 rows of data at a time.
+#' Access UK official statistics from the Nomis database through R. Nomis 
+#' includes data from the Census, the Labour Force Survey, DWP benefit
+#' statistics and other economic and demographic data from the Office for 
+#' National Statistics.
+#' 
+#' The package provides functions to find what data is available, the 
+#' variables and query options for different datasets and a function for 
+#' downloading data.
 #' 
 #' Full API documentation available at 
 #' \url{https://www.nomisweb.co.uk/api/v01/help}

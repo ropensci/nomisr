@@ -22,5 +22,7 @@ dataset based on its ID.
 
 x <- nomis_data_info()
 
+y <- nomis_data_info("NM_1658_1")
+
 }
 }

@@ -2,11 +2,9 @@ year <- sub("-.*", "", meta$Date)
 note <- sprintf("R package version %s", meta$Version)
 
 bibentry(bibtype = "Manual",
-         title = "{nomisr}: Access nomis UK labour market data on with R",
+         title = "{nomisr}: Access Nomis UK labour market data on with R",
          author = c(person("Evan", "Odell")),
          year = year,
          note = note,
-         doi = "",
+         doi = "10.5281/zenodo.1157908",
          url = c("https://docs.evanodell.com/nomisr" ))
-
-

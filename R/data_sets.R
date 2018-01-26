@@ -7,12 +7,14 @@
 #' @param id Dataset ID. If empty, returns data on all available datasets. 
 #' If the ID of a dataset, returns metadata for that particular dataset.
 #'
-#' @return A tibble with all available datasets and their metadata.
+#' @return A tibble with all available datasets and their metadata. 
 #' @export
 #'
 #' @examples \dontrun{
 #' 
 #' x <- nomis_data_info()
+#' 
+#' y <- nomis_data_info("NM_1658_1")
 #' 
 #' }
 

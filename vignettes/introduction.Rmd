@@ -1,0 +1,65 @@
+---
+title: "Introduction to nomisr"
+author: "Evan Odell"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+## Querying data availability
+
+Use the `nomis_data_info()` function without any parameters to get a tibble 
+with metadata for all available datasets:
+
+```{r, echo=FALSE, results='asis'}
+  library(nomisr) 
+  x <- nomis_data_info()
+  head(x)
+```
+
+
+`nomis_data_info()` can also be used to query metadata from a specific 
+dataset, using its ID. The example below uses the "UV035 - Distance travelled 
+to work" dataset.
+
+```{r, echo=FALSE, results='asis'}
+  y <- nomis_data_info("NM_5_1")
+  head(y)
+```
+
+
+
+When a tibble with metadata for all datasets or a specific dataset is 
+returned, three of the columns: `annotations.annotation`, 
+`components.attribute` and `components.dimension` are lists of nested 
+data frames. `annotations.annotation` contains metadata on the dataset, 
+including units and current status. `components.attribute` contains more 
+detailed status metadata. `components.dimension` contains the grouping and 
+summary variables available in the dataset, which vary between different 
+datasets.
+
+
+
+## Downloading data
+
+A stand
+
+```{r, echo=FALSE, results='asis'}
+ library(nomisr)
+ z <- nomis_get_data(id="NM_1_1", time="latest", geography="TYPE499", measures=c(20100, 20201), sex=5)
+ tibble::glimpse(z)
+```
+
+
+

@@ -4,18 +4,18 @@
 \alias{nomis_codes}
 \title{Variable codes}
 \usage{
-nomis_codes(id, code, type)
+nomis_codes(id, code = NULL, type = NULL)
 }
 \arguments{
 \item{id}{The ID of the particular dataset. If both \code{id} and 
 \code{code} are left empty, returns all available codes for all datasets.}
 
 \item{code}{A string with the variable code to return options for. If left 
-empty, returns all the variables for the dataset specified by \code{id}. 
-Codes are not case sensitive.}
+empty, returns all the variables for the dataset specified by `id`. 
+Codes are not case sensitive. Defaults to `null`.}
 
 \item{type}{A string with options for a particular code value, to return 
-types of variables available for a given code.}
+types of variables available for a given code. Defaults to `null`.}
 }
 \value{
 A list of options.

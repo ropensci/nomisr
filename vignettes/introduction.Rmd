@@ -35,11 +35,7 @@ with metadata for all available datasets:
 ```
 
 
-`nomis_data_info()` can also be used to query metadata from a specific 
-dataset, using its ID. The example below uses the "LC4408EW - Tenure by 
-number of persons per bedroom in household by household type" dataset from 
-the census, including the 3 nested data frames including metadata important 
-to making specific queries.
+`nomis_data_info()` can also be used to query metadata from a specific dataset, using its ID. The example below uses the "LC4408EW - Tenure by number of persons per bedroom in household by household type" dataset from the 2011 census, including the 3 nested data frames including metadata important to making specific queries.
 
 ```{r, echo=FALSE, results='asis'}
   y <- nomis_data_info("NM_893_1")
@@ -53,24 +49,24 @@ to making specific queries.
 ```
 
 
-
-When a tibble with metadata for all datasets or a specific dataset is 
-returned, three of the columns: `annotations.annotation`, 
-`components.attribute` and `components.dimension` are lists of nested 
-data frames. `annotations.annotation` contains metadata on the dataset, 
-including units and current status. `components.attribute` contains more 
-detailed status metadata. `components.dimension` contains the grouping and 
-summary variables available in the dataset, which vary between different 
-datasets.
-
-
+When a tibble with metadata for all datasets or a specific dataset is returned, three of the columns: `annotations.annotation`, `components.attribute` and `components.dimension` are lists of nested data frames. `annotations.annotation` contains metadata on the dataset, including units and current status. `components.attribute` contains more detailed status metadata. `components.dimension` contains the grouping and summary variables available in the dataset, which vary between different datasets.
 
 ## Downloading data
-<!-- Include instructions on using this -->
+
+
+Vast amounts of data are available through Nomis and so to avoid overwhelming the API, it is good practice to query what is available. This queries the different kinds of geography codes available through the API for the "LC4408EW - Tenure bynumber of persons per bedroom in household by household type" dataset.
 
 ```{r, echo=FALSE, results='asis'}
- library(nomisr)
- z <- nomis_get_data(id="NM_1658_1", time="latest")
+  a <- nomis_codes(id="NM_893_1", code="geography", type="type")
+  a
+
+```
+
+
+Using the information above, we can now query the latest data on bedroom occupancy per household type in different NHS clinical commissioning groups.
+
+```{r, echo=FALSE, results='asis'}
+ z <- nomis_get_data(id="NM_893_1", time="latest", geography = "TYPE266")
  tibble::glimpse(z)
 ```
 

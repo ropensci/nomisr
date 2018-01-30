@@ -11,10 +11,10 @@
 #' @param id The ID of the particular dataset. If both \code{id} and 
 #' \code{code} are left empty, returns all available codes for all datasets.
 #' @param code A string with the variable code to return options for. If left 
-#' empty, returns all the variables for the dataset specified by \code{id}. 
-#' Codes are not case sensitive.
+#' empty, returns all the variables for the dataset specified by `id`. 
+#' Codes are not case sensitive. Defaults to `null`.
 #' @param type A string with options for a particular code value, to return 
-#' types of variables available for a given code.
+#' types of variables available for a given code. Defaults to `null`.
 #' @return A list of options.
 #' @export
 #'
@@ -32,7 +32,7 @@
 #' 
 #' }
 #' 
-nomis_codes <- function(id, code, type){
+nomis_codes <- function(id, code=NULL, type=NULL){
   
   if(missing(id)) stop("The dataset ID must be specified.")
     
@@ -46,7 +46,7 @@ nomis_codes <- function(id, code, type){
 
   } else {
     
-  type_query <- dplyr::if_else(exists("type"), paste0("/",type), "")
+  type_query <- dplyr::if_else(is.null(type)==FALSE, paste0("/",type), "")
     
   a <- jsonlite::fromJSON(paste0("https://www.nomisweb.co.uk/api/v01/dataset/",
                                  id,"/",code, type_query, "/def.sdmx.json?"), flatten=TRUE)

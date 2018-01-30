@@ -39,7 +39,7 @@ c <- nomis_codes("NM_1_1", "geography", "TYPE")
 #returns all types of geography
 
 d <- nomis_codes("NM_1_1", "geography", "1879048226")
-# returns geography types available in Wigan
+# returns geography types available within Wigan
 
 }
 

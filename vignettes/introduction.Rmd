@@ -36,12 +36,20 @@ with metadata for all available datasets:
 
 
 `nomis_data_info()` can also be used to query metadata from a specific 
-dataset, using its ID. The example below uses the "UV035 - Distance travelled 
-to work" dataset.
+dataset, using its ID. The example below uses the "LC4408EW - Tenure by 
+number of persons per bedroom in household by household type" dataset from 
+the census, including the 3 nested data frames including metadata important 
+to making specific queries.
 
 ```{r, echo=FALSE, results='asis'}
-  y <- nomis_data_info("NM_5_1")
-  head(y)
+  y <- nomis_data_info("NM_893_1")
+  tibble::glimpse(y)
+  
+  y$annotations.annotation
+  
+  y$components.attribute
+  
+  y$components.dimension
 ```
 
 
@@ -62,7 +70,7 @@ datasets.
 
 ```{r, echo=FALSE, results='asis'}
  library(nomisr)
- z <- nomis_get_data(id="NM_1_1", time="latest", geography="TYPE499", measures=c(20100, 20201), sex=5)
+ z <- nomis_get_data(id="NM_1658_1", time="latest")
  tibble::glimpse(z)
 ```
 

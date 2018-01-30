@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-You can install nomisr from github with:
+You can install `nomisr` from github with:
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")

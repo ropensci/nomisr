@@ -98,13 +98,13 @@ x <- nomis_get_data(id="NM_1_1")
 
 y <- nomis_get_data(id="NM_1_1", time="latest")
 
+# Return data for each country
 z <- nomis_get_data(id="NM_1_1", time="latest", geography="TYPE499", 
                     measures=c(20100, 20201), sex=5)
-# Return data for each country
 
+# Return data for Wigan
 a <- nomis_get_data(id="NM_1_1", time="latest", geography="1879048226", 
                     measures=c(20100, 20201), sex=5)
-# Return data for Wigan
 
 }
 }

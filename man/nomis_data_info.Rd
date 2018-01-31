@@ -26,3 +26,6 @@ y <- nomis_data_info("NM_1658_1")
 
 }
 }
+\seealso{
+nomis_get_data
+}

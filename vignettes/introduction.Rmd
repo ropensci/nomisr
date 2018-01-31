@@ -22,6 +22,8 @@ Nomis provides free access to up-to-date official statistics from the Office for
 
 There is a lot of data available through Nomis, and there are some limits to the amount of data that can be retrieved within a certain period of time, although those are not published. For more details, see the [full API documentation](https://www.nomisweb.co.uk/api/v01/help) from Nomis.
 
+Nomis data is based around administrative and statistical geographies, and a particular geography should be specified when downloading data.
+
 
 ## Querying data availability
 
@@ -53,8 +55,7 @@ When a tibble with metadata for all datasets or a specific dataset is returned, 
 
 ## Downloading data
 
-
-Vast amounts of data are available through Nomis and so to avoid overwhelming the API, it is good practice to query what is available. This queries the different kinds of geography codes available through the API for the "LC4408EW - Tenure bynumber of persons per bedroom in household by household type" dataset.
+Vast amounts of data are available through Nomis and so to avoid overwhelming the API, it is good practice to query what variables are available, using `nomis_codes`. This queries the different kinds of geography codes available through the API for the "LC4408EW - Tenure bynumber of persons per bedroom in household by household type" dataset.
 
 ```{r, echo=FALSE, results='asis'}
   a <- nomis_codes(id="NM_893_1", code="geography", type="type")

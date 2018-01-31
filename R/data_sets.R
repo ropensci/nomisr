@@ -9,6 +9,7 @@
 #'
 #' @return A tibble with all available datasets and their metadata. 
 #' @export
+#' @seealso nomis_get_data
 #'
 #' @examples \dontrun{
 #' 

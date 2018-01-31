@@ -7,8 +7,8 @@
 nomis_codes(id, code = NULL, type = NULL)
 }
 \arguments{
-\item{id}{The ID of the particular dataset. If both \code{id} and 
-\code{code} are left empty, returns all available codes for all datasets.}
+\item{id}{The ID of the particular dataset. If both `id` and 
+`code` are left empty, returns all available codes for all datasets.}
 
 \item{code}{A string with the variable code to return options for. If left 
 empty, returns all the variables for the dataset specified by `id`. 
@@ -18,7 +18,7 @@ Codes are not case sensitive. Defaults to `null`.}
 types of variables available for a given code. Defaults to `null`.}
 }
 \value{
-A list of options.
+A tibble with options.
 }
 \description{
 Retrieve all code options of all datasets, code options for a given 

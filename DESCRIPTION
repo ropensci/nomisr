@@ -2,7 +2,6 @@ Package: nomisr
 Type: Package
 Title: Access Nomis UK Labour Market Data with R
 Version: 0.0.2
-Date: 2018-01-30
 Authors@R: person("Evan Odell", email="evanodell91@gmail.com",
   role=c("aut", "cre"),
   comment = c(ORCID='0000-0003-1845-808X'))
@@ -20,8 +19,7 @@ Imports:
   jsonlite,
   tibble,
   readr,
-  dplyr,
-  curl
+  dplyr
 RoxygenNote: 6.0.1
 Suggests: 
   knitr,

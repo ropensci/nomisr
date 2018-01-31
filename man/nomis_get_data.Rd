@@ -57,13 +57,13 @@ If `NULL`, returns data for all available statistical measures subject
 to other parameters. Defaults to `NULL`.}
 
 \item{sex}{The code for sexes included in the dataset. Accepts a string or 
-number, or a vector of strings or numbers. \code{7} will return results for 
-males and females, \code{6} only females and \code{5} only males. 
-Defaults to `NULL`, equivalent to \code{c(5,6,7)} for datasets where 
+number, or a vector of strings or numbers. `7` will return results for 
+males and females, `6` only females and `5` only males. 
+Defaults to `NULL`, equivalent to `c(5,6,7)` for datasets where 
 sex is an option.}
 
-\item{exclude_missing}{If \code{TRUE}, excludes all missing values. 
-Defaults to \code{FALSE}.}
+\item{exclude_missing}{If `TRUE`, excludes all missing values. 
+Defaults to `FALSE`.}
 
 \item{additional_queries}{Any other additional queries to pass to the API.
 See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on 
@@ -107,4 +107,9 @@ a <- nomis_get_data(id="NM_1_1", time="latest", geography="1879048226",
                     measures=c(20100, 20201), sex=5)
 
 }
+}
+\seealso{
+nomis_data_info
+
+nomis_codes
 }

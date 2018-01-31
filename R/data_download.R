@@ -65,19 +65,21 @@
 #' If `NULL`, returns data for all available statistical measures subject 
 #' to other parameters. Defaults to `NULL`.
 #' @param sex The code for sexes included in the dataset. Accepts a string or 
-#' number, or a vector of strings or numbers. \code{7} will return results for 
-#' males and females, \code{6} only females and \code{5} only males. 
-#' Defaults to `NULL`, equivalent to \code{c(5,6,7)} for datasets where 
+#' number, or a vector of strings or numbers. `7` will return results for 
+#' males and females, `6` only females and `5` only males. 
+#' Defaults to `NULL`, equivalent to `c(5,6,7)` for datasets where 
 #' sex is an option.
-#' @param exclude_missing If \code{TRUE}, excludes all missing values. 
-#' Defaults to \code{FALSE}.
+#' @param exclude_missing If `TRUE`, excludes all missing values. 
+#' Defaults to `FALSE`.
 #' @param additional_queries Any other additional queries to pass to the API.
 #' See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on 
 #' query structure. Defaults to `NULL`.
 #'
 #' @return A tibble containing the selected dataset.
 #' @export
-#'
+#' @seealso nomis_data_info
+#' @seealso nomis_codes
+#' 
 #' @examples \dontrun{
 #' 
 #' x <- nomis_get_data(id="NM_1_1")
@@ -115,7 +117,9 @@ nomis_get_data <- function(id, time=NULL, date=NULL, geography=NULL,
                                     "")
   
   measures_query <- dplyr::if_else(length(measures)>0,
-                                   paste0("&measures=", paste0(measures, collapse=",")),
+                                   paste0("&measures=", 
+                                          paste0(measures, collapse=",")
+                                          ),
                                    "")
   
   sex_query <- dplyr::if_else(length(sex)>0,
@@ -127,12 +131,14 @@ nomis_get_data <- function(id, time=NULL, date=NULL, geography=NULL,
                                   "")
   
   query <- paste0("/",id,".data.csv?", time_query, geography_query, 
-                  measures_query, sex_query, additional_queries, exclude_query)
+                  measures_query, sex_query, additional_queries,
+                  exclude_query)
   
   df <- nomis_collect_util(query)
   
-  if(df$RECORD_COUNT[1]>25000) {
-# test for length and retrieve all data if amount available is over the limit of 25000
+  if(df$RECORD_COUNT[1]>25000) { 
+  # if amount available is over the limit of 25000 observations/single call
+  # downloads the extra data and binds it all together in a tibble
     
     record_count <- df$RECORD_COUNT[1]
     
@@ -140,7 +146,7 @@ nomis_get_data <- function(id, time=NULL, date=NULL, geography=NULL,
     
     pages <- list()
     
-    for(i in 1:length(seq_list)){
+    for(i in 1:length(seq_list)){ ## rwrite this to use seq_long
       
       query <- paste0(query, "&recordOffset=", seq_list[i])
       
@@ -154,7 +160,8 @@ nomis_get_data <- function(id, time=NULL, date=NULL, geography=NULL,
 
   } 
   
-  if(nrow(df)==0) stop("The API request did not return any results. Please check your parameters.")
+  if(nrow(df)==0) stop("The API request did not return any results.
+                       Please check your parameters.")
   
   df
 

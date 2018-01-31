@@ -16,6 +16,6 @@ The package provides functions to find what data is available, the
 variables and query options for different datasets and a function for 
 downloading data.
 
-Full API documentation available at 
+The full API documentation is available at 
 \url{https://www.nomisweb.co.uk/api/v01/help}
 }

@@ -10,8 +10,8 @@ nomis_search(search, keywords = FALSE)
 \item{search}{A string to search for in the name and description of 
 datasets.}
 
-\item{keywords}{If \code{TRUE}, searches in dataset keywords instead of 
-names and descriptions. Defaults to \code{FALSE}.}
+\item{keywords}{If `TRUE`, searches in dataset keywords instead of 
+names and descriptions. Defaults to `FALSE`.}
 }
 \value{
 A tibble with details on all datasets matching the search query.

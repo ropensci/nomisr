@@ -11,16 +11,14 @@
 #' variables and query options for different datasets and a function for 
 #' downloading data.
 #' 
-#' Full API documentation available at 
+#' The full API documentation is available at 
 #' \url{https://www.nomisweb.co.uk/api/v01/help}
 #' 
 #' 
 #' @docType package
 #' @name nmisr
-#' @import jsonlite
-#' @import tibble
+#' @importFrom jsonlite fromJSON
+#' @importFrom tibble as_tibble
 #' @importFrom readr read_csv
-#' @import dplyr
-#' @import curl
-# @useDynLib nomisr
+#' @importFrom dplyr if_else case_when bind_rows
 NULL

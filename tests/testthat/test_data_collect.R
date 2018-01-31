@@ -11,7 +11,7 @@ test_that("nomis_get_data return expected format", {
   expect_type(z, "list")
   expect_true(tibble::is_tibble(z))
   
-  
+  ## Test queries of over 25000 observatiosn
   a <- nomis_get_data(id="NM_893_1", time="latest", geography = "TYPE266")
   expect_length(a, 40)
   expect_type(a, "list")

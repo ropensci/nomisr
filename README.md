@@ -23,7 +23,7 @@ demographic data and census data.
 
 ## Installation
 
-You can install nomisr from github with:
+You can install `nomisr` from github with:
 
 ``` r
 # install.packages("devtools")

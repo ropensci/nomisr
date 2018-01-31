@@ -146,7 +146,7 @@ nomis_get_data <- function(id, time=NULL, date=NULL, geography=NULL,
     
     pages <- list()
     
-    for(i in 1:length(seq_list)){ ## rwrite this to use seq_long
+    for(i in seq_along(seq_list)){ ## rwrite this to use seq_long
       
       query <- paste0(query, "&recordOffset=", seq_list[i])
       

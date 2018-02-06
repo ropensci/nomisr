@@ -1,5 +1,5 @@
 
-#' Discovering data availability
+#' Discovering Nomis data availability
 #' 
 #' Retrieve all available data sets or the information available in a specific 
 #' dataset based on its ID.

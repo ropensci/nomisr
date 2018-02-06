@@ -7,26 +7,26 @@
 nomis_codes(id, code = NULL, type = NULL)
 }
 \arguments{
-\item{id}{The ID of the particular dataset. If both `id` and 
-`code` are left empty, returns all available codes for all datasets.}
+\item{id}{The ID of the particular dataset. If both \code{id} and 
+\code{code}are left empty, returns all available codes for all datasets.}
 
 \item{code}{A string with the variable code to return options for. If left 
-empty, returns all the variables for the dataset specified by `id`. 
-Codes are not case sensitive. Defaults to `null`.}
+empty, returns all the variables for the dataset specified by \code{id}. 
+Codes are not case sensitive. Defaults to \code{NULL}.}
 
 \item{type}{A string with options for a particular code value, to return 
-types of variables available for a given code. Defaults to `null`.}
+types of variables available for a given code. Defaults to \code{NULL}.}
 }
 \value{
 A tibble with options.
 }
 \description{
-Retrieve all code options of all datasets, code options for a given 
+Retrieve all code options of all Nomis datasets, code options for a given 
 dataset, or the all the options for a given code variable from a 
 particular dataset.
 }
 \details{
-Specifying `code` will return all the options for a given variable.
+Specifying \code{code} will return all the options for a given variable.
 }
 \examples{
 \dontrun{

@@ -7,8 +7,8 @@
 #'
 #' @param search A string to search for in the name and description of 
 #' datasets.
-#' @param keywords If `TRUE`, searches in dataset keywords instead of 
-#' names and descriptions. Defaults to `FALSE`. 
+#' @param keywords If \code{TRUE}, searches in dataset keywords instead of 
+#' names and descriptions. Defaults to \code{FALSE}. 
 #'
 #' @return A tibble with details on all datasets matching the search query.
 #' @export

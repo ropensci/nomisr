@@ -2,7 +2,7 @@
 % Please edit documentation in R/data_sets.R
 \name{nomis_data_info}
 \alias{nomis_data_info}
-\title{Discovering data availability}
+\title{Discovering Nomis data availability}
 \usage{
 nomis_data_info(id)
 }

@@ -102,22 +102,30 @@ data published.
 }
 \examples{
 \dontrun{
-
 x <- nomis_get_data(id="NM_1_1")
 
 y <- nomis_get_data(id="NM_1_1", time="latest")
+}
+
+\donttest{
 
 # Return data for each country
 z <- nomis_get_data(id="NM_1_1", time="latest", geography = "TYPE499",
                     measures=c(20100, 20201), sex=5)
+                    
+head(z)                     
 
 # Return data for Wigan
 a <- nomis_get_data(id="NM_1_1", time="latest", geography = "1879048226",
                     measures=c(20100, 20201), sex="5")
                     
-                    
+head(a)
+
+                                          
 b <- nomis_get_data(id="NM_168_1", time="latest", geography = "1879048226",
-                    measures=c(20100, 20201), sex="5")
+                    measures=c(20100, 20201), sex="0")
+
+head(b)
 
 }
 }

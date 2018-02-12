@@ -8,3 +8,6 @@
 ^_pkgdown\.yml$
 ^ropensci-issue-draft\.md$
 ^CONDUCT\.md$
+^a\.csv$
+^a\.xlsx$
+^~$a\.xlsx$

@@ -1,5 +1,7 @@
 
 
+# Need to figure out which datasets don't have a geographic variable.
+
 #' Variable codes
 #' 
 #' Retrieve all code options of all Nomis datasets, code options for a given 
@@ -8,8 +10,7 @@
 #' 
 #' Specifying \code{code} will return all the options for a given variable.
 #'
-#' @param id The ID of the particular dataset. If both \code{id} and 
-#' \code{code}are left empty, returns all available codes for all datasets.
+#' @param id The ID of the particular dataset. Returns no data if not specified.
 #' @param code A string with the variable code to return options for. If left 
 #' empty, returns all the variables for the dataset specified by \code{id}. 
 #' Codes are not case sensitive. Defaults to \code{NULL}.
@@ -18,52 +19,49 @@
 #' @return A tibble with options.
 #' @export
 #'
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
-#' a <- nomis_codes("NM_1_1")
+#' a <- nomis_codes('NM_1_1')
 #' 
-#' b <- nomis_codes("NM_1_1", "geography")
+#' b <- nomis_codes('NM_1_1', 'geography')
 #' 
-#' c <- nomis_codes("NM_1_1", "geography", "TYPE")
+#' c <- nomis_codes('NM_1_1', 'geography', 'TYPE')
 #' #returns all types of geography
 #' 
-#' d <- nomis_codes("NM_1_1", "geography", "1879048226")
+#' d <- nomis_codes('NM_1_1', 'geography', '1879048226')
 #' # returns geography types available within Wigan
 #' 
 #' }
 #' 
-nomis_codes <- function(id, code=NULL, type=NULL){
-  
-  if(missing(id)) stop("The dataset ID must be specified.")
+nomis_codes <- function(id, code = NULL, type = NULL) {
     
-  if(missing(code)) {
+    if (missing(id)) 
+        stop("The dataset ID must be specified.")
     
-    q <- nomis_data_info(id)
+    if (missing(code)) {
+        
+        q <- nomis_data_info(id)
+        
+        df <- tibble::as_tibble(as.data.frame(q$components.dimension))
+        
+        df$isfrequencydimension[is.na(df$isfrequencydimension)] <- "false"
+        
+    } else {
+        
+        type_query <- ifelse(is.null(type) == FALSE, paste0("/", type), "")
+        
+        a <- jsonlite::fromJSON(paste0(base_url, id, "/", code, type_query, 
+                                       "/def.sdmx.json?"),
+                                flatten = TRUE)
+        
+        x <- as.data.frame(a$structure$codelists$codelist$code)
+        
+        df <- tibble::tibble(description = x$description.value, 
+                             value = x$value)
+        
+    }
     
-    df <- tibble::as_tibble(as.data.frame(q$components.dimension))
+    df
     
-    df$isfrequencydimension[is.na(df$isfrequencydimension)] <- "false"
-
-  } else {
-    
-  type_query <- dplyr::if_else(is.null(type)==FALSE, paste0("/",type), "")
-    
-  a <- jsonlite::fromJSON(paste0("https://www.nomisweb.co.uk/api/v01/dataset/",
-                                 id,"/",code, type_query, "/def.sdmx.json?"),
-                          flatten=TRUE)
-                     
-  x <- as.data.frame(a$structure$codelists$codelist$code)
-  
-  df <- tibble::tibble(
-    description=x$description.value,
-    value=x$value
-    )
-  
-  }
-  
-  df
-  
 }
-
-
 

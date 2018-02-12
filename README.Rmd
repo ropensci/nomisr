@@ -23,9 +23,9 @@ knitr::opts_chunk$set(
 [![Coverage Status](https://img.shields.io/codecov/c/github/evanodell/nomisr/master.svg)](https://codecov.io/github/evanodell/nomisr?branch=master)
 [![DOI](https://zenodo.org/badge/118144805.svg)](https://zenodo.org/badge/latestdoi/118144805)
 
-`nomisr` is for accessing [Nomis](https://www.nomisweb.co.uk/) data with R. Nomis contains UK labour market statistics, data on benefits, demographic data and census data, and is maintained on behalf of the Office for National Statistics by the University of Durham.
+`nomisr` is for accessing [Nomis](https://www.nomisweb.co.uk/) data with R. Nomis contains data from the Census, the Labour Force Survey, DWP benefit statistics and other economic and demographic data, and is maintained on behalf of the Office for National Statistics by the University of Durham.
 
-`nomisr` returns data in [tibble](https://cran.r-project.org/package=tibble) format. Most of the data available through `nomisr` is based around statistical geographies, with some exceptions.
+The `nomisr` package provides functions to find what data is available, the  variables and query options for different datasets and a function for downloading data. `nomisr` returns data in [tibble](https://cran.r-project.org/package=tibble) format. Most of the data available through `nomisr` is based around statistical geographies, with some a handful of exceptions.
 
 ## Installation
 
@@ -42,7 +42,7 @@ The example below gets the latest data on Jobseeker's Allowance with rates and p
 
 ```{r example}
  library(nomisr)
- z <- nomis_get_data(id="NM_1_1", time="latest", geography="TYPE499", measures=c(20100, 20201), sex=5)
+ z <- nomis_get_data(id = "NM_1_1", time = "latest", geography = "TYPE499", measures=c(20100, 20201), sex=5)
  tibble::glimpse(z)
 ```
 

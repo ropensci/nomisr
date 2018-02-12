@@ -15,28 +15,32 @@
 #'
 #' @examples \donttest{
 #' 
-#' x <- nomis_search("seekers")
+#' x <- nomis_search('seekers')
 #' 
-#' y <- nomis_search("Claimants", keywords=TRUE)
+#' y <- nomis_search('Claimants', keywords=TRUE)
 #' 
 #' }
 
 
-nomis_search <- function(search, keywords=FALSE){
-  
-  query <- dplyr::if_else(keywords==FALSE,
-                           paste0("/def.sdmx.json?search=*", 
-                                  search, "*"),
-                           paste0("/def.sdmx.json?search=keywords-", 
-                                  search, "*")
-  
-  )
-                          
-  df <- nomis_query_util(query)
-  
-  if(nrow(df)==0) stop("Search query did not return any results")
-  
-  df
-  
-  
+nomis_search <- function(search, keywords = FALSE) {
+    
+    
+    if (keywords == FALSE) {
+        
+        query <- paste0("/def.sdmx.json?search=*", search, "*")
+        
+    } else {
+        
+        query <- paste0("/def.sdmx.json?search=keywords-", search, "*")
+        
+    }
+    
+    df <- nomis_query_util(query)
+    
+    if (nrow(df) == 0) 
+        stop("Search query did not return any results")
+    
+    df
+    
+    
 }

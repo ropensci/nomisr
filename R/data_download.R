@@ -16,12 +16,13 @@
 #' \code{date} parameter. If given more than one query, \code{time} will 
 #' return all data available between those queries, inclusively, while 
 #' \code{date} will only return data for the exact queries specified. So 
-#' \code{time=c("first","latest")} will return all data, while 
-#' \code{date=c("first","latest")} will return only the first and latest 
+#' \code{time=c("first", "latest")} will return all data, while 
+#' \code{date=c("first", "latest")} will return only the first and latest 
 #' data published.
 #' 
 #'
 #' @param id The ID of the dataset to retrieve.
+#' 
 #' @param time Parameter for selecting dates and date ranges. There are two 
 #' styles of values that can be used to query time. 
 #' 
@@ -61,22 +62,34 @@
 #' @param geography The code of the geographic area to return data for. If 
 #' \code{NULL}, returns data for all available geographic areas, subject to 
 #' other parameters. Defaults to \code{NULL}.
+#' 
 #' @param measures The code for the statistical measure(s) to include in the 
 #' data. Accepts a single string or number, or a list of strings or numbers. 
 #' If \code{NULL}, returns data for all available statistical measures subject 
 #' to other parameters. Defaults to \code{NULL}.
+#' 
 #' @param sex The code for sexes included in the dataset. Accepts a string or 
-#' number, or a vector of strings or numbers. \code{7} will return results for 
-#' males and females, \code{6 }only females and \code{5} only males. 
+#' number, or a vector of strings or numbers. \code{nomisr} automatically voids 
+#' any queries for sex if it is not an available code for the 
+#' requested dataset.
+#' 
+#' There are two different codings used for sex, depending on the dataset. For 
+#' datasets using \code{"SEX"}, \code{7} will return results for 
+#' males and females, \code{6} only females and \code{5} only males. 
 #' Defaults to \code{NULL}, equivalent to \code{c(5,6,7)} for datasets where 
-#' sex is an option.
-#' @param exclude_missing If \code{TRUE}, excludes all missing values. 
-#' Defaults to \code{FALSE}.
+#' sex is an option. For datasets using \code{"C_SEX"}, \code{0} will return 
+#' results for males and females, \code{1} only males and 
+#' \code{2} only females. 
+#' 
 #' @param additional_queries Any other additional queries to pass to the API.
 #' See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on 
 #' query structure. Defaults to \code{NULL}.
+#' 
+#' @param exclude_missing If \code{TRUE}, excludes all missing values. 
+#' Defaults to \code{FALSE}.
 #'
-#' @return A tibble containing the selected dataset.
+#' @return A tibble containing the selected dataset. 
+#' By default, all tibble columns are parsed as characters.
 #' @export
 #' @seealso nomis_data_info
 #' @seealso nomis_codes
@@ -88,83 +101,124 @@
 #' y <- nomis_get_data(id="NM_1_1", time="latest")
 #' 
 #' # Return data for each country
-#' z <- nomis_get_data(id="NM_1_1", time="latest", geography="TYPE499", 
+#' z <- nomis_get_data(id="NM_1_1", time="latest", geography = "TYPE499",
 #'                     measures=c(20100, 20201), sex=5)
 #' 
 #' # Return data for Wigan
-#' a <- nomis_get_data(id="NM_1_1", time="latest", geography="1879048226", 
-#'                     measures=c(20100, 20201), sex=5)
+#' a <- nomis_get_data(id="NM_1_1", time="latest", geography = "1879048226",
+#'                     measures=c(20100, 20201), sex="5")
+#'                     
+#'                     
+#' b <- nomis_get_data(id="NM_168_1", time="latest", geography = "1879048226",
+#'                     measures=c(20100, 20201), sex="5")
 #' 
 #' }
 
 
-nomis_get_data <- function(id, time=NULL, date=NULL, geography=NULL, 
-                           measures=NULL, sex=NULL, exclude_missing=FALSE, 
-                           additional_queries=NULL){
+nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
+                           sex = NULL, measures = NULL, 
+                           additional_queries = NULL, exclude_missing = FALSE){
   
   if(missing(id)){
     stop("Dataset ID must be specified")
   }
   
-  time_query <- dplyr::case_when(is.null(date)==FALSE ~
-                                  paste0("&date=", paste0(date, collapse=",")),
-                                 is.null(time)==FALSE~
-                                   paste0("&time=", paste0(time, collapse=",")),
-                                 TRUE ~ ""
-  )
+  if(is.null(date) == FALSE){
+    
+    time_query <- paste0("&date=", paste0(date, collapse = ","))
+    
+  } else if(is.null(time) == FALSE){
+    
+    time_query <- paste0("&time=", paste0(time, collapse = ","))
+    
+  } else {
+    
+    time_query <- ""
+    
+  }
   
-  geography_query <- dplyr::if_else(is.null(geography)==FALSE,
-                                    paste0("&geography=", geography),
-                                    "")
+  geography_query <-  ifelse(is.null(geography) == FALSE,
+                             paste0("&geography=", 
+                                    paste0(geography, collapse = ",")
+                              ),
+                             "")
   
-  measures_query <- dplyr::if_else(length(measures)>0,
-                                   paste0("&measures=", 
-                                          paste0(measures, collapse=",")
-                                          ),
-                                   "")
+  measures_query <- ifelse(length(measures) > 0,
+                           paste0("&measures=", 
+                                  paste0(measures, collapse = ",")
+                                  ),
+                           "")
   
-  sex_query <- dplyr::if_else(length(sex)>0,
-                              paste0("&sex=", paste0(sex, collapse=",")),
-                              "")
+  additional_query <- ifelse(length(additional_queries) > 0,
+                             additional_queries, 
+                             "")
   
-  exclude_query <- dplyr::if_else(exclude_missing==TRUE,
-                                  "&ExcludeMissingValues=true",
-                                  "")
+  if(length(sex) > 0) {
+    
+    sex_lookup <- nomis_data_info(id)$components.dimension[[1]]$conceptref
+    
+    if("C_SEX" %in% sex_lookup) {
+      
+      sex_query <- paste0("&c_sex=", paste0(sex, collapse=","))
+      
+    } else if("SEX" %in% sex_lookup) {
+      
+      sex_query <- paste0("&sex=", paste0(sex, collapse=","))
+      
+    } else {
+      
+      sex_query <- "" 
+      
+    }
+    
+  } else {
+    
+    sex_query <- ""
+    
+  }
   
-  query <- paste0("/",id,".data.csv?", time_query, geography_query, 
-                  measures_query, sex_query, additional_queries,
+  exclude_query <- ifelse(exclude_missing==TRUE,
+                          "&ExcludeMissingValues=true",
+                          "")
+  
+  query <- paste0(id,".data.csv?", time_query, geography_query, sex_query,
+                  measures_query, additional_query,
                   exclude_query)
   
-  df <- nomis_collect_util(query)
+  df2 <- nomis_collect_util(query)
   
-  if(df$RECORD_COUNT[1]>25000) { 
+  if(nrow(df2) == 0) stop("The API request did not return any results.
+                       Please check your parameters.")
+  
+  if(as.numeric(df2$RECORD_COUNT)[1] > 25000) { 
   # if amount available is over the limit of 25000 observations/single call
   # downloads the extra data and binds it all together in a tibble
     
-    record_count <- df$RECORD_COUNT[1]
+    record_count <- df2$RECORD_COUNT[1]
     
-    seq_list <- seq(from=25000, to=record_count, by=25000)
+    seq_list <- seq(from = 25000, to = record_count, by = 25000)
     
     pages <- list()
     
     for(i in seq_along(seq_list)){
       
-      query <- paste0(query, "&recordOffset=", seq_list[i])
+      query2 <- paste0(query, "&recordOffset=", 
+                       format(seq_list[i], scientific = FALSE))
       
       message("Retrieving additional pages ", i, " of ", length(seq_list))
       
-      pages[[i]] <- nomis_collect_util(query)
+      pages[[i]] <- nomis_collect_util(query2)
       
     }
     
-    df <- tibble::as_tibble(dplyr::bind_rows(pages, df))
+    df <- tibble::as_tibble(dplyr::bind_rows(pages, df2))
 
-  } 
-  
-  if(nrow(df)==0) stop("The API request did not return any results.
-                       Please check your parameters.")
+  } else {
+    
+    df <- df2
+    
+  }
   
   df
 
 }
-

@@ -20,5 +20,5 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble as_tibble
 #' @importFrom readr read_csv
-#' @importFrom dplyr if_else case_when bind_rows
+#' @importFrom dplyr bind_rows
 NULL

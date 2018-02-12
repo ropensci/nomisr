@@ -15,26 +15,27 @@
 #' 
 #' x <- nomis_data_info()
 #' 
-#' y <- nomis_data_info("NM_1658_1")
+#' y <- nomis_data_info('NM_1658_1')
 #' 
 #' }
 
-nomis_data_info <- function(id){
-  
-  if(missing(id)){
+nomis_data_info <- function(id) {
     
-  query <- "/def.sdmx.json"
-
-  } else {
+    if (missing(id)) {
+        
+        query <- "/def.sdmx.json"
+        
+    } else {
+        
+        query <- paste0("/", id, "/def.sdmx.json")
+        
+    }
     
-  query <- paste0("/",id,"/def.sdmx.json")
-   
-  }
-  
-  df <- nomis_query_util(query)
-  
-  if(nrow(df)==0) stop("API request did not return any results")
-  
-  df
-  
+    df <- nomis_query_util(query)
+    
+    if (nrow(df) == 0) 
+        stop("API request did not return any results")
+    
+    df
+    
 }

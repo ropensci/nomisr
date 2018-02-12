@@ -5,8 +5,8 @@
 \title{Retrieve Nomis datasets}
 \usage{
 nomis_get_data(id, time = NULL, date = NULL, geography = NULL,
-  measures = NULL, sex = NULL, exclude_missing = FALSE,
-  additional_queries = NULL)
+  sex = NULL, measures = NULL, additional_queries = NULL,
+  exclude_missing = FALSE)
 }
 \arguments{
 \item{id}{The ID of the dataset to retrieve.}
@@ -51,26 +51,34 @@ Defaults to \code{NULL}.}
 \code{NULL}, returns data for all available geographic areas, subject to 
 other parameters. Defaults to \code{NULL}.}
 
+\item{sex}{The code for sexes included in the dataset. Accepts a string or 
+number, or a vector of strings or numbers. \code{nomisr} automatically voids 
+any queries for sex if it is not an available code for the 
+requested dataset.
+
+There are two different codings used for sex, depending on the dataset. For 
+datasets using \code{"SEX"}, \code{7} will return results for 
+males and females, \code{6} only females and \code{5} only males. 
+Defaults to \code{NULL}, equivalent to \code{c(5,6,7)} for datasets where 
+sex is an option. For datasets using \code{"C_SEX"}, \code{0} will return 
+results for males and females, \code{1} only males and 
+\code{2} only females.}
+
 \item{measures}{The code for the statistical measure(s) to include in the 
 data. Accepts a single string or number, or a list of strings or numbers. 
 If \code{NULL}, returns data for all available statistical measures subject 
 to other parameters. Defaults to \code{NULL}.}
 
-\item{sex}{The code for sexes included in the dataset. Accepts a string or 
-number, or a vector of strings or numbers. \code{7} will return results for 
-males and females, \code{6 }only females and \code{5} only males. 
-Defaults to \code{NULL}, equivalent to \code{c(5,6,7)} for datasets where 
-sex is an option.}
-
-\item{exclude_missing}{If \code{TRUE}, excludes all missing values. 
-Defaults to \code{FALSE}.}
-
 \item{additional_queries}{Any other additional queries to pass to the API.
 See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on 
 query structure. Defaults to \code{NULL}.}
+
+\item{exclude_missing}{If \code{TRUE}, excludes all missing values. 
+Defaults to \code{FALSE}.}
 }
 \value{
-A tibble containing the selected dataset.
+A tibble containing the selected dataset. 
+By default, all tibble columns are parsed as characters.
 }
 \description{
 Retrieves specific datasets from nomis, based on their ID. To find dataset 
@@ -88,8 +96,8 @@ time. If they are, the function will retrieve data based on the the
 \code{date} parameter. If given more than one query, \code{time} will 
 return all data available between those queries, inclusively, while 
 \code{date} will only return data for the exact queries specified. So 
-\code{time=c("first","latest")} will return all data, while 
-\code{date=c("first","latest")} will return only the first and latest 
+\code{time=c("first", "latest")} will return all data, while 
+\code{date=c("first", "latest")} will return only the first and latest 
 data published.
 }
 \examples{
@@ -100,12 +108,16 @@ x <- nomis_get_data(id="NM_1_1")
 y <- nomis_get_data(id="NM_1_1", time="latest")
 
 # Return data for each country
-z <- nomis_get_data(id="NM_1_1", time="latest", geography="TYPE499", 
+z <- nomis_get_data(id="NM_1_1", time="latest", geography = "TYPE499",
                     measures=c(20100, 20201), sex=5)
 
 # Return data for Wigan
-a <- nomis_get_data(id="NM_1_1", time="latest", geography="1879048226", 
-                    measures=c(20100, 20201), sex=5)
+a <- nomis_get_data(id="NM_1_1", time="latest", geography = "1879048226",
+                    measures=c(20100, 20201), sex="5")
+                    
+                    
+b <- nomis_get_data(id="NM_168_1", time="latest", geography = "1879048226",
+                    measures=c(20100, 20201), sex="5")
 
 }
 }

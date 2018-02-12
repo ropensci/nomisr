@@ -7,3 +7,4 @@
 ^appveyor\.yml$
 ^_pkgdown\.yml$
 ^ropensci-issue-draft\.md$
+^CONDUCT\.md$

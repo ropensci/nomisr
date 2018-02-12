@@ -2,7 +2,7 @@
 
 language: r
 r:
-  - release
+  - devel
 
 sudo: required
 cache: packages

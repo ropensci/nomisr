@@ -1,7 +1,4 @@
 
-
-# Need to figure out which datasets don't have a geographic variable.
-
 #' Variable codes
 #' 
 #' Retrieve all code options of all Nomis datasets, code options for a given 

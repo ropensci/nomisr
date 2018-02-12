@@ -23,9 +23,9 @@ default looks in the names and descriptions of datasets.
 \examples{
 \donttest{
 
-x <- nomis_search("seekers")
+x <- nomis_search('seekers')
 
-y <- nomis_search("Claimants", keywords=TRUE)
+y <- nomis_search('Claimants', keywords=TRUE)
 
 }
 }

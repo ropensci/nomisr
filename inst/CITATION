@@ -7,4 +7,4 @@ bibentry(bibtype = "Manual",
          year = year,
          note = note,
          doi = "10.5281/zenodo.1157908",
-         url = c("https://docs.evanodell.com/nomisr" ))
+         url = c("https://docs.evanodell.com/nomisr"))

@@ -11,7 +11,7 @@
 #' @export
 #' @seealso nomis_get_data
 #'
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #' x <- nomis_data_info()
 #' 

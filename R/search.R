@@ -13,7 +13,7 @@
 #' @return A tibble with details on all datasets matching the search query.
 #' @export
 #'
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #' x <- nomis_search("seekers")
 #' 

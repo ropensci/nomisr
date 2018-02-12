@@ -84,3 +84,14 @@ period of time, although those are not published. For more details, see
 the [full API documentation](https://www.nomisweb.co.uk/api/v01/help)
 from Nomis. Full package documentation is available at
 [docs.evanodell.com/nomisr](https://docs.evanodell.com/nomisr)
+
+## Meta
+
+Please note that this project is released with a [Contributor Code of
+Conduct](CONDUCT.md). By participating in this project you agree to
+abide by its terms.
+
+Please note that this project is not affiliated with the Office for
+National Statistics or the University of Durham.
+
+License: MIT

@@ -18,7 +18,7 @@ Retrieve all available data sets or the information available in a specific
 dataset based on its ID.
 }
 \examples{
-\dontrun{
+\donttest{
 
 x <- nomis_data_info()
 

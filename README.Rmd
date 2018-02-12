@@ -23,7 +23,9 @@ knitr::opts_chunk$set(
 [![Coverage Status](https://img.shields.io/codecov/c/github/evanodell/nomisr/master.svg)](https://codecov.io/github/evanodell/nomisr?branch=master)
 [![DOI](https://zenodo.org/badge/118144805.svg)](https://zenodo.org/badge/latestdoi/118144805)
 
-`nomisr` is for accessing [Nomis](https://www.nomisweb.co.uk/) data with R. Nomis contains labour market statistics, data on benefits, demographic data and census data.
+`nomisr` is for accessing [Nomis](https://www.nomisweb.co.uk/) data with R. Nomis contains UK labour market statistics, data on benefits, demographic data and census data, and is maintained on behalf of the Office for National Statistics by the University of Durham.
+
+`nomisr` returns data in [tibble](https://cran.r-project.org/package=tibble) format. Most of the data available through `nomisr` is based around statistical geographies, with some exceptions.
 
 ## Installation
 
@@ -45,4 +47,14 @@ The example below gets the latest data on Jobseeker's Allowance with rates and p
 ```
 
 There is a lot of data available through Nomis, and there are some limits to the amount of data that can be retrieved within a certain period of time, although those are not published. For more details, see the [full API documentation](https://www.nomisweb.co.uk/api/v01/help) from Nomis. Full package documentation is available at [docs.evanodell.com/nomisr](https://docs.evanodell.com/nomisr)
+
+
+## Meta
+
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+Please note that this project is not affiliated with the Office for National Statistics or the University of Durham.
+
+License: MIT
+
 

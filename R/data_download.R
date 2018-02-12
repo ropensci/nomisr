@@ -116,7 +116,7 @@
 #' 
 #'                                           
 #' b <- nomis_get_data(id="NM_168_1", time="latest", geography = "1879048226",
-#'                     measures=c(20100, 20201), sex="0")
+#'                     sex="0")
 #' 
 #' head(b)
 #' 

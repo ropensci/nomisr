@@ -15,6 +15,7 @@ r_packages:
   - devtools
   - withr
   - covr
+  - curl
 
 after_success:
   - Rscript -e 'covr::codecov(quiet=FALSE)'

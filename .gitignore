@@ -7,3 +7,5 @@ src/*.so
 src/*.dll
 inst/doc
 ropensci-issue-draft.md
+a.csv
+a.xlsx

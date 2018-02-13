@@ -199,7 +199,7 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
   if(nrow(df2) == 0) stop("The API request did not return any results.
                        Please check your parameters.")
   
-  if(as.numeric(df2$RECORD_COUNT)[1] > 25000) { 
+  if(as.numeric(df2$RECORD_COUNT)[1] >=25000) { 
   # if amount available is over the limit of 25000 observations/single call
   # downloads the extra data and binds it all together in a tibble
     

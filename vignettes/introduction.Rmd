@@ -32,52 +32,87 @@ Nomis data is based around administrative and statistical geographies, and a par
 
 `nomisr` is designed around a pipeline of three key functions: `nomis_data_info()`, `nomis_codes()` and `nomis_get_data()`.
 
-
 ## Querying data availability
 
 Use the `nomis_data_info()` function without any parameters to get a tibble 
 with metadata for all available datasets:
 
-```{r, echo=FALSE}
-  library(nomisr) 
-  x <- nomis_data_info()
-  head(x)
+```{r, echo=TRUE}
+library(nomisr)
+x <- nomis_data_info()
+head(x)
 ```
 
 
 `nomis_data_info()` can also be used to query metadata from a specific dataset, using its ID. The example below uses the "LC4408EW - Tenure by number of persons per bedroom in household by household type" dataset from the 2011 census, including the 3 nested data frames including metadata important to making specific queries.
 
-```{r, echo=FALSE}
-  y <- nomis_data_info("NM_893_1")
-  tibble::glimpse(y)
-  
-  y$annotations.annotation
-  
-  y$components.attribute
-  
-  y$components.dimension
+```{r, echo=TRUE}
+library(dplyr, warn.conflicts = F)
+
+y <- nomis_data_info("NM_893_1")
+y$annotations.annotation %>% class()
+#> [1] "list"
+y$annotations.annotation[[1]] %>% class()
+#> [1] "data.frame"
+y %>% pull(annotations.annotation) %>% class()
+#> [1] "list"
+y %>% pull(annotations.annotation)%>% .[[1]] %>% class()
+#> [1] "data.frame"
+y %>% pull(annotations.annotation) %>% purrr::pluck(1) %>% class()
+#> [1] "data.frame"
+y %>% pull(annotations.annotation) %>% purrr::map(1) %>% class()
+#> [1] "list"
+y %>% tidyr::unnest(annotations.annotation) %>% glimpse()
 ```
 
 
 When a tibble with metadata for all datasets or a specific dataset is returned, three of the columns: `annotations.annotation`, `components.attribute` and `components.dimension` are lists of nested data frames. `annotations.annotation` contains metadata on the dataset, including units and current status. `components.attribute` contains more detailed status metadata. `components.dimension` contains the grouping and summary variables available in the dataset, which vary between different datasets.
 
-## Downloading data
+### Searching for data
 
-Vast amounts of data are available through Nomis and so to avoid overwhelming the API, it is good practice to query what variables are available, using `nomis_codes`. This queries the different kinds of geography codes available through the API for the "LC4408EW - Tenure bynumber of persons per bedroom in household by household type" dataset.
+`nomisr` also contains the `nomis_search()` function to search for datasets on particular topics. By default, it searches for a given string in the names and descriptions of available datasets.
 
-```{r, echo=FALSE}
-  a <- nomis_codes(id = "NM_893_1", code = "geography", type = "type")
-  a
+```{r, echo=TRUE}
+
+a <- nomis_search('claimants')
 
 ```
 
+Nomis datasets also contain keywords, which `nomis_search()` will return metadata for if `keywords = TRUE`.
+
+
+```{r, echo=TRUE}
+
+b <- nomis_search('Claimants', keywords = TRUE)
+
+```
+
+
+## Querying data variables
+
+
+Vast amounts of data are available through Nomis and so to avoid overwhelming the API, it is good practice to query what variables are available, using `nomis_codes()`. This queries the different kinds of geography codes available through the API for the "LC4408EW - Tenure bynumber of persons per bedroom in household by household type" dataset.
+
+```{r, echo=TRUE}
+  a <- nomis_codes(id = "NM_893_1", code = "geography", type = "type")
+
+  a
+```
+
+
+The vast majority (98% as of February 2018) of Nomis datasets include 
+
+## Downloading data
 
 Using the information above, we can now query the latest data on bedroom occupancy per household type in different NHS clinical commissioning groups.
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
  z <- nomis_get_data(id = "NM_893_1", time = "latest", geography = "TYPE266")
  tibble::glimpse(z)
 ```
+
+
+
 
 
 

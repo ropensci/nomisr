@@ -4,11 +4,12 @@
 #' 
 #' Retrieves specific datasets from nomis, based on their ID. To find dataset 
 #' IDs, use \code{\link{nomis_data_info}}. Datasets are retrived in csv format 
-#' and parsed with the \code{read_csv} function from the \code{readr} package. 
+#' and parsed with the \code{read_csv} function from the \code{readr} package 
+#' into a tibble, with all columns parsed as character columns.
 #' 
 #' To find the code options for a given dataset, use \code{\link{nomis_codes}}.
 #' 
-#' This can be a very slow process if calling significant amounts of data.
+#' This can be a slow process if querying significant amounts of data.
 #' 
 #' Note the difference between the \code{time} and \code{date} parameters. 
 #' The \code{time} and \code{date} parameters should not be used at the same 

@@ -15,4 +15,13 @@ test_that("nomis_search return expected format", {
   expect_type(x, "list")
   expect_true(tibble::is_tibble(x))
   
+  z <- nomis_search("Seekers")
+  
+  expect_length(z, 14)
+  expect_type(z, "list")
+  expect_true(tibble::is_tibble(z))
+  expect_equal(x[1],z[1])
+  expect_equal(names(x),names(z))
+  
+  
 })

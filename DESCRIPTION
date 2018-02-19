@@ -23,5 +23,6 @@ Suggests:
   knitr,
   rmarkdown,
   testthat,
-  curl
+  curl,
+  purrr
 VignetteBuilder: knitr

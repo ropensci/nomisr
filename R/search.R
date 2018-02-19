@@ -24,14 +24,13 @@
 
 nomis_search <- function(search, keywords = FALSE) {
     
-    
     if (keywords == FALSE) {
         
         query <- paste0("/def.sdmx.json?search=*", search, "*")
         
     } else {
         
-        query <- paste0("/def.sdmx.json?search=keywords-", search, "*")
+        query <- paste0("/def.sdmx.json?search=keywords-*", search, "*")
         
     }
     

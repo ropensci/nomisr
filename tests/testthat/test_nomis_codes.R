@@ -19,7 +19,7 @@ test_that("nomis_codes return expected format", {
   
   c <- nomis_codes("NM_1_1", "geography", "TYPE")
   expect_length(c, 2)
-  expect_equal(nrow(c),91)
+  expect_equal(nrow(c), 96)
   expect_true(tibble::is_tibble(c))  
   
 })

@@ -6,132 +6,141 @@
 \usage{
 nomis_get_data(id, time = NULL, date = NULL, geography = NULL,
   sex = NULL, measures = NULL, additional_queries = NULL,
-  exclude_missing = FALSE)
+  exclude_missing = FALSE, select = NULL)
 }
 \arguments{
 \item{id}{The ID of the dataset to retrieve.}
 
-\item{time}{Parameter for selecting dates and date ranges. There are two 
-styles of values that can be used to query time. 
+\item{time}{Parameter for selecting dates and date ranges. There are two
+styles of values that can be used to query time.
 
-The first is one or more of \code{"latest"} (returns the latest available 
-data), \code{"previous"} (the date prior to \code{"latest"}), 
-\code{"prevyear"} (the date one year prior to \code{"latest"}) or 
-\code{"first"} (the oldest available data for the dataset). 
+The first is one or more of \code{"latest"} (returns the latest available
+data), \code{"previous"} (the date prior to \code{"latest"}),
+\code{"prevyear"} (the date one year prior to \code{"latest"}) or
+\code{"first"} (the oldest available data for the dataset).
 
-The second style is to use or a specific date or multiple dates, in the 
-style of the time variable codelist, which can be found using the 
-\code{\link{nomis_codes}} function.
+The second style is to use or a specific date or multiple dates, in the
+style of the time variable codelist, which can be found using the
+\code{\link{nomis_get_metadata}} function.
 
-Values for the \code{time} and \code{date} parameters should not be used 
-at the same time. If they are, the function will retrieve data based 
+Values for the \code{time} and \code{date} parameters should not be used
+at the same time. If they are, the function will retrieve data based
 on the the \code{date} parameter.
 
 Defaults to \code{NULL}.}
 
-\item{date}{Parameter for selecting specific dates. There are two styles 
-of values that can be used to query time. 
+\item{date}{Parameter for selecting specific dates. There are two styles
+of values that can be used to query time.
 
-The first is one or more of \code{"latest"} (returns the latest available 
-data), \code{"previous"} (the date prior to \code{"latest"}), 
-\code{"prevyear"} (the date one year prior to \code{"latest"}) or 
-\code{"first"} (the oldest available data for the dataset). 
+The first is one or more of \code{"latest"} (returns the latest available
+data), \code{"previous"} (the date prior to \code{"latest"}),
+\code{"prevyear"} (the date one year prior to \code{"latest"}) or
+\code{"first"} (the oldest available data for the dataset).
 
-The second style is to use or a specific date or multiple dates, in the 
-style of the time variable codelist, which can be found using the 
-\code{\link{nomis_codes}} function.
+The second style is to use or a specific date or multiple dates, in the
+style of the time variable codelist, which can be found using the
+\code{\link{nomis_get_metadata}} function.
 
-Values for the \code{time} and \code{date} parameters should not be used at 
-the same time. If they are, the function will retrieve data based on the 
+Values for the \code{time} and \code{date} parameters should not be used at
+the same time. If they are, the function will retrieve data based on the
 the \code{date} parameter.
 
 Defaults to \code{NULL}.}
 
-\item{geography}{The code of the geographic area to return data for. If 
-\code{NULL}, returns data for all available geographic areas, subject to 
-other parameters. Defaults to \code{NULL}.}
+\item{geography}{The code of the geographic area to return data for. If
+\code{NULL}, returns data for all available geographic areas, subject to
+other parameters. Defaults to \code{NULL}. In the rare instance that a 
+geographic variable does not exist, if not \code{NULL}, the function 
+will return an error.}
 
-\item{sex}{The code for sexes included in the dataset. Accepts a string or 
-number, or a vector of strings or numbers. \code{nomisr} automatically voids 
-any queries for sex if it is not an available code for the 
+\item{sex}{The code for sexes included in the dataset. Accepts a string or
+number, or a vector of strings or numbers. \code{nomisr} automatically voids
+any queries for sex if it is not an available code in the
 requested dataset.
 
-There are two different codings used for sex, depending on the dataset. For 
-datasets using \code{"SEX"}, \code{7} will return results for 
-males and females, \code{6} only females and \code{5} only males. 
-Defaults to \code{NULL}, equivalent to \code{c(5,6,7)} for datasets where 
-sex is an option. For datasets using \code{"C_SEX"}, \code{0} will return 
-results for males and females, \code{1} only males and 
+There are two different codings used for sex, depending on the dataset. For
+datasets using \code{"SEX"}, \code{7} will return results for
+males and females, \code{6} only females and \code{5} only males.
+Defaults to \code{NULL}, equivalent to \code{c(5,6,7)} for datasets where
+sex is an option. For datasets using \code{"C_SEX"}, \code{0} will return
+results for males and females, \code{1} only males and
 \code{2} only females.}
 
-\item{measures}{The code for the statistical measure(s) to include in the 
-data. Accepts a single string or number, or a list of strings or numbers. 
-If \code{NULL}, returns data for all available statistical measures subject 
+\item{measures}{The code for the statistical measure(s) to include in the
+data. Accepts a single string or number, or a list of strings or numbers.
+If \code{NULL}, returns data for all available statistical measures subject
 to other parameters. Defaults to \code{NULL}.}
 
 \item{additional_queries}{Any other additional queries to pass to the API.
-See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on 
+See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
 query structure. Defaults to \code{NULL}.}
 
-\item{exclude_missing}{If \code{TRUE}, excludes all missing values. 
+\item{exclude_missing}{If \code{TRUE}, excludes all missing values.
 Defaults to \code{FALSE}.}
+
+\item{select}{A character vector of one or more variables to select, 
+excluding all others. \code{select} is not case sensitive.}
 }
 \value{
-A tibble containing the selected dataset. 
+A tibble containing the selected dataset.
 By default, all tibble columns are parsed as characters.
 }
 \description{
-Retrieves specific datasets from nomis, based on their ID. To find dataset 
-IDs, use \code{\link{nomis_data_info}}. Datasets are retrived in csv format 
-and parsed with the \code{read_csv} function from the \code{readr} package 
-into a tibble, with all columns parsed as character columns.
-}
-\details{
-To find the code options for a given dataset, use \code{\link{nomis_codes}}.
+Retrieves specific datasets from nomis, based on their ID. To 
+find dataset IDs, use \code{\link{nomis_data_info}}. Datasets are retrived 
+in csv format and parsed with the \code{read_csv} function from the 
+\code{readr} package into a tibble, with all columns parsed as character 
+columns.
 
-This can be a slow process if querying significant amounts of data.
+To find the code options for a given dataset, use 
+\code{\link{nomis_get_metadata}}.
 
-Note the difference between the \code{time} and \code{date} parameters. 
-The \code{time} and \code{date} parameters should not be used at the same 
-time. If they are, the function will retrieve data based on the the 
-\code{date} parameter. If given more than one query, \code{time} will 
-return all data available between those queries, inclusively, while 
-\code{date} will only return data for the exact queries specified. So 
-\code{time=c("first", "latest")} will return all data, while 
-\code{date=c("first", "latest")} will return only the first and latest 
+This can be a slow process if querying significant amounts of 
+data. Guest users are limited to 25,000 rows per query, although 
+\code{nomisr} identifies queries that will return more than 25,000 rows, 
+sending individual queries and combining the results of those queries into 
+a single tibble.
+
+Note the difference between the \code{time} and \code{date} 
+parameters.
+The \code{time} and \code{date} parameters should not be used at the same
+time. If they are, the function will retrieve data based on the the
+\code{date} parameter. If given more than one query, \code{time} will
+return all data available between those queries, inclusively, while
+\code{date} will only return data for the exact queries specified. So
+\code{time=c("first", "latest")} will return all data, while
+\code{date=c("first", "latest")} will return only the first and latest
 data published.
 }
 \examples{
-\dontrun{
-x <- nomis_get_data(id="NM_1_1")
-
-y <- nomis_get_data(id="NM_1_1", time="latest")
-}
-
 \donttest{
 
 # Return data for each country
-z <- nomis_get_data(id="NM_1_1", time="latest", geography = "TYPE499",
-                    measures=c(20100, 20201), sex=5)
-                    
-head(z)                     
+jobseekers_country <- nomis_get_data(id="NM_1_1", time="latest",
+                                     geography = "TYPE499",
+                                     measures=c(20100, 20201), sex=5)
+
+print(jobseekers_country)
 
 # Return data for Wigan
-a <- nomis_get_data(id="NM_1_1", time="latest", geography = "1879048226",
-                    measures=c(20100, 20201), sex="5")
-                    
-head(a)
+jobseekers_wigan <- nomis_get_data(id="NM_1_1", time="latest",
+                                   geography = "1879048226",
+                                   measures=c(20100, 20201), sex="5")
 
-                                          
-b <- nomis_get_data(id="NM_168_1", time="latest", geography = "1879048226",
-                    sex="0")
+print(jobseekers_wigan)
 
-head(b)
+# annual population survey - regional - employment by occupation
+emp_by_occupation <- nomis_get_data(id="NM_168_1", time="latest",
+                                    geography = "2013265925", sex="0",
+                                    select = c("geography_code", 
+                                    "C_OCCPUK11H_0_NAME", "obs_vAlUE"))
+
+print(emp_by_occupation)
 
 }
 }
 \seealso{
-nomis_data_info
+\code{\link{nomis_data_info}}
 
-nomis_codes
+\code{\link{nomis_get_metadata}}
 }

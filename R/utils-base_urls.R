@@ -1,6 +1,5 @@
 
-
-
+## Utility variables to assist query building
 base_url <- "https://www.nomisweb.co.uk/api/v01/dataset/"
 
-#devtools::use_data(base_url, internal = TRUE, overwrite = TRUE)
+content_url <- "https://www.nomisweb.co.uk/api/v01/contenttype/"

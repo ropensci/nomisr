@@ -13,6 +13,7 @@ Description: Access UK official statistics from the Nomis database through R.
 URL: https://github.com/EvanOdell/nomisr
 BugReports: https://github.com/EvanOdell/nomisr/issues
 License: MIT + file LICENSE
+Depends: R (>= 3.4.0)
 Imports: 
   jsonlite,
   tibble,

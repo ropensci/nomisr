@@ -2,20 +2,20 @@
 % Please edit documentation in R/data_sets.R
 \name{nomis_data_info}
 \alias{nomis_data_info}
-\title{Discovering Nomis data availability}
+\title{Nomis data availability}
 \usage{
 nomis_data_info(id)
 }
 \arguments{
-\item{id}{Dataset ID. If empty, returns data on all available datasets. 
+\item{id}{Dataset ID. If empty, returns data on all available datasets.
 If the ID of a dataset, returns metadata for that particular dataset.}
 }
 \value{
 A tibble with all available datasets and their metadata.
 }
 \description{
-Retrieve all available data sets or the information available in a specific 
-dataset based on its ID.
+Retrieve metadata for all available data sets or the information available 
+in a specific dataset based on its ID.
 }
 \examples{
 \donttest{
@@ -27,5 +27,7 @@ y <- nomis_data_info('NM_1658_1')
 }
 }
 \seealso{
-nomis_get_data
+\code{\link{nomis_get_data}}
+
+\code{\link{nomis_get_metadata}}
 }

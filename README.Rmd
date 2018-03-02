@@ -25,7 +25,9 @@ knitr::opts_chunk$set(
 
 `nomisr` is for accessing [Nomis](https://www.nomisweb.co.uk/) data with R. Nomis contains data from the Census, the Labour Force Survey, DWP benefit statistics and other economic and demographic data, and is maintained on behalf of the Office for National Statistics by the University of Durham.
 
-The `nomisr` package provides functions to find what data is available, the  variables and query options for different datasets and a function for downloading data. `nomisr` returns data in [tibble](https://cran.r-project.org/package=tibble) format. Most of the data available through `nomisr` is based around statistical geographies, with some a handful of exceptions.
+The `nomisr` package provides functions to find what data is available, the  variables and query options for different datasets and a function for downloading data. `nomisr` returns data in [tibble](https://cran.r-project.org/package=tibble) format. Most of the data available through `nomisr` is based around statistical geographies, with a handful of exceptions.
+
+The package is for demographers, economists, geographers, public health researchers and any other researchers who are interested in geographic factors. The package aims to aid reproducibility, reduce the need to manually download area profiles, and allow easy linking of different datasets covering the same geographic area.
 
 ## Installation
 
@@ -38,11 +40,31 @@ devtools::install_github("evanodell/nomisr")
 
 ## Using `nomisr`
 
+`nomisr` contains functions to search for datasets, identify the query options for different datasets and retrieve data from queries. The use of queries, rather than simply downloading all available data, is useful to avoid overwhelming the rate limits of the API. For full details, please see the package [vignette](https://docs.evanodell.com/nomisr/articles/introduction.html).
+
 The example below gets the latest data on Jobseeker's Allowance with rates and proportions, on a national level, with all male claimants and workforce.
 
 ```{r example}
  library(nomisr)
- z <- nomis_get_data(id = "NM_1_1", time = "latest", geography = "TYPE499", measures=c(20100, 20201), sex=5)
+ jobseekers_search <- nomis_search("Jobseeker")
+ 
+ tibble::glimpse(jobseekers_search)
+
+ jobseekers_measures <- nomis_codes("NM_1_1", "measures")
+ 
+ tibble::glimpse(jobseekers_measures)
+ 
+ jobseekers_geography <- nomis_codes("NM_1_1", "geography", "TYPE")
+ 
+ tail(jobseekers_geography)
+ 
+ jobseekers_sex <- nomis_codes("NM_1_1", "sex", "TYPE")
+ 
+ tibble::glimpse(jobseekers_sex)
+ 
+ z <- nomis_get_data(id = "NM_1_1", time = "latest", geography = "TYPE499",
+                     measures=c(20100, 20201), sex=5)
+ 
  tibble::glimpse(z)
 ```
 
@@ -54,6 +76,25 @@ There is a lot of data available through Nomis, and there are some limits to the
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 Please note that this project is not affiliated with the Office for National Statistics or the University of Durham.
+
+Get citation information for `nomisr` in R with `citation(package = 'nomisr')`
+
+Odell E (2018). _nomisr: Access Nomis UK labour market data on with R_. doi: 10.5281/zenodo.1157908 (URL:
+http://doi.org/10.5281/zenodo.1157908), R package version 0.0.2.9000, <URL:
+https://docs.evanodell.com/nomisr>.
+
+A BibTeX entry for LaTeX users is
+
+```
+  @Manual{,
+    title = {{nomisr}: Access Nomis UK labour market data on with R},
+    author = {Evan Odell},
+    year = {2018},
+    note = {R package version 0.0.2.9000},
+    doi = {10.5281/zenodo.1157908},
+    url = {https://docs.evanodell.com/nomisr},
+  }
+```
 
 License: MIT
 

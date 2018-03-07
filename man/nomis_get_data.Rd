@@ -49,8 +49,8 @@ Defaults to \code{NULL}.}
 
 \item{geography}{The code of the geographic area to return data for. If
 \code{NULL}, returns data for all available geographic areas, subject to
-other parameters. Defaults to \code{NULL}. In the rare instance that a 
-geographic variable does not exist, if not \code{NULL}, the function 
+other parameters. Defaults to \code{NULL}. In the rare instance that a
+geographic variable does not exist, if not \code{NULL}, the function
 will return an error.}
 
 \item{sex}{The code for sexes included in the dataset. Accepts a string or
@@ -78,7 +78,7 @@ query structure. Defaults to \code{NULL}.}
 \item{exclude_missing}{If \code{TRUE}, excludes all missing values.
 Defaults to \code{FALSE}.}
 
-\item{select}{A character vector of one or more variables to select, 
+\item{select}{A character vector of one or more variables to select,
 excluding all others. \code{select} is not case sensitive.}
 }
 \value{
@@ -86,22 +86,22 @@ A tibble containing the selected dataset.
 By default, all tibble columns are parsed as characters.
 }
 \description{
-Retrieves specific datasets from nomis, based on their ID. To 
-find dataset IDs, use \code{\link{nomis_data_info}}. Datasets are retrived 
-in csv format and parsed with the \code{read_csv} function from the 
-\code{readr} package into a tibble, with all columns parsed as character 
+Retrieves specific datasets from nomis, based on their ID. To
+find dataset IDs, use \code{\link{nomis_data_info}}. Datasets are retrived
+in csv format and parsed with the \code{read_csv} function from the
+\code{readr} package into a tibble, with all columns parsed as character
 columns.
 
-To find the code options for a given dataset, use 
+To find the code options for a given dataset, use
 \code{\link{nomis_get_metadata}}.
 
-This can be a slow process if querying significant amounts of 
-data. Guest users are limited to 25,000 rows per query, although 
-\code{nomisr} identifies queries that will return more than 25,000 rows, 
-sending individual queries and combining the results of those queries into 
+This can be a slow process if querying significant amounts of
+data. Guest users are limited to 25,000 rows per query, although
+\code{nomisr} identifies queries that will return more than 25,000 rows,
+sending individual queries and combining the results of those queries into
 a single tibble.
 
-Note the difference between the \code{time} and \code{date} 
+Note the difference between the \code{time} and \code{date}
 parameters.
 The \code{time} and \code{date} parameters should not be used at the same
 time. If they are, the function will retrieve data based on the the
@@ -120,22 +120,22 @@ jobseekers_country <- nomis_get_data(id="NM_1_1", time="latest",
                                      geography = "TYPE499",
                                      measures=c(20100, 20201), sex=5)
 
-print(jobseekers_country)
+tibble::glimpse(jobseekers_country)
 
 # Return data for Wigan
 jobseekers_wigan <- nomis_get_data(id="NM_1_1", time="latest",
                                    geography = "1879048226",
                                    measures=c(20100, 20201), sex="5")
 
-print(jobseekers_wigan)
+tibble::glimpse(jobseekers_wigan)
 
 # annual population survey - regional - employment by occupation
 emp_by_occupation <- nomis_get_data(id="NM_168_1", time="latest",
                                     geography = "2013265925", sex="0",
-                                    select = c("geography_code", 
+                                    select = c("geography_code",
                                     "C_OCCPUK11H_0_NAME", "obs_vAlUE"))
 
-print(emp_by_occupation)
+tibble::glimpse(emp_by_occupation)
 
 }
 }

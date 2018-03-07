@@ -1,0 +1,8 @@
+pandoc: 2.1.2
+pkgdown: 0.1.0.9000
+pkgdown_sha: 0314a93d176d5c391924e2e88e02d1b0043bf97b
+articles:
+  introduction.R: introduction.R
+  introduction: introduction.html
+  introduction.html: introduction.html
+

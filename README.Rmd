@@ -46,19 +46,19 @@ The example below gets the latest data on Jobseeker's Allowance with rates and p
 
 ```{r example}
  library(nomisr)
- jobseekers_search <- nomis_search("Jobseeker")
+ jobseekers_search <- nomis_search(name = "*Jobseeker*")
  
  tibble::glimpse(jobseekers_search)
 
- jobseekers_measures <- nomis_codes("NM_1_1", "measures")
+ jobseekers_measures <- nomis_get_metadata("NM_1_1", "measures")
  
  tibble::glimpse(jobseekers_measures)
  
- jobseekers_geography <- nomis_codes("NM_1_1", "geography", "TYPE")
+ jobseekers_geography <- nomis_get_metadata("NM_1_1", "geography", "TYPE")
  
  tail(jobseekers_geography)
  
- jobseekers_sex <- nomis_codes("NM_1_1", "sex", "TYPE")
+ jobseekers_sex <- nomis_get_metadata("NM_1_1", "sex", "TYPE")
  
  tibble::glimpse(jobseekers_sex)
  

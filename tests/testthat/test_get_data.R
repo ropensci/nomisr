@@ -2,7 +2,6 @@ library(nomisr)
 context("nomis_get_data")
 
 test_that("nomis_get_data return expected format", {
-  
   z <- nomis_get_data(
     id = "NM_1_1", time = "latest",
     measures = c(20100, 20201), sex = 5,
@@ -44,23 +43,28 @@ test_that("nomis_get_data return expected format", {
   expect_type(c, "list")
   expect_true(tibble::is_tibble(c))
   expect_true(nrow(c) == c$RECORD_COUNT[1])
-  
+
   expect_error(nomis_get_data(
     id = "NM_1_1", time = "latest",
     measures = c(20100, 20201), sex = 0,
     additional_queries = "&geography=TYPE499",
     exclude_missing = FALSE
   ))
-  
-  x_select <- nomis_get_data(id="NM_168_1", time="latest", 
-                             geography = "2013265925", sex="0", 
-                             select = c("geography_code", "C_OCCPUK11H_0_NAME",
-                                        "obs_vAlUE")
-                             )
+
+  x_select <- nomis_get_data(
+    id = "NM_168_1", time = "latest",
+    geography = "2013265925", sex = "0",
+    select = c(
+      "geography_code", "C_OCCPUK11H_0_NAME",
+      "obs_vAlUE"
+    )
+  )
   expect_length(x_select, 3)
   expect_type(x_select, "list")
   expect_true(tibble::is_tibble(x_select))
-  
-  
-  
+
+  # x_many <- nomis_get_data( id = "NM_1_1")
+#   expect_message(nomis_get_data(id = "NM_1_1"), "Warning: You are trying to 
+# acess more than 350,000 rows of data. This may cause timeout issues and/or 
+#                  automatic rate limiting by the Nomis API.")
 })

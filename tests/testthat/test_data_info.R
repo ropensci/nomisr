@@ -8,7 +8,6 @@ test_that("nomis_data_info return expected format", {
   expect_length(x, 14)
   expect_type(x, "list")
   expect_true(tibble::is_tibble(x))
-  
+
   expect_error(nomis_data_info("lalala"))
-  
 })

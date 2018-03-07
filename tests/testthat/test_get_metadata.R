@@ -20,11 +20,27 @@ test_that("nomis_get_metadata return expected format", {
   expect_length(c, 2)
   expect_equal(nrow(c), 96)
   expect_true(tibble::is_tibble(c))
-  
-  d <- nomis_get_metadata(id = "NM_893_1", concept = "C_AHTHUK11",
-                          type = "type")
+
+  d <- nomis_get_metadata(
+    id = "NM_893_1", concept = "C_AHTHUK11",
+    type = "type"
+  )
   expect_length(d, 6)
   expect_equal(nrow(d), 1)
   expect_true(tibble::is_tibble(d))
-  
+
+
+  e <- nomis_get_metadata(
+    "NM_1_1", "item",
+    additional_queries = "?geography=1879048226&sex=5"
+  )
+  expect_length(e, 2)
+  expect_equal(nrow(e), 5)
+  expect_true(tibble::is_tibble(e))
+
+
+  f <- nomis_get_metadata("NM_1_1", "item", search = "*married*")
+  expect_length(f, 2)
+  expect_equal(nrow(f), 1)
+  expect_true(tibble::is_tibble(f))
 })

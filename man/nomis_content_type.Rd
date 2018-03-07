@@ -15,11 +15,11 @@ nomis_content_type(content_type, id = NULL)
 A tibble with metadata on a given content type.
 }
 \description{
-Nomis content type metadata is included in annotation tags, in the form of 
-\code{contenttype/<contenttype>} in the \code{annotationtitle} column in 
-the \code{annotations.annotation} list-column returned from 
-\code{\link{nomis_data_info}}. For example, the content types returned from 
-dataset "NM_1658_1", using \code{nomis_data_info("NM_1658_1")}, are 
+Nomis content type metadata is included in annotation tags, in the form of
+\code{contenttype/<contenttype>} in the \code{annotationtitle} column in
+the \code{annotations.annotation} list-column returned from
+\code{\link{nomis_data_info}}. For example, the content types returned from
+dataset "NM_1658_1", using \code{nomis_data_info("NM_1658_1")}, are
 "geoglevel", "2001census" and "sources".
 }
 \examples{
@@ -27,7 +27,11 @@ dataset "NM_1658_1", using \code{nomis_data_info("NM_1658_1")}, are
 
 a <- nomis_content_type("sources")
 
+tibble::glimpse(a)
+
 b <- nomis_content_type("sources", id = "census")
+
+tibble::glimpse(b)
 
 }
 }

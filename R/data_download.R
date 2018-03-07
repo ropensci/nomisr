@@ -2,22 +2,24 @@
 
 #' Retrieve Nomis datasets
 #'
-#' @description Retrieves specific datasets from nomis, based on their ID. To 
-#' find dataset IDs, use \code{\link{nomis_data_info}}. Datasets are retrived 
-#' in csv format and parsed with the \code{read_csv} function from the 
-#' \code{readr} package into a tibble, with all columns parsed as character 
+#' @description Retrieves specific datasets from nomis, based on their ID. To
+#' find dataset IDs, use \code{\link{nomis_data_info}}. Datasets are retrived
+#' in csv format and parsed with the \code{read_csv} function from the
+#' \code{readr} package into a tibble, with all columns parsed as character
 #' columns.
 #'
-#' @description To find the code options for a given dataset, use 
+#' @description To find the code options for a given dataset, use
 #' \code{\link{nomis_get_metadata}}.
 #'
-#' @description This can be a slow process if querying significant amounts of 
-#' data. Guest users are limited to 25,000 rows per query, although 
-#' \code{nomisr} identifies queries that will return more than 25,000 rows, 
-#' sending individual queries and combining the results of those queries into 
-#' a single tibble.
+#' @description This can be a slow process if querying significant amounts of
+#' data. Guest users are limited to 25,000 rows per query, although
+#' \code{nomisr} identifies queries that will return more than 25,000 rows,
+#' sending individual queries and combining the results of those queries into
+#' a single tibble. 
+# In interactive sessions, \code{nomisr} will warn you if
+# requesting more than 350,000 rows of data. [not currently implemented]
 #'
-#' @description Note the difference between the \code{time} and \code{date} 
+#' @description Note the difference between the \code{time} and \code{date}
 #' parameters.
 #' The \code{time} and \code{date} parameters should not be used at the same
 #' time. If they are, the function will retrieve data based on the the
@@ -27,7 +29,6 @@
 #' \code{time=c("first", "latest")} will return all data, while
 #' \code{date=c("first", "latest")} will return only the first and latest
 #' data published.
-#'
 #'
 #' @param id The ID of the dataset to retrieve.
 #'
@@ -69,8 +70,8 @@
 #'
 #' @param geography The code of the geographic area to return data for. If
 #' \code{NULL}, returns data for all available geographic areas, subject to
-#' other parameters. Defaults to \code{NULL}. In the rare instance that a 
-#' geographic variable does not exist, if not \code{NULL}, the function 
+#' other parameters. Defaults to \code{NULL}. In the rare instance that a
+#' geographic variable does not exist, if not \code{NULL}, the function
 #' will return an error.
 #'
 #' @param measures The code for the statistical measure(s) to include in the
@@ -97,8 +98,8 @@
 #'
 #' @param exclude_missing If \code{TRUE}, excludes all missing values.
 #' Defaults to \code{FALSE}.
-#' 
-#' @param select A character vector of one or more variables to select, 
+#'
+#' @param select A character vector of one or more variables to select,
 #' excluding all others. \code{select} is not case sensitive.
 #'
 #' @return A tibble containing the selected dataset.
@@ -114,32 +115,30 @@
 #'                                      geography = "TYPE499",
 #'                                      measures=c(20100, 20201), sex=5)
 #'
-#' print(jobseekers_country)
+#' tibble::glimpse(jobseekers_country)
 #'
 #' # Return data for Wigan
 #' jobseekers_wigan <- nomis_get_data(id="NM_1_1", time="latest",
 #'                                    geography = "1879048226",
 #'                                    measures=c(20100, 20201), sex="5")
 #'
-#' print(jobseekers_wigan)
+#' tibble::glimpse(jobseekers_wigan)
 #'
 #' # annual population survey - regional - employment by occupation
 #' emp_by_occupation <- nomis_get_data(id="NM_168_1", time="latest",
 #'                                     geography = "2013265925", sex="0",
-#'                                     select = c("geography_code", 
+#'                                     select = c("geography_code",
 #'                                     "C_OCCPUK11H_0_NAME", "obs_vAlUE"))
 #'
-#' print(emp_by_occupation)
+#' tibble::glimpse(emp_by_occupation)
 #'
 #' }
-
 
 
 nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
                            sex = NULL, measures = NULL,
                            additional_queries = NULL, exclude_missing = FALSE,
                            select = NULL) {
-  
   if (missing(id)) {
     stop("Dataset ID must be specified", call. = FALSE)
   }
@@ -185,7 +184,6 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     } else {
       sex_query <- ""
     }
-    
   } else {
     sex_query <- ""
   }
@@ -194,38 +192,47 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     "&ExcludeMissingValues=true",
     ""
   )
-  
+
   select_query <- ifelse(length(select) > 0,
-                         paste0("&select=",
-                           paste0(
-                             unique(c(toupper(select), "RECORD_COUNT")),
-                             collapse = ","
-                             )
-                         ),
-                         ""
-                         )
+    paste0(
+      "&select=",
+      paste0(
+        unique(c(toupper(select), "RECORD_COUNT")),
+        collapse = ","
+      )
+    ),
+    ""
+  )
 
   query <- paste0(
     id, ".data.csv?", time_query, geography_query, sex_query,
     measures_query, additional_query, exclude_query, select_query
   )
 
-  first_df <- nomis_collect_util(query)
+  first_df <- nomis_get_data_util(query)
 
   if (nrow(first_df) == 0) {
-    
-    stop("The API request did not return any results. 
+    stop("The API request did not return any results.
          Please check your parameters.", call. = FALSE)
-    
   }
 
   if (as.numeric(first_df$RECORD_COUNT)[1] >= 25000) {
     # if amount available is over the limit of 25000 observations/single call
     # downloads the extra data and binds it all together in a tibble
-    
-    # if (interactive() && as.numeric(first_df$RECORD_COUNT)[1] >= 375000) {
-    #   
-    # } # For more than 15 concurrent requests?
+
+    #     if (interactive() && as.numeric(first_df$RECORD_COUNT)[1] >= 350000) {
+    #       # For more than 15 total requests at one time.
+    #
+    #       message("Warning: You are trying to acess more than 350,000 rows of data.
+    # This may cause timeout issues and/or automatic rate limiting by the Nomis API.")
+    #
+    #       if (menu(c("Yes", "No"), title = "Do you want to continue?") == 2) {
+    #
+    #         stop(call. = FALSE)
+    #
+    #       }
+    #
+    #     }
 
     record_count <- first_df$RECORD_COUNT[1]
 
@@ -243,15 +250,15 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
 
       message("Retrieving additional pages ", i, " of ", length(seq_list))
 
-      pages[[i]] <- nomis_collect_util(query2)
+      pages[[i]] <- nomis_get_data_util(query2)
     }
 
     df <- tibble::as_tibble(dplyr::bind_rows(first_df, pages))
   } else {
     df <- first_df
   }
-  
-  if (length(select) >0 & !("RECORD_COUNT" %in% select)) {
+
+  if (length(select) > 0 & !("RECORD_COUNT" %in% select)) {
     df$RECORD_COUNT <- NULL
   }
 

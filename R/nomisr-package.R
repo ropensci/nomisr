@@ -18,7 +18,7 @@
 #' @docType package
 #' @name nomisr
 #' @importFrom jsonlite fromJSON
-#' @importFrom tibble as_tibble
+#' @importFrom tibble as_tibble enframe
 #' @importFrom readr read_csv
 #' @importFrom dplyr bind_rows
 NULL

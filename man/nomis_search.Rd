@@ -8,32 +8,32 @@ nomis_search(name = NULL, description = NULL, keywords = NULL,
   content_type = NULL, units = NULL)
 }
 \arguments{
-\item{name}{A string or character vector of strings to search for in 
+\item{name}{A string or character vector of strings to search for in
 available dataset names. Defaults to \code{NULL}.}
 
-\item{description}{A string or character vector of strings to search for in 
-available dataset descriptions. Note that \code{description} looks for 
-complete matches, so wildcards should be used at the start and end of 
+\item{description}{A string or character vector of strings to search for in
+available dataset descriptions. Note that \code{description} looks for
+complete matches, so wildcards should be used at the start and end of
 each string. Defaults to \code{NULL}.}
 
-\item{keywords}{A string or character vector of strings to search for in 
+\item{keywords}{A string or character vector of strings to search for in
 available dataset keywords. Defaults to \code{NULL}.}
 
-\item{content_type}{A string or character vector of strings to search for 
-in available dataset content types. \code{content_type} can include an 
+\item{content_type}{A string or character vector of strings to search for
+in available dataset content types. \code{content_type} can include an
 optional ID for that content type. Defaults to \code{NULL}.}
 
-\item{units}{A string or character vector of strings to search for in 
+\item{units}{A string or character vector of strings to search for in
 available dataset units. Defaults to \code{NULL}.}
 }
 \value{
 A tibble with details on all datasets matching the search query.
 }
 \description{
-A function to search for datasets on given topics. In the case of multiple 
-search parameters, returns metadata on all datasets matching  one or more of 
-the parameters. The wildcard character * can be added to the beginning 
-and/or end of each search query.
+A function to search for datasets on given topics. In the case of multiple
+search parameters, returns metadata on all datasets matching  one or more of
+the parameters. The wildcard character * can be added to the beginning
+and/or end of each search string.
 }
 \examples{
 \donttest{
@@ -46,7 +46,7 @@ y <- nomis_search(keywords = 'Claimants')
 a <- nomis_search(content_type = "sources")
 
 
-# Return metadata of all datasets with content_type "sources" and 
+# Return metadata of all datasets with content_type "sources" and
 # source ID "acses"
 b <- nomis_search(content_type = "sources-acses")
 

@@ -3,7 +3,9 @@ context("nomis_get_metadata")
 
 
 test_that("nomis_get_metadata return expected format", {
-  expect_error(nomis_get_metadata()) # is this the best way to test errors?
+  skip_on_cran()
+  
+  expect_error(nomis_get_metadata(), "The dataset ID must be specified.")
 
   a <- nomis_get_metadata("NM_1_1")
   expect_length(a, 3)

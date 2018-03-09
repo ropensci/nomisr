@@ -2,6 +2,8 @@ library(nomisr)
 context("nomis_content_type")
 
 test_that("nomis_content_type return expected format", {
+  skip_on_cran()
+  
   expect_error(nomis_content_type())
 
   content <- nomis_content_type("sources")

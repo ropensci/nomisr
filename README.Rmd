@@ -40,7 +40,7 @@ devtools::install_github("evanodell/nomisr")
 
 ## Using `nomisr`
 
-`nomisr` contains functions to search for datasets, identify the query options for different datasets and retrieve data from queries. The use of queries, rather than simply downloading all available data, is useful to avoid overwhelming the rate limits of the API. For full details, please see the package [vignette](https://docs.evanodell.com/nomisr/articles/introduction.html).
+`nomisr` contains functions to search for datasets, identify the query options for different datasets and retrieve data from queries, all done with `[tibbles](http://tibble.tidyverse.org/)`, to take advantage of how `tibble` manages list-columns. The use of metadata queries, rather than simply downloading all available data, is useful to avoid overwhelming the rate limits of the API. For full details on all available functions and demonstrations of their use, please see the package [vignette](https://docs.evanodell.com/nomisr/articles/introduction.html).
 
 The example below gets the latest data on Jobseeker's Allowance with rates and proportions, on a national level, with all male claimants and workforce.
 

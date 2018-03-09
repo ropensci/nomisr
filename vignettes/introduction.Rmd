@@ -65,10 +65,6 @@ y %>% pull(annotations.annotation) %>% purrr::pluck() %>% class()
 
 ## Unnesting list columns
 y %>% tidyr::unnest(annotations.annotation) %>% glimpse()
-
-y %>% tidyr::unnest(components.attribute) %>% glimpse()
-
-y %>% tidyr::unnest(components.dimension) %>% glimpse()
 ```
 
 ### Searching for data
@@ -167,7 +163,7 @@ Using the information above, we can now query the latest data on bedroom occupan
 ```{r, echo=TRUE}
  z <- nomis_get_data(id = "NM_893_1", time = "latest", geography = "TYPE266")
 
- tibble::glimpse(z)
+print(z)
 ```
 
 
@@ -176,7 +172,7 @@ We can also query bedroom occupancy per household type in the Manchester, Gorton
 ```{r, echo=TRUE}
  x <- nomis_get_data(id = "NM_893_1", time = "latest", geography = c("1929380119", "1929380120"))
  
-tibble::glimpse(x)
+print(x)
 ```
 
 

@@ -26,9 +26,9 @@ University of Durham.
 The `nomisr` package provides functions to find what data is available,
 the variables and query options for different datasets and a function
 for downloading data. `nomisr` returns data in
-[tibble](https://cran.r-project.org/package=tibble) format. Most of the
-data available through `nomisr` is based around statistical geographies,
-with a handful of exceptions.
+[`tibble`](https://cran.r-project.org/package=tibble) format. Most of
+the data available through `nomisr` is based around statistical
+geographies, with a handful of exceptions.
 
 The package is for demographers, economists, geographers, public health
 researchers and any other researchers who are interested in geographic
@@ -48,10 +48,12 @@ devtools::install_github("evanodell/nomisr")
 ## Using `nomisr`
 
 `nomisr` contains functions to search for datasets, identify the query
-options for different datasets and retrieve data from queries. The use
-of queries, rather than simply downloading all available data, is useful
-to avoid overwhelming the rate limits of the API. For full details,
-please see the package
+options for different datasets and retrieve data from queries, all done
+with [`tibbles`](http://tibble.tidyverse.org/), to take advantage of how
+`tibble` manages list-columns. The use of metadata queries, rather than
+simply downloading all available data, is useful to avoid overwhelming
+the rate limits of the API. For full details on all available functions
+and demonstrations of their use, please see the package
 [vignette](https://docs.evanodell.com/nomisr/articles/introduction.html).
 
 The example below gets the latest data on Jobseeker’s Allowance with

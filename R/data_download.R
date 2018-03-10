@@ -220,20 +220,6 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     # if amount available is over the limit of 25000 observations/single call
     # downloads the extra data and binds it all together in a tibble
 
-    #     if (interactive() && as.numeric(first_df$RECORD_COUNT)[1] >= 350000) {
-    #       # For more than 15 total requests at one time.
-    #
-    #       message("Warning: You are trying to acess more than 350,000 rows of data.
-    # This may cause timeout issues and/or automatic rate limiting by the Nomis API.")
-    #
-    #       if (menu(c("Yes", "No"), title = "Do you want to continue?") == 2) {
-    #
-    #         stop(call. = FALSE)
-    #
-    #       }
-    #
-    #     }
-
     record_count <- first_df$RECORD_COUNT[1]
 
     seq_list <- seq(from = 25000, to = record_count, by = 25000)

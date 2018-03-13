@@ -17,11 +17,11 @@ Status](https://ci.appveyor.com/api/projects/status/github/evanodell/nomisr?bran
 Status](https://img.shields.io/codecov/c/github/evanodell/nomisr/master.svg)](https://codecov.io/github/evanodell/nomisr?branch=master)
 [![DOI](https://zenodo.org/badge/118144805.svg)](https://zenodo.org/badge/latestdoi/118144805)
 
-`nomisr` is for accessing [Nomis](https://www.nomisweb.co.uk/) data with
-R. Nomis contains data from the Census, the Labour Force Survey, DWP
-benefit statistics and other economic and demographic data, and is
-maintained on behalf of the Office for National Statistics by the
-University of Durham.
+`nomisr` is for accessing Access UK official statistics from the
+[Nomis](https://www.nomisweb.co.uk/) database through R. Nomis contains
+data from the Census, the Labour Force Survey, DWP benefit statistics
+and other economic and demographic data, and is maintained on behalf of
+the Office for National Statistics by the University of Durham.
 
 The `nomisr` package provides functions to find what data is available,
 the variables and query options for different datasets and a function
@@ -161,6 +161,9 @@ from Nomis. Full package documentation is available at
 [docs.evanodell.com/nomisr](https://docs.evanodell.com/nomisr)
 
 ## Meta
+
+Bug reports, suggestions, and code contributions are all welcome. Please
+see [CONTRIBUTING.md](%5BCONTRIBUTING.md%5D) for details.
 
 Please note that this project is released with a [Contributor Code of
 Conduct](CONDUCT.md). By participating in this project you agree to

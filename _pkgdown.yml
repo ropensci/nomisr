@@ -18,8 +18,8 @@ navbar:
       href: news/index.html
     - text: "Reference"
       href: reference/index.html
-    - text: "Articles"
-      href: articles/index.html
+    - text: "Introduction"
+      href: articles/introduction.html
     - text: "Packages"
       menu:
         - text: "Documentation Home"
@@ -41,6 +41,3 @@ navbar:
       href: https://github.com/EvanOdell/nomisr
     - icon: fa-home fa-lg
       href: http://evanodell.com
-
-
-

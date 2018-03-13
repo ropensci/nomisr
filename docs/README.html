@@ -76,7 +76,7 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="articles/index.html">Articles</a>
+  <a href="articles/introduction.html">Introduction</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -139,7 +139,7 @@
 <h1>nomisr</h1>
 <p><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a> <a href="https://cran.r-project.org/package=nomisr"><img src="https://www.r-pkg.org/badges/version/nomisr" alt="CRAN_Status_Badge"></a> <a href="https://github.com/evanodell/nomisr"><img src="https://img.shields.io/github/tag/evanodell/nomisr.svg" alt="GitHub tag"></a> <a href="https://dgrtwo.shinyapps.io/cranview/"><img src="https://cranlogs.r-pkg.org/badges/grand-total/nomisr"></a> <a href="https://travis-ci.org/evanodell/nomisr"><img src="https://travis-ci.org/evanodell/nomisr.svg?branch=master" alt="Travis-CI Build Status"></a> <a href="https://ci.appveyor.com/project/evanodell/nomisr"><img src="https://ci.appveyor.com/api/projects/status/github/evanodell/nomisr?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://codecov.io/github/evanodell/nomisr?branch=master"><img src="https://img.shields.io/codecov/c/github/evanodell/nomisr/master.svg" alt="Coverage Status"></a> <a href="https://zenodo.org/badge/latestdoi/118144805"><img src="https://zenodo.org/badge/118144805.svg" alt="DOI"></a></p>
 <p><code>nomisr</code> is for accessing <a href="https://www.nomisweb.co.uk/">Nomis</a> data with R. Nomis contains data from the Census, the Labour Force Survey, DWP benefit statistics and other economic and demographic data, and is maintained on behalf of the Office for National Statistics by the University of Durham.</p>
-<p>The <code>nomisr</code> package provides functions to find what data is available, the variables and query options for different datasets and a function for downloading data. <code>nomisr</code> returns data in <a href="https://cran.r-project.org/package=tibble">tibble</a> format. Most of the data available through <code>nomisr</code> is based around statistical geographies, with a handful of exceptions.</p>
+<p>The <code>nomisr</code> package provides functions to find what data is available, the variables and query options for different datasets and a function for downloading data. <code>nomisr</code> returns data in <a href="https://cran.r-project.org/package=tibble"><code>tibble</code></a> format. Most of the data available through <code>nomisr</code> is based around statistical geographies, with a handful of exceptions.</p>
 <p>The package is for demographers, economists, geographers, public health researchers and any other researchers who are interested in geographic factors. The package aims to aid reproducibility, reduce the need to manually download area profiles, and allow easy linking of different datasets covering the same geographic area.</p>
 <div class="section level2">
 <h2>Installation</h2>
@@ -150,7 +150,7 @@
 <div class="section level2">
 <h2>Using <code>nomisr</code>
 </h2>
-<p><code>nomisr</code> contains functions to search for datasets, identify the query options for different datasets and retrieve data from queries. The use of queries, rather than simply downloading all available data, is useful to avoid overwhelming the rate limits of the API. For full details, please see the package <a href="https://docs.evanodell.com/nomisr/articles/introduction.html">vignette</a>.</p>
+<p><code>nomisr</code> contains functions to search for datasets, identify the query options for different datasets and retrieve data from queries, all done with <a href="http://tibble.tidyverse.org/"><code>tibbles</code></a>, to take advantage of how <code>tibble</code> manages list-columns. The use of metadata queries, rather than simply downloading all available data, is useful to avoid overwhelming the rate limits of the API. For full details on all available functions and demonstrations of their use, please see the package <a href="https://docs.evanodell.com/nomisr/articles/introduction.html">vignette</a>.</p>
 <p>The example below gets the latest data on Jobseeker’s Allowance with rates and proportions, on a national level, with all male claimants and workforce.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"> <span class="kw">library</span>(nomisr)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"> jobseekers_search &lt;-<span class="st"> </span><span class="kw"><a href="reference/nomis_search.html">nomis_search</a></span>(<span class="dt">name =</span> <span class="st">"*Jobseeker*"</span>)</a>

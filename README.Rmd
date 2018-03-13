@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 [![Coverage Status](https://img.shields.io/codecov/c/github/evanodell/nomisr/master.svg)](https://codecov.io/github/evanodell/nomisr?branch=master)
 [![DOI](https://zenodo.org/badge/118144805.svg)](https://zenodo.org/badge/latestdoi/118144805)
 
-`nomisr` is for accessing [Nomis](https://www.nomisweb.co.uk/) data with R. Nomis contains data from the Census, the Labour Force Survey, DWP benefit statistics and other economic and demographic data, and is maintained on behalf of the Office for National Statistics by the University of Durham.
+`nomisr` is for accessing Access UK official statistics from the [Nomis](https://www.nomisweb.co.uk/) database through R. Nomis contains data from the Census, the Labour Force Survey, DWP benefit statistics and other economic and demographic data, and is maintained on behalf of the Office for National Statistics by the University of Durham.
 
 The `nomisr` package provides functions to find what data is available, the  variables and query options for different datasets and a function for downloading data. `nomisr` returns data in [`tibble`](https://cran.r-project.org/package=tibble) format. Most of the data available through `nomisr` is based around statistical geographies, with a handful of exceptions.
 
@@ -72,6 +72,8 @@ There is a lot of data available through Nomis, and there are some limits to the
 
 
 ## Meta
+
+Bug reports, suggestions, and code contributions are all welcome. Please see [CONTRIBUTING.md]([CONTRIBUTING.md]) for details.
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 

@@ -193,4 +193,4 @@ A BibTeX entry for LaTeX users is
   }
 ```
 
-License: MIT
+License: [MIT](LICENSE.md)

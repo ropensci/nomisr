@@ -176,9 +176,8 @@ Get citation information for `nomisr` in R with `citation(package =
 'nomisr')`
 
 Odell E (2018). *nomisr: Access Nomis UK labour market data on with R*.
-doi: 10.5281/zenodo.1157908 (URL:
-<http://doi.org/10.5281/zenodo.1157908>), R package version 0.0.2.9000,
-\<URL: <https://docs.evanodell.com/nomisr>\>.
+doi: 10.5281/zenodo.1157908, R package version 0.0.2.9000, \<URL:
+<https://docs.evanodell.com/nomisr>\>.
 
 A BibTeX entry for LaTeX users is
 

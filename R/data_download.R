@@ -203,10 +203,22 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     ),
     ""
   )
+  
+  if(nchar(Sys.getenv('NOMIS_API_KEY')) > 0) {
+    
+    api_query <- paste0("?uid=", nomis_api_key())
+    max_length <- 100000
+    
+  } else {
+    
+    api_query <- ""
+    max_length <- 25000
+    
+  }
 
   query <- paste0(
-    id, ".data.csv?", time_query, geography_query, sex_query,
-    measures_query, additional_query, exclude_query, select_query
+    id, ".data.csv?", time_query, geography_query, sex_query, measures_query, 
+    additional_query, exclude_query, select_query, api_query
   )
 
   first_df <- nomis_get_data_util(query)
@@ -215,31 +227,29 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     stop("The API request did not return any results.
          Please check your parameters.", call. = FALSE)
   }
-
   
-  ifelse(length(nomis_api_key()) >0 )
-  
-  if (as.numeric(first_df$RECORD_COUNT)[1] >= 25000) {
-    # if amount available is over the limit of 25000 observations/single call
+  if (as.numeric(first_df$RECORD_COUNT)[1] >= max_length) {
+    # if amount available is over the limit of 15 total calls at a time
     # downloads the extra data and binds it all together in a tibble
 
-    #     if (interactive() && as.numeric(first_df$RECORD_COUNT)[1] >= 350000) {
-    #       # For more than 15 total requests at one time.
-    #
-    #       message("Warning: You are trying to acess more than 350,000 rows of data.
-    # This may cause timeout issues and/or automatic rate limiting by the Nomis API.")
-    #
-    #       if (menu(c("Yes", "No"), title = "Do you want to continue?") == 2) {
-    #
-    #         stop(call. = FALSE)
-    #
-    #       }
-    #
-    #     }
+        if (interactive() && 
+            as.numeric(first_df$RECORD_COUNT)[1] >= (15 * max_length)) {
+          # For more than 15 total requests at one time.
+          message("Warning: You are trying to acess more than ", 
+                  paste0((15 * max_length)), " rows of data.")
+          message("This may cause timeout and/or automatic rate limiting.")
+
+          if (menu(c("Yes", "No"), title = "Do you want to continue?") == 2) {
+
+            stop(call. = FALSE)
+
+          }
+
+        }
 
     record_count <- first_df$RECORD_COUNT[1]
 
-    seq_list <- seq(from = 25000, to = record_count, by = 25000)
+    seq_list <- seq(from = max_length, to = record_count, by = max_length)
 
     pages <- list()
 

@@ -2,7 +2,7 @@
 
 language: r
 r:
-  - devel
+  - release
 
 sudo: required
 cache: packages
@@ -10,14 +10,14 @@ cache: packages
 before_install:
   - sudo apt-get update
   - sudo apt-get install -y libcurl4-openssl-dev 
-#  - Rscript -e "install.packages('curl')"
+  - sudo Rscript -e "install.packages('curl')"
 # - sudo apt-get install libcurl4-openssl-dev
 
 r_packages:
   - devtools
   - withr
   - covr
-  - curl
+#  - curl
 
 after_success:
   - Rscript -e 'covr::codecov(quiet=FALSE)'

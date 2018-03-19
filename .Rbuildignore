@@ -13,7 +13,6 @@
 ^~$a\.xlsx$
 ^reviewer-response\.md$
 ^R/nomis_overview\.R$
-^R/api-key\.R$
 ^\.build\.timestamp$
 ^LICENSE\.MD$
 ^LICENSE\.md$

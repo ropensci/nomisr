@@ -2,13 +2,20 @@
 % Please edit documentation in R/api-key.R
 \name{nomis_api_key}
 \alias{nomis_api_key}
-\title{API Key}
+\title{Nomis API Key}
 \usage{
 nomis_api_key(force = FALSE)
 }
 \arguments{
-\item{force}{}
+\item{force}{If TRUE, resets the API key and requires a 
+new key to be provided.}
 }
 \description{
-API Key
+The Nomis API has an optional key. Using the key means that 
+100,000 rows can be returned per call, which can speed up larger data 
+requests and reduce the chances of being rate limited or having requests 
+timing out.
+
+You can sign up for an API key 
+\href{https://www.nomisweb.co.uk/myaccount/userjoin.asp}{here}.
 }

@@ -206,7 +206,7 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
   
   if(nchar(Sys.getenv('NOMIS_API_KEY')) > 0) {
     
-    api_query <- paste0("?uid=", nomis_api_key())
+    api_query <- paste0("&uid=", nomis_api_key())
     max_length <- 100000
     
   } else {

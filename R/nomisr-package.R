@@ -19,6 +19,7 @@
 #' @name nomisr
 #' @import jsonlite
 #' @importFrom tibble as_tibble enframe
+#' @importFrom httr http_type GET http_error status_code
 #' @importFrom readr read_csv
 #' @importFrom dplyr bind_rows
 NULL

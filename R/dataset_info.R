@@ -31,7 +31,7 @@ nomis_data_info <- function(id) {
   if (missing(id)) {
     query <- "/def.sdmx.json"
   } else {
-    query <- paste0("/", id, "/def.sdmx.json")
+    query <- paste0(id, "/def.sdmx.json")
   }
 
   df <- nomis_query_util(query)

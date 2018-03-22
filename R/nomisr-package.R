@@ -17,7 +17,7 @@
 #'
 #' @docType package
 #' @name nomisr
-#' @import jsonlite
+#' @importFrom jsonlite fromJSON
 #' @importFrom tibble as_tibble enframe
 #' @importFrom httr http_type GET http_error status_code
 #' @importFrom readr read_csv

@@ -29,7 +29,7 @@
 
 nomis_data_info <- function(id) {
   if (missing(id)) {
-    query <- "/def.sdmx.json"
+    query <- "def.sdmx.json"
   } else {
     query <- paste0(id, "/def.sdmx.json")
   }

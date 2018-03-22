@@ -9,11 +9,11 @@ nomis_query_util <- function(query) {
     stop("Nomis API did not return data in required json format", call. = FALSE)
   }
   
-  if (httr::http_error(api_get)) {
+  if (httr::http_error(api_resp)) {
     stop(
       sprintf(
         "Nomis API request failed with status ", 
-        httr::status_code(api_get)
+        httr::status_code(api_resp)
       ),
       call. = FALSE
     )

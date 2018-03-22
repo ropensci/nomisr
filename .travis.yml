@@ -17,9 +17,6 @@ before_install:
 r_packages:
   - withr
   - covr
-  
-r_github_packages:
-  - jeroen/jsonlite
 
 after_success:
   - Rscript -e 'covr::codecov(quiet=FALSE)'

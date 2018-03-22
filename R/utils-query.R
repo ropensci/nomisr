@@ -11,10 +11,9 @@ nomis_query_util <- function(query) {
   
   if (httr::http_error(api_resp)) {
     stop(
-      sprintf(
-        "Nomis API request failed with status ", 
-        httr::status_code(api_resp)
-      ),
+      paste0("Nomis API request failed with status ",
+             httr::status_code(api_resp)
+              ),
       call. = FALSE
     )
   }

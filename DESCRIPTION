@@ -25,7 +25,6 @@ Suggests:
   knitr,
   rmarkdown,
   testthat,
-  curl,
   purrr,
   tidyr
 VignetteBuilder: knitr

@@ -15,10 +15,8 @@ before_install:
 # - sudo apt-get install libcurl4-openssl-dev
 
 r_packages:
-  - devtools
   - withr
   - covr
-  - curl
 
 after_success:
   - Rscript -e 'covr::codecov(quiet=FALSE)'

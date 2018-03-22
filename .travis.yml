@@ -5,9 +5,8 @@ r:
   - release
   - devel
 
-fortran: false
 sudo: required
-cache: false
+cache: packages
 
 before_install:
   - sudo apt-get update

@@ -4,21 +4,21 @@
 
 nomis_query_util <- function(query) {
   
-  api_resp <- httr::GET(paste0(base_url, query))
-  if (http_type(api_resp) != "application/json") {
-    stop("Nomis API did not return data in required json format", call. = FALSE)
-  }
-  
-  if (httr::http_error(api_resp)) {
-    stop(
-      paste0("Nomis API request failed with status ",
-             httr::status_code(api_resp)
-              ),
-      call. = FALSE
-    )
-  }
-  
-  avail_response <- jsonlite::fromJSON(api_resp$url, flatten = TRUE)
+  # api_resp <- httr::GET(paste0(base_url, query))
+  # if (http_type(api_resp) != "application/json") {
+  #   stop("Nomis API did not return data in required json format", call. = FALSE)
+  # }
+  # 
+  # if (httr::http_error(api_resp)) {
+  #   stop(
+  #     paste0("Nomis API request failed with status ",
+  #            httr::status_code(api_resp)
+  #             ),
+  #     call. = FALSE
+  #   )
+  # }
+  # 
+  avail_response <- jsonlite::fromJSON(paste0(base_url, query), flatten = TRUE)
 
   df <- tibble::as_tibble(avail_response$structure$keyfamilies$keyfamily)
 

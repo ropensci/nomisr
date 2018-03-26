@@ -25,12 +25,12 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Nomis dataset overview — nomis_overview" />
 
 <meta property="og:description" content="Returns an overview of available metadata for a given dataset." />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -65,8 +65,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">nomisr</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">nomisr</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.2.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -136,6 +140,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Nomis dataset overview</h1>
+    <small>Source: <a href='https://github.com/EvanOdell/nomisr/blob/master/R/overview.R'><code>R/overview.R</code></a></small>
     </div>
 
     
@@ -144,7 +149,7 @@
 
     <pre class="usage"><span class='fu'>nomis_overview</span>(<span class='no'>id</span>, <span class='kw'>select</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -202,24 +207,18 @@ to be selected too)</p></dd>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='nomis_data_info.html'>nomis_data_info</a></code>
-    <code><a href='nomis_get_metadata.html'>nomis_get_metadata</a></code></p>
+    <p><code><a href='nomis_data_info.html'>nomis_data_info</a></code></p>
+<p><code><a href='nomis_get_metadata.html'>nomis_get_metadata</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_overview</span>(<span class='st'>"NM_1650_1"</span>)
 
-<span class='no'>q</span> <span class='kw'>%&gt;%</span> <span class='kw pkg'>tidyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tidyr/topics/unnest'>unnest</a></span>(<span class='no'>name</span>) <span class='kw'>%&gt;%</span> <span class='fu'>glimpse</span>()</div><div class='output co'>#&gt; Observations: 20
-#&gt; Variables: 2
-#&gt; $ value &lt;list&gt; [[&lt;c("1", "4", "5"), c("NM_1650_1", "NM_1650_4", "NM_1650_5"...
-#&gt; $ name  &lt;chr&gt; "analyses", "analysisname", "analysisnumber", "contact", "con...</div><div class='input'>
+<span class='no'>q</span> <span class='kw'>%&gt;%</span> <span class='kw pkg'>tidyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tidyr/topics/unnest'>unnest</a></span>(<span class='no'>name</span>) <span class='kw'>%&gt;%</span> <span class='fu'>glimpse</span>()</div><div class='output co'>#&gt; <span class='error'>Error in glimpse(.): could not find function "glimpse"</span></div><div class='input'>
 <span class='no'>s</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_overview</span>(<span class='st'>"NM_1650_1"</span>, <span class='kw'>select</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Units"</span>, <span class='st'>"Keywords"</span>))
 
-<span class='no'>s</span> <span class='kw'>%&gt;%</span> <span class='kw pkg'>tidyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tidyr/topics/unnest'>unnest</a></span>(<span class='no'>name</span>) <span class='kw'>%&gt;%</span> <span class='fu'>glimpse</span>()</div><div class='output co'>#&gt; Observations: 3
-#&gt; Variables: 2
-#&gt; $ value &lt;list&gt; ["NM_1650_1", "Year last worked", [["Persons"]]]
-#&gt; $ name  &lt;chr&gt; "id", "keywords", "units"</div><div class='input'>
+<span class='no'>s</span> <span class='kw'>%&gt;%</span> <span class='kw pkg'>tidyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tidyr/topics/unnest'>unnest</a></span>(<span class='no'>name</span>) <span class='kw'>%&gt;%</span> <span class='fu'>glimpse</span>()</div><div class='output co'>#&gt; <span class='error'>Error in glimpse(.): could not find function "glimpse"</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

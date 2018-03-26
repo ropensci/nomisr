@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>/Users/evanodell/Documents/GitHub/nomisr/reviewer-response.md • nomisr</title>
+<title>or keyword_term <- if.else(keyword, “keywords-”, ““) query <- paste0(base_query, key_word_term, search,””) • nomisr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,9 +25,9 @@
 <link href="pkgdown.css" rel="stylesheet">
 <script src="jquery.sticky-kit.min.js"></script>
 <script src="pkgdown.js"></script>
-  
-  
-<meta property="og:title" content="/Users/evanodell/Documents/GitHub/nomisr/reviewer-response.md" />
+<meta property="og:title" content="or keyword_term <- if.else(keyword, “keywords-”, ““) query <- paste0(base_query, key_word_term, search,””)" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -62,8 +62,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">nomisr</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="index.html">nomisr</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.2.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -130,17 +134,19 @@
       </header>
 
       <div class="row">
-  <div class="contents col-md-12">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1>/Users/evanodell/Documents/GitHub/nomisr/reviewer-response.md</h1>
+      <h1>or keyword_term &lt;- if.else(keyword, “keywords-”, ““) query &lt;- paste0(base_query, key_word_term, search,””)</h1>
     </div>
 
 
 <p>Hi @cderv and @pegeler, thank you both of you very much for your helpful comments and suggestions, sorry for not responding more quickly.</p>
-<div class="section level2">
-<h2>Response to @cderv</h2>
-<div class="section level4">
-<h4>List-columns</h4>
+<div id="response-to-cderv" class="section level2">
+<h2 class="hasAnchor">
+<a href="#response-to-cderv" class="anchor"></a>Response to @cderv</h2>
+<div id="list-columns" class="section level4">
+<h4 class="hasAnchor">
+<a href="#list-columns" class="anchor"></a>List-columns</h4>
 <p>I find it kind of necessary because you also used list-columns in tibbles. This is not something easy for some newcomers to handles. Even for some dplyr users who do not used that a lot, it is not something easy. Adding some example in the vignettes to show how to retrieve embedded data.frame inside some tibble’s list column could be a good idea. To illustrate:</p>
 library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM_893_1”) y$annotations.annotation %&gt;% class()
 #&gt; [1] “list” y$annotations.annotation[[1]] %&gt;% class()
@@ -166,15 +172,17 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 <p>Following are my review comments, for improvement:</p>
 </chr></chr></chr></chr></chr></chr></dbl></chr></chr></chr>
 </div>
-<div class="section level4">
-<h4>About Community Guidelines</h4>
+<div id="about-community-guidelines" class="section level4">
+<h4 class="hasAnchor">
+<a href="#about-community-guidelines" class="anchor"></a>About Community Guidelines</h4>
 <div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">There is no contribution guidelines <span class="cf">in</span> the README or other CONTRIBUTING.md.</a></code></pre></div>
 <p><strong>Response:</strong> Added a CONTRIBUTING.md in <a href="https://github.com/evanodell/nomisr/commit/e4bbb0229709a861b1ef2141e9ecf6da6ff8fc10" class="uri">https://github.com/evanodell/nomisr/commit/e4bbb0229709a861b1ef2141e9ecf6da6ff8fc10</a></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">DESCRIPTION needs some improvement <span class="op">:</span><span class="st"> </span>no need to use Author and Maintainer fields <span class="cf">if</span> you are using Authors<span class="op">@</span>R. You can just use the latest. You can find some good example <span class="cf">in</span> R package book.</a></code></pre></div>
 <p><strong>Response:</strong> Now only using <a href="mailto:Authors@R">Authors@R</a></p>
 </div>
-<div class="section level4">
-<h4>Improvement for the packaging guidelines</h4>
+<div id="improvement-for-the-packaging-guidelines" class="section level4">
+<h4 class="hasAnchor">
+<a href="#improvement-for-the-packaging-guidelines" class="anchor"></a>Improvement for the packaging guidelines</h4>
 <p>see below parts for details</p>
 <ul>
 <li>Adding a code of conduct <strong>Response:</strong> I a code of conduct in <a href="https://github.com/evanodell/nomisr/commit/ede35580b8369aba016b8375f0d6569b58063e9c" class="uri">https://github.com/evanodell/nomisr/commit/ede35580b8369aba016b8375f0d6569b58063e9c</a> and</li>
@@ -185,8 +193,9 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 </ul>
 <p><strong>Response:</strong> For reasons I’m not entirely clear on, the package was failing on Travis without the curl suggestion, I think due to a bug in jsonlite.</p>
 </div>
-<div class="section level4">
-<h4>README improvement</h4>
+<div id="readme-improvement" class="section level4">
+<h4 class="hasAnchor">
+<a href="#readme-improvement" class="anchor"></a>README improvement</h4>
 <ul>
 <li>I would be more precise on what the NOMIS database is and for who it is. For example, I found that this submission issue mentioned UK database but not the README. You help file for the package as pretty clear description of what it is for. While reviewing, I had a doubt and went to check on NOMIS. This is why I think the statement of need is not complete.</li>
 <li>It feels like the README could get more examples on what your package can do. Only one of your functions is shown in the readme.</li>
@@ -195,8 +204,9 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 </ul>
 <p><strong>Response:</strong> I’ve added more details to the README, including more details on Nomis itself, a simple example and citation information.</p>
 </div>
-<div class="section level4">
-<h4>Vignettes improvement</h4>
+<div id="vignettes-improvement" class="section level4">
+<h4 class="hasAnchor">
+<a href="#vignettes-improvement" class="anchor"></a>Vignettes improvement</h4>
 <ul>
 <li>Vignette was not built when I installed the package with devtools::install_github. Did not know if this intended behavior or not.</li>
 <li>I tried to build the vignette locally then: it worked.
@@ -215,8 +225,9 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 <p>These improvement are the reason why I did not check the vignettes box, even if there is one in the github repo and doc. If you need help on all this, do not hesitate to ask.</p>
 <p><strong>Response:</strong> As mentioned above, I’ve added your suggestions on exploring list-columns to the vignette, and fixed the online formatting issues. I’ve changed echo to TRUE to show code</p>
 </div>
-<div class="section level4">
-<h4>About documentation of functions and examples</h4>
+<div id="about-documentation-of-functions-and-examples" class="section level4">
+<h4 class="hasAnchor">
+<a href="#about-documentation-of-functions-and-examples" class="anchor"></a>About documentation of functions and examples</h4>
 <ul>
 <li>All functions are well documented.</li>
 <li>I encountered some issues running the examples because of a timeout. I believe this is what you meant in your by “there are some limits to the amount of data that can be retrieved within a certain period of time, although those are not published.”. The maybe some improvement to do on this. (see under)</li>
@@ -232,8 +243,9 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 <p><strong>Response:</strong> I keep all the source code for my documentation website in my <a href="https://github.com/evanodell/docs">docs repo</a>. I did this so I could host on netlify with a custom domain and https encryption which - at least when I set it up - was not available through github pages. I’m not sure if that is the best option or not.</p>
 </div>
 </div>
-<div class="section level2">
-<h2>Various comments on the code</h2>
+<div id="various-comments-on-the-code" class="section level2">
+<h2 class="hasAnchor">
+<a href="#various-comments-on-the-code" class="anchor"></a>Various comments on the code</h2>
 <div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">[minor] I would put the url of the API <span class="cf">in</span> its own variable. I think it is better practice and more efficient to maintain <span class="cf">in</span> case of change <span class="cf">in</span> the <span class="kw">url</span> (e.g V0<span class="fl">.2</span>). The url is used several time and a change would mean copy pasting. another utils <span class="cf">function</span> could help building the <span class="kw">url</span> (paste0 is used three times), with the same base url def.sdmx.json<span class="er">)</span>. Know that it exists some tools to help build some strings with parameters like glue, and specific one to handle url like urltools or those <span class="cf">in</span> httr. You may not need them here but it is worth knowing.</a></code></pre></div>
 <p><strong>Response:</strong> I’ve turned the API URL into its own variable.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">suppressMessage is used to hide the message of readr<span class="op">::</span>read_csv. However, the message appears because column types are guessed and not set. It is good practice to set column type <span class="cf">in</span> readr with column_types =<span class="st"> </span><span class="kw">cols</span>(<span class="op">&lt;</span>something<span class="op">&gt;</span>). In an API package like this one, it make even more sense because it could helps be aware of any change <span class="cf">in</span> the <span class="kw">format.</span> (using <span class="kw">stop_for_problems</span>() or just see a message appear) <span class="op">-</span><span class="st"> </span>see readr vignettes</a></code></pre></div>
@@ -245,8 +257,8 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 <p>could be rewritten without dplyr::if_else</p>
 <p>base_query &lt;- “/def.sdmx.json?search=” if (keyword) { keyword_term &lt;- “keywords-”) } else { keyword_term &lt;- “*" }</p>
 </div>
-<div class="section level1">
-<h1>or keyword_term &lt;- if.else(keyword, “keywords-”, “<em>“) query &lt;- paste0(base_query, key_word_term, search,”</em>”)</h1>
+<div id="or-keyword_term---if-elsekeyword-keywords--query---paste0base_query-key_word_term-search" class="section level1">
+
 <p>It would suppres a non essential dependency.</p>
 <p><strong>Response:</strong> I’ve dropped the use of case_when and if_else in favour the the style you described above. bind_rows is used to combine together a single tibble with a list of one or more tibbles, and using rbind in place of bind_rows would require an extra step. If there are changes to bind_rows in the future it is only in one location so should be easy to adjust for.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">The style <span class="cf">in</span> code could be improve <span class="cf">in</span> some places. You can follow some style guide to help you.</a>
@@ -260,19 +272,22 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 <p><strong>Response:</strong> I’ve added <code>call. = FALSE</code> to the various stop messages.</p>
 <p><strong>Response:</strong> I’ve gone through the code and changed temporary variable names to be more meaningful, and formatted the code to improve indentation, spaces around if and for operators, ==, etc.</p>
 </div>
-<div class="section level1">
-<h1>About the timeout and size of data</h1>
+<div id="about-the-timeout-and-size-of-data" class="section level1">
+<h1 class="hasAnchor">
+<a href="#about-the-timeout-and-size-of-data" class="anchor"></a>About the timeout and size of data</h1>
 <div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">If session is <span class="kw">interactive</span>(), it may be a good idea to warn clearly and even ask <span class="cf">if</span> we want to continue when lots of data are being requested. I find myself playing with the example trying to retrieve <span class="dv">208888</span> of your pages</a></code></pre></div>
 <p>Retrieving additional pages 1 of 208888 Retrieving additional pages 2 of 208888</p>
 <p>I don’t know if some other API packages are doing something to help user or if it is all the user responsibility to know what is he doing. (users will surely be already NOMIS data users).</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">As another improvement, I think you should try to create custom error message <span class="cf">for</span> the timeout issue as you know it is an issue that will impact user experience but cannot really prevent. I encountered<span class="op">:</span></a></code></pre></div>
 <p>a &lt;- nomis_codes(“NM_1_1”)</p>
 </div>
-<div class="section level1">
-<h1>Error in open.connection(con, “rb”) :</h1>
+<div id="error-in-open-connectioncon-rb" class="section level1">
+<h1 class="hasAnchor">
+<a href="#error-in-open-connectioncon-rb" class="anchor"></a>Error in open.connection(con, “rb”) :</h1>
 </div>
-<div class="section level1">
-<h1>Timeout was reached: Resolving timed out after 10000 milliseconds</h1>
+<div id="timeout-was-reached-resolving-timed-out-after-10000-milliseconds" class="section level1">
+<h1 class="hasAnchor">
+<a href="#timeout-was-reached-resolving-timed-out-after-10000-milliseconds" class="anchor"></a>Timeout was reached: Resolving timed out after 10000 milliseconds</h1>
 <p>You could use some tryCatch mechanism (some useful info in Advanced R).</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">[thoughts] You may need more control on the request mechanism to deal with timeout. First, it seems <span class="cf">for</span> the website one need to contact NOMIS help<span class="op">-</span>desk to know more about limitation. Then , your are relying on readr connection mechanism, and may need to use httr, crul or curl to better handle request to API with the specificity of NOMIS</a></code></pre></div>
 <p><strong>Response:</strong> I’ve used tryCatch to hopefully provide more useful information in the case of time outs. I’ve also written, but not implemented, a warning and yes/no option in interactive sesssions with requests over 350,000 cells which are likely to cause rate limiting issues.</p>
@@ -280,8 +295,9 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 <div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">Do you know about the rsdmx package ? it is on github and CRAN, there is WIKI. I did not find NOMIS <span class="cf">in</span> their listing, so I did not know <span class="cf">if</span> it works <span class="cf">for</span> you and how it could overlap with your package.</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2">rsdmx is definitely more a generic package than yours. I just wanted to point it to you <span class="cf">in</span> case you did not know.</a></code></pre></div>
 <p><strong>Response:</strong> I was not aware of it, but it is something I should explore for the future, thank you for pointing me towards it.</p>
-<div class="section level2">
-<h2>Response to pegeler</h2>
+<div id="response-to-pegeler" class="section level2">
+<h2 class="hasAnchor">
+<a href="#response-to-pegeler" class="anchor"></a>Response to pegeler</h2>
 <p>Package Review for nomisr</p>
 <p>Onboarding submission: ropensci/onboarding#190</p>
 <p>Please check off boxes as applicable, and elaborate in comments below. Your review is not limited to these topics, as described in the reviewer guide</p>

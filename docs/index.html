@@ -40,8 +40,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">nomisr</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="index.html">nomisr</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.2.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -120,7 +124,7 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#nomisr" class="anchor"></a>nomisr</h1></div>
 
-<p><code>nomisr</code> is for accessing <a href="https://www.nomisweb.co.uk/">Nomis</a> data with R. Nomis contains data from the Census, the Labour Force Survey, DWP benefit statistics and other economic and demographic data, and is maintained on behalf of the Office for National Statistics by the University of Durham.</p>
+<p><code>nomisr</code> is for accessing Access UK official statistics from the <a href="https://www.nomisweb.co.uk/">Nomis</a> database through R. Nomis contains data from the Census, the Labour Force Survey, DWP benefit statistics and other economic and demographic data, and is maintained on behalf of the Office for National Statistics by the University of Durham.</p>
 <p>The <code>nomisr</code> package provides functions to find what data is available, the variables and query options for different datasets and a function for downloading data. <code>nomisr</code> returns data in <a href="https://cran.r-project.org/package=tibble"><code>tibble</code></a> format. Most of the data available through <code>nomisr</code> is based around statistical geographies, with a handful of exceptions.</p>
 <p>The package is for demographers, economists, geographers, public health researchers and any other researchers who are interested in geographic factors. The package aims to aid reproducibility, reduce the need to manually download area profiles, and allow easy linking of different datasets covering the same geographic area.</p>
 <div id="installation" class="section level2">
@@ -192,9 +196,9 @@
 <a class="sourceLine" id="cb2-54" data-line-number="54"> tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(z)</a>
 <a class="sourceLine" id="cb2-55" data-line-number="55"><span class="co">#&gt; Observations: 70</span></a>
 <a class="sourceLine" id="cb2-56" data-line-number="56"><span class="co">#&gt; Variables: 34</span></a>
-<a class="sourceLine" id="cb2-57" data-line-number="57"><span class="co">#&gt; $ DATE                &lt;chr&gt; "2018-01", "2018-01", "2018-01", "2018-01"...</span></a>
-<a class="sourceLine" id="cb2-58" data-line-number="58"><span class="co">#&gt; $ DATE_NAME           &lt;chr&gt; "January 2018", "January 2018", "January 2...</span></a>
-<a class="sourceLine" id="cb2-59" data-line-number="59"><span class="co">#&gt; $ DATE_CODE           &lt;chr&gt; "2018-01", "2018-01", "2018-01", "2018-01"...</span></a>
+<a class="sourceLine" id="cb2-57" data-line-number="57"><span class="co">#&gt; $ DATE                &lt;chr&gt; "2018-02", "2018-02", "2018-02", "2018-02"...</span></a>
+<a class="sourceLine" id="cb2-58" data-line-number="58"><span class="co">#&gt; $ DATE_NAME           &lt;chr&gt; "February 2018", "February 2018", "Februar...</span></a>
+<a class="sourceLine" id="cb2-59" data-line-number="59"><span class="co">#&gt; $ DATE_CODE           &lt;chr&gt; "2018-02", "2018-02", "2018-02", "2018-02"...</span></a>
 <a class="sourceLine" id="cb2-60" data-line-number="60"><span class="co">#&gt; $ DATE_TYPE           &lt;chr&gt; "date", "date", "date", "date", "date", "d...</span></a>
 <a class="sourceLine" id="cb2-61" data-line-number="61"><span class="co">#&gt; $ DATE_TYPECODE       &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
 <a class="sourceLine" id="cb2-62" data-line-number="62"><span class="co">#&gt; $ DATE_SORTORDER      &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
@@ -218,12 +222,12 @@
 <a class="sourceLine" id="cb2-80" data-line-number="80"><span class="co">#&gt; $ ITEM_SORTORDER      &lt;chr&gt; "0", "0", "1", "1", "2", "2", "3", "3", "4...</span></a>
 <a class="sourceLine" id="cb2-81" data-line-number="81"><span class="co">#&gt; $ MEASURES            &lt;chr&gt; "20100", "20201", "20100", "20201", "20100...</span></a>
 <a class="sourceLine" id="cb2-82" data-line-number="82"><span class="co">#&gt; $ MEASURES_NAME       &lt;chr&gt; "Persons claiming JSA", "Workplace-based e...</span></a>
-<a class="sourceLine" id="cb2-83" data-line-number="83"><span class="co">#&gt; $ OBS_VALUE           &lt;chr&gt; "275667", "1.5", NA, NA, NA, NA, NA, NA, N...</span></a>
+<a class="sourceLine" id="cb2-83" data-line-number="83"><span class="co">#&gt; $ OBS_VALUE           &lt;chr&gt; "287049", "1.5", NA, NA, NA, NA, NA, NA, N...</span></a>
 <a class="sourceLine" id="cb2-84" data-line-number="84"><span class="co">#&gt; $ OBS_STATUS          &lt;chr&gt; "A", "A", "Q", "Q", "Q", "Q", "Q", "Q", "Q...</span></a>
 <a class="sourceLine" id="cb2-85" data-line-number="85"><span class="co">#&gt; $ OBS_STATUS_NAME     &lt;chr&gt; "Normal Value", "Normal Value", "These fig...</span></a>
 <a class="sourceLine" id="cb2-86" data-line-number="86"><span class="co">#&gt; $ OBS_CONF            &lt;chr&gt; "F", "F", "F", "F", "F", "F", "F", "F", "F...</span></a>
 <a class="sourceLine" id="cb2-87" data-line-number="87"><span class="co">#&gt; $ OBS_CONF_NAME       &lt;chr&gt; "Free (free for publication)", "Free (free...</span></a>
-<a class="sourceLine" id="cb2-88" data-line-number="88"><span class="co">#&gt; $ URN                 &lt;chr&gt; "Nm-1d1d32289e0d2092957697d5d1d20100", "Nm...</span></a>
+<a class="sourceLine" id="cb2-88" data-line-number="88"><span class="co">#&gt; $ URN                 &lt;chr&gt; "Nm-1d1d32290e0d2092957697d5d1d20100", "Nm...</span></a>
 <a class="sourceLine" id="cb2-89" data-line-number="89"><span class="co">#&gt; $ RECORD_OFFSET       &lt;chr&gt; "0", "1", "2", "3", "4", "5", "6", "7", "8...</span></a>
 <a class="sourceLine" id="cb2-90" data-line-number="90"><span class="co">#&gt; $ RECORD_COUNT        &lt;chr&gt; "70", "70", "70", "70", "70", "70", "70", ...</span></a></code></pre></div>
 <p>There is a lot of data available through Nomis, and there are some limits to the amount of data that can be retrieved within a certain period of time, although those are not published. For more details, see the <a href="https://www.nomisweb.co.uk/api/v01/help">full API documentation</a> from Nomis. Full package documentation is available at <a href="https://docs.evanodell.com/nomisr">docs.evanodell.com/nomisr</a></p>
@@ -231,10 +235,11 @@
 <div id="meta" class="section level2">
 <h2 class="hasAnchor">
 <a href="#meta" class="anchor"></a>Meta</h2>
-<p>Please note that this project is released with a <a href="CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+<p>Bug reports, suggestions, and code contributions are all welcome. Please see <a href="%5BCONTRIBUTING.md%5D">CONTRIBUTING.md</a> for details.</p>
+<p>Please note that this project is released with a <a href="CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 <p>Please note that this project is not affiliated with the Office for National Statistics or the University of Durham.</p>
 <p>Get citation information for <code>nomisr</code> in R with <code>citation(package = 'nomisr')</code></p>
-<p>Odell E (2018). <em>nomisr: Access Nomis UK labour market data on with R</em>. doi: 10.5281/zenodo.1157908 (URL: <a href="http://doi.org/10.5281/zenodo.1157908" class="uri">http://doi.org/10.5281/zenodo.1157908</a>), R package version 0.0.2.9000, &lt;URL: <a href="https://docs.evanodell.com/nomisr" class="uri">https://docs.evanodell.com/nomisr</a>&gt;.</p>
+<p>Odell E (2018). <em>nomisr: Access Nomis UK labour market data on with R</em>. doi: 10.5281/zenodo.1157908, R package version 0.0.2.9000, &lt;URL: <a href="https://docs.evanodell.com/nomisr" class="uri">https://docs.evanodell.com/nomisr</a>&gt;.</p>
 <p>A BibTeX entry for LaTeX users is</p>
 <pre><code>  @Manual{,
     title = {{nomisr}: Access Nomis UK labour market data on with R},
@@ -244,32 +249,44 @@
     doi = {10.5281/zenodo.1157908},
     url = {https://docs.evanodell.com/nomisr},
   }</code></pre>
-<p>License: MIT</p>
+<p>License: <a href="LICENSE.html">MIT</a></p>
 </div>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2 class="hasAnchor">
-<a href="#sidebar" class="anchor"></a>Links</h2>
+    <div class="links">
+<h2>Links</h2>
 <ul class="list-unstyled">
 <li>Browse source code at <br><a href="https://github.com/EvanOdell/nomisr">https://​github.com/​EvanOdell/​nomisr</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/EvanOdell/nomisr/issues">https://​github.com/​EvanOdell/​nomisr/​issues</a>
 </li>
 </ul>
+</div>
+<div class="license">
 <h2>License</h2>
-<p><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE.html">LICENSE</a></p>
+<ul class="list-unstyled">
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+</ul>
+</div>
+<div class="citation">
 <h2>Citation</h2>
 <ul class="list-unstyled">
 <li><a href="authors.html">Citing nomisr</a></li>
 </ul>
+</div>
+<div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://evanodell.com">Evan Odell</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-1845-808X" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid"></a> </li>
+<a href="https://evanodell.com">Evan Odell</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-1845-808X" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" height="16"></a> </li>
 </ul>
+</div>
+
+      <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a></li>
@@ -281,6 +298,7 @@
 <li><a href="https://codecov.io/github/evanodell/nomisr?branch=master"><img src="https://img.shields.io/codecov/c/github/evanodell/nomisr/master.svg" alt="Coverage Status"></a></li>
 <li><a href="https://zenodo.org/badge/latestdoi/118144805"><img src="https://zenodo.org/badge/118144805.svg" alt="DOI"></a></li>
 </ul>
+</div>
 </div>
 
 </div>

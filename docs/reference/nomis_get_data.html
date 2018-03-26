@@ -25,8 +25,6 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Retrieve Nomis datasets — nomis_get_data" />
 
 <meta property="og:description" content="Retrieves specific datasets from nomis, based on their ID. To
@@ -52,6 +50,8 @@ time=c("first", "latest") will return all data, while
 date=c("first", "latest") will return only the first and latest
 data published." />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -86,8 +86,12 @@ data published." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">nomisr</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">nomisr</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.2.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -157,6 +161,7 @@ data published." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Retrieve Nomis datasets</h1>
+    <small>Source: <a href='https://github.com/EvanOdell/nomisr/blob/master/R/data_download.R'><code>R/data_download.R</code></a></small>
     </div>
 
     
@@ -188,7 +193,7 @@ data published.</p>
   <span class='kw'>sex</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>measures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>additional_queries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>exclude_missing</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>select</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -281,8 +286,8 @@ By default, all tibble columns are parsed as characters.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='nomis_data_info.html'>nomis_data_info</a></code>
-    <code><a href='nomis_get_metadata.html'>nomis_get_metadata</a></code></p>
+    <p><code><a href='nomis_data_info.html'>nomis_data_info</a></code></p>
+<p><code><a href='nomis_get_metadata.html'>nomis_get_metadata</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -294,9 +299,9 @@ By default, all tibble columns are parsed as characters.</p>
 
 <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>jobseekers_country</span>)</div><div class='output co'>#&gt; Observations: 70
 #&gt; Variables: 34
-#&gt; $ DATE                &lt;chr&gt; "2018-01", "2018-01", "2018-01", "2018-01", "20...
-#&gt; $ DATE_NAME           &lt;chr&gt; "January 2018", "January 2018", "January 2018",...
-#&gt; $ DATE_CODE           &lt;chr&gt; "2018-01", "2018-01", "2018-01", "2018-01", "20...
+#&gt; $ DATE                &lt;chr&gt; "2018-02", "2018-02", "2018-02", "2018-02", "20...
+#&gt; $ DATE_NAME           &lt;chr&gt; "February 2018", "February 2018", "February 201...
+#&gt; $ DATE_CODE           &lt;chr&gt; "2018-02", "2018-02", "2018-02", "2018-02", "20...
 #&gt; $ DATE_TYPE           &lt;chr&gt; "date", "date", "date", "date", "date", "date",...
 #&gt; $ DATE_TYPECODE       &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0", "0...
 #&gt; $ DATE_SORTORDER      &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0", "0...
@@ -320,12 +325,12 @@ By default, all tibble columns are parsed as characters.</p>
 #&gt; $ ITEM_SORTORDER      &lt;chr&gt; "0", "0", "1", "1", "2", "2", "3", "3", "4", "4...
 #&gt; $ MEASURES            &lt;chr&gt; "20100", "20201", "20100", "20201", "20100", "2...
 #&gt; $ MEASURES_NAME       &lt;chr&gt; "Persons claiming JSA", "Workplace-based estima...
-#&gt; $ OBS_VALUE           &lt;chr&gt; "275667", "1.5", NA, NA, NA, NA, NA, NA, NA, NA...
+#&gt; $ OBS_VALUE           &lt;chr&gt; "287049", "1.5", NA, NA, NA, NA, NA, NA, NA, NA...
 #&gt; $ OBS_STATUS          &lt;chr&gt; "A", "A", "Q", "Q", "Q", "Q", "Q", "Q", "Q", "Q...
 #&gt; $ OBS_STATUS_NAME     &lt;chr&gt; "Normal Value", "Normal Value", "These figures ...
 #&gt; $ OBS_CONF            &lt;chr&gt; "F", "F", "F", "F", "F", "F", "F", "F", "F", "F...
 #&gt; $ OBS_CONF_NAME       &lt;chr&gt; "Free (free for publication)", "Free (free for ...
-#&gt; $ URN                 &lt;chr&gt; "Nm-1d1d32289e0d2092957697d5d1d20100", "Nm-1d1d...
+#&gt; $ URN                 &lt;chr&gt; "Nm-1d1d32290e0d2092957697d5d1d20100", "Nm-1d1d...
 #&gt; $ RECORD_OFFSET       &lt;chr&gt; "0", "1", "2", "3", "4", "5", "6", "7", "8", "9...
 #&gt; $ RECORD_COUNT        &lt;chr&gt; "70", "70", "70", "70", "70", "70", "70", "70",...</div><div class='input'>
 <span class='co'># Return data for Wigan</span>
@@ -335,9 +340,9 @@ By default, all tibble columns are parsed as characters.</p>
 
 <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>jobseekers_wigan</span>)</div><div class='output co'>#&gt; Observations: 10
 #&gt; Variables: 34
-#&gt; $ DATE                &lt;chr&gt; "2018-01", "2018-01", "2018-01", "2018-01", "20...
-#&gt; $ DATE_NAME           &lt;chr&gt; "January 2018", "January 2018", "January 2018",...
-#&gt; $ DATE_CODE           &lt;chr&gt; "2018-01", "2018-01", "2018-01", "2018-01", "20...
+#&gt; $ DATE                &lt;chr&gt; "2018-02", "2018-02", "2018-02", "2018-02", "20...
+#&gt; $ DATE_NAME           &lt;chr&gt; "February 2018", "February 2018", "February 201...
+#&gt; $ DATE_CODE           &lt;chr&gt; "2018-02", "2018-02", "2018-02", "2018-02", "20...
 #&gt; $ DATE_TYPE           &lt;chr&gt; "date", "date", "date", "date", "date", "date",...
 #&gt; $ DATE_TYPECODE       &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"
 #&gt; $ DATE_SORTORDER      &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"
@@ -361,12 +366,12 @@ By default, all tibble columns are parsed as characters.</p>
 #&gt; $ ITEM_SORTORDER      &lt;chr&gt; "0", "0", "1", "1", "2", "2", "3", "3", "4", "4"
 #&gt; $ MEASURES            &lt;chr&gt; "20100", "20201", "20100", "20201", "20100", "2...
 #&gt; $ MEASURES_NAME       &lt;chr&gt; "Persons claiming JSA", "Workplace-based estima...
-#&gt; $ OBS_VALUE           &lt;chr&gt; "1558", NA, NA, NA, NA, NA, NA, NA, NA, NA
+#&gt; $ OBS_VALUE           &lt;chr&gt; "1752", NA, NA, NA, NA, NA, NA, NA, NA, NA
 #&gt; $ OBS_STATUS          &lt;chr&gt; "A", "Q", "Q", "Q", "Q", "Q", "Q", "Q", "Q", "Q"
 #&gt; $ OBS_STATUS_NAME     &lt;chr&gt; "Normal Value", "These figures are missing.", "...
 #&gt; $ OBS_CONF            &lt;chr&gt; "F", "F", "F", "F", "F", "F", "F", "F", "F", "F"
 #&gt; $ OBS_CONF_NAME       &lt;chr&gt; "Free (free for publication)", "Free (free for ...
-#&gt; $ URN                 &lt;chr&gt; "Nm-1d1d32289e0d1879048226d5d1d20100", "Nm-1d1d...
+#&gt; $ URN                 &lt;chr&gt; "Nm-1d1d32290e0d1879048226d5d1d20100", "Nm-1d1d...
 #&gt; $ RECORD_OFFSET       &lt;chr&gt; "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
 #&gt; $ RECORD_COUNT        &lt;chr&gt; "10", "10", "10", "10", "10", "10", "10", "10",...</div><div class='input'>
 <span class='co'># annual population survey - regional - employment by occupation</span>

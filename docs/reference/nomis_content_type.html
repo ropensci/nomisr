@@ -25,8 +25,6 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Nomis dataset content types — nomis_content_type" />
 
 <meta property="og:description" content="Nomis content type metadata is included in annotation tags, in the form of
@@ -36,6 +34,8 @@ nomis_data_info. For example, the content types returned from
 dataset "NM_1658_1", using nomis_data_info("NM_1658_1"), are
 "geoglevel", "2001census" and "sources"." />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -70,8 +70,12 @@ dataset "NM_1658_1", using nomis_data_info("NM_1658_1"), are
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">nomisr</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">nomisr</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.2.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -141,6 +145,7 @@ dataset "NM_1658_1", using nomis_data_info("NM_1658_1"), are
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Nomis dataset content types</h1>
+    <small>Source: <a href='https://github.com/EvanOdell/nomisr/blob/master/R/content_type.R'><code>R/content_type.R</code></a></small>
     </div>
 
     
@@ -154,7 +159,7 @@ dataset "NM_1658_1", using <code><a href='nomis_data_info.html'>nomis_data_info(
 
     <pre class="usage"><span class='fu'>nomis_content_type</span>(<span class='no'>content_type</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -173,8 +178,8 @@ dataset "NM_1658_1", using <code><a href='nomis_data_info.html'>nomis_data_info(
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='nomis_search.html'>nomis_search</a></code>
-    <code><a href='nomis_data_info.html'>nomis_data_info</a></code></p>
+    <p><code><a href='nomis_search.html'>nomis_search</a></code></p>
+<p><code><a href='nomis_data_info.html'>nomis_data_info</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

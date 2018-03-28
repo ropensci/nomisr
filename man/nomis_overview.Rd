@@ -60,6 +60,8 @@ to be selected too)}
 \examples{
 \donttest{
 
+library(dplyr)
+
 q <- nomis_overview("NM_1650_1")
 
 q \%>\% tidyr::unnest(name) \%>\% glimpse()

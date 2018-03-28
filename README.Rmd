@@ -73,7 +73,7 @@ There is a lot of data available through Nomis, and there are some limits to the
 
 ## Meta
 
-Bug reports, suggestions, and code contributions are all welcome. Please see [CONTRIBUTING.md]([CONTRIBUTING.md]) for details.
+Bug reports, suggestions, and code contributions are all welcome. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 

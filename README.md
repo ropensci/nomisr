@@ -1,42 +1,18 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+nomisr
+======
 
-# nomisr
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/nomisr)](https://cran.r-project.org/package=nomisr) [![GitHub tag](https://img.shields.io/github/tag/evanodell/nomisr.svg)](https://github.com/evanodell/nomisr) [![](https://cranlogs.r-pkg.org/badges/grand-total/nomisr)](https://dgrtwo.shinyapps.io/cranview/) [![Travis-CI Build Status](https://travis-ci.org/evanodell/nomisr.svg?branch=master)](https://travis-ci.org/evanodell/nomisr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/evanodell/nomisr?branch=master&svg=true)](https://ci.appveyor.com/project/evanodell/nomisr) [![Coverage Status](https://img.shields.io/codecov/c/github/evanodell/nomisr/master.svg)](https://codecov.io/github/evanodell/nomisr?branch=master) [![DOI](https://zenodo.org/badge/118144805.svg)](https://zenodo.org/badge/latestdoi/118144805)
 
-[![License:
-MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/nomisr)](https://cran.r-project.org/package=nomisr)
-[![GitHub
-tag](https://img.shields.io/github/tag/evanodell/nomisr.svg)](https://github.com/evanodell/nomisr)
-[![](https://cranlogs.r-pkg.org/badges/grand-total/nomisr)](https://dgrtwo.shinyapps.io/cranview/)
-[![Travis-CI Build
-Status](https://travis-ci.org/evanodell/nomisr.svg?branch=master)](https://travis-ci.org/evanodell/nomisr)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/evanodell/nomisr?branch=master&svg=true)](https://ci.appveyor.com/project/evanodell/nomisr)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/evanodell/nomisr/master.svg)](https://codecov.io/github/evanodell/nomisr?branch=master)
-[![DOI](https://zenodo.org/badge/118144805.svg)](https://zenodo.org/badge/latestdoi/118144805)
+`nomisr` is for accessing Access UK official statistics from the [Nomis](https://www.nomisweb.co.uk/) database through R. Nomis contains data from the Census, the Labour Force Survey, DWP benefit statistics and other economic and demographic data, and is maintained on behalf of the Office for National Statistics by the University of Durham.
 
-`nomisr` is for accessing Access UK official statistics from the
-[Nomis](https://www.nomisweb.co.uk/) database through R. Nomis contains
-data from the Census, the Labour Force Survey, DWP benefit statistics
-and other economic and demographic data, and is maintained on behalf of
-the Office for National Statistics by the University of Durham.
+The `nomisr` package provides functions to find what data is available, the variables and query options for different datasets and a function for downloading data. `nomisr` returns data in [`tibble`](https://cran.r-project.org/package=tibble) format. Most of the data available through `nomisr` is based around statistical geographies, with a handful of exceptions.
 
-The `nomisr` package provides functions to find what data is available,
-the variables and query options for different datasets and a function
-for downloading data. `nomisr` returns data in
-[`tibble`](https://cran.r-project.org/package=tibble) format. Most of
-the data available through `nomisr` is based around statistical
-geographies, with a handful of exceptions.
+The package is for demographers, economists, geographers, public health researchers and any other researchers who are interested in geographic factors. The package aims to aid reproducibility, reduce the need to manually download area profiles, and allow easy linking of different datasets covering the same geographic area.
 
-The package is for demographers, economists, geographers, public health
-researchers and any other researchers who are interested in geographic
-factors. The package aims to aid reproducibility, reduce the need to
-manually download area profiles, and allow easy linking of different
-datasets covering the same geographic area.
-
-## Installation
+Installation
+------------
 
 You can install `nomisr` from github with:
 
@@ -45,20 +21,12 @@ You can install `nomisr` from github with:
 devtools::install_github("evanodell/nomisr")
 ```
 
-## Using `nomisr`
+Using `nomisr`
+--------------
 
-`nomisr` contains functions to search for datasets, identify the query
-options for different datasets and retrieve data from queries, all done
-with [`tibbles`](http://tibble.tidyverse.org/), to take advantage of how
-`tibble` manages list-columns. The use of metadata queries, rather than
-simply downloading all available data, is useful to avoid overwhelming
-the rate limits of the API. For full details on all available functions
-and demonstrations of their use, please see the package
-[vignette](https://docs.evanodell.com/nomisr/articles/introduction.html).
+`nomisr` contains functions to search for datasets, identify the query options for different datasets and retrieve data from queries, all done with [`tibbles`](http://tibble.tidyverse.org/), to take advantage of how `tibble` manages list-columns. The use of metadata queries, rather than simply downloading all available data, is useful to avoid overwhelming the rate limits of the API. For full details on all available functions and demonstrations of their use, please see the package [vignette](https://docs.evanodell.com/nomisr/articles/introduction.html).
 
-The example below gets the latest data on Jobseeker’s Allowance with
-rates and proportions, on a national level, with all male claimants and
-workforce.
+The example below gets the latest data on Jobseeker's Allowance with rates and proportions, on a national level, with all male claimants and workforce.
 
 ``` r
  library(nomisr)
@@ -117,9 +85,9 @@ workforce.
  tibble::glimpse(z)
 #> Observations: 70
 #> Variables: 34
-#> $ DATE                <chr> "2018-01", "2018-01", "2018-01", "2018-01"...
-#> $ DATE_NAME           <chr> "January 2018", "January 2018", "January 2...
-#> $ DATE_CODE           <chr> "2018-01", "2018-01", "2018-01", "2018-01"...
+#> $ DATE                <chr> "2018-02", "2018-02", "2018-02", "2018-02"...
+#> $ DATE_NAME           <chr> "February 2018", "February 2018", "Februar...
+#> $ DATE_CODE           <chr> "2018-02", "2018-02", "2018-02", "2018-02"...
 #> $ DATE_TYPE           <chr> "date", "date", "date", "date", "date", "d...
 #> $ DATE_TYPECODE       <chr> "0", "0", "0", "0", "0", "0", "0", "0", "0...
 #> $ DATE_SORTORDER      <chr> "0", "0", "0", "0", "0", "0", "0", "0", "0...
@@ -143,53 +111,40 @@ workforce.
 #> $ ITEM_SORTORDER      <chr> "0", "0", "1", "1", "2", "2", "3", "3", "4...
 #> $ MEASURES            <chr> "20100", "20201", "20100", "20201", "20100...
 #> $ MEASURES_NAME       <chr> "Persons claiming JSA", "Workplace-based e...
-#> $ OBS_VALUE           <chr> "275667", "1.5", NA, NA, NA, NA, NA, NA, N...
+#> $ OBS_VALUE           <chr> "287049", "1.5", NA, NA, NA, NA, NA, NA, N...
 #> $ OBS_STATUS          <chr> "A", "A", "Q", "Q", "Q", "Q", "Q", "Q", "Q...
 #> $ OBS_STATUS_NAME     <chr> "Normal Value", "Normal Value", "These fig...
 #> $ OBS_CONF            <chr> "F", "F", "F", "F", "F", "F", "F", "F", "F...
 #> $ OBS_CONF_NAME       <chr> "Free (free for publication)", "Free (free...
-#> $ URN                 <chr> "Nm-1d1d32289e0d2092957697d5d1d20100", "Nm...
+#> $ URN                 <chr> "Nm-1d1d32290e0d2092957697d5d1d20100", "Nm...
 #> $ RECORD_OFFSET       <chr> "0", "1", "2", "3", "4", "5", "6", "7", "8...
 #> $ RECORD_COUNT        <chr> "70", "70", "70", "70", "70", "70", "70", ...
 ```
 
-There is a lot of data available through Nomis, and there are some
-limits to the amount of data that can be retrieved within a certain
-period of time, although those are not published. For more details, see
-the [full API documentation](https://www.nomisweb.co.uk/api/v01/help)
-from Nomis. Full package documentation is available at
-[docs.evanodell.com/nomisr](https://docs.evanodell.com/nomisr)
+There is a lot of data available through Nomis, and there are some limits to the amount of data that can be retrieved within a certain period of time, although those are not published. For more details, see the [full API documentation](https://www.nomisweb.co.uk/api/v01/help) from Nomis. Full package documentation is available at [docs.evanodell.com/nomisr](https://docs.evanodell.com/nomisr)
 
-## Meta
+Meta
+----
 
-Bug reports, suggestions, and code contributions are all welcome. Please
-see [CONTRIBUTING.md](%5BCONTRIBUTING.md%5D) for details.
+Bug reports, suggestions, and code contributions are all welcome. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-Please note that this project is released with a [Contributor Code of
-Conduct](CONDUCT.md). By participating in this project you agree to
-abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-Please note that this project is not affiliated with the Office for
-National Statistics or the University of Durham.
+Please note that this project is not affiliated with the Office for National Statistics or the University of Durham.
 
-Get citation information for `nomisr` in R with `citation(package =
-'nomisr')`
+Get citation information for `nomisr` in R with `citation(package = 'nomisr')`
 
-Odell E (2018). *nomisr: Access Nomis UK labour market data on with R*.
-doi: 10.5281/zenodo.1157908, R package version 0.0.2.9000, \<URL:
-<https://docs.evanodell.com/nomisr>\>.
+Odell E (2018). *nomisr: Access Nomis UK labour market data on with R*. doi: 10.5281/zenodo.1157908, R package version 0.0.2.9000, &lt;URL: <https://docs.evanodell.com/nomisr>&gt;.
 
 A BibTeX entry for LaTeX users is
 
-``` 
-  @Manual{,
-    title = {{nomisr}: Access Nomis UK labour market data on with R},
-    author = {Evan Odell},
-    year = {2018},
-    note = {R package version 0.0.2.9000},
-    doi = {10.5281/zenodo.1157908},
-    url = {https://docs.evanodell.com/nomisr},
-  }
-```
+      @Manual{,
+        title = {{nomisr}: Access Nomis UK labour market data on with R},
+        author = {Evan Odell},
+        year = {2018},
+        note = {R package version 0.0.2.9000},
+        doi = {10.5281/zenodo.1157908},
+        url = {https://docs.evanodell.com/nomisr},
+      }
 
 License: [MIT](LICENSE.md)

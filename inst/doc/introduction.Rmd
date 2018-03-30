@@ -69,7 +69,7 @@ y %>% tidyr::unnest(annotations.annotation) %>% glimpse()
 
 ### Searching for data
 
-`nomisr` also contains the `nomis_search()` function to search for datasets on particular topics. `nomis_search()` can be used to search in one or more of dataset names, descriptions, keywords, content type and units. If using multiple parameters, `nomis_search()` will return information on all datasets that match one or more parameters. Character vectors of strings can be used in searches, and likewise `nomis_search()` will return information on datasets that match one or more queries. The * is used as a wildcard symbol. `nomis_search()` returns metadata in the same format at `nomis_data_info()`, including using list-columns. The `nomis_content_type()` function can assist in identifying content type IDs for `nomis_search()`.
+`nomisr` also contains the `nomis_search()` function to search for datasets on particular topics. `nomis_search()` can be used to search in one or more of dataset names, descriptions, keywords, content type and units. If using multiple parameters, `nomis_search()` will return information on all datasets that match one or more parameters. Character vectors of strings can be used in searches, and likewise `nomis_search()` will return information on datasets that match one or more queries. The * is used as a wildcard symbol. `nomis_search()` returns metadata in the same format as `nomis_data_info()`, including using list-columns. The `nomis_content_type()` function can assist in identifying content type IDs for `nomis_search()`.
 
 ```{r, echo=TRUE}
 a <- nomis_search(name = '*jobseekers*', keywords = 'Claimants')

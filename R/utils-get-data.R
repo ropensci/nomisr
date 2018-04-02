@@ -30,11 +30,12 @@ nomis_get_data_util <- function(query) {
         col_types = readr::cols(.default = readr::col_character())
       )
     }, error = function(cond) {
-      message(paste("It is likely that you have been automatically rate limited
-                    by the Nomis API. You can make smaller data requests, or 
-                    try again later."))
-      message("Here's the original error message:")
-      message(cond)
+      message(
+        "It is likely that you have been automatically rate limited ",
+        "by the Nomis API.\n",
+        "You can make smaller data requests, or try again later.\n\n",
+        "Here's the original error message:\n", cond
+      )
 
       return(NA)
     }

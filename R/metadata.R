@@ -1,10 +1,10 @@
 
 #' Nomis metadata concepts and types
 #'
-#' @description Retrieve all code options of all Nomis datasets, code options
-#' for a given dataset, or the all the options for a given code variable from
-#' a particular dataset. Specifying \code{code} will return all the options
-#' for a  given variable in a particular dataset.
+#' @description Retrieve all concept code options of all Nomis datasets, concept
+#' code options for a given dataset, or the all the options for a given
+#' concept variable from a particular dataset. Specifying \code{concept} will
+#' return all the options for a given variable in a particular dataset.
 #'
 #' @description If looking for a more detailed overview of all available
 #' metadata for a given dataset, see \code{\link{nomis_overview}}.

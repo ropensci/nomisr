@@ -27,7 +27,7 @@ test_that("nomis_get_data return expected format", {
   sum_check <- summary(diff(as.numeric(a$RECORD_OFFSET)))
   expect_equal(sum_check[[1]],1)
   
-  expect_error(nomis_get_data, "Dataset ID must be specified")
+  expect_error(nomis_get_data(), "Dataset ID must be specified")
 
   b <- nomis_get_data(
     id = "NM_168_1", time = "latest",

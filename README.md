@@ -7,14 +7,14 @@
 MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/nomisr)](https://cran.r-project.org/package=nomisr)
 [![GitHub
-tag](https://img.shields.io/github/tag/evanodell/nomisr.svg)](https://github.com/evanodell/nomisr)
+tag](https://img.shields.io/github/tag/ropensci/nomisr.svg)](https://github.com/ropensci/nomisr)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/nomisr)](https://dgrtwo.shinyapps.io/cranview/)
 [![Travis-CI Build
-Status](https://travis-ci.org/evanodell/nomisr.svg?branch=master)](https://travis-ci.org/evanodell/nomisr)
+Status](https://travis-ci.org/ropensci/nomisr.svg?branch=master)](https://travis-ci.org/ropensci/nomisr)
 [![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/evanodell/nomisr?branch=master&svg=true)](https://ci.appveyor.com/project/evanodell/nomisr)
+Status](https://ci.appveyor.com/api/projects/status/github/ropensci/nomisr?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/nomisr)
 [![Coverage
-Status](https://img.shields.io/codecov/c/github/evanodell/nomisr/master.svg)](https://codecov.io/github/evanodell/nomisr?branch=master)
+Status](https://img.shields.io/codecov/c/github/ropensci/nomisr/master.svg)](https://codecov.io/github/ropensci/nomisr?branch=master)
 [![DOI](https://zenodo.org/badge/118144805.svg)](https://zenodo.org/badge/latestdoi/118144805)
 
 `nomisr` is for accessing [Nomis](https://www.nomisweb.co.uk/) data with
@@ -42,16 +42,18 @@ You can install `nomisr` from github with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("evanodell/nomisr")
+devtools::install_github("ropensci/nomisr")
 ```
 
 ## Using `nomisr`
 
 `nomisr` contains functions to search for datasets, identify the query
-options for different datasets and retrieve data from queries. The use
-of queries, rather than simply downloading all available data, is useful
-to avoid overwhelming the rate limits of the API. For full details,
-please see the package
+options for different datasets and retrieve data from queries, all done
+with [`tibbles`](http://tibble.tidyverse.org/), to take advantage of how
+`tibble` manages list-columns. The use of metadata queries, rather than
+simply downloading all available data, is useful to avoid overwhelming
+the rate limits of the API. For full details on all available functions
+and demonstrations of their use, please see the package
 [vignette](https://docs.evanodell.com/nomisr/articles/introduction.html).
 
 The example below gets the latest data on Jobseeker’s Allowance with
@@ -115,9 +117,9 @@ workforce.
  tibble::glimpse(z)
 #> Observations: 70
 #> Variables: 34
-#> $ DATE                <chr> "2018-01", "2018-01", "2018-01", "2018-01"...
-#> $ DATE_NAME           <chr> "January 2018", "January 2018", "January 2...
-#> $ DATE_CODE           <chr> "2018-01", "2018-01", "2018-01", "2018-01"...
+#> $ DATE                <chr> "2018-02", "2018-02", "2018-02", "2018-02"...
+#> $ DATE_NAME           <chr> "February 2018", "February 2018", "Februar...
+#> $ DATE_CODE           <chr> "2018-02", "2018-02", "2018-02", "2018-02"...
 #> $ DATE_TYPE           <chr> "date", "date", "date", "date", "date", "d...
 #> $ DATE_TYPECODE       <chr> "0", "0", "0", "0", "0", "0", "0", "0", "0...
 #> $ DATE_SORTORDER      <chr> "0", "0", "0", "0", "0", "0", "0", "0", "0...
@@ -141,12 +143,12 @@ workforce.
 #> $ ITEM_SORTORDER      <chr> "0", "0", "1", "1", "2", "2", "3", "3", "4...
 #> $ MEASURES            <chr> "20100", "20201", "20100", "20201", "20100...
 #> $ MEASURES_NAME       <chr> "Persons claiming JSA", "Workplace-based e...
-#> $ OBS_VALUE           <chr> "275667", "1.5", NA, NA, NA, NA, NA, NA, N...
+#> $ OBS_VALUE           <chr> "287049", "1.5", NA, NA, NA, NA, NA, NA, N...
 #> $ OBS_STATUS          <chr> "A", "A", "Q", "Q", "Q", "Q", "Q", "Q", "Q...
 #> $ OBS_STATUS_NAME     <chr> "Normal Value", "Normal Value", "These fig...
 #> $ OBS_CONF            <chr> "F", "F", "F", "F", "F", "F", "F", "F", "F...
 #> $ OBS_CONF_NAME       <chr> "Free (free for publication)", "Free (free...
-#> $ URN                 <chr> "Nm-1d1d32289e0d2092957697d5d1d20100", "Nm...
+#> $ URN                 <chr> "Nm-1d1d32290e0d2092957697d5d1d20100", "Nm...
 #> $ RECORD_OFFSET       <chr> "0", "1", "2", "3", "4", "5", "6", "7", "8...
 #> $ RECORD_COUNT        <chr> "70", "70", "70", "70", "70", "70", "70", ...
 ```
@@ -172,20 +174,23 @@ Get citation information for `nomisr` in R with `citation(package =
 
 Odell E (2018). *nomisr: Access Nomis UK labour market data on with R*.
 doi: 10.5281/zenodo.1157908 (URL:
-<http://doi.org/10.5281/zenodo.1157908>), R package version 0.0.2.9000,
-\<URL: <https://docs.evanodell.com/nomisr>\>.
+<http://doi.org/10.5281/zenodo.1157908>), R package version 0.1.0,
+\<URL: <https://github.com/ropensci/nomisr>\>.
 
 A BibTeX entry for LaTeX users is
 
 ``` 
   @Manual{,
-    title = {{nomisr}: Access Nomis UK labour market data on with R},
+    title = {{nomisr}: Access Nomis UK Labour Market Data With R},
     author = {Evan Odell},
     year = {2018},
-    note = {R package version 0.0.2.9000},
+    note = {R package version 0.1.0},
     doi = {10.5281/zenodo.1157908},
-    url = {https://docs.evanodell.com/nomisr},
+    url = {https://github.com/ropensci/nomisr},
   }
 ```
 
-License: MIT
+License:
+[MIT](LICENSE.md)
+
+[![ropensci\_footer](https://ropensci.org/public_images/ropensci_footer.png)](https://ropensci.org)

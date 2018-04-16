@@ -18,3 +18,6 @@
 ^LICENSE\.md$
 ^docs$
 ^\.github$
+^cran-comments\.md$
+^CONTRIBUTING\.md$
+CONTRIBUTING.md

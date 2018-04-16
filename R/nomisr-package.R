@@ -21,4 +21,5 @@
 #' @importFrom tibble as_tibble enframe
 #' @importFrom readr read_csv
 #' @importFrom dplyr bind_rows
+#' @importFrom utils menu
 NULL

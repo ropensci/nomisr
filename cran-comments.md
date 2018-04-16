@@ -12,10 +12,10 @@ statistics from the nomis API.
 
 ## R CMD check results
 
-0 errors | 0 warnings | 2 note
+0 errors | 0 warnings | 1 note
 
 * This is a new release.
 
-* Possibly mis-spelled words in DESCRIPTION:
+Possibly mis-spelled words in DESCRIPTION:
   DWP (9:67)
   Nomis (3:15, 8:53, 9:5)

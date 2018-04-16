@@ -27,5 +27,6 @@ Suggests:
   testthat,
   curl,
   purrr,
-  tidyr
+  tidyr,
+  magrittr
 VignetteBuilder: knitr

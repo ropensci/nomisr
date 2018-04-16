@@ -1,13 +1,22 @@
 
+# nomisr 0.1.0
+
+* Moved to ropensci
+
+* Added API key functionality, which is not required by the API but is 
+useful for large requests.
+
+* In interactive sessions, users are asked if they want to continue when 
+calling more than 15 pages of data at a time.
 
 # nomisr 0.0.2
 
-Introduction of additional parameters to the `nomis_get_data()` and 
+* Introduction of additional parameters to the `nomis_get_data()` and 
 `nomis_codes()` functions, improvements to documentation.
 
 
 # nomisr 0.0.1
 
-1st release. Rudimentary functions for retrieving information on available 
+* 1st release. Rudimentary functions for retrieving information on available 
 datasets and downloading datasets from nomis, with some limited parameters.
 

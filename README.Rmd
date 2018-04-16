@@ -16,11 +16,11 @@ knitr::opts_chunk$set(
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/nomisr)](https://cran.r-project.org/package=nomisr)
-[![GitHub tag](https://img.shields.io/github/tag/evanodell/nomisr.svg)](https://github.com/evanodell/nomisr)
+[![GitHub tag](https://img.shields.io/github/tag/ropensci/nomisr.svg)](https://github.com/ropensci/nomisr)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/nomisr)](https://dgrtwo.shinyapps.io/cranview/)
-[![Travis-CI Build Status](https://travis-ci.org/evanodell/nomisr.svg?branch=master)](https://travis-ci.org/evanodell/nomisr)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/evanodell/nomisr?branch=master&svg=true)](https://ci.appveyor.com/project/evanodell/nomisr)
-[![Coverage Status](https://img.shields.io/codecov/c/github/evanodell/nomisr/master.svg)](https://codecov.io/github/evanodell/nomisr?branch=master)
+[![Travis-CI Build Status](https://travis-ci.org/ropensci/nomisr.svg?branch=master)](https://travis-ci.org/ropensci/nomisr)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/nomisr?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/nomisr)
+[![Coverage Status](https://img.shields.io/codecov/c/github/ropensci/nomisr/master.svg)](https://codecov.io/github/ropensci/nomisr?branch=master)
 [![DOI](https://zenodo.org/badge/118144805.svg)](https://zenodo.org/badge/latestdoi/118144805)
 
 `nomisr` is for accessing Access UK official statistics from the [Nomis](https://www.nomisweb.co.uk/) database through R. Nomis contains data from the Census, the Labour Force Survey, DWP benefit statistics and other economic and demographic data, and is maintained on behalf of the Office for National Statistics by the University of Durham.
@@ -35,7 +35,7 @@ You can install `nomisr` from github with:
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
-devtools::install_github("evanodell/nomisr")
+devtools::install_github("ropensci/nomisr")
 ```
 
 ## Using `nomisr`
@@ -81,20 +81,22 @@ Please note that this project is not affiliated with the Office for National Sta
 
 Get citation information for `nomisr` in R with `citation(package = 'nomisr')`
 
-Odell E (2018). _nomisr: Access Nomis UK labour market data on with R_. doi: 10.5281/zenodo.1157908, R package version 0.0.2.9000, <URL: https://docs.evanodell.com/nomisr>.
+Odell E (2018). _nomisr: Access Nomis UK labour market data on with R_. doi: 10.5281/zenodo.1157908 (URL:
+http://doi.org/10.5281/zenodo.1157908), R package version 0.1.0, <URL:
+https://github.com/ropensci/nomisr>.
 
 A BibTeX entry for LaTeX users is
-
 ```
   @Manual{,
-    title = {{nomisr}: Access Nomis UK labour market data on with R},
+    title = {{nomisr}: Access Nomis UK Labour Market Data With R},
     author = {Evan Odell},
     year = {2018},
-    note = {R package version 0.0.2.9000},
+    note = {R package version 0.1.0},
     doi = {10.5281/zenodo.1157908},
-    url = {https://docs.evanodell.com/nomisr},
+    url = {https://github.com/ropensci/nomisr},
   }
 ```
-
 License: [MIT](LICENSE.md)
+
+[![ropensci_footer](https://ropensci.org/public_images/ropensci_footer.png)](https://ropensci.org)
 

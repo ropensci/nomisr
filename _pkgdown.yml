@@ -33,6 +33,8 @@ navbar:
           href: http://docs.evanodell.com/parlitools
         - text: "nomisr"
           href: http://docs.evanodell.com/nomisr
+        - text: "fixerapi"
+          href: http://docs.evanodell.com/fixerapi
         - text: "emisc"
           href: http://docs.evanodell.com/emisc
 

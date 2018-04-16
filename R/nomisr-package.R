@@ -22,4 +22,5 @@
 #' @importFrom httr http_type GET http_error status_code
 #' @importFrom readr read_csv
 #' @importFrom dplyr bind_rows
+#' @importFrom utils menu
 NULL

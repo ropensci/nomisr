@@ -8,9 +8,8 @@ test_that("nomis_get_data return expected format", {
     id = "NM_1_1", time = "latest",
     measures = c(20100, 20201), sex = 5,
     additional_queries = "&geography=TYPE499",
-    exclude_missing = FALSE
+    exclude_missing = TRUE
   )
-
   expect_length(z, 34)
   expect_type(z, "list")
   expect_true(tibble::is_tibble(z))
@@ -23,8 +22,12 @@ test_that("nomis_get_data return expected format", {
   expect_length(a, 40)
   expect_type(a, "list")
   expect_true(tibble::is_tibble(a))
-
-  expect_error(nomis_get_data()) # is this the best way to test errors?
+  expect_equal(as.numeric(a$RECORD_OFFSET[[nrow(a)]]) + 1, 
+               as.numeric(a$RECORD_COUNT[[nrow(a)]]))
+  sum_check <- summary(diff(as.numeric(a$RECORD_OFFSET)))
+  expect_equal(sum_check[[1]],1)
+  
+  expect_error(nomis_get_data, "Dataset ID must be specified")
 
   b <- nomis_get_data(
     id = "NM_168_1", time = "latest",

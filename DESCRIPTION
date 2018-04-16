@@ -1,7 +1,7 @@
 Package: nomisr
 Type: Package
 Title: Access Nomis UK Labour Market Data with R
-Version: 0.0.2.9000
+Version: 0.1.0
 Authors@R: person("Evan Odell", email="evanodell91@gmail.com",
   role=c("aut", "cre"),
   comment = c(ORCID='0000-0003-1845-808X'))
@@ -10,8 +10,8 @@ Description: Access UK official statistics from the Nomis database through R.
     statistics and other economic and demographic data from the Office for 
     National Statistics, based around statistical geographies. See 
     <https://www.nomisweb.co.uk/api/v01/help> for full API documentation.
-URL: https://github.com/EvanOdell/nomisr
-BugReports: https://github.com/EvanOdell/nomisr/issues
+URL: https://github.com/ropensci/nomisr
+BugReports: https://github.com/ropensci/nomisr/issues
 License: MIT + file LICENSE
 Depends: R (>= 3.4.0)
 Imports:
@@ -19,12 +19,14 @@ Imports:
   tibble,
   readr,
   dplyr,
-  httr
+  httr,
+  utils
 RoxygenNote: 6.0.1
 Suggests:
   knitr,
   rmarkdown,
   testthat,
   purrr,
-  tidyr
+  tidyr,
+  magrittr
 VignetteBuilder: knitr

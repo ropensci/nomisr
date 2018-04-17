@@ -23,4 +23,12 @@
 #' @importFrom readr read_csv
 #' @importFrom dplyr bind_rows
 #' @importFrom utils menu
-NULL
+.onLoad <- function(libname, pkgname) {
+  
+  if (is.null(getOption("nomisr.API.key"))) {
+    key <- Sys.getenv('NOMIS_API_KEY')
+    if (key != "") option("nomisr.API.key" = key)
+  }
+  
+  invisible()
+}

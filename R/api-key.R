@@ -1,41 +1,51 @@
 
 #' Nomis API Key
 #' 
-#' @description The Nomis API has an optional key. Using the key means that 
-#' 100,000 rows can be returned per call, which can speed up larger data 
-#' requests and reduce the chances of being rate limited or having requests 
-#' timing out.
+#' @description Assign or reassign API key for Nomis.
 #' 
-#' @description You can sign up for an API key 
-#' \href{https://www.nomisweb.co.uk/myaccount/userjoin.asp}{here}.
+#' @details The Nomis API has an optional key. Using the key means that 100,000
+#'   rows can be returned per call, which can speed up larger data requests and
+#'   reduce the chances of being rate limited or having requests timing out.
 #' 
-#' @param force If TRUE, resets the API key and requires a 
-#' new key to be provided.
+#' @details Be default, \code{nomisr} will look for the environment variable
+#'   \code{NOMIS_API_KEY} when the package is loaded. If found, the API key will
+#'   be stored in the session option \code{nomisr.API.key}. If you would like to
+#'   reload the API key or would like to manually enter one in, this function
+#'   may be used.
+#' 
+#' @details You can sign up for an API key
+#'   \href{https://www.nomisweb.co.uk/myaccount/userjoin.asp}{here}.
+#' 
+#' @param check_env If TRUE, will check the environment variable
+#'   \code{NOMIS_API_KEY} first before asking for user input.
 #'
 #' @export
-nomis_api_key <- function(force = FALSE) {
+nomis_api_key <- function(check_env = FALSE) {
   
-  env <- Sys.getenv('NOMIS_API_KEY')
-  if (!identical(env, "") && !force) return(env)
-  
-  if (!interactive()) {
-    stop("Please set environment variable NOMIS_API_KEY to your Nomis API key",
-         call. = FALSE)
-    message("Use `Sys.setenv(NOMIS_API_KEY = <key>)`")
+  if (check_env) {
+    key <- Sys.getenv('NOMIS_API_KEY')
+    if (key != "") {
+      message("Updating NOMIS_API_KEY environment variable...")
+      options("nomisr.API.key" = key)
+      return(invisible())
+    } else {
+      warning("Couldn't find environment variable 'NOMIS_API_KEY'") 
+    }
   }
   
-  message("Couldn't find environment variable NOMIS_API_KEY") 
-  message("Please enter your API key and press enter:")
-  key <- readline(": ")
+  if (interactive()) {
+    key <- readline("Please enter your API key and press enter: ")
+  } else {
+    cat("Please enter your API key and press enter: ")
+    key <- readLines(con = "stdin", n = 1)
+  }
   
   if (identical(key, "")) {
-    Sys.unsetenv('NOMIS_API_KEY')
     stop("Nomis API key entry failed", call. = FALSE)
   }
   
-  message("Updating NOMIS_API_KEY")
-  Sys.setenv(NOMIS_API_KEY = key)
-  
-  key
-  
+  message("Updating NOMIS_API_KEY environment variable...")
+  options("nomisr.API.key" = key)
+  invisible()
+
 }

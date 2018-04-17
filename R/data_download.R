@@ -2,7 +2,7 @@
 
 #' Retrieve Nomis datasets
 #'
-#' @description Retrieves specific datasets from nomis, based on their ID. To
+#' @description Retrieves specific datasets from Nomis, based on their ID. To
 #' find dataset IDs, use \code{\link{nomis_data_info}}. Datasets are retrived
 #' in csv format and parsed with the \code{read_csv} function from the
 #' \code{readr} package into a tibble, with all columns parsed as character
@@ -204,9 +204,9 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     ""
   )
   
-  if(nchar(Sys.getenv('NOMIS_API_KEY')) > 0) {
+  if(!is.null(getOption("nomisr.API.key"))) {
     
-    api_query <- paste0("&uid=", nomis_api_key())
+    api_query <- paste0("&uid=", getOption("nomisr.API.key"))
     max_length <- 100000
     
   } else {

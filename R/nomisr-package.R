@@ -27,7 +27,7 @@
   
   if (is.null(getOption("nomisr.API.key"))) {
     key <- Sys.getenv('NOMIS_API_KEY')
-    if (key != "") option("nomisr.API.key" = key)
+    if (key != "") options("nomisr.API.key" = key)
   }
   
   invisible()

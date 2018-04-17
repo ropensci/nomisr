@@ -26,7 +26,7 @@ nomis_api_key <- function(check_env = FALSE) {
     key <- Sys.getenv('NOMIS_API_KEY')
     if (key != "") {
       message("Updating NOMIS_API_KEY environment variable...")
-      option("nomisr.API.key" = key)
+      options("nomisr.API.key" = key)
       return(invisible())
     } else {
       warning("Couldn't find environment variable 'NOMIS_API_KEY'") 
@@ -45,7 +45,7 @@ nomis_api_key <- function(check_env = FALSE) {
   }
   
   message("Updating NOMIS_API_KEY environment variable...")
-  option("nomisr.API.key" = key)
+  options("nomisr.API.key" = key)
   invisible()
 
 }

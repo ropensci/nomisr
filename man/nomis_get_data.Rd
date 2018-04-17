@@ -86,7 +86,7 @@ A tibble containing the selected dataset.
 By default, all tibble columns are parsed as characters.
 }
 \description{
-Retrieves specific datasets from nomis, based on their ID. To
+Retrieves specific datasets from Nomis, based on their ID. To
 find dataset IDs, use \code{\link{nomis_data_info}}. Datasets are retrived
 in csv format and parsed with the \code{read_csv} function from the
 \code{readr} package into a tibble, with all columns parsed as character

@@ -204,9 +204,9 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     ""
   )
   
-  if(!is.null(getOption("nomis.API.key"))) {
+  if(!is.null(getOption("nomisr.API.key"))) {
     
-    api_query <- paste0("&uid=", getOption("nomis.API.key"))
+    api_query <- paste0("&uid=", getOption("nomisr.API.key"))
     max_length <- 100000
     
   } else {

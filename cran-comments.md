@@ -1,7 +1,7 @@
 
 ## Release summary
 
-This is the first submission of the `nomisr` package, with the version 0.1.0.
+This is a resubmission of the `nomisr` package, with new version 0.2.0. This version removes redundant description text and places 'Nomis' in single quotes in the DESCRIPTION file.
 `nomisr` provides functions to download UK census data and other official 
 statistics from the nomis API.
 

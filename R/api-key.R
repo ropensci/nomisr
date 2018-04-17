@@ -7,7 +7,7 @@
 #'   rows can be returned per call, which can speed up larger data requests and
 #'   reduce the chances of being rate limited or having requests timing out.
 #' 
-#' @details Be default, \code{nomisr} will look for the environment variable
+#' @details By default, \code{nomisr} will look for the environment variable
 #'   \code{NOMIS_API_KEY} when the package is loaded. If found, the API key will
 #'   be stored in the session option \code{nomisr.API.key}. If you would like to
 #'   reload the API key or would like to manually enter one in, this function

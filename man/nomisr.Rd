@@ -3,12 +3,8 @@
 \docType{package}
 \name{nomisr}
 \alias{nomisr}
-\alias{.onLoad}
 \alias{nomisr-package}
 \title{nomisr: Access Nomis UK Labour Market Data with R}
-\usage{
-.onLoad(libname, pkgname)
-}
 \description{
 Access UK official statistics from the Nomis database through R. Nomis
 includes data from the Census, the Labour Force Survey, DWP benefit

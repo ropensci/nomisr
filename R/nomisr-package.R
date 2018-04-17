@@ -23,6 +23,9 @@
 #' @importFrom readr read_csv
 #' @importFrom dplyr bind_rows
 #' @importFrom utils menu
+NULL
+
+# Checking for API key on package load
 .onLoad <- function(libname, pkgname) {
   
   if (is.null(getOption("nomisr.API.key"))) {

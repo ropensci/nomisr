@@ -4,7 +4,7 @@ context("nomis_get_metadata")
 
 test_that("nomis_get_metadata return expected format", {
   skip_on_cran()
-  
+
   expect_error(nomis_get_metadata(), "The dataset ID must be specified.")
 
   a <- nomis_get_metadata("NM_1_1")

@@ -3,7 +3,7 @@ context("nomis_get_data")
 
 test_that("nomis_get_data return expected format", {
   skip_on_cran()
-  
+
   z <- nomis_get_data(
     id = "NM_1_1", time = "latest",
     measures = c(20100, 20201), sex = 5,
@@ -22,11 +22,13 @@ test_that("nomis_get_data return expected format", {
   expect_length(a, 40)
   expect_type(a, "list")
   expect_true(tibble::is_tibble(a))
-  expect_equal(as.numeric(a$RECORD_OFFSET[[nrow(a)]]) + 1, 
-               as.numeric(a$RECORD_COUNT[[nrow(a)]]))
+  expect_equal(
+    as.numeric(a$RECORD_OFFSET[[nrow(a)]]) + 1,
+    as.numeric(a$RECORD_COUNT[[nrow(a)]])
+  )
   sum_check <- summary(diff(as.numeric(a$RECORD_OFFSET)))
-  expect_equal(sum_check[[1]],1)
-  
+  expect_equal(sum_check[[1]], 1)
+
   expect_error(nomis_get_data(), "Dataset ID must be specified")
 
   b <- nomis_get_data(
@@ -69,7 +71,7 @@ test_that("nomis_get_data return expected format", {
   expect_true(tibble::is_tibble(x_select))
 
   # x_many <- nomis_get_data( id = "NM_1_1")
-#   expect_message(nomis_get_data(id = "NM_1_1"), "Warning: You are trying to 
-# acess more than 350,000 rows of data. This may cause timeout issues and/or 
-#                  automatic rate limiting by the Nomis API.")
+  #   expect_message(nomis_get_data(id = "NM_1_1"), "Warning: You are trying to
+  # acess more than 350,000 rows of data. This may cause timeout issues and/or
+  #                  automatic rate limiting by the Nomis API.")
 })

@@ -27,11 +27,10 @@ NULL
 
 # Checking for API key on package load
 .onLoad <- function(libname, pkgname) {
-  
   if (is.null(getOption("nomisr.API.key"))) {
-    key <- Sys.getenv('NOMIS_API_KEY')
+    key <- Sys.getenv("NOMIS_API_KEY")
     if (key != "") options("nomisr.API.key" = key)
   }
-  
+
   invisible()
 }

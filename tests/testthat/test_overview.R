@@ -4,7 +4,7 @@ context("nomis_overview")
 
 test_that("nomis_overview return expected format", {
   skip_on_cran()
-  
+
   q <- nomis_overview("NM_1650_1")
   expect_length(q, 2)
   expect_equal(nrow(q), 20)

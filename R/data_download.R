@@ -15,7 +15,7 @@
 #' data. Guest users are limited to 25,000 rows per query, although
 #' \code{nomisr} identifies queries that will return more than 25,000 rows,
 #' sending individual queries and combining the results of those queries into
-#' a single tibble. 
+#' a single tibble.
 # In interactive sessions, \code{nomisr} will warn you if
 # requesting more than 350,000 rows of data. [not currently implemented]
 #'
@@ -203,21 +203,17 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     ),
     ""
   )
-  
-  if(!is.null(getOption("nomisr.API.key"))) {
-    
+
+  if (!is.null(getOption("nomisr.API.key"))) {
     api_query <- paste0("&uid=", getOption("nomisr.API.key"))
     max_length <- 100000
-    
   } else {
-    
     api_query <- ""
     max_length <- 25000
-    
   }
 
   query <- paste0(
-    id, ".data.csv?", time_query, geography_query, sex_query, measures_query, 
+    id, ".data.csv?", time_query, geography_query, sex_query, measures_query,
     additional_query, exclude_query, select_query, api_query
   )
 
@@ -227,26 +223,26 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     stop("The API request did not return any results.
          Please check your parameters.", call. = FALSE)
   }
-  
+
   if (as.numeric(first_df$RECORD_COUNT)[1] >= max_length) {
     # if amount available is over the limit of 15 total calls at a time
     # downloads the extra data and binds it all together in a tibble
 
-        if (interactive() && 
-            as.numeric(first_df$RECORD_COUNT)[1] >= (15 * max_length)) {
-          # For more than 15 total requests at one time.
-          message("Warning: You are trying to acess more than ", 
-                  paste0((15 * max_length)), " rows of data.")
-          message("This may cause timeout and/or automatic rate limiting.")
+    if (interactive() &&
+      as.numeric(first_df$RECORD_COUNT)[1] >= (15 * max_length)) {
+      # For more than 15 total requests at one time.
+      message(
+        "Warning: You are trying to acess more than ",
+        paste0((15 * max_length)), " rows of data."
+      )
+      message("This may cause timeout and/or automatic rate limiting.")
 
-          if (utils::menu(c("Yes", "No"), 
-                          title = "Do you want to continue?") == 2) {
-
-            stop(call. = FALSE)
-
-          }
-
-        }
+      if (utils::menu(c("Yes", "No"),
+        title = "Do you want to continue?"
+      ) == 2) {
+        stop(call. = FALSE)
+      }
+    }
 
     record_count <- first_df$RECORD_COUNT[1]
 

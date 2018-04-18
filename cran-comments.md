@@ -1,9 +1,12 @@
 
 ## Release summary
 
-This is a resubmission of the `nomisr` package, with new version 0.2.0. This version removes redundant description text and places 'Nomis' in single quotes in the DESCRIPTION file.
-`nomisr` provides functions to download UK census data and other official 
-statistics from the nomis API.
+This is a resubmission of the `nomisr` package, with new version number 0.2.0. 
+This version removes redundant description text and places 'Nomis' in 
+single quotes in the DESCRIPTION file, and includes details on external 
+package reviewers. It also includes a more flexible method for API key 
+handling. `nomisr` provides functions to download UK census  data and other 
+official  statistics from the 'nomis' API.
 
 ## Test environments
 * local OS X install, R 3.4.4
@@ -12,7 +15,7 @@ statistics from the nomis API.
 
 ## R CMD check results
 
-0 errors | 0 warnings | 2 note
+0 errors | 0 warnings | 2 notes
 
 * This is a new release.
 

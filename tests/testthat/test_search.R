@@ -3,7 +3,7 @@ context("nomis_search")
 
 test_that("nomis_search return expected format", {
   skip_on_cran()
-  
+
   y <- nomis_search(keywords = "Claimants")
   expect_length(y, 14)
   expect_type(y, "list")

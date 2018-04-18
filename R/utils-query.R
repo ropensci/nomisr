@@ -3,7 +3,6 @@
 
 
 nomis_query_util <- function(query) {
-  
   api_resp <- httr::GET(paste0(base_url, query))
   if (http_type(api_resp) != "application/json") {
     stop("Nomis API did not return data in required json format", call. = FALSE)
@@ -11,9 +10,10 @@ nomis_query_util <- function(query) {
 
   if (httr::http_error(api_resp)) {
     stop(
-      paste0("Nomis API request failed with status ",
-             httr::status_code(api_resp)
-              ),
+      paste0(
+        "Nomis API request failed with status ",
+        httr::status_code(api_resp)
+      ),
       call. = FALSE
     )
   }

@@ -27,12 +27,7 @@
 <script src="../pkgdown.js"></script>
 <meta property="og:title" content="Nomis API Key — nomis_api_key" />
 
-<meta property="og:description" content="The Nomis API has an optional key. Using the key means that 
-100,000 rows can be returned per call, which can speed up larger data 
-requests and reduce the chances of being rate limited or having requests 
-timing out.
-You can sign up for an API key 
-here." />
+<meta property="og:description" content="Assign or reassign API key for Nomis." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -74,7 +69,7 @@ here." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.0</span>
       </span>
     </div>
 
@@ -155,25 +150,33 @@ here." />
     </div>
 
     
-    <p>The Nomis API has an optional key. Using the key means that 
-100,000 rows can be returned per call, which can speed up larger data 
-requests and reduce the chances of being rate limited or having requests 
-timing out.</p>
-<p>You can sign up for an API key 
-<a href='https://www.nomisweb.co.uk/myaccount/userjoin.asp'>here</a>.</p>
+    <p>Assign or reassign API key for Nomis.</p>
     
 
-    <pre class="usage"><span class='fu'>nomis_api_key</span>(<span class='kw'>force</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>nomis_api_key</span>(<span class='kw'>check_env</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>force</th>
-      <td><p>If TRUE, resets the API key and requires a 
-new key to be provided.</p></td>
+      <th>check_env</th>
+      <td><p>If TRUE, will check the environment variable
+<code>NOMIS_API_KEY</code> first before asking for user input.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The Nomis API has an optional key. Using the key means that 100,000
+  rows can be returned per call, which can speed up larger data requests and
+  reduce the chances of being rate limited or having requests timing out.</p>
+<p>By default, <code>nomisr</code> will look for the environment variable
+  <code>NOMIS_API_KEY</code> when the package is loaded. If found, the API key will
+  be stored in the session option <code>nomisr.API.key</code>. If you would like to
+  reload the API key or would like to manually enter one in, this function
+  may be used.</p>
+<p>You can sign up for an API key
+  <a href='https://www.nomisweb.co.uk/myaccount/userjoin.asp'>here</a>.</p>
     
 
   </div>
@@ -181,7 +184,9 @@ new key to be provided.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>

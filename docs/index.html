@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Access Nomis UK Labour Market Data with R • nomisr</title>
+<title>Access 'Nomis' UK Labour Market Data • nomisr</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Access Nomis UK Labour Market Data with R">
-<meta property="og:description" content="Access UK official statistics from the Nomis database through R. 
-    Nomis includes data from the Census, the Labour Force Survey, DWP benefit 
+<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Access 'Nomis' UK Labour Market Data">
+<meta property="og:description" content="Access UK official statistics from the 'Nomis' database. 
+    'Nomis' includes data from the Census, the Labour Force Survey, DWP benefit 
     statistics and other economic and demographic data from the Office for 
     National Statistics, based around statistical geographies. See 
     &lt;https://www.nomisweb.co.uk/api/v01/help&gt; for full API documentation.">
@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">nomisr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.0</span>
       </span>
     </div>
 
@@ -198,9 +198,9 @@
 <a class="sourceLine" id="cb2-54" data-line-number="54"> tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(z)</a>
 <a class="sourceLine" id="cb2-55" data-line-number="55"><span class="co">#&gt; Observations: 70</span></a>
 <a class="sourceLine" id="cb2-56" data-line-number="56"><span class="co">#&gt; Variables: 34</span></a>
-<a class="sourceLine" id="cb2-57" data-line-number="57"><span class="co">#&gt; $ DATE                &lt;chr&gt; "2018-02", "2018-02", "2018-02", "2018-02"...</span></a>
-<a class="sourceLine" id="cb2-58" data-line-number="58"><span class="co">#&gt; $ DATE_NAME           &lt;chr&gt; "February 2018", "February 2018", "Februar...</span></a>
-<a class="sourceLine" id="cb2-59" data-line-number="59"><span class="co">#&gt; $ DATE_CODE           &lt;chr&gt; "2018-02", "2018-02", "2018-02", "2018-02"...</span></a>
+<a class="sourceLine" id="cb2-57" data-line-number="57"><span class="co">#&gt; $ DATE                &lt;chr&gt; "2018-03", "2018-03", "2018-03", "2018-03"...</span></a>
+<a class="sourceLine" id="cb2-58" data-line-number="58"><span class="co">#&gt; $ DATE_NAME           &lt;chr&gt; "March 2018", "March 2018", "March 2018", ...</span></a>
+<a class="sourceLine" id="cb2-59" data-line-number="59"><span class="co">#&gt; $ DATE_CODE           &lt;chr&gt; "2018-03", "2018-03", "2018-03", "2018-03"...</span></a>
 <a class="sourceLine" id="cb2-60" data-line-number="60"><span class="co">#&gt; $ DATE_TYPE           &lt;chr&gt; "date", "date", "date", "date", "date", "d...</span></a>
 <a class="sourceLine" id="cb2-61" data-line-number="61"><span class="co">#&gt; $ DATE_TYPECODE       &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
 <a class="sourceLine" id="cb2-62" data-line-number="62"><span class="co">#&gt; $ DATE_SORTORDER      &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
@@ -224,12 +224,12 @@
 <a class="sourceLine" id="cb2-80" data-line-number="80"><span class="co">#&gt; $ ITEM_SORTORDER      &lt;chr&gt; "0", "0", "1", "1", "2", "2", "3", "3", "4...</span></a>
 <a class="sourceLine" id="cb2-81" data-line-number="81"><span class="co">#&gt; $ MEASURES            &lt;chr&gt; "20100", "20201", "20100", "20201", "20100...</span></a>
 <a class="sourceLine" id="cb2-82" data-line-number="82"><span class="co">#&gt; $ MEASURES_NAME       &lt;chr&gt; "Persons claiming JSA", "Workplace-based e...</span></a>
-<a class="sourceLine" id="cb2-83" data-line-number="83"><span class="co">#&gt; $ OBS_VALUE           &lt;chr&gt; "287049", "1.5", NA, NA, NA, NA, NA, NA, N...</span></a>
+<a class="sourceLine" id="cb2-83" data-line-number="83"><span class="co">#&gt; $ OBS_VALUE           &lt;chr&gt; "289482", "1.5", NA, NA, NA, NA, NA, NA, N...</span></a>
 <a class="sourceLine" id="cb2-84" data-line-number="84"><span class="co">#&gt; $ OBS_STATUS          &lt;chr&gt; "A", "A", "Q", "Q", "Q", "Q", "Q", "Q", "Q...</span></a>
 <a class="sourceLine" id="cb2-85" data-line-number="85"><span class="co">#&gt; $ OBS_STATUS_NAME     &lt;chr&gt; "Normal Value", "Normal Value", "These fig...</span></a>
 <a class="sourceLine" id="cb2-86" data-line-number="86"><span class="co">#&gt; $ OBS_CONF            &lt;chr&gt; "F", "F", "F", "F", "F", "F", "F", "F", "F...</span></a>
 <a class="sourceLine" id="cb2-87" data-line-number="87"><span class="co">#&gt; $ OBS_CONF_NAME       &lt;chr&gt; "Free (free for publication)", "Free (free...</span></a>
-<a class="sourceLine" id="cb2-88" data-line-number="88"><span class="co">#&gt; $ URN                 &lt;chr&gt; "Nm-1d1d32290e0d2092957697d5d1d20100", "Nm...</span></a>
+<a class="sourceLine" id="cb2-88" data-line-number="88"><span class="co">#&gt; $ URN                 &lt;chr&gt; "Nm-1d1d32291e0d2092957697d5d1d20100", "Nm...</span></a>
 <a class="sourceLine" id="cb2-89" data-line-number="89"><span class="co">#&gt; $ RECORD_OFFSET       &lt;chr&gt; "0", "1", "2", "3", "4", "5", "6", "7", "8...</span></a>
 <a class="sourceLine" id="cb2-90" data-line-number="90"><span class="co">#&gt; $ RECORD_COUNT        &lt;chr&gt; "70", "70", "70", "70", "70", "70", "70", ...</span></a></code></pre></div>
 <p>There is a lot of data available through Nomis, and there are some limits to the amount of data that can be retrieved within a certain period of time, although those are not published. For more details, see the <a href="https://www.nomisweb.co.uk/api/v01/help">full API documentation</a> from Nomis. Full package documentation is available at <a href="https://docs.evanodell.com/nomisr">docs.evanodell.com/nomisr</a></p>
@@ -261,6 +261,8 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=nomisr">https://​cloud.r-project.org/​package=nomisr</a>
+</li>
 <li>Browse source code at <br><a href="https://github.com/ropensci/nomisr">https://​github.com/​ropensci/​nomisr</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/ropensci/nomisr/issues">https://​github.com/​ropensci/​nomisr/​issues</a>
@@ -285,6 +287,7 @@
 <ul class="list-unstyled">
 <li>
 <a href="https://evanodell.com">Evan Odell</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-1845-808X" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" height="16"></a> </li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
 

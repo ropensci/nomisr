@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Retrieve Nomis datasets — nomis_get_data" />
 
 <meta property="og:description" content="Retrieves specific datasets from Nomis, based on their ID. To
@@ -61,19 +64,15 @@ data published." />
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-90706059-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-90706059-1', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-90706059-1');
 </script>
-
-
 
   </head>
 
@@ -135,6 +134,9 @@ data published." />
       <a href="http://docs.evanodell.com/fixerapi">fixerapi</a>
     </li>
     <li>
+      <a href="http://docs.evanodell.com/refuge">refuge</a>
+    </li>
+    <li>
       <a href="http://docs.evanodell.com/emisc">emisc</a>
     </li>
   </ul>
@@ -143,7 +145,7 @@ data published." />
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/EvanOdell/nomisr">
+  <a href="https://github.com/ropensci/nomisr">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -167,9 +169,11 @@ data published." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Retrieve Nomis datasets</h1>
-    <small>Source: <a href='https://github.com/ropensci/nomisr/blob/master/R/data_download.R'><code>R/data_download.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/nomisr/blob/master/R/data_download.R'><code>R/data_download.R</code></a></small>
+    <div class="hidden name"><code>nomis_get_data.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Retrieves specific datasets from Nomis, based on their ID. To
 find dataset IDs, use <code><a href='nomis_data_info.html'>nomis_data_info</a></code>. Datasets are retrived
@@ -194,6 +198,7 @@ return all data available between those queries, inclusively, while
 <code>date=c("first", "latest")</code> will return only the first and latest
 data published.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>nomis_get_data</span>(<span class='no'>id</span>, <span class='kw'>time</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>geography</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>sex</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>measures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>additional_queries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,

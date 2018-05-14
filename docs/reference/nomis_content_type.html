@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Nomis dataset content types — nomis_content_type" />
 
 <meta property="og:description" content="Nomis content type metadata is included in annotation tags, in the form of
@@ -45,19 +48,15 @@ dataset "NM_1658_1", using nomis_data_info("NM_1658_1"), are
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-90706059-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-90706059-1', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-90706059-1');
 </script>
-
-
 
   </head>
 
@@ -119,6 +118,9 @@ dataset "NM_1658_1", using nomis_data_info("NM_1658_1"), are
       <a href="http://docs.evanodell.com/fixerapi">fixerapi</a>
     </li>
     <li>
+      <a href="http://docs.evanodell.com/refuge">refuge</a>
+    </li>
+    <li>
       <a href="http://docs.evanodell.com/emisc">emisc</a>
     </li>
   </ul>
@@ -127,7 +129,7 @@ dataset "NM_1658_1", using nomis_data_info("NM_1658_1"), are
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/EvanOdell/nomisr">
+  <a href="https://github.com/ropensci/nomisr">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -151,9 +153,11 @@ dataset "NM_1658_1", using nomis_data_info("NM_1658_1"), are
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Nomis dataset content types</h1>
-    <small>Source: <a href='https://github.com/ropensci/nomisr/blob/master/R/content_type.R'><code>R/content_type.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/nomisr/blob/master/R/content_type.R'><code>R/content_type.R</code></a></small>
+    <div class="hidden name"><code>nomis_content_type.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Nomis content type metadata is included in annotation tags, in the form of
 <code>contenttype/&lt;contenttype&gt;</code> in the <code>annotationtitle</code> column in
@@ -162,6 +166,7 @@ the <code>annotations.annotation</code> list-column returned from
 dataset "NM_1658_1", using <code><a href='nomis_data_info.html'>nomis_data_info("NM_1658_1")</a></code>, are
 "geoglevel", "2001census" and "sources".</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>nomis_content_type</span>(<span class='no'>content_type</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     

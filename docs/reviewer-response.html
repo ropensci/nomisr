@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>or keyword_term <- if.else(keyword, “keywords-”, ““) query <- paste0(base_query, key_word_term, search,””) • nomisr</title>
+<title>or keyword_term <- if.else(keyword, “keywords-”, “") query <- paste0(base_query, key_word_term, search, "”) • nomisr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,7 +25,10 @@
 <link href="pkgdown.css" rel="stylesheet">
 <script src="jquery.sticky-kit.min.js"></script>
 <script src="pkgdown.js"></script>
-<meta property="og:title" content="or keyword_term <- if.else(keyword, “keywords-”, ““) query <- paste0(base_query, key_word_term, search,””)" />
+
+
+
+<meta property="og:title" content="or keyword_term <- if.else(keyword, “keywords-”, “") query <- paste0(base_query, key_word_term, search, "”)" />
 
 
 <!-- mathjax -->
@@ -37,19 +40,15 @@
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-90706059-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-90706059-1', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-90706059-1');
 </script>
-
-
 
   </head>
 
@@ -111,6 +110,9 @@
       <a href="http://docs.evanodell.com/fixerapi">fixerapi</a>
     </li>
     <li>
+      <a href="http://docs.evanodell.com/refuge">refuge</a>
+    </li>
+    <li>
       <a href="http://docs.evanodell.com/emisc">emisc</a>
     </li>
   </ul>
@@ -119,7 +121,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/EvanOdell/nomisr">
+  <a href="https://github.com/ropensci/nomisr">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -142,7 +144,7 @@
 <div class="row">
   <div class="contents col-md-9">
     <div class="page-header">
-      <h1>or keyword_term &lt;- if.else(keyword, “keywords-”, ““) query &lt;- paste0(base_query, key_word_term, search,””)</h1>
+      <h1>or keyword_term &lt;- if.else(keyword, “keywords-”, “&quot;) query &lt;- paste0(base_query, key_word_term, search, &quot;”)</h1>
     </div>
 
 
@@ -164,16 +166,16 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 #&gt; Observations: 14
 #&gt; Variables: 11
 #&gt; $ agencyid <chr> “NOMIS”, “NOMIS”, “NOMIS”…
-#&gt; $ id <chr> “NM_893_1”, “NM_893_1”, “…
-#&gt; $ uri <chr> “Nm-893d1”, “Nm-893d1”, “…
+#&gt; $ id <chr> “NM_893_1”, “NM_893_1”, "…
+#&gt; $ uri <chr> “Nm-893d1”, “Nm-893d1”, "…
 #&gt; $ version <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1…
 #&gt; $ components.primarymeasure.conceptref <chr> “OBS_VALUE”, “OBS_VALUE”,…
-#&gt; $ components.timedimension.codelist <chr> “CL_893_1_TIME”, “CL_893_…
-#&gt; $ components.timedimension.conceptref <chr> “TIME”, “TIME”, “TIME”, “…
-#&gt; $ name.value <chr> “LC4408EW - Tenure by num…
-#&gt; $ name.lang <chr> “en”, “en”, “en”, “en”, “…
-#&gt; $ annotationtext <chr> “Current (being actively …
-<p>#&gt; $ annotationtitle <chr> “Status”, “Keywords”, “Un…</chr></p>
+#&gt; $ components.timedimension.codelist <chr> “CL_893_1_TIME”, "CL_893_…
+#&gt; $ components.timedimension.conceptref <chr> “TIME”, “TIME”, “TIME”, "…
+#&gt; $ name.value <chr> "LC4408EW - Tenure by num…
+#&gt; $ name.lang <chr> “en”, “en”, “en”, “en”, "…
+#&gt; $ annotationtext <chr> "Current (being actively …
+<p>#&gt; $ annotationtitle <chr> “Status”, “Keywords”, "Un…</chr></p>
 <p><strong>Response:</strong> I’ve added a similar example to the vignette, which is similar enough to your example that I feel I should cite you as a contributor if that is okay.</p>
 <p>Following are my review comments, for improvement:</p>
 </chr></chr></chr></chr></chr></chr></dbl></chr></chr></chr>
@@ -259,9 +261,9 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 <div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">[minor] I don<span class="st">'t know what are the good practice on this one. I just feel that you have a dplyr dependency in import for three functions bind_rows, case_when and if_else than can be easily replace with rbind or if.else. I feel that, if the former are very useful interactively in an analysis, using them in a package can be unnecessary dependency to a "big" package that can cause you some effort later on if anything change in dplyr. More of a personal point of view on this one.</span></a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st">However, it relates on how you are build your query url</span></a></code></pre></div>
-<p>query &lt;- dplyr::if_else(keywords==FALSE, paste0(“/def.sdmx.json?search=<em>“, search,”</em>”), paste0(“/def.sdmx.json?search=keywords-”, search, “*“)</p>
+<p>query &lt;- dplyr::if_else(keywords==FALSE, paste0(“/def.sdmx.json?search=<em>", search, "</em>”), paste0(“/def.sdmx.json?search=keywords-”, search, "*")</p>
 <p>could be rewritten without dplyr::if_else</p>
-<p>base_query &lt;- “/def.sdmx.json?search=” if (keyword) { keyword_term &lt;- “keywords-”) } else { keyword_term &lt;- “*" }</p>
+<p>base_query &lt;- “/def.sdmx.json?search=” if (keyword) { keyword_term &lt;- “keywords-”) } else { keyword_term &lt;- "*" }</p>
 </div>
 <div id="or-keyword_term---if-elsekeyword-keywords--query---paste0base_query-key_word_term-search" class="section level1">
 

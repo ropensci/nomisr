@@ -35,11 +35,13 @@ navbar:
           href: http://docs.evanodell.com/nomisr
         - text: "fixerapi"
           href: http://docs.evanodell.com/fixerapi
+        - text: "refuge"
+          href: http://docs.evanodell.com/refuge
         - text: "emisc"
           href: http://docs.evanodell.com/emisc
 
   right:
     - icon: fa-github fa-lg
-      href: https://github.com/EvanOdell/nomisr
+      href: https://github.com/ropensci/nomisr
     - icon: fa-home fa-lg
       href: http://evanodell.com

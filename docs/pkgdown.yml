@@ -1,6 +1,6 @@
-pandoc: 2.1.3
-pkgdown: 0.1.0.9000
-pkgdown_sha: 3a6077977555168d5a6d7a3dd586810971903b09
+pandoc: '2.2'
+pkgdown: 1.0.0
+pkgdown_sha: d43ca38c74827d1d6babc3a80d48cd3a8e8fad8c
 articles:
   introduction: introduction.html
 

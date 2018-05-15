@@ -21,7 +21,9 @@ knitr::opts_chunk$set(
 [![Travis-CI Build Status](https://travis-ci.org/ropensci/nomisr.svg?branch=master)](https://travis-ci.org/ropensci/nomisr)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/evanodell/nomisr?branch=master&svg=true)](https://ci.appveyor.com/project/evanodell/nomisr)
 [![Coverage Status](https://img.shields.io/codecov/c/github/ropensci/nomisr/master.svg)](https://codecov.io/github/ropensci/nomisr?branch=master)
-[![DOI](https://zenodo.org/badge/118144805.svg)](https://zenodo.org/badge/latestdoi/118144805)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1246845.svg)](https://doi.org/10.5281/zenodo.1246845)
+
+
 
 `nomisr` is for accessing UK official statistics from the [Nomis](https://www.nomisweb.co.uk/) database through R. Nomis contains data from the Census, the Labour Force Survey, DWP benefit statistics and other economic and demographic data, and is maintained on behalf of the Office for National Statistics by the University of Durham.
 

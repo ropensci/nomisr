@@ -23,6 +23,7 @@
 #' @importFrom readr read_csv
 #' @importFrom dplyr bind_rows
 #' @importFrom utils menu
+#' @importFrom rsdmx readSDMX
 #' @importFrom rlang list2
 #' @import
 NULL

@@ -26,8 +26,8 @@
 #' \code{date} parameter. If given more than one query, \code{time} will
 #' return all data available between those queries, inclusively, while
 #' \code{date} will only return data for the exact queries specified. So
-#' \code{time=c("first", "latest")} will return all data, while
-#' \code{date=c("first", "latest")} will return only the first and latest
+#' \code{time = c("first", "latest")} will return all data, while
+#' \code{date = c("first", "latest")} will return only the first and latest
 #' data published.
 #'
 #' @param id The ID of the dataset to retrieve.
@@ -94,13 +94,16 @@
 #'
 #' @param additional_queries Any other additional queries to pass to the API.
 #' See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
-#' query structure. Defaults to \code{NULL}.
+#' query structure. Defaults to \code{NULL}. Deprecated in package 
+#' versions greater than 0.2.0.
 #'
 #' @param exclude_missing If \code{TRUE}, excludes all missing values.
 #' Defaults to \code{FALSE}.
 #'
 #' @param select A character vector of one or more variables to select,
 #' excluding all others. \code{select} is not case sensitive.
+#' 
+#' @param ... Use to pass any other parameters to the API.
 #'
 #' @return A tibble containing the selected dataset.
 #' By default, all tibble columns are parsed as characters.
@@ -170,12 +173,13 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
 
   if (length(additional_queries) > 0) {
     additional_query <- additional_queries
-    
-    message("The `additional_query` parameter is deprecated, please use ... instead")
+
+    message("The `additional_query` parameter is
+            deprecated, please use ... instead")
   } else {
     additional_query <- NULL
   }
-  
+
   # Check for sex queries and return either sex or c_sex
   if (length(sex) > 0) {
     sex_lookup <- nomis_data_info(id)$components.dimension[[1]]$conceptref
@@ -206,20 +210,20 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     ),
     ""
   )
-  
+
   dots <- rlang::list2(...) ## eval the dots
-  
+
   for (i in seq_along(dots)) { # retrieve the dots
-     x[i] <- ifelse(length(dots[[i]]) > 0,
-                             paste0(
-                               "&", names(dots[i]), "=",
-                               paste0(dots[[i]], collapse = ",")
-                             ),
-                             ""
-                    )
+    x[i] <- ifelse(length(dots[[i]]) > 0,
+      paste0(
+        "&", names(dots[i]), "=",
+        paste0(dots[[i]], collapse = ",")
+      ),
+      ""
+    )
   }
-  
-  dots_query <- paste0(x, collapse="")
+
+  dots_query <- paste0(x, collapse = "")
 
   if (!is.null(getOption("nomisr.API.key"))) {
     api_query <- paste0("&uid=", getOption("nomisr.API.key"))
@@ -230,7 +234,7 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
   }
 
   query <- paste0(
-    id, ".data.csv?", time_query, geography_query, sex_query, measures_query, 
+    id, ".data.csv?", time_query, geography_query, sex_query, measures_query,
     exclude_query, select_query, api_query, dots_query
   )
 
@@ -255,7 +259,8 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
       message("This may cause timeout and/or automatic rate limiting.")
 
       if (utils::menu(c("Yes", "No"),
-        title = "Do you want to continue?") == 2) {
+        title = "Do you want to continue?"
+      ) == 2) {
         stop(call. = FALSE)
       }
     }

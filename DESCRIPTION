@@ -27,7 +27,8 @@ Imports:
   readr,
   dplyr,
   httr,
-  utils
+  utils,
+  rsdmx
 RoxygenNote: 6.0.1
 Suggests:
   knitr,

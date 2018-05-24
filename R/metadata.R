@@ -92,27 +92,14 @@ nomis_get_metadata <- function(id, concept = NULL,
       )
     )
 
-    with_code_q <- jsonlite::fromJSON(
+    df <- tibble::as.tibble(rsdmx::readSDMX(
       paste0(
         base_url, id, "/", concept,
-        type_query, "/def.sdmx.json?",
+        type_query, "/def.sdmx.xml?",
         search_query,
-        additional_queries
-      ),
-      flatten = TRUE
-    )
-
-    if (is.null(with_code_q$structure$codelists$codelist$code)) {
-      df <- tibble::as_tibble(with_code_q$structure$codelists$codelist)
-    } else {
-      code_df <- as.data.frame(with_code_q$structure$codelists$codelist$code)
-
-      df <- tibble::tibble(
-        description = code_df$description.value,
-        value = code_df$value
-      )
-    }
+        additional_queries)))
   }
 
   df
+  
 }

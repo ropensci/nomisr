@@ -33,7 +33,13 @@ The package is for demographers, economists, geographers, public health research
 
 ## Installation
 
-You can install `nomisr` from github with:
+`nomisr` is available on CRAN:
+
+```{r cran-installation, eval = FALSE}
+install.packages("nomisr")
+```
+
+You can install the development version `nomisr` from github with:
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")

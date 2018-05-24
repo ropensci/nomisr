@@ -38,7 +38,13 @@ datasets covering the same geographic area.
 
 ## Installation
 
-You can install `nomisr` from github with:
+`nomisr` is available on CRAN:
+
+``` r
+install.packages("nomisr")
+```
+
+You can install the development version `nomisr` from github with:
 
 ``` r
 # install.packages("devtools")

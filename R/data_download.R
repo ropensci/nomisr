@@ -238,8 +238,7 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
       message("This may cause timeout and/or automatic rate limiting.")
 
       if (utils::menu(c("Yes", "No"),
-        title = "Do you want to continue?"
-      ) == 2) {
+        title = "Do you want to continue?") == 2) {
         stop(call. = FALSE)
       }
     }

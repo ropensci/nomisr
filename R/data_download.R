@@ -136,9 +136,8 @@
 
 
 nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
-                           sex = NULL, measures = NULL,
-                           additional_queries = NULL, exclude_missing = FALSE,
-                           select = NULL) {
+                           sex = NULL, measures = NULL, exclude_missing = FALSE,
+                           select = NULL, ...) {
   if (missing(id)) {
     stop("Dataset ID must be specified", call. = FALSE)
   }
@@ -203,6 +202,15 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     ),
     ""
   )
+  
+  mvars <- rlang::exprs(...)
+
+  for(i in seq_along(length(mvars))){
+    
+    df[[names(mvars)[i] ]] <- paste0("\\", mvars[[i]],
+                                     "{", df[[names(mvars)[i] ]],"}")
+    
+  }
 
   if (!is.null(getOption("nomisr.API.key"))) {
     api_query <- paste0("&uid=", getOption("nomisr.API.key"))

@@ -135,6 +135,7 @@
 #' }
 
 
+## Allow people to pass things to dots
 nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
                            sex = NULL, measures = NULL, exclude_missing = FALSE,
                            select = NULL, ...) {
@@ -167,11 +168,14 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     ""
   )
 
-  additional_query <- ifelse(length(additional_queries) > 0,
-    additional_queries,
-    ""
-  )
-
+  if (length(additional_queries) > 0) {
+    additional_query <- additional_queries
+    
+    message("The `additional_query` parameter is deprecated, please use ... instead")
+  } else {
+    additional_query <- NULL
+  }
+  
   # Check for sex queries and return either sex or c_sex
   if (length(sex) > 0) {
     sex_lookup <- nomis_data_info(id)$components.dimension[[1]]$conceptref
@@ -203,14 +207,19 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     ""
   )
   
-  mvars <- rlang::exprs(...)
-
-  for(i in seq_along(length(mvars))){
-    
-    df[[names(mvars)[i] ]] <- paste0("\\", mvars[[i]],
-                                     "{", df[[names(mvars)[i] ]],"}")
-    
+  dots <- rlang::list2(...) ## eval the dots
+  
+  for (i in seq_along(dots)) { # retrieve the dots
+     x[i] <- ifelse(length(dots[[i]]) > 0,
+                             paste0(
+                               "&", names(dots[i]), "=",
+                               paste0(dots[[i]], collapse = ",")
+                             ),
+                             ""
+                    )
   }
+  
+  dots_query <- paste0(x, collapse="")
 
   if (!is.null(getOption("nomisr.API.key"))) {
     api_query <- paste0("&uid=", getOption("nomisr.API.key"))
@@ -221,8 +230,8 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
   }
 
   query <- paste0(
-    id, ".data.csv?", time_query, geography_query, sex_query, measures_query,
-    additional_query, exclude_query, select_query, api_query
+    id, ".data.csv?", time_query, geography_query, sex_query, measures_query, 
+    exclude_query, select_query, api_query, dots_query
   )
 
   first_df <- nomis_get_data_util(query)

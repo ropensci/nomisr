@@ -23,6 +23,8 @@
 #' @importFrom readr read_csv
 #' @importFrom dplyr bind_rows
 #' @importFrom utils menu
+#' @importFrom rlang list2
+#' @import
 NULL
 
 # Checking for API key on package load

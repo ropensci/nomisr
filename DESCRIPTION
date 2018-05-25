@@ -28,7 +28,8 @@ Imports:
   dplyr,
   httr,
   utils,
-  rsdmx
+  rsdmx,
+  rlang
 RoxygenNote: 6.0.1
 Suggests:
   knitr,

@@ -21,7 +21,7 @@
 #'
 #' @param search  A string or character vector of strings to search for in the
 #' metadata. Defaults to \code{NULL}. As in \code{\link{nomis_search}}, the
-#' wildcard character * can be added to the beginning and/or end of each
+#' wildcard character \code{*} can be added to the beginning and/or end of each
 #' search string.
 #'
 #' @param additional_queries Any other additional queries to pass to the API.
@@ -97,9 +97,10 @@ nomis_get_metadata <- function(id, concept = NULL,
         base_url, id, "/", concept,
         type_query, "/def.sdmx.xml?",
         search_query,
-        additional_queries)))
+        additional_queries
+      )
+    ))
   }
 
   df
-  
 }

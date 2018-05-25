@@ -68,7 +68,7 @@
 #' }
 
 
-nomis_overview <- function(id, select=NULL) {
+nomis_overview <- function(id, select = NULL) {
   if (missing(id)) {
     stop("The dataset ID must be specified.", call. = FALSE)
   }

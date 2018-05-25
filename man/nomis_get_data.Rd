@@ -5,8 +5,8 @@
 \title{Retrieve Nomis datasets}
 \usage{
 nomis_get_data(id, time = NULL, date = NULL, geography = NULL,
-  sex = NULL, measures = NULL, additional_queries = NULL,
-  exclude_missing = FALSE, select = NULL)
+  sex = NULL, measures = NULL, exclude_missing = FALSE, select = NULL,
+  ...)
 }
 \arguments{
 \item{id}{The ID of the dataset to retrieve.}
@@ -71,15 +71,15 @@ data. Accepts a single string or number, or a list of strings or numbers.
 If \code{NULL}, returns data for all available statistical measures subject
 to other parameters. Defaults to \code{NULL}.}
 
-\item{additional_queries}{Any other additional queries to pass to the API.
-See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
-query structure. Defaults to \code{NULL}.}
-
 \item{exclude_missing}{If \code{TRUE}, excludes all missing values.
 Defaults to \code{FALSE}.}
 
 \item{select}{A character vector of one or more variables to select,
 excluding all others. \code{select} is not case sensitive.}
+
+\item{additional_queries}{Any other additional queries to pass to the API.
+See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
+query structure. Defaults to \code{NULL}.}
 }
 \value{
 A tibble containing the selected dataset.

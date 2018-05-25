@@ -202,14 +202,14 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     ),
     ""
   )
-  
+
   mvars <- rlang::exprs(...)
 
-  for(i in seq_along(length(mvars))){
-    
-    df[[names(mvars)[i] ]] <- paste0("\\", mvars[[i]],
-                                     "{", df[[names(mvars)[i] ]],"}")
-    
+  for (i in seq_along(length(mvars))) {
+    df[[names(mvars)[i] ]] <- paste0(
+      "\\", mvars[[i]],
+      "{", df[[names(mvars)[i] ]], "}"
+    )
   }
 
   if (!is.null(getOption("nomisr.API.key"))) {
@@ -246,7 +246,8 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
       message("This may cause timeout and/or automatic rate limiting.")
 
       if (utils::menu(c("Yes", "No"),
-        title = "Do you want to continue?") == 2) {
+        title = "Do you want to continue?"
+      ) == 2) {
         stop(call. = FALSE)
       }
     }

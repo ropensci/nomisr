@@ -1,3 +1,8 @@
+# nomisr 0.2.0.9000
+
+* Using `rsdmx` to parse metadata, fixing problems with oddly formatted JSON.
+
+* 
 
 
 # nomisr 0.2.0

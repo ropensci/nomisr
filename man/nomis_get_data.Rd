@@ -5,8 +5,8 @@
 \title{Retrieve Nomis datasets}
 \usage{
 nomis_get_data(id, time = NULL, date = NULL, geography = NULL,
-  sex = NULL, measures = NULL, additional_queries = NULL,
-  exclude_missing = FALSE, select = NULL)
+  sex = NULL, measures = NULL, exclude_missing = FALSE, select = NULL,
+  ...)
 }
 \arguments{
 \item{id}{The ID of the dataset to retrieve.}
@@ -71,15 +71,18 @@ data. Accepts a single string or number, or a list of strings or numbers.
 If \code{NULL}, returns data for all available statistical measures subject
 to other parameters. Defaults to \code{NULL}.}
 
-\item{additional_queries}{Any other additional queries to pass to the API.
-See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
-query structure. Defaults to \code{NULL}.}
-
 \item{exclude_missing}{If \code{TRUE}, excludes all missing values.
 Defaults to \code{FALSE}.}
 
 \item{select}{A character vector of one or more variables to select,
 excluding all others. \code{select} is not case sensitive.}
+
+\item{...}{Use to pass any other parameters to the API.}
+
+\item{additional_queries}{Any other additional queries to pass to the API.
+See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
+query structure. Defaults to \code{NULL}. Deprecated in package 
+versions greater than 0.2.0.}
 }
 \value{
 A tibble containing the selected dataset.
@@ -108,8 +111,8 @@ time. If they are, the function will retrieve data based on the the
 \code{date} parameter. If given more than one query, \code{time} will
 return all data available between those queries, inclusively, while
 \code{date} will only return data for the exact queries specified. So
-\code{time=c("first", "latest")} will return all data, while
-\code{date=c("first", "latest")} will return only the first and latest
+\code{time = c("first", "latest")} will return all data, while
+\code{date = c("first", "latest")} will return only the first and latest
 data published.
 }
 \examples{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/nomisr-package.R
 \docType{package}
 \name{nomisr}
-\alias{nomisr}
+\alias{nomisr-package}
 \alias{nomisr-package}
 \title{nomisr: Access Nomis UK Labour Market Data with R}
 \description{

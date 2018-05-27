@@ -2,17 +2,17 @@
 
 Thank you for any and all contributions! Following these guidelines will help streamline the process of contributing and make sure that we're all on the same page. While we ask that you read this guide and follow it to the best of your abilities, we welcome contributions from all, regardless of your level of experience.
 
-By participating in this project, you agree to abide by the [code of conduct](https://github.com/evanodell/nomisr/blob/master/CONDUCT.md).
+By participating in this project, you agree to abide by the [code of conduct](https://github.com/ropensci/nomisr/blob/master/CONDUCT.md).
 
 # Types of contributions 
 
 Don't feel that you must be a computer whiz to make meaningful contributions. Feel free to:
 
-- Identify areas for future development ([open an Issue](https://github.com/evanodell/nomisr/issues))
-- Identify issues/bugs ([open an Issue](https://github.com/evanodell/nomisr/issues))
-- Write tutorials/vignettes ([open a Pull Request](https://github.com/evanodell/nomisr/pulls) to contribute to the ones here, or make your own elsewhere and send us a link)
-- Add functionality ([open a Pull Request](https://github.com/evanodell/nomisr/pulls))
-- Fix bugs ([open a Pull Request](https://github.com/evanodell/nomisr/pulls))
+- Identify areas for future development ([open an Issue](https://github.com/ropensci/nomisr/issues))
+- Identify issues/bugs ([open an Issue](https://github.com/ropensci/nomisr/issues))
+- Write tutorials/vignettes ([open a Pull Request](https://github.com/ropensci/nomisr/pulls) to contribute to the ones here, or make your own elsewhere and send us a link)
+- Add functionality ([open a Pull Request](https://github.com/ropensci/nomisr/pulls))
+- Fix bugs ([open a Pull Request](https://github.com/ropensci/nomisr/pulls))
 
 # New to GitHub?
 
@@ -27,14 +27,14 @@ Getting ready to make your first contribution? Here are a couple of tutorials yo
 # How to contribute code
 
 - Fork the repository
-- Clone the repository from GitHub to your computer e.g,. `git clone https://github.com/evanodell/nomisr.git`
-- Make sure to track progress upstream (i.e., on our version of `nomisr` at `evanodell/nomisr`)
-  - `git remote add upstream https://github.com/evanodell/nomisr.git`
+- Clone the repository from GitHub to your computer e.g,. `git clone https://github.com/ropensci/nomisr.git`
+- Make sure to track progress upstream (i.e., on our version of `nomisr` at `ropensci/nomisr`)
+  - `git remote add upstream https://github.com/ropensci/nomisr.git`
   - Before making changes make sure to pull changes in from upstream with `git pull upstream`
 - Make your changes
   - For changes beyond minor typos, add an item to NEWS.md describing the changes and add yourself to the DESCRIPTION file as a contributor
 - Push to your GitHub account
-- Submit a pull request to home base (likely master branch, but check to make sure) at `evanodell/nomisr`
+- Submit a pull request to home base (likely master branch, but check to make sure) at `ropensci/nomisr`
 
 # Code formatting
 

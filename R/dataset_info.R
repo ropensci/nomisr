@@ -12,6 +12,7 @@
 #' @seealso \code{\link{nomis_get_data}}
 #' @seealso \code{\link{nomis_get_metadata}}
 #' @seealso \code{\link{nomis_overview}}
+#' @seealso \code{\link{nomis_codelist}}
 #'
 #' @examples \donttest{
 #'

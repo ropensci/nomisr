@@ -2,6 +2,11 @@
 
 * Using `rsdmx` to parse metadata, fixing problems with oddly formatted JSON.
 
+* The `additional_queries` parameter in `nomis_get_data()` and 
+`nomis_get_metadata()` has been deprecated
+and will eventually be removed. Please use the `...` parameter for 
+queries including concepts not available through the default parameters.
+
 * 
 
 

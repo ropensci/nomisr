@@ -25,7 +25,6 @@
 #' @importFrom utils menu
 #' @importFrom rsdmx readSDMX
 #' @importFrom rlang list2
-#' @import
 NULL
 
 # Checking for API key on package load

@@ -3,9 +3,9 @@
 #' Search Nomis datasets
 #'
 #' A function to search for datasets on given topics. In the case of multiple
-#' search parameters, returns metadata on all datasets matching  one or more of
-#' the parameters. The wildcard character \code{*} can be added to the beginning
-#' and/or end of each search string.
+#' search parameters, returns metadata on all datasets matching  one or more 
+#' of the parameters. The wildcard character \code{*} can be added to the 
+#' beginning and/or end of each search string.
 #'
 #' @param name A string or character vector of strings to search for in
 #' available dataset names. Defaults to \code{NULL}.
@@ -30,7 +30,6 @@
 #' @seealso \code{\link{nomis_content_type}}
 #'
 #' @examples \donttest{
-#'
 #' x <- nomis_search(name = '*seekers*')
 #'
 #' y <- nomis_search(keywords = 'Claimants')
@@ -42,7 +41,6 @@
 #' # Return metadata of all datasets with content_type "sources" and
 #' # source ID "acses"
 #' b <- nomis_search(content_type = "sources-acses")
-#'
 #' }
 
 

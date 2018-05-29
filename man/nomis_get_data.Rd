@@ -5,8 +5,8 @@
 \title{Retrieve Nomis datasets}
 \usage{
 nomis_get_data(id, time = NULL, date = NULL, geography = NULL,
-  sex = NULL, measures = NULL, exclude_missing = FALSE, select = NULL,
-  ...)
+  sex = NULL, measures = NULL, additional_queries = NULL,
+  exclude_missing = FALSE, select = NULL, ...)
 }
 \arguments{
 \item{id}{The ID of the dataset to retrieve.}
@@ -71,15 +71,18 @@ data. Accepts a single string or number, or a list of strings or numbers.
 If \code{NULL}, returns data for all available statistical measures subject
 to other parameters. Defaults to \code{NULL}.}
 
+\item{additional_queries}{Any other additional queries to pass to the API.
+See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
+query structure. Defaults to \code{NULL}. Deprecated in package 
+versions greater than 0.2.0 and will eventually be removed.}
+
 \item{exclude_missing}{If \code{TRUE}, excludes all missing values.
 Defaults to \code{FALSE}.}
 
 \item{select}{A character vector of one or more variables to select,
 excluding all others. \code{select} is not case sensitive.}
 
-\item{additional_queries}{Any other additional queries to pass to the API.
-See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
-query structure. Defaults to \code{NULL}.}
+\item{...}{Use to pass any other parameters to the API.}
 }
 \value{
 A tibble containing the selected dataset.
@@ -99,7 +102,9 @@ This can be a slow process if querying significant amounts of
 data. Guest users are limited to 25,000 rows per query, although
 \code{nomisr} identifies queries that will return more than 25,000 rows,
 sending individual queries and combining the results of those queries into
-a single tibble.
+a single tibble. In interactive sessions, \code{nomisr} will warn you if 
+guest users are requesting more than 350,000 rows of data, and if 
+registered users are requesting more than 1,500,000 rows.
 
 Note the difference between the \code{time} and \code{date}
 parameters.
@@ -108,8 +113,8 @@ time. If they are, the function will retrieve data based on the the
 \code{date} parameter. If given more than one query, \code{time} will
 return all data available between those queries, inclusively, while
 \code{date} will only return data for the exact queries specified. So
-\code{time=c("first", "latest")} will return all data, while
-\code{date=c("first", "latest")} will return only the first and latest
+\code{time = c("first", "latest")} will return all data, while
+\code{date = c("first", "latest")} will return only the first and latest
 data published.
 }
 \examples{
@@ -136,6 +141,13 @@ emp_by_occupation <- nomis_get_data(id="NM_168_1", time="latest",
                                     "C_OCCPUK11H_0_NAME", "obs_vAlUE"))
 
 tibble::glimpse(emp_by_occupation)
+
+# Deaths in 2016 and 2015 where cause of death is 
+death <- nomis_get_data("NM_161_1", date = c("2016","2015") 
+                        geography = "TYPE480", 
+                        cause_of_death=c(10300, 102088, 270))
+                    
+tibble::glimpse(death)              
 
 }
 }

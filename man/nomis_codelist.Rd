@@ -40,3 +40,10 @@ y <- nomis_codelist("NM_1_1", "geography", search = "*london")
 z <- nomis_codelist("NM_161_1", "cause_of_death")
 }
 }
+\seealso{
+\code{\link{nomis_data_info}}
+
+\code{\link{nomis_get_metadata}}
+
+\code{\link{nomis_overview}}
+}

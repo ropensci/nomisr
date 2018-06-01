@@ -1,12 +1,17 @@
-## utility function to download data
+
+
+# utility function used in `nomis_get_data`
+
 
 nomis_get_data_util <- function(query) {
+  if (length(query) < 1)
+  
   api_get <- httr::GET(paste0(base_url, query))
-
+  
   if (httr::http_type(api_get) != "text/csv") {
     stop("Nomis API did not return data in required CSV format", call. = FALSE)
   }
-
+  
   if (httr::http_error(api_get)) {
     stop(
       paste0(
@@ -16,7 +21,7 @@ nomis_get_data_util <- function(query) {
       call. = FALSE
     )
   }
-
+  
   df <- tryCatch({
     readr::read_csv(
       api_get$url,
@@ -29,9 +34,9 @@ nomis_get_data_util <- function(query) {
       "You can make smaller data requests, or try again later.\n\n",
       "Here's the original error message:\n", cond
     )
-
+    
     return(NA)
   })
-
+  
   df
 }

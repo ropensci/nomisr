@@ -38,4 +38,6 @@ tibble::glimpse(y)
 \code{\link{nomis_get_metadata}}
 
 \code{\link{nomis_overview}}
+
+\code{\link{nomis_codelist}}
 }

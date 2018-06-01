@@ -104,10 +104,10 @@ nomis_get_metadata <- function(id, concept = NULL,
     
     dots <- rlang::list2(...) ## eval the dots
     
-    x <- c()
+    dots_list <- c()
     
     for (i in seq_along(dots)) { # retrieve the dots
-      x[i] <- ifelse(length(dots[[i]]) > 0,
+      dots_list[i] <- ifelse(length(dots[[i]]) > 0,
                      paste0(
                        "&", names(dots[i]), "=",
                        paste0(dots[[i]], collapse = ",")
@@ -116,7 +116,7 @@ nomis_get_metadata <- function(id, concept = NULL,
       )
     }
     
-    dots_query <- paste0(x, collapse = "")
+    dots_query <- paste0(dots_list, collapse = "")
 
     df <- tibble::as.tibble(rsdmx::readSDMX(
       paste0(

@@ -4,8 +4,6 @@
 
 
 nomis_get_data_util <- function(query) {
-  if (length(query) < 1)
-  
   api_get <- httr::GET(paste0(base_url, query))
   
   if (httr::http_type(api_get) != "text/csv") {

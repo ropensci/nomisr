@@ -1,13 +1,6 @@
-
-
 ## utility function to download data
 
-
 nomis_get_data_util <- function(query) {
-  ### Implement tryCatch
-  # show_condition <- function(code) {
-  #   tryCatch(
-
   api_get <- httr::GET(paste0(base_url, query))
 
   if (httr::http_type(api_get) != "text/csv") {

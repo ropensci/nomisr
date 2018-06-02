@@ -5,8 +5,8 @@
 \title{Retrieve Nomis datasets}
 \usage{
 nomis_get_data(id, time = NULL, date = NULL, geography = NULL,
-  sex = NULL, measures = NULL, exclude_missing = FALSE, select = NULL,
-  ...)
+  sex = NULL, measures = NULL, additional_queries = NULL,
+  exclude_missing = FALSE, select = NULL, ...)
 }
 \arguments{
 \item{id}{The ID of the dataset to retrieve.}
@@ -71,18 +71,21 @@ data. Accepts a single string or number, or a list of strings or numbers.
 If \code{NULL}, returns data for all available statistical measures subject
 to other parameters. Defaults to \code{NULL}.}
 
+\item{additional_queries}{Any other additional queries to pass to the API.
+See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
+query structure. Defaults to \code{NULL}. Deprecated in package 
+versions greater than 0.2.0 and will eventually be removed.}
+
 \item{exclude_missing}{If \code{TRUE}, excludes all missing values.
 Defaults to \code{FALSE}.}
 
 \item{select}{A character vector of one or more variables to select,
 excluding all others. \code{select} is not case sensitive.}
 
-\item{...}{Use to pass any other parameters to the API.}
-
-\item{additional_queries}{Any other additional queries to pass to the API.
-See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
-query structure. Defaults to \code{NULL}. Deprecated in package 
-versions greater than 0.2.0.}
+\item{...}{Use to pass any other parameters to the API. Useful for passing 
+concepts that are not available through the default parameters. Only accepts
+concepts identified in \code{\link{nomis_get_metadata}} and concept values 
+identified in \code{\link{nomis_codelist}}}
 }
 \value{
 A tibble containing the selected dataset.
@@ -96,13 +99,16 @@ in csv format and parsed with the \code{read_csv} function from the
 columns.
 
 To find the code options for a given dataset, use
-\code{\link{nomis_get_metadata}}.
+\code{\link{nomis_get_metadata}} for specific codes, and 
+\code{\link{nomis_codelist}} for code values.
 
 This can be a slow process if querying significant amounts of
 data. Guest users are limited to 25,000 rows per query, although
 \code{nomisr} identifies queries that will return more than 25,000 rows,
 sending individual queries and combining the results of those queries into
-a single tibble.
+a single tibble. In interactive sessions, \code{nomisr} will warn you if 
+guest users are requesting more than 350,000 rows of data, and if 
+registered users are requesting more than 1,500,000 rows.
 
 Note the difference between the \code{time} and \code{date}
 parameters.
@@ -140,10 +146,27 @@ emp_by_occupation <- nomis_get_data(id="NM_168_1", time="latest",
 
 tibble::glimpse(emp_by_occupation)
 
+# Deaths in 2016 and 2015 by three specified causes, g
+death <- nomis_get_data("NM_161_1", date = c("2016","2015"), 
+                        geography = "TYPE480", 
+                        cause_of_death=c(10300, 102088, 270))
+                    
+tibble::glimpse(death)
+
+
+# All causes of death in London in 2016
+london_death <- nomis_get_data("NM_1_1", date = c("2016"), 
+                               geography = "2013265927", sex = 1, age = 0)              
+
+tibble::glimpse(london_death)
 }
 }
 \seealso{
 \code{\link{nomis_data_info}}
 
 \code{\link{nomis_get_metadata}}
+
+\code{\link{nomis_codelist}}
+
+\code{\link{nomis_overview}}
 }

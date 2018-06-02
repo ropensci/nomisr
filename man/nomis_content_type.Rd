@@ -24,7 +24,6 @@ dataset "NM_1658_1", using \code{nomis_data_info("NM_1658_1")}, are
 }
 \examples{
 \donttest{
-
 a <- nomis_content_type("sources")
 
 tibble::glimpse(a)
@@ -32,7 +31,6 @@ tibble::glimpse(a)
 b <- nomis_content_type("sources", id = "census")
 
 tibble::glimpse(b)
-
 }
 }
 \seealso{

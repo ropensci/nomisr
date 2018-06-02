@@ -54,7 +54,6 @@
 #' @seealso \code{\link{nomis_get_metadata}}
 #'
 #' @examples \donttest{
-#'
 #' library(dplyr)
 #'
 #' q <- nomis_overview("NM_1650_1")
@@ -64,11 +63,10 @@
 #' s <- nomis_overview("NM_1650_1", select = c("Units", "Keywords"))
 #'
 #' s %>% tidyr::unnest(name) %>% glimpse()
-#'
 #' }
 
 
-nomis_overview <- function(id, select=NULL) {
+nomis_overview <- function(id, select = NULL) {
   if (missing(id)) {
     stop("The dataset ID must be specified.", call. = FALSE)
   }

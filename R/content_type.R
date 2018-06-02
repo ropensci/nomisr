@@ -40,11 +40,11 @@ nomis_content_type <- function(content_type, id = NULL) {
     id_query <- paste0("/id/", id)
   }
 
-  query <- paste0(content_url, content_type, id_query, ".json")
+  content_query <- paste0(content_url, content_type, id_query, ".json")
 
-  content_query <- jsonlite::fromJSON(query, flatten = TRUE)
+  content_query2 <- jsonlite::fromJSON(content_query, flatten = TRUE)
 
-  df <- tibble::as.tibble(data.frame(content_query$contenttype$item))
+  df <- tibble::as.tibble(data.frame(content_query2$contenttype$item))
 
   df
 }

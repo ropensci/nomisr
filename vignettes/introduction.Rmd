@@ -161,7 +161,7 @@ The vast majority (98% as of February 2018) of Nomis datasets include a geograph
 Using the information above, we can now query the latest data on bedroom occupancy per household type in different NHS clinical commissioning groups.
 
 ```{r, echo=TRUE}
- z <- nomis_get_data(id = "NM_893_1", time = "latest", geography = "TYPE266")
+z <- nomis_get_data(id = "NM_893_1", time = "latest", geography = "TYPE266")
 
 print(z)
 ```

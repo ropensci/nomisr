@@ -116,7 +116,6 @@
 #' @seealso \code{\link{nomis_get_metadata}}
 #' @seealso \code{\link{nomis_codelist}}
 #' @seealso \code{\link{nomis_overview}}
-#'
 #' @examples \donttest{
 #'
 #' # Return data for each country

@@ -47,9 +47,10 @@ nomis_codelist <- function(id, concept, search = NULL) {
                                paste0("?search=", search)
                                )
   
-  query <- paste0(codelist_url, id_query, concept, ".def.sdmx.xml", search_query)
+  code_query <- paste0(codelist_url, id_query, concept,
+                  ".def.sdmx.xml", search_query)
   
-  df <- as.data.frame(rsdmx::readSDMX(query))
+  df <- as.data.frame(rsdmx::readSDMX(code_query))
   
   df
   

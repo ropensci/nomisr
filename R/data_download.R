@@ -80,10 +80,10 @@
 #' If \code{NULL}, returns data for all available statistical measures subject
 #' to other parameters. Defaults to \code{NULL}.
 #'
-#' @param sex The code for sexes included in the dataset. Accepts a string or
-#' number, or a vector of strings or numbers. \code{nomisr} automatically voids
-#' any queries for sex if it is not an available code in the
-#' requested dataset.
+#' @param sex The code for sexes/genders to include in the dataset. 
+#' Accepts a string or number, or a vector of strings or numbers. 
+#' \code{nomisr} automatically voids any queries for sex if it is not an 
+#' available code in the requested dataset.
 #'
 #' There are two different codings used for sex, depending on the dataset. For
 #' datasets using \code{"SEX"}, \code{7} will return results for
@@ -91,7 +91,9 @@
 #' Defaults to \code{NULL}, equivalent to \code{c(5,6,7)} for datasets where
 #' sex is an option. For datasets using \code{"C_SEX"}, \code{0} will return
 #' results for males and females, \code{1} only males and
-#' \code{2} only females.
+#' \code{2} only females. Some datasets use \code{"GENDER"} with the same 
+#' values as \code{"SEX"}, which works with both \code{sex} and 
+#' \code{gender = <code>} as a dot parameter.
 #'
 #' @param additional_queries Any other additional queries to pass to the API.
 #' See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
@@ -205,6 +207,8 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
       sex_query <- paste0("&c_sex=", paste0(sex, collapse = ","))
     } else if ("SEX" %in% sex_lookup) {
       sex_query <- paste0("&sex=", paste0(sex, collapse = ","))
+    }  else if ("GENDER" %in% sex_lookup) {
+      sex_query <- paste0("&gender=", paste0(sex, collapse = ","))
     } else {
       sex_query <- ""
     }

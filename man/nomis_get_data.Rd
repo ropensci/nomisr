@@ -53,10 +53,10 @@ other parameters. Defaults to \code{NULL}. In the rare instance that a
 geographic variable does not exist, if not \code{NULL}, the function
 will return an error.}
 
-\item{sex}{The code for sexes included in the dataset. Accepts a string or
-number, or a vector of strings or numbers. \code{nomisr} automatically voids
-any queries for sex if it is not an available code in the
-requested dataset.
+\item{sex}{The code for sexes/genders to include in the dataset. 
+Accepts a string or number, or a vector of strings or numbers. 
+\code{nomisr} automatically voids any queries for sex if it is not an 
+available code in the requested dataset.
 
 There are two different codings used for sex, depending on the dataset. For
 datasets using \code{"SEX"}, \code{7} will return results for
@@ -64,7 +64,9 @@ males and females, \code{6} only females and \code{5} only males.
 Defaults to \code{NULL}, equivalent to \code{c(5,6,7)} for datasets where
 sex is an option. For datasets using \code{"C_SEX"}, \code{0} will return
 results for males and females, \code{1} only males and
-\code{2} only females.}
+\code{2} only females. Some datasets use \code{"GENDER"} with the same 
+values as \code{"SEX"}, which works with both \code{sex} and 
+\code{gender = <code>} as a dot parameter.}
 
 \item{measures}{The code for the statistical measure(s) to include in the
 data. Accepts a single string or number, or a list of strings or numbers.

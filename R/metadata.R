@@ -35,7 +35,8 @@
 #' @seealso \code{\link{nomis_get_data}}
 #' @seealso \code{\link{nomis_overview}}
 #'
-#' @return A tibble with options.
+#' @return A tibble with metadata options for queries using 
+#' \code{\link{nomis_get_data}}.
 #' @export
 #'
 #' @examples \donttest{
@@ -57,10 +58,9 @@
 #'
 #' tibble::glimpse(d)
 #'
-#' e <- nomis_get_metadata('NM_1_1', 'item',
-#'                         additional_queries = "?geography=1879048226&sex=5")
+#' e <- nomis_get_metadata('NM_1_1', 'item', geography = 1879048226, sex = 5)
 #'
-#' tibble::glimpse(e)
+#' print(e)
 #'
 #' f <- nomis_get_metadata('NM_1_1', 'item', search = "*married*")
 #'

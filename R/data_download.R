@@ -98,7 +98,8 @@
 #' @param additional_queries Any other additional queries to pass to the API.
 #' See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
 #' query structure. Defaults to \code{NULL}. Deprecated in package 
-#' versions greater than 0.2.0 and will eventually be removed.
+#' versions greater than 0.2.0 and will eventually be removed in a
+#' future version.
 #'
 #' @param exclude_missing If \code{TRUE}, excludes all missing values.
 #' Defaults to \code{FALSE}.

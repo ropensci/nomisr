@@ -7,8 +7,7 @@ test_that("nomis_get_data return expected format", {
   z <- nomis_get_data(
     id = "NM_1_1", time = "latest",
     measures = c(20100, 20201), sex = 5,
-    additional_queries = "&geography=TYPE499",
-    exclude_missing = TRUE
+    exclude_missing = TRUE, geography = "TYPE499"
   )
   expect_length(z, 34)
   expect_type(z, "list")
@@ -44,7 +43,7 @@ test_that("nomis_get_data return expected format", {
 
   c <- nomis_get_data(
     id = "NM_127_1", sex = "6",
-    additional_queries = "&time=latest"
+    time = "latest"
   )
   expect_length(c, 28)
   expect_type(c, "list")
@@ -54,8 +53,7 @@ test_that("nomis_get_data return expected format", {
   expect_error(nomis_get_data(
     id = "NM_1_1", time = "latest",
     measures = c(20100, 20201), sex = 0,
-    additional_queries = "&geography=TYPE499",
-    exclude_missing = FALSE
+    exclude_missing = FALSE, geography = "TYPE499"
   ))
 
   x_select <- nomis_get_data(

@@ -31,7 +31,8 @@ versions greater than 0.2.0 and will eventually be removed.}
 \item{...}{Use to pass any other parameters to the API.}
 }
 \value{
-A tibble with options.
+A tibble with metadata options for queries using 
+\code{\link{nomis_get_data}}.
 }
 \description{
 Retrieve all concept code options of all Nomis datasets, 
@@ -62,10 +63,9 @@ d <- nomis_get_metadata('NM_1_1', 'geography', '1879048226')
 
 tibble::glimpse(d)
 
-e <- nomis_get_metadata('NM_1_1', 'item',
-                        additional_queries = "?geography=1879048226&sex=5")
+e <- nomis_get_metadata('NM_1_1', 'item', geography = 1879048226, sex = 5)
 
-tibble::glimpse(e)
+print(e)
 
 f <- nomis_get_metadata('NM_1_1', 'item', search = "*married*")
 

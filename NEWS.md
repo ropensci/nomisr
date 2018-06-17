@@ -1,14 +1,22 @@
-# nomisr 0.2.0.9000
+# nomisr 0.3.0
 
-* Using `rsdmx` to parse metadata, fixing problems with oddly formatted JSON.
+## New features and function changes
+
+* New `nomis_codelist()` function, which returns the internal coding for 
+different concepts used by the NOMIS API in a \code{tibble}, given a dataset 
+ID and a concept name. 
 
 * The `additional_queries` parameter in `nomis_get_data()` and 
-`nomis_get_metadata()` has been deprecated
-and will eventually be removed. Please use the `...` parameter for 
-queries including concepts not available through the default parameters.
+`nomis_get_metadata()` has been deprecated and will eventually be removed. 
+Please use the `...` parameter for queries including concepts not available 
+through the default parameters.
 
-* 
+* The `sex` parameter in `nomis_get_data()` will also work with datasets that 
+use "gender" instead of "sex".
 
+## Internal changes and bug fixes
+
+* Uses `rsdmx` to parse metadata, fixing #7.
 
 # nomisr 0.2.0
 

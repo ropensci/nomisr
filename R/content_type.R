@@ -10,7 +10,7 @@
 #' "geoglevel", "2001census" and "sources".
 #'
 #' @param content_type A string with the content type to return metadata on.
-#' 
+#'
 #' @param id A string with an optional \code{content_type} id.
 #'
 #' @return A tibble with metadata on a given content type.

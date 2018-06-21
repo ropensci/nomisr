@@ -8,8 +8,8 @@
 <title>Introduction to nomisr • nomisr</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to nomisr">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to nomisr">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
       <h1>Introduction to nomisr</h1>
                         <h4 class="author">Evan Odell</h4>
             
-            <h4 class="date">2018-05-02</h4>
+            <h4 class="date">2018-06-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/nomisr/blob/master/../docs/vignettes/introduction.Rmd"><code>../docs/vignettes/introduction.Rmd</code></a></small>
       <div class="hidden name"><code>introduction.Rmd</code></div>
@@ -332,47 +332,47 @@
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">  b &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nomis_get_metadata.html">nomis_get_metadata</a></span>(<span class="dt">id =</span> <span class="st">"NM_893_1"</span>, <span class="dt">concept =</span> <span class="st">"GEOGRAPHY"</span>)</a>
 <a class="sourceLine" id="cb33-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb33-3" data-line-number="3">  <span class="kw">print</span>(b)</a></code></pre></div>
-<pre><code>## # A tibble: 3 x 2
-##   description            value
-##   &lt;chr&gt;                  &lt;int&gt;
-## 1 England and Wales 2092957703
-## 2 England           2092957699
-## 3 Wales             2092957700</code></pre>
+<pre><code>## # A tibble: 3 x 3
+##   id         parentCode label.en         
+##   &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;            
+## 1 2092957703 &lt;NA&gt;       England and Wales
+## 2 2092957699 &lt;NA&gt;       England          
+## 3 2092957700 2092957700 Wales</code></pre>
 <p>We can now pass a generic “type” string to the <code>type</code> parameter in <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code>, which returns all available geography types for dataset “NM_893_1”.</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">  c &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nomis_get_metadata.html">nomis_get_metadata</a></span>(<span class="dt">id =</span> <span class="st">"NM_893_1"</span>, <span class="dt">concept =</span> <span class="st">"geography"</span>, <span class="dt">type =</span> <span class="st">"type"</span>)</a>
 <a class="sourceLine" id="cb35-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb35-3" data-line-number="3">  <span class="kw">print</span>(c)</a></code></pre></div>
 <pre><code>## # A tibble: 22 x 2
-##    description                                        value  
-##    &lt;chr&gt;                                              &lt;chr&gt;  
-##  1 NHS area teams                                     TYPE265
-##  2 clinical commissioning groups                      TYPE266
-##  3 built-up areas including subdivisions              TYPE267
-##  4 built-up areas                                     TYPE269
-##  5 national assembly for wales electoral regions 2010 TYPE273
-##  6 postcode areas                                     TYPE274
-##  7 postcode districts                                 TYPE275
-##  8 postcode sectors                                   TYPE276
-##  9 national assembly for wales constituencies 2010    TYPE277
-## 10 parishes 2011                                      TYPE279
+##    id      label.en                                          
+##    &lt;chr&gt;   &lt;chr&gt;                                             
+##  1 TYPE265 NHS area teams                                    
+##  2 TYPE266 clinical commissioning groups                     
+##  3 TYPE267 built-up areas including subdivisions             
+##  4 TYPE269 built-up areas                                    
+##  5 TYPE273 national assembly for wales electoral regions 2010
+##  6 TYPE274 postcode areas                                    
+##  7 TYPE275 postcode districts                                
+##  8 TYPE276 postcode sectors                                  
+##  9 TYPE277 national assembly for wales constituencies 2010   
+## 10 TYPE279 parishes 2011                                     
 ## # ... with 12 more rows</code></pre>
 <p>Passing a specific type to the <code>type</code> parameter, in this case “TYPE460” for all post-2010 parliamentary constituencies, returns a tibble with geographic codes for those specific constituencies, which can be used to filter queries.</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">  d &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nomis_get_metadata.html">nomis_get_metadata</a></span>(<span class="dt">id =</span> <span class="st">"NM_893_1"</span>, <span class="dt">concept =</span> <span class="st">"geography"</span>, <span class="dt">type =</span> <span class="st">"TYPE460"</span>)</a>
 <a class="sourceLine" id="cb37-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb37-3" data-line-number="3">  <span class="kw">print</span>(d)</a></code></pre></div>
-<pre><code>## # A tibble: 573 x 2
-##    description             value
-##    &lt;chr&gt;                   &lt;int&gt;
-##  1 Berwick-upon-Tweed 1929379865
-##  2 Bishop Auckland    1929379880
-##  3 Blaydon            1929379885
-##  4 Blyth Valley       1929379886
-##  5 City of Durham     1929379952
-##  6 Darlington         1929379969
-##  7 Easington          1929379988
-##  8 Gateshead          1929380020
-##  9 Hartlepool         1929380044
-## 10 Hexham             1929380057
+<pre><code>## # A tibble: 573 x 3
+##    id         parentCode label.en          
+##    &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;             
+##  1 1929379865 2013265921 Berwick-upon-Tweed
+##  2 1929379880 2013265921 Bishop Auckland   
+##  3 1929379885 2013265921 Blaydon           
+##  4 1929379886 2013265921 Blyth Valley      
+##  5 1929379952 2013265921 City of Durham    
+##  6 1929379969 2013265921 Darlington        
+##  7 1929379988 2013265921 Easington         
+##  8 1929380020 2013265921 Gateshead         
+##  9 1929380044 2013265921 Hartlepool        
+## 10 1929380057 2013265921 Hexham            
 ## # ... with 563 more rows</code></pre>
 <p>The vast majority (98% as of February 2018) of Nomis datasets include a geographic variable.</p>
 </div>
@@ -381,7 +381,7 @@
 <h2 class="hasAnchor">
 <a href="#downloading-data" class="anchor"></a>Downloading data</h2>
 <p>Using the information above, we can now query the latest data on bedroom occupancy per household type in different NHS clinical commissioning groups.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"> z &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nomis_get_data.html">nomis_get_data</a></span>(<span class="dt">id =</span> <span class="st">"NM_893_1"</span>, <span class="dt">time =</span> <span class="st">"latest"</span>, <span class="dt">geography =</span> <span class="st">"TYPE266"</span>)</a>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">z &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nomis_get_data.html">nomis_get_data</a></span>(<span class="dt">id =</span> <span class="st">"NM_893_1"</span>, <span class="dt">time =</span> <span class="st">"latest"</span>, <span class="dt">geography =</span> <span class="st">"TYPE266"</span>)</a>
 <a class="sourceLine" id="cb39-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb39-3" data-line-number="3"><span class="kw">print</span>(z)</a></code></pre></div>
 <pre><code>## # A tibble: 44,310 x 40

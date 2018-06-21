@@ -21,22 +21,25 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
 
 <meta property="og:title" content="Nomis metadata concepts and types — nomis_get_metadata" />
 
-<meta property="og:description" content="Retrieve all concept code options of all Nomis datasets, concept
-code options for a given dataset, or the all the options for a given
+<meta property="og:description" content="Retrieve all concept code options of all Nomis datasets, 
+concept code options for a given dataset, or the all the options for a given
 concept variable from a particular dataset. Specifying concept will
 return all the options for a given variable in a particular dataset.
 If looking for a more detailed overview of all available
 metadata for a given dataset, see nomis_overview." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -73,7 +76,7 @@ metadata for a given dataset, see nomis_overview." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0</span>
       </span>
     </div>
 
@@ -159,8 +162,8 @@ metadata for a given dataset, see nomis_overview." />
 
     <div class="ref-description">
     
-    <p>Retrieve all concept code options of all Nomis datasets, concept
-code options for a given dataset, or the all the options for a given
+    <p>Retrieve all concept code options of all Nomis datasets, 
+concept code options for a given dataset, or the all the options for a given
 concept variable from a particular dataset. Specifying <code>concept</code> will
 return all the options for a given variable in a particular dataset.</p>
 <p>If looking for a more detailed overview of all available
@@ -169,7 +172,7 @@ metadata for a given dataset, see <code><a href='nomis_overview.html'>nomis_over
     </div>
 
     <pre class="usage"><span class='fu'>nomis_get_metadata</span>(<span class='no'>id</span>, <span class='kw'>concept</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>search</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>additional_queries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>additional_queries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -194,20 +197,26 @@ types of variables available for a given code. Defaults to <code>NULL</code>. If
       <th>search</th>
       <td><p>A string or character vector of strings to search for in the
 metadata. Defaults to <code>NULL</code>. As in <code><a href='nomis_search.html'>nomis_search</a></code>, the
-wildcard character * can be added to the beginning and/or end of each
+wildcard character <code>*</code> can be added to the beginning and/or end of each
 search string.</p></td>
     </tr>
     <tr>
       <th>additional_queries</th>
       <td><p>Any other additional queries to pass to the API.
 See <a href='https://www.nomisweb.co.uk/api/v01/help'>https://www.nomisweb.co.uk/api/v01/help</a> for instructions on
-query structure. Defaults to <code>NULL</code>.</p></td>
+query structure. Defaults to <code>NULL</code>. Deprecated in package 
+versions greater than 0.2.0 and will eventually be removed.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Use to pass any other parameters to the API.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble with options.</p>
+    <p>A tibble with metadata options for queries using 
+<code><a href='nomis_get_data.html'>nomis_get_data</a></code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -217,8 +226,7 @@ query structure. Defaults to <code>NULL</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_metadata</span>(<span class='st'>'NM_1_1'</span>)
+    <pre class="examples"><div class='input'><span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_metadata</span>(<span class='st'>'NM_1_1'</span>)
 
 <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>a</span>)</div><div class='output co'>#&gt; Observations: 5
 #&gt; Variables: 3
@@ -228,38 +236,42 @@ query structure. Defaults to <code>NULL</code>.</p></td>
 <span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_metadata</span>(<span class='st'>'NM_1_1'</span>, <span class='st'>'geography'</span>)
 
 <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>b</span>)</div><div class='output co'>#&gt; Observations: 7
-#&gt; Variables: 2
-#&gt; $ description &lt;chr&gt; "United Kingdom", "Great Britain", "England", "Wales", ...
-#&gt; $ value       &lt;int&gt; 2092957697, 2092957698, 2092957699, 2092957700, 2092957...</div><div class='input'>
+#&gt; Variables: 3
+#&gt; $ id         &lt;chr&gt; "2092957697", "2092957698", "2092957699", "2092957700", ...
+#&gt; $ parentCode &lt;chr&gt; NA, NA, NA, "2092957700", "2092957701", "2092957702", NA
+#&gt; $ label.en   &lt;chr&gt; "United Kingdom", "Great Britain", "England", "Wales", "...</div><div class='input'>
 <span class='co'># returns all types of geography</span>
 <span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_metadata</span>(<span class='st'>'NM_1_1'</span>, <span class='st'>'geography'</span>, <span class='st'>'TYPE'</span>)
 
 <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; Observations: 96
 #&gt; Variables: 2
-#&gt; $ description &lt;chr&gt; "1991 frozen wards", "parliamentary constituencies 1983...
-#&gt; $ value       &lt;chr&gt; "TYPE1", "TYPE8", "TYPE18", "TYPE27", "TYPE33", "TYPE45...</div><div class='input'>
+#&gt; $ id       &lt;chr&gt; "TYPE1", "TYPE8", "TYPE18", "TYPE27", "TYPE33", "TYPE45", ...
+#&gt; $ label.en &lt;chr&gt; "1991 frozen wards", "parliamentary constituencies 1983 re...</div><div class='input'>
 <span class='co'># returns geography types available within Wigan</span>
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_metadata</span>(<span class='st'>'NM_1_1'</span>, <span class='st'>'geography'</span>, <span class='st'>'1879048226'</span>)
 
 <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>d</span>)</div><div class='output co'>#&gt; Observations: 3
-#&gt; Variables: 2
-#&gt; $ description &lt;chr&gt; "Wigan", "local authorities: district / unitary (prior ...
-#&gt; $ value       &lt;chr&gt; "1879048226", "1879048226TYPE464", "1879048226TYPE486"</div><div class='input'>
-<span class='no'>e</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_metadata</span>(<span class='st'>'NM_1_1'</span>, <span class='st'>'item'</span>,
-                        <span class='kw'>additional_queries</span> <span class='kw'>=</span> <span class='st'>"?geography=1879048226&amp;sex=5"</span>)
+#&gt; Variables: 3
+#&gt; $ id         &lt;chr&gt; "1879048226", "1879048226TYPE464", "1879048226TYPE486"
+#&gt; $ parentCode &lt;chr&gt; "2013265922", NA, NA
+#&gt; $ label.en   &lt;chr&gt; "Wigan", "local authorities: district / unitary (prior t...</div><div class='input'>
+<span class='no'>e</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_metadata</span>(<span class='st'>'NM_1_1'</span>, <span class='st'>'item'</span>, <span class='kw'>geography</span> <span class='kw'>=</span> <span class='fl'>1879048226</span>, <span class='kw'>sex</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 
-<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>e</span>)</div><div class='output co'>#&gt; Observations: 5
-#&gt; Variables: 2
-#&gt; $ description &lt;chr&gt; "Total claimants", "Students on vacation", "Temporarily...
-#&gt; $ value       &lt;int&gt; 1, 2, 3, 4, 9</div><div class='input'>
+<span class='fu'>print</span>(<span class='no'>e</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 3
+#&gt;   id    parentCode label.en                
+#&gt;   &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;                   
+#&gt; 1 1     &lt;NA&gt;       Total claimants         
+#&gt; 2 2     1          Students on vacation    
+#&gt; 3 3     1          Temporarily stopped     
+#&gt; 4 4     1          Claimants under 18 years
+#&gt; 5 9     1          Married females         </div><div class='input'>
 <span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_metadata</span>(<span class='st'>'NM_1_1'</span>, <span class='st'>'item'</span>, <span class='kw'>search</span> <span class='kw'>=</span> <span class='st'>"*married*"</span>)
 
 <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; Observations: 1
-#&gt; Variables: 2
-#&gt; $ description &lt;chr&gt; "Married females"
-#&gt; $ value       &lt;int&gt; 9</div><div class='input'>
-
-</div></pre>
+#&gt; Variables: 3
+#&gt; $ id         &lt;chr&gt; "9"
+#&gt; $ parentCode &lt;chr&gt; "1"
+#&gt; $ label.en   &lt;chr&gt; "Married females"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

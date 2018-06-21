@@ -1,3 +1,12 @@
+
+# nomisr 0.3.0.9000
+
+## Bug fixes
+
+* Dot queries to `nomis_get_data()` work with case-insensitive measurements 
+more persistently. 
+
+
 # nomisr 0.3.0
 
 ## New features and function changes

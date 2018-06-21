@@ -244,7 +244,7 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
   for (i in seq_along(dots)) { # retrieve the dots
     x[i] <- ifelse(length(dots[[i]]) > 0,
       paste0(
-        "&", names(dots[i]), "=",
+        "&", toupper(names(dots[i])), "=",
         paste0(dots[[i]], collapse = ",")
       ),
       ""

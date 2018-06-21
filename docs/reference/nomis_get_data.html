@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -36,12 +38,15 @@ in csv format and parsed with the read_csv function from the
 readr package into a tibble, with all columns parsed as character
 columns.
 To find the code options for a given dataset, use
-nomis_get_metadata.
+nomis_get_metadata for specific codes, and 
+nomis_codelist for code values.
 This can be a slow process if querying significant amounts of
 data. Guest users are limited to 25,000 rows per query, although
 nomisr identifies queries that will return more than 25,000 rows,
 sending individual queries and combining the results of those queries into
-a single tibble.
+a single tibble. In interactive sessions, nomisr will warn you if 
+guest users are requesting more than 350,000 rows of data, and if 
+registered users are requesting more than 1,500,000 rows.
 Note the difference between the time and date
 parameters.
 The time and date parameters should not be used at the same
@@ -49,10 +54,11 @@ time. If they are, the function will retrieve data based on the the
 date parameter. If given more than one query, time will
 return all data available between those queries, inclusively, while
 date will only return data for the exact queries specified. So
-time=c("first", "latest") will return all data, while
-date=c("first", "latest") will return only the first and latest
+time = c(&quot;first&quot;, &quot;latest&quot;) will return all data, while
+date = c(&quot;first&quot;, &quot;latest&quot;) will return only the first and latest
 data published." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -89,7 +95,7 @@ data published." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0</span>
       </span>
     </div>
 
@@ -181,12 +187,15 @@ in csv format and parsed with the <code>read_csv</code> function from the
 <code>readr</code> package into a tibble, with all columns parsed as character
 columns.</p>
 <p>To find the code options for a given dataset, use
-<code><a href='nomis_get_metadata.html'>nomis_get_metadata</a></code>.</p>
+<code><a href='nomis_get_metadata.html'>nomis_get_metadata</a></code> for specific codes, and 
+<code><a href='nomis_codelist.html'>nomis_codelist</a></code> for code values.</p>
 <p>This can be a slow process if querying significant amounts of
 data. Guest users are limited to 25,000 rows per query, although
 <code>nomisr</code> identifies queries that will return more than 25,000 rows,
 sending individual queries and combining the results of those queries into
-a single tibble.</p>
+a single tibble. In interactive sessions, <code>nomisr</code> will warn you if 
+guest users are requesting more than 350,000 rows of data, and if 
+registered users are requesting more than 1,500,000 rows.</p>
 <p>Note the difference between the <code>time</code> and <code>date</code>
 parameters.
 The <code>time</code> and <code>date</code> parameters should not be used at the same
@@ -194,15 +203,15 @@ time. If they are, the function will retrieve data based on the the
 <code>date</code> parameter. If given more than one query, <code>time</code> will
 return all data available between those queries, inclusively, while
 <code>date</code> will only return data for the exact queries specified. So
-<code>time=c("first", "latest")</code> will return all data, while
-<code>date=c("first", "latest")</code> will return only the first and latest
+<code>time = c("first", "latest")</code> will return all data, while
+<code>date = c("first", "latest")</code> will return only the first and latest
 data published.</p>
     
     </div>
 
     <pre class="usage"><span class='fu'>nomis_get_data</span>(<span class='no'>id</span>, <span class='kw'>time</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>geography</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>sex</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>measures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>additional_queries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>exclude_missing</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>select</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>exclude_missing</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>select</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -253,17 +262,19 @@ will return an error.</p></td>
     </tr>
     <tr>
       <th>sex</th>
-      <td><p>The code for sexes included in the dataset. Accepts a string or
-number, or a vector of strings or numbers. <code>nomisr</code> automatically voids
-any queries for sex if it is not an available code in the
-requested dataset.</p>
+      <td><p>The code for sexes/genders to include in the dataset. 
+Accepts a string or number, or a vector of strings or numbers. 
+<code>nomisr</code> automatically voids any queries for sex if it is not an 
+available code in the requested dataset.</p>
 <p>There are two different codings used for sex, depending on the dataset. For
 datasets using <code>"SEX"</code>, <code>7</code> will return results for
 males and females, <code>6</code> only females and <code>5</code> only males.
 Defaults to <code>NULL</code>, equivalent to <code>c(5,6,7)</code> for datasets where
 sex is an option. For datasets using <code>"C_SEX"</code>, <code>0</code> will return
 results for males and females, <code>1</code> only males and
-<code>2</code> only females.</p></td>
+<code>2</code> only females. Some datasets use <code>"GENDER"</code> with the same 
+values as <code>"SEX"</code>, which works with both <code>sex</code> and 
+<code>gender = &lt;code&gt;</code> as a dot parameter.</p></td>
     </tr>
     <tr>
       <th>measures</th>
@@ -276,7 +287,9 @@ to other parameters. Defaults to <code>NULL</code>.</p></td>
       <th>additional_queries</th>
       <td><p>Any other additional queries to pass to the API.
 See <a href='https://www.nomisweb.co.uk/api/v01/help'>https://www.nomisweb.co.uk/api/v01/help</a> for instructions on
-query structure. Defaults to <code>NULL</code>.</p></td>
+query structure. Defaults to <code>NULL</code>. Deprecated in package 
+versions greater than 0.2.0 and will eventually be removed in a
+future version.</p></td>
     </tr>
     <tr>
       <th>exclude_missing</th>
@@ -288,6 +301,17 @@ Defaults to <code>FALSE</code>.</p></td>
       <td><p>A character vector of one or more variables to select,
 excluding all others. <code>select</code> is not case sensitive.</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Use to pass any other parameters to the API. Useful for passing 
+concepts that are not available through the default parameters. Only accepts
+concepts identified in <code><a href='nomis_get_metadata.html'>nomis_get_metadata</a></code> and concept values 
+identified in <code><a href='nomis_codelist.html'>nomis_codelist</a></code>. Parameters can be quoted or
+unquoted, and are not case sensitive. Each parameter should have a name and
+a value. For example <code>cause_of_death = 10300</code> and 
+<code>CAUSE_OF_DEATH = 10300</code> will return the same result when querying 
+dataset "NM_161_1".</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -298,7 +322,9 @@ By default, all tibble columns are parsed as characters.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='nomis_data_info.html'>nomis_data_info</a></code></p>
-<p><code><a href='nomis_get_metadata.html'>nomis_get_metadata</a></code></p></div>
+<p><code><a href='nomis_get_metadata.html'>nomis_get_metadata</a></code></p>
+<p><code><a href='nomis_codelist.html'>nomis_codelist</a></code></p>
+<p><code><a href='nomis_overview.html'>nomis_overview</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -310,9 +336,9 @@ By default, all tibble columns are parsed as characters.</p>
 
 <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>jobseekers_country</span>)</div><div class='output co'>#&gt; Observations: 70
 #&gt; Variables: 34
-#&gt; $ DATE                &lt;chr&gt; "2018-03", "2018-03", "2018-03", "2018-03", "20...
-#&gt; $ DATE_NAME           &lt;chr&gt; "March 2018", "March 2018", "March 2018", "Marc...
-#&gt; $ DATE_CODE           &lt;chr&gt; "2018-03", "2018-03", "2018-03", "2018-03", "20...
+#&gt; $ DATE                &lt;chr&gt; "2018-05", "2018-05", "2018-05", "2018-05", "20...
+#&gt; $ DATE_NAME           &lt;chr&gt; "May 2018", "May 2018", "May 2018", "May 2018",...
+#&gt; $ DATE_CODE           &lt;chr&gt; "2018-05", "2018-05", "2018-05", "2018-05", "20...
 #&gt; $ DATE_TYPE           &lt;chr&gt; "date", "date", "date", "date", "date", "date",...
 #&gt; $ DATE_TYPECODE       &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0", "0...
 #&gt; $ DATE_SORTORDER      &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0", "0...
@@ -336,12 +362,12 @@ By default, all tibble columns are parsed as characters.</p>
 #&gt; $ ITEM_SORTORDER      &lt;chr&gt; "0", "0", "1", "1", "2", "2", "3", "3", "4", "4...
 #&gt; $ MEASURES            &lt;chr&gt; "20100", "20201", "20100", "20201", "20100", "2...
 #&gt; $ MEASURES_NAME       &lt;chr&gt; "Persons claiming JSA", "Workplace-based estima...
-#&gt; $ OBS_VALUE           &lt;chr&gt; "289482", "1.5", NA, NA, NA, NA, NA, NA, NA, NA...
+#&gt; $ OBS_VALUE           &lt;chr&gt; "277695", "1.5", NA, NA, NA, NA, NA, NA, NA, NA...
 #&gt; $ OBS_STATUS          &lt;chr&gt; "A", "A", "Q", "Q", "Q", "Q", "Q", "Q", "Q", "Q...
 #&gt; $ OBS_STATUS_NAME     &lt;chr&gt; "Normal Value", "Normal Value", "These figures ...
 #&gt; $ OBS_CONF            &lt;chr&gt; "F", "F", "F", "F", "F", "F", "F", "F", "F", "F...
 #&gt; $ OBS_CONF_NAME       &lt;chr&gt; "Free (free for publication)", "Free (free for ...
-#&gt; $ URN                 &lt;chr&gt; "Nm-1d1d32291e0d2092957697d5d1d20100", "Nm-1d1d...
+#&gt; $ URN                 &lt;chr&gt; "Nm-1d1d32293e0d2092957697d5d1d20100", "Nm-1d1d...
 #&gt; $ RECORD_OFFSET       &lt;chr&gt; "0", "1", "2", "3", "4", "5", "6", "7", "8", "9...
 #&gt; $ RECORD_COUNT        &lt;chr&gt; "70", "70", "70", "70", "70", "70", "70", "70",...</div><div class='input'>
 <span class='co'># Return data for Wigan</span>
@@ -351,9 +377,9 @@ By default, all tibble columns are parsed as characters.</p>
 
 <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>jobseekers_wigan</span>)</div><div class='output co'>#&gt; Observations: 10
 #&gt; Variables: 34
-#&gt; $ DATE                &lt;chr&gt; "2018-03", "2018-03", "2018-03", "2018-03", "20...
-#&gt; $ DATE_NAME           &lt;chr&gt; "March 2018", "March 2018", "March 2018", "Marc...
-#&gt; $ DATE_CODE           &lt;chr&gt; "2018-03", "2018-03", "2018-03", "2018-03", "20...
+#&gt; $ DATE                &lt;chr&gt; "2018-05", "2018-05", "2018-05", "2018-05", "20...
+#&gt; $ DATE_NAME           &lt;chr&gt; "May 2018", "May 2018", "May 2018", "May 2018",...
+#&gt; $ DATE_CODE           &lt;chr&gt; "2018-05", "2018-05", "2018-05", "2018-05", "20...
 #&gt; $ DATE_TYPE           &lt;chr&gt; "date", "date", "date", "date", "date", "date",...
 #&gt; $ DATE_TYPECODE       &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"
 #&gt; $ DATE_SORTORDER      &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"
@@ -377,12 +403,12 @@ By default, all tibble columns are parsed as characters.</p>
 #&gt; $ ITEM_SORTORDER      &lt;chr&gt; "0", "0", "1", "1", "2", "2", "3", "3", "4", "4"
 #&gt; $ MEASURES            &lt;chr&gt; "20100", "20201", "20100", "20201", "20100", "2...
 #&gt; $ MEASURES_NAME       &lt;chr&gt; "Persons claiming JSA", "Workplace-based estima...
-#&gt; $ OBS_VALUE           &lt;chr&gt; "1879", NA, NA, NA, NA, NA, NA, NA, NA, NA
+#&gt; $ OBS_VALUE           &lt;chr&gt; "1735", NA, NA, NA, NA, NA, NA, NA, NA, NA
 #&gt; $ OBS_STATUS          &lt;chr&gt; "A", "Q", "Q", "Q", "Q", "Q", "Q", "Q", "Q", "Q"
 #&gt; $ OBS_STATUS_NAME     &lt;chr&gt; "Normal Value", "These figures are missing.", "...
 #&gt; $ OBS_CONF            &lt;chr&gt; "F", "F", "F", "F", "F", "F", "F", "F", "F", "F"
 #&gt; $ OBS_CONF_NAME       &lt;chr&gt; "Free (free for publication)", "Free (free for ...
-#&gt; $ URN                 &lt;chr&gt; "Nm-1d1d32291e0d1879048226d5d1d20100", "Nm-1d1d...
+#&gt; $ URN                 &lt;chr&gt; "Nm-1d1d32293e0d1879048226d5d1d20100", "Nm-1d1d...
 #&gt; $ RECORD_OFFSET       &lt;chr&gt; "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
 #&gt; $ RECORD_COUNT        &lt;chr&gt; "10", "10", "10", "10", "10", "10", "10", "10",...</div><div class='input'>
 <span class='co'># annual population survey - regional - employment by occupation</span>
@@ -396,7 +422,65 @@ By default, all tibble columns are parsed as characters.</p>
 #&gt; $ GEOGRAPHY_CODE     &lt;chr&gt; "E12000005", "E12000005", "E12000005", "E1200000...
 #&gt; $ C_OCCPUK11H_0_NAME &lt;chr&gt; "Total", "Total", "Total", "Total", "1 Managers,...
 #&gt; $ OBS_VALUE          &lt;chr&gt; "2681200", "52700", "100.0", NA, "283400", "1710...</div><div class='input'>
-</div></pre>
+<span class='co'># Deaths in 2016 and 2015 by three specified causes, g</span>
+<span class='no'>death</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_data</span>(<span class='st'>"NM_161_1"</span>, <span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"2016"</span>,<span class='st'>"2015"</span>),
+                        <span class='kw'>geography</span> <span class='kw'>=</span> <span class='st'>"TYPE480"</span>,
+                        <span class='kw'>cause_of_death</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='fl'>10300</span>, <span class='fl'>102088</span>, <span class='fl'>270</span>))
+
+<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>death</span>)</div><div class='output co'>#&gt; Observations: 22,680
+#&gt; Variables: 46
+#&gt; $ DATE                     &lt;chr&gt; "2016", "2016", "2016", "2016", "2016", "2...
+#&gt; $ DATE_NAME                &lt;chr&gt; "2016", "2016", "2016", "2016", "2016", "2...
+#&gt; $ DATE_CODE                &lt;chr&gt; "2016", "2016", "2016", "2016", "2016", "2...
+#&gt; $ DATE_TYPE                &lt;chr&gt; "date", "date", "date", "date", "date", "d...
+#&gt; $ DATE_TYPECODE            &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...
+#&gt; $ DATE_SORTORDER           &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...
+#&gt; $ GEOGRAPHY                &lt;chr&gt; "2013265921", "2013265921", "2013265921", ...
+#&gt; $ GEOGRAPHY_NAME           &lt;chr&gt; "North East", "North East", "North East", ...
+#&gt; $ GEOGRAPHY_CODE           &lt;chr&gt; "E12000001", "E12000001", "E12000001", "E1...
+#&gt; $ GEOGRAPHY_TYPE           &lt;chr&gt; "regions", "regions", "regions", "regions"...
+#&gt; $ GEOGRAPHY_TYPECODE       &lt;chr&gt; "480", "480", "480", "480", "480", "480", ...
+#&gt; $ GEOGRAPHY_SORTORDER      &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...
+#&gt; $ CAUSE_OF_DEATH           &lt;chr&gt; "10300", "10300", "10300", "10300", "10300...
+#&gt; $ CAUSE_OF_DEATH_NAME      &lt;chr&gt; "C00 Malignant neoplasm of lip", "C00 Mali...
+#&gt; $ CAUSE_OF_DEATH_CODE      &lt;chr&gt; "C00", "C00", "C00", "C00", "C00", "C00", ...
+#&gt; $ CAUSE_OF_DEATH_TYPE      &lt;chr&gt; "ICD-10 three digit", "ICD-10 three digit"...
+#&gt; $ CAUSE_OF_DEATH_TYPECODE  &lt;chr&gt; "1005", "1005", "1005", "1005", "1005", "1...
+#&gt; $ CAUSE_OF_DEATH_SORTORDER &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...
+#&gt; $ GENDER                   &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...
+#&gt; $ GENDER_NAME              &lt;chr&gt; "Total", "Total", "Total", "Total", "Total...
+#&gt; $ GENDER_CODE              &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...
+#&gt; $ GENDER_TYPE              &lt;chr&gt; "Sex", "Sex", "Sex", "Sex", "Sex", "Sex", ...
+#&gt; $ GENDER_TYPECODE          &lt;chr&gt; "1000", "1000", "1000", "1000", "1000", "1...
+#&gt; $ GENDER_SORTORDER         &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...
+#&gt; $ AGE                      &lt;chr&gt; "0", "0", "0", "0", "0", "0", "1", "1", "1...
+#&gt; $ AGE_NAME                 &lt;chr&gt; "total (all ages)", "total (all ages)", "t...
+#&gt; $ AGE_CODE                 &lt;chr&gt; "0", "0", "0", "0", "0", "0", "1", "1", "1...
+#&gt; $ AGE_TYPE                 &lt;chr&gt; "ageband", "ageband", "ageband", "ageband"...
+#&gt; $ AGE_TYPECODE             &lt;chr&gt; "1000", "1000", "1000", "1000", "1000", "1...
+#&gt; $ AGE_SORTORDER            &lt;chr&gt; "0", "0", "0", "0", "0", "0", "1", "1", "1...
+#&gt; $ MEASURE                  &lt;chr&gt; "1", "2", "5", "6", "7", "8", "1", "2", "5...
+#&gt; $ MEASURE_NAME             &lt;chr&gt; "Deaths", "Age-standardised mortality rate...
+#&gt; $ MEASURE_CODE             &lt;chr&gt; "1", "2", "5", "6", "7", "8", "1", "2", "5...
+#&gt; $ MEASURE_TYPE             &lt;chr&gt; "measures", "measures", "measures", "measu...
+#&gt; $ MEASURE_TYPECODE         &lt;chr&gt; "1000", "1000", "1000", "1000", "1000", "1...
+#&gt; $ MEASURE_SORTORDER        &lt;chr&gt; "0", "1", "2", "3", "4", "5", "0", "1", "2...
+#&gt; $ MEASURES                 &lt;chr&gt; "20100", "20100", "20100", "20100", "20100...
+#&gt; $ MEASURES_NAME            &lt;chr&gt; "Value", "Value", "Value", "Value", "Value...
+#&gt; $ OBS_VALUE                &lt;chr&gt; "0", NA, NA, NA, NA, NA, "0", NA, NA, NA, ...
+#&gt; $ OBS_STATUS               &lt;chr&gt; "A", "Q", "Q", "Q", "Q", "Q", "A", "Q", "Q...
+#&gt; $ OBS_STATUS_NAME          &lt;chr&gt; "Normal Value", "These figures are missing...
+#&gt; $ OBS_CONF                 &lt;chr&gt; "F", "F", "F", "F", "F", "F", "F", "F", "F...
+#&gt; $ OBS_CONF_NAME            &lt;chr&gt; "Free (free for publication)", "Free (free...
+#&gt; $ URN                      &lt;chr&gt; "Nm-161d1d32256e0d2013265921d10300d0d0d1d2...
+#&gt; $ RECORD_OFFSET            &lt;chr&gt; "0", "1", "2", "3", "4", "5", "6", "7", "8...
+#&gt; $ RECORD_COUNT             &lt;chr&gt; "22680", "22680", "22680", "22680", "22680...</div><div class='input'>
+
+<span class='co'># All causes of death in London in 2016</span>
+<span class='no'>london_death</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_data</span>(<span class='st'>"NM_1_1"</span>, <span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"2016"</span>),
+                               <span class='kw'>geography</span> <span class='kw'>=</span> <span class='st'>"2013265927"</span>, <span class='kw'>sex</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>age</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='output co'>#&gt; <span class='error'>Error: The API request did not return any results.</span>
+#&gt; <span class='error'>         Please check your parameters.</span></div><div class='input'>
+<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>london_death</span>)</div><div class='output co'>#&gt; <span class='error'>Error in tibble::glimpse(london_death): object 'london_death' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

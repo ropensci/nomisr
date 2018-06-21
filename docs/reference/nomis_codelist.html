@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>License • nomisr</title>
+<title>Nomis codelists — nomis_codelist • nomisr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,12 +25,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 
-<meta property="og:title" content="License" />
+<meta property="og:title" content="Nomis codelists — nomis_codelist" />
+
+<meta property="og:description" content="Nomis uses its own internal coding for query concepts. nomis_codelist 
+returns the codes for a given concept in a tibble, given a dataset 
+ID and a concept name. 
+Note that some codelists, particularly geography, can be very large." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -56,7 +62,7 @@
   </head>
 
   <body>
-    <div class="container template-title-body">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -67,7 +73,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">nomisr</a>
+        <a class="navbar-link" href="../index.html">nomisr</a>
         <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0</span>
       </span>
     </div>
@@ -78,13 +84,13 @@
   <a href="http://docs.evanodell.com">Docs Home</a>
 </li>
 <li>
-  <a href="news/index.html">News</a>
+  <a href="../news/index.html">News</a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="articles/introduction.html">Introduction</a>
+  <a href="../articles/introduction.html">Introduction</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -145,19 +151,82 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>License</h1>
+    <h1>Nomis codelists</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/nomisr/blob/master/R/codelist.R'><code>R/codelist.R</code></a></small>
+    <div class="hidden name"><code>nomis_codelist.Rd</code></div>
     </div>
 
-<pre>YEAR: 2018
-COPYRIGHT HOLDER: Evan Odell
-</pre>
+    <div class="ref-description">
+    
+    <p>Nomis uses its own internal coding for query concepts. <code>nomis_codelist</code> 
+returns the codes for a given concept in a <code>tibble</code>, given a dataset 
+ID and a concept name. 
+Note that some codelists, particularly geography, can be very large.</p>
+    
+    </div>
+
+    <pre class="usage"><span class='fu'>nomis_codelist</span>(<span class='no'>id</span>, <span class='no'>concept</span>, <span class='kw'>search</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>id</th>
+      <td><p>A string with the ID of the particular dataset. Must be specified.</p></td>
+    </tr>
+    <tr>
+      <th>concept</th>
+      <td><p>A string with the variable concept to return options for. If
+left empty, returns all the variables for the dataset specified by <code>id</code>.
+Codes are not case sensitive and must be specified.</p></td>
+    </tr>
+    <tr>
+      <th>search</th>
+      <td><p>Search for codes that contain a given string. The wildcard 
+character <code>*</code> can be added to the beginning and/or end of each 
+search string. Search strings are not case sensitive. 
+Defaults to <code>NULL</code>. Note that the search function is not very powerful 
+for some datasets.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A tibble with the codes used to query specific concepts.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='nomis_data_info.html'>nomis_data_info</a></code></p>
+<p><code><a href='nomis_get_metadata.html'>nomis_get_metadata</a></code></p>
+<p><code><a href='nomis_overview.html'>nomis_overview</a></code></p></div>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_codelist</span>(<span class='st'>"NM_1_1"</span>, <span class='st'>"item"</span>)
+
+
+<span class='co'># Searching for codes ending with "london"</span>
+<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_codelist</span>(<span class='st'>"NM_1_1"</span>, <span class='st'>"geography"</span>, <span class='kw'>search</span> <span class='kw'>=</span> <span class='st'>"*london"</span>)
+
+
+<span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_codelist</span>(<span class='st'>"NM_161_1"</span>, <span class='st'>"cause_of_death"</span>)</div></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
-
 </div>
-
 
       <footer>
       <div class="copyright">

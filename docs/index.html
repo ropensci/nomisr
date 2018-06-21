@@ -8,8 +8,8 @@
 <title>Access 'Nomis' UK Labour Market Data • nomisr</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Access 'Nomis' UK Labour Market Data">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script><meta property="og:title" content="Access 'Nomis' UK Labour Market Data">
 <meta property="og:description" content="Access UK official statistics from the 'Nomis' database. 
     'Nomis' includes data from the Census, the Labour Force Survey, DWP benefit 
     statistics and other economic and demographic data from the Office for 
@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">nomisr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0</span>
       </span>
     </div>
 
@@ -126,15 +126,17 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#nomisr" class="anchor"></a>nomisr</h1></div>
 
-<p><code>nomisr</code> is for accessing Access UK official statistics from the <a href="https://www.nomisweb.co.uk/">Nomis</a> database through R. Nomis contains data from the Census, the Labour Force Survey, DWP benefit statistics and other economic and demographic data, and is maintained on behalf of the Office for National Statistics by the University of Durham.</p>
+<p><code>nomisr</code> is for accessing UK official statistics from the <a href="https://www.nomisweb.co.uk/">Nomis</a> database through R. Nomis contains data from the Census, the Labour Force Survey, DWP benefit statistics and other economic and demographic data, and is maintained on behalf of the Office for National Statistics by the University of Durham.</p>
 <p>The <code>nomisr</code> package provides functions to find what data is available, the variables and query options for different datasets and a function for downloading data. <code>nomisr</code> returns data in <a href="https://cran.r-project.org/package=tibble"><code>tibble</code></a> format. Most of the data available through <code>nomisr</code> is based around statistical geographies, with a handful of exceptions.</p>
 <p>The package is for demographers, economists, geographers, public health researchers and any other researchers who are interested in geographic factors. The package aims to aid reproducibility, reduce the need to manually download area profiles, and allow easy linking of different datasets covering the same geographic area.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install <code>nomisr</code> from github with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"ropensci/nomisr"</span>)</a></code></pre></div>
+<p><code>nomisr</code> is available on CRAN:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"nomisr"</span>)</a></code></pre></div>
+<p>You can install the development version <code>nomisr</code> from github with:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"ropensci/nomisr"</span>)</a></code></pre></div>
 </div>
 <div id="using-nomisr" class="section level2">
 <h2 class="hasAnchor">
@@ -142,96 +144,97 @@
 </h2>
 <p><code>nomisr</code> contains functions to search for datasets, identify the query options for different datasets and retrieve data from queries, all done with <a href="http://tibble.tidyverse.org/"><code>tibbles</code></a>, to take advantage of how <code>tibble</code> manages list-columns. The use of metadata queries, rather than simply downloading all available data, is useful to avoid overwhelming the rate limits of the API. For full details on all available functions and demonstrations of their use, please see the package <a href="https://docs.evanodell.com/nomisr/articles/introduction.html">vignette</a>.</p>
 <p>The example below gets the latest data on Jobseeker’s Allowance with rates and proportions, on a national level, with all male claimants and workforce.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"> <span class="kw">library</span>(nomisr)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"> jobseekers_search &lt;-<span class="st"> </span><span class="kw"><a href="reference/nomis_search.html">nomis_search</a></span>(<span class="dt">name =</span> <span class="st">"*Jobseeker*"</span>)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"> </a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"> tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(jobseekers_search)</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; Observations: 17</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; Variables: 14</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; $ agencyid                             &lt;chr&gt; "NOMIS", "NOMIS", "NOMIS"...</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; $ id                                   &lt;chr&gt; "NM_1_1", "NM_4_1", "NM_8...</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; $ uri                                  &lt;chr&gt; "Nm-1d1", "Nm-4d1", "Nm-8...</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; $ version                              &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1...</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; $ annotations.annotation               &lt;list&gt; [&lt;c("Current (being acti...</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; $ components.attribute                 &lt;list&gt; [&lt;c("Mandatory", "Condit...</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt; $ components.dimension                 &lt;list&gt; [&lt;c("CL_1_1_GEOGRAPHY", ...</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; $ components.primarymeasure.conceptref &lt;chr&gt; "OBS_VALUE", "OBS_VALUE",...</span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; $ components.timedimension.codelist    &lt;chr&gt; "CL_1_1_TIME", "CL_4_1_TI...</span></a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt; $ components.timedimension.conceptref  &lt;chr&gt; "TIME", "TIME", "TIME", "...</span></a>
-<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt; $ description.value                    &lt;chr&gt; "Records the number of pe...</span></a>
-<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt; $ description.lang                     &lt;chr&gt; "en", "en", NA, "en", "en...</span></a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt; $ name.value                           &lt;chr&gt; "Jobseeker's Allowance wi...</span></a>
-<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co">#&gt; $ name.lang                            &lt;chr&gt; "en", "en", "en", "en", "...</span></a>
-<a class="sourceLine" id="cb2-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb2-22" data-line-number="22"> jobseekers_measures &lt;-<span class="st"> </span><span class="kw"><a href="reference/nomis_get_metadata.html">nomis_get_metadata</a></span>(<span class="st">"NM_1_1"</span>, <span class="st">"measures"</span>)</a>
-<a class="sourceLine" id="cb2-23" data-line-number="23"> </a>
-<a class="sourceLine" id="cb2-24" data-line-number="24"> tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(jobseekers_measures)</a>
-<a class="sourceLine" id="cb2-25" data-line-number="25"><span class="co">#&gt; Observations: 4</span></a>
-<a class="sourceLine" id="cb2-26" data-line-number="26"><span class="co">#&gt; Variables: 2</span></a>
-<a class="sourceLine" id="cb2-27" data-line-number="27"><span class="co">#&gt; $ description &lt;chr&gt; "claimants", "workforce", "active", "residence"</span></a>
-<a class="sourceLine" id="cb2-28" data-line-number="28"><span class="co">#&gt; $ value       &lt;int&gt; 20100, 20201, 20202, 20203</span></a>
-<a class="sourceLine" id="cb2-29" data-line-number="29"> </a>
-<a class="sourceLine" id="cb2-30" data-line-number="30"> jobseekers_geography &lt;-<span class="st"> </span><span class="kw"><a href="reference/nomis_get_metadata.html">nomis_get_metadata</a></span>(<span class="st">"NM_1_1"</span>, <span class="st">"geography"</span>, <span class="st">"TYPE"</span>)</a>
-<a class="sourceLine" id="cb2-31" data-line-number="31"> </a>
-<a class="sourceLine" id="cb2-32" data-line-number="32"> <span class="kw">tail</span>(jobseekers_geography)</a>
-<a class="sourceLine" id="cb2-33" data-line-number="33"><span class="co">#&gt; # A tibble: 6 x 2</span></a>
-<a class="sourceLine" id="cb2-34" data-line-number="34"><span class="co">#&gt;   description                                        value  </span></a>
-<a class="sourceLine" id="cb2-35" data-line-number="35"><span class="co">#&gt;   &lt;chr&gt;                                              &lt;chr&gt;  </span></a>
-<a class="sourceLine" id="cb2-36" data-line-number="36"><span class="co">#&gt; 1 government office regions tec / lec based          TYPE490</span></a>
-<a class="sourceLine" id="cb2-37" data-line-number="37"><span class="co">#&gt; 2 government office regions (former inc. Merseyside) TYPE491</span></a>
-<a class="sourceLine" id="cb2-38" data-line-number="38"><span class="co">#&gt; 3 standard statistical regions                       TYPE492</span></a>
-<a class="sourceLine" id="cb2-39" data-line-number="39"><span class="co">#&gt; 4 pre-1996 local authority districts                 TYPE496</span></a>
-<a class="sourceLine" id="cb2-40" data-line-number="40"><span class="co">#&gt; 5 pre-1996 counties / scottish regions               TYPE498</span></a>
-<a class="sourceLine" id="cb2-41" data-line-number="41"><span class="co">#&gt; 6 countries                                          TYPE499</span></a>
-<a class="sourceLine" id="cb2-42" data-line-number="42"> </a>
-<a class="sourceLine" id="cb2-43" data-line-number="43"> jobseekers_sex &lt;-<span class="st"> </span><span class="kw"><a href="reference/nomis_get_metadata.html">nomis_get_metadata</a></span>(<span class="st">"NM_1_1"</span>, <span class="st">"sex"</span>, <span class="st">"TYPE"</span>)</a>
-<a class="sourceLine" id="cb2-44" data-line-number="44"> </a>
-<a class="sourceLine" id="cb2-45" data-line-number="45"> tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(jobseekers_sex)</a>
-<a class="sourceLine" id="cb2-46" data-line-number="46"><span class="co">#&gt; Observations: 3</span></a>
-<a class="sourceLine" id="cb2-47" data-line-number="47"><span class="co">#&gt; Variables: 2</span></a>
-<a class="sourceLine" id="cb2-48" data-line-number="48"><span class="co">#&gt; $ description &lt;chr&gt; "Male", "Female", "Total"</span></a>
-<a class="sourceLine" id="cb2-49" data-line-number="49"><span class="co">#&gt; $ value       &lt;int&gt; 5, 6, 7</span></a>
-<a class="sourceLine" id="cb2-50" data-line-number="50"> </a>
-<a class="sourceLine" id="cb2-51" data-line-number="51"> z &lt;-<span class="st"> </span><span class="kw"><a href="reference/nomis_get_data.html">nomis_get_data</a></span>(<span class="dt">id =</span> <span class="st">"NM_1_1"</span>, <span class="dt">time =</span> <span class="st">"latest"</span>, <span class="dt">geography =</span> <span class="st">"TYPE499"</span>,</a>
-<a class="sourceLine" id="cb2-52" data-line-number="52">                     <span class="dt">measures=</span><span class="kw">c</span>(<span class="dv">20100</span>, <span class="dv">20201</span>), <span class="dt">sex=</span><span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb2-53" data-line-number="53"> </a>
-<a class="sourceLine" id="cb2-54" data-line-number="54"> tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(z)</a>
-<a class="sourceLine" id="cb2-55" data-line-number="55"><span class="co">#&gt; Observations: 70</span></a>
-<a class="sourceLine" id="cb2-56" data-line-number="56"><span class="co">#&gt; Variables: 34</span></a>
-<a class="sourceLine" id="cb2-57" data-line-number="57"><span class="co">#&gt; $ DATE                &lt;chr&gt; "2018-03", "2018-03", "2018-03", "2018-03"...</span></a>
-<a class="sourceLine" id="cb2-58" data-line-number="58"><span class="co">#&gt; $ DATE_NAME           &lt;chr&gt; "March 2018", "March 2018", "March 2018", ...</span></a>
-<a class="sourceLine" id="cb2-59" data-line-number="59"><span class="co">#&gt; $ DATE_CODE           &lt;chr&gt; "2018-03", "2018-03", "2018-03", "2018-03"...</span></a>
-<a class="sourceLine" id="cb2-60" data-line-number="60"><span class="co">#&gt; $ DATE_TYPE           &lt;chr&gt; "date", "date", "date", "date", "date", "d...</span></a>
-<a class="sourceLine" id="cb2-61" data-line-number="61"><span class="co">#&gt; $ DATE_TYPECODE       &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
-<a class="sourceLine" id="cb2-62" data-line-number="62"><span class="co">#&gt; $ DATE_SORTORDER      &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
-<a class="sourceLine" id="cb2-63" data-line-number="63"><span class="co">#&gt; $ GEOGRAPHY           &lt;chr&gt; "2092957697", "2092957697", "2092957697", ...</span></a>
-<a class="sourceLine" id="cb2-64" data-line-number="64"><span class="co">#&gt; $ GEOGRAPHY_NAME      &lt;chr&gt; "United Kingdom", "United Kingdom", "Unite...</span></a>
-<a class="sourceLine" id="cb2-65" data-line-number="65"><span class="co">#&gt; $ GEOGRAPHY_CODE      &lt;chr&gt; "K02000001", "K02000001", "K02000001", "K0...</span></a>
-<a class="sourceLine" id="cb2-66" data-line-number="66"><span class="co">#&gt; $ GEOGRAPHY_TYPE      &lt;chr&gt; "countries", "countries", "countries", "co...</span></a>
-<a class="sourceLine" id="cb2-67" data-line-number="67"><span class="co">#&gt; $ GEOGRAPHY_TYPECODE  &lt;chr&gt; "499", "499", "499", "499", "499", "499", ...</span></a>
-<a class="sourceLine" id="cb2-68" data-line-number="68"><span class="co">#&gt; $ GEOGRAPHY_SORTORDER &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
-<a class="sourceLine" id="cb2-69" data-line-number="69"><span class="co">#&gt; $ SEX                 &lt;chr&gt; "5", "5", "5", "5", "5", "5", "5", "5", "5...</span></a>
-<a class="sourceLine" id="cb2-70" data-line-number="70"><span class="co">#&gt; $ SEX_NAME            &lt;chr&gt; "Male", "Male", "Male", "Male", "Male", "M...</span></a>
-<a class="sourceLine" id="cb2-71" data-line-number="71"><span class="co">#&gt; $ SEX_CODE            &lt;chr&gt; "5", "5", "5", "5", "5", "5", "5", "5", "5...</span></a>
-<a class="sourceLine" id="cb2-72" data-line-number="72"><span class="co">#&gt; $ SEX_TYPE            &lt;chr&gt; "sex", "sex", "sex", "sex", "sex", "sex", ...</span></a>
-<a class="sourceLine" id="cb2-73" data-line-number="73"><span class="co">#&gt; $ SEX_TYPECODE        &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
-<a class="sourceLine" id="cb2-74" data-line-number="74"><span class="co">#&gt; $ SEX_SORTORDER       &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
-<a class="sourceLine" id="cb2-75" data-line-number="75"><span class="co">#&gt; $ ITEM                &lt;chr&gt; "1", "1", "2", "2", "3", "3", "4", "4", "9...</span></a>
-<a class="sourceLine" id="cb2-76" data-line-number="76"><span class="co">#&gt; $ ITEM_NAME           &lt;chr&gt; "Total claimants", "Total claimants", "Stu...</span></a>
-<a class="sourceLine" id="cb2-77" data-line-number="77"><span class="co">#&gt; $ ITEM_CODE           &lt;chr&gt; "1", "1", "2", "2", "3", "3", "4", "4", "9...</span></a>
-<a class="sourceLine" id="cb2-78" data-line-number="78"><span class="co">#&gt; $ ITEM_TYPE           &lt;chr&gt; "item", "item", "item", "item", "item", "i...</span></a>
-<a class="sourceLine" id="cb2-79" data-line-number="79"><span class="co">#&gt; $ ITEM_TYPECODE       &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
-<a class="sourceLine" id="cb2-80" data-line-number="80"><span class="co">#&gt; $ ITEM_SORTORDER      &lt;chr&gt; "0", "0", "1", "1", "2", "2", "3", "3", "4...</span></a>
-<a class="sourceLine" id="cb2-81" data-line-number="81"><span class="co">#&gt; $ MEASURES            &lt;chr&gt; "20100", "20201", "20100", "20201", "20100...</span></a>
-<a class="sourceLine" id="cb2-82" data-line-number="82"><span class="co">#&gt; $ MEASURES_NAME       &lt;chr&gt; "Persons claiming JSA", "Workplace-based e...</span></a>
-<a class="sourceLine" id="cb2-83" data-line-number="83"><span class="co">#&gt; $ OBS_VALUE           &lt;chr&gt; "289482", "1.5", NA, NA, NA, NA, NA, NA, N...</span></a>
-<a class="sourceLine" id="cb2-84" data-line-number="84"><span class="co">#&gt; $ OBS_STATUS          &lt;chr&gt; "A", "A", "Q", "Q", "Q", "Q", "Q", "Q", "Q...</span></a>
-<a class="sourceLine" id="cb2-85" data-line-number="85"><span class="co">#&gt; $ OBS_STATUS_NAME     &lt;chr&gt; "Normal Value", "Normal Value", "These fig...</span></a>
-<a class="sourceLine" id="cb2-86" data-line-number="86"><span class="co">#&gt; $ OBS_CONF            &lt;chr&gt; "F", "F", "F", "F", "F", "F", "F", "F", "F...</span></a>
-<a class="sourceLine" id="cb2-87" data-line-number="87"><span class="co">#&gt; $ OBS_CONF_NAME       &lt;chr&gt; "Free (free for publication)", "Free (free...</span></a>
-<a class="sourceLine" id="cb2-88" data-line-number="88"><span class="co">#&gt; $ URN                 &lt;chr&gt; "Nm-1d1d32291e0d2092957697d5d1d20100", "Nm...</span></a>
-<a class="sourceLine" id="cb2-89" data-line-number="89"><span class="co">#&gt; $ RECORD_OFFSET       &lt;chr&gt; "0", "1", "2", "3", "4", "5", "6", "7", "8...</span></a>
-<a class="sourceLine" id="cb2-90" data-line-number="90"><span class="co">#&gt; $ RECORD_COUNT        &lt;chr&gt; "70", "70", "70", "70", "70", "70", "70", ...</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"> <span class="kw">library</span>(nomisr)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"> jobseekers_search &lt;-<span class="st"> </span><span class="kw"><a href="reference/nomis_search.html">nomis_search</a></span>(<span class="dt">name =</span> <span class="st">"*Jobseeker*"</span>)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"> </a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"> tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(jobseekers_search)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; Observations: 17</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; Variables: 14</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; $ agencyid                             &lt;chr&gt; "NOMIS", "NOMIS", "NOMIS"...</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; $ id                                   &lt;chr&gt; "NM_1_1", "NM_4_1", "NM_8...</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; $ uri                                  &lt;chr&gt; "Nm-1d1", "Nm-4d1", "Nm-8...</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; $ version                              &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1...</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; $ annotations.annotation               &lt;list&gt; [&lt;c("Current (being acti...</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; $ components.attribute                 &lt;list&gt; [&lt;c("Mandatory", "Condit...</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; $ components.dimension                 &lt;list&gt; [&lt;c("CL_1_1_GEOGRAPHY", ...</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; $ components.primarymeasure.conceptref &lt;chr&gt; "OBS_VALUE", "OBS_VALUE",...</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; $ components.timedimension.codelist    &lt;chr&gt; "CL_1_1_TIME", "CL_4_1_TI...</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; $ components.timedimension.conceptref  &lt;chr&gt; "TIME", "TIME", "TIME", "...</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; $ description.value                    &lt;chr&gt; "Records the number of pe...</span></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt; $ description.lang                     &lt;chr&gt; "en", "en", NA, "en", "en...</span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; $ name.value                           &lt;chr&gt; "Jobseeker's Allowance wi...</span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt; $ name.lang                            &lt;chr&gt; "en", "en", "en", "en", "...</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"> jobseekers_measures &lt;-<span class="st"> </span><span class="kw"><a href="reference/nomis_get_metadata.html">nomis_get_metadata</a></span>(<span class="st">"NM_1_1"</span>, <span class="st">"measures"</span>)</a>
+<a class="sourceLine" id="cb3-23" data-line-number="23"> </a>
+<a class="sourceLine" id="cb3-24" data-line-number="24"> tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(jobseekers_measures)</a>
+<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt; Observations: 4</span></a>
+<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; Variables: 2</span></a>
+<a class="sourceLine" id="cb3-27" data-line-number="27"><span class="co">#&gt; $ id       &lt;chr&gt; "20100", "20201", "20202", "20203"</span></a>
+<a class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">#&gt; $ label.en &lt;chr&gt; "claimants", "workforce", "active", "residence"</span></a>
+<a class="sourceLine" id="cb3-29" data-line-number="29"> </a>
+<a class="sourceLine" id="cb3-30" data-line-number="30"> jobseekers_geography &lt;-<span class="st"> </span><span class="kw"><a href="reference/nomis_get_metadata.html">nomis_get_metadata</a></span>(<span class="st">"NM_1_1"</span>, <span class="st">"geography"</span>, <span class="st">"TYPE"</span>)</a>
+<a class="sourceLine" id="cb3-31" data-line-number="31"> </a>
+<a class="sourceLine" id="cb3-32" data-line-number="32"> <span class="kw">tail</span>(jobseekers_geography)</a>
+<a class="sourceLine" id="cb3-33" data-line-number="33"><span class="co">#&gt; # A tibble: 6 x 2</span></a>
+<a class="sourceLine" id="cb3-34" data-line-number="34"><span class="co">#&gt;   id      label.en                                          </span></a>
+<a class="sourceLine" id="cb3-35" data-line-number="35"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;                                             </span></a>
+<a class="sourceLine" id="cb3-36" data-line-number="36"><span class="co">#&gt; 1 TYPE490 government office regions tec / lec based         </span></a>
+<a class="sourceLine" id="cb3-37" data-line-number="37"><span class="co">#&gt; 2 TYPE491 government office regions (former inc. Merseyside)</span></a>
+<a class="sourceLine" id="cb3-38" data-line-number="38"><span class="co">#&gt; 3 TYPE492 standard statistical regions                      </span></a>
+<a class="sourceLine" id="cb3-39" data-line-number="39"><span class="co">#&gt; 4 TYPE496 pre-1996 local authority districts                </span></a>
+<a class="sourceLine" id="cb3-40" data-line-number="40"><span class="co">#&gt; 5 TYPE498 pre-1996 counties / scottish regions              </span></a>
+<a class="sourceLine" id="cb3-41" data-line-number="41"><span class="co">#&gt; 6 TYPE499 countries</span></a>
+<a class="sourceLine" id="cb3-42" data-line-number="42"> </a>
+<a class="sourceLine" id="cb3-43" data-line-number="43"> jobseekers_sex &lt;-<span class="st"> </span><span class="kw"><a href="reference/nomis_get_metadata.html">nomis_get_metadata</a></span>(<span class="st">"NM_1_1"</span>, <span class="st">"sex"</span>, <span class="st">"TYPE"</span>)</a>
+<a class="sourceLine" id="cb3-44" data-line-number="44"> </a>
+<a class="sourceLine" id="cb3-45" data-line-number="45"> tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(jobseekers_sex)</a>
+<a class="sourceLine" id="cb3-46" data-line-number="46"><span class="co">#&gt; Observations: 3</span></a>
+<a class="sourceLine" id="cb3-47" data-line-number="47"><span class="co">#&gt; Variables: 3</span></a>
+<a class="sourceLine" id="cb3-48" data-line-number="48"><span class="co">#&gt; $ id         &lt;chr&gt; "5", "6", "7"</span></a>
+<a class="sourceLine" id="cb3-49" data-line-number="49"><span class="co">#&gt; $ parentCode &lt;chr&gt; "7", "7", NA</span></a>
+<a class="sourceLine" id="cb3-50" data-line-number="50"><span class="co">#&gt; $ label.en   &lt;chr&gt; "Male", "Female", "Total"</span></a>
+<a class="sourceLine" id="cb3-51" data-line-number="51"> </a>
+<a class="sourceLine" id="cb3-52" data-line-number="52"> z &lt;-<span class="st"> </span><span class="kw"><a href="reference/nomis_get_data.html">nomis_get_data</a></span>(<span class="dt">id =</span> <span class="st">"NM_1_1"</span>, <span class="dt">time =</span> <span class="st">"latest"</span>, <span class="dt">geography =</span> <span class="st">"TYPE499"</span>,</a>
+<a class="sourceLine" id="cb3-53" data-line-number="53">                     <span class="dt">measures=</span><span class="kw">c</span>(<span class="dv">20100</span>, <span class="dv">20201</span>), <span class="dt">sex=</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb3-54" data-line-number="54"> </a>
+<a class="sourceLine" id="cb3-55" data-line-number="55"> tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(z)</a>
+<a class="sourceLine" id="cb3-56" data-line-number="56"><span class="co">#&gt; Observations: 70</span></a>
+<a class="sourceLine" id="cb3-57" data-line-number="57"><span class="co">#&gt; Variables: 34</span></a>
+<a class="sourceLine" id="cb3-58" data-line-number="58"><span class="co">#&gt; $ DATE                &lt;chr&gt; "2018-05", "2018-05", "2018-05", "2018-05"...</span></a>
+<a class="sourceLine" id="cb3-59" data-line-number="59"><span class="co">#&gt; $ DATE_NAME           &lt;chr&gt; "May 2018", "May 2018", "May 2018", "May 2...</span></a>
+<a class="sourceLine" id="cb3-60" data-line-number="60"><span class="co">#&gt; $ DATE_CODE           &lt;chr&gt; "2018-05", "2018-05", "2018-05", "2018-05"...</span></a>
+<a class="sourceLine" id="cb3-61" data-line-number="61"><span class="co">#&gt; $ DATE_TYPE           &lt;chr&gt; "date", "date", "date", "date", "date", "d...</span></a>
+<a class="sourceLine" id="cb3-62" data-line-number="62"><span class="co">#&gt; $ DATE_TYPECODE       &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
+<a class="sourceLine" id="cb3-63" data-line-number="63"><span class="co">#&gt; $ DATE_SORTORDER      &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
+<a class="sourceLine" id="cb3-64" data-line-number="64"><span class="co">#&gt; $ GEOGRAPHY           &lt;chr&gt; "2092957697", "2092957697", "2092957697", ...</span></a>
+<a class="sourceLine" id="cb3-65" data-line-number="65"><span class="co">#&gt; $ GEOGRAPHY_NAME      &lt;chr&gt; "United Kingdom", "United Kingdom", "Unite...</span></a>
+<a class="sourceLine" id="cb3-66" data-line-number="66"><span class="co">#&gt; $ GEOGRAPHY_CODE      &lt;chr&gt; "K02000001", "K02000001", "K02000001", "K0...</span></a>
+<a class="sourceLine" id="cb3-67" data-line-number="67"><span class="co">#&gt; $ GEOGRAPHY_TYPE      &lt;chr&gt; "countries", "countries", "countries", "co...</span></a>
+<a class="sourceLine" id="cb3-68" data-line-number="68"><span class="co">#&gt; $ GEOGRAPHY_TYPECODE  &lt;chr&gt; "499", "499", "499", "499", "499", "499", ...</span></a>
+<a class="sourceLine" id="cb3-69" data-line-number="69"><span class="co">#&gt; $ GEOGRAPHY_SORTORDER &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
+<a class="sourceLine" id="cb3-70" data-line-number="70"><span class="co">#&gt; $ SEX                 &lt;chr&gt; "5", "5", "5", "5", "5", "5", "5", "5", "5...</span></a>
+<a class="sourceLine" id="cb3-71" data-line-number="71"><span class="co">#&gt; $ SEX_NAME            &lt;chr&gt; "Male", "Male", "Male", "Male", "Male", "M...</span></a>
+<a class="sourceLine" id="cb3-72" data-line-number="72"><span class="co">#&gt; $ SEX_CODE            &lt;chr&gt; "5", "5", "5", "5", "5", "5", "5", "5", "5...</span></a>
+<a class="sourceLine" id="cb3-73" data-line-number="73"><span class="co">#&gt; $ SEX_TYPE            &lt;chr&gt; "sex", "sex", "sex", "sex", "sex", "sex", ...</span></a>
+<a class="sourceLine" id="cb3-74" data-line-number="74"><span class="co">#&gt; $ SEX_TYPECODE        &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
+<a class="sourceLine" id="cb3-75" data-line-number="75"><span class="co">#&gt; $ SEX_SORTORDER       &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
+<a class="sourceLine" id="cb3-76" data-line-number="76"><span class="co">#&gt; $ ITEM                &lt;chr&gt; "1", "1", "2", "2", "3", "3", "4", "4", "9...</span></a>
+<a class="sourceLine" id="cb3-77" data-line-number="77"><span class="co">#&gt; $ ITEM_NAME           &lt;chr&gt; "Total claimants", "Total claimants", "Stu...</span></a>
+<a class="sourceLine" id="cb3-78" data-line-number="78"><span class="co">#&gt; $ ITEM_CODE           &lt;chr&gt; "1", "1", "2", "2", "3", "3", "4", "4", "9...</span></a>
+<a class="sourceLine" id="cb3-79" data-line-number="79"><span class="co">#&gt; $ ITEM_TYPE           &lt;chr&gt; "item", "item", "item", "item", "item", "i...</span></a>
+<a class="sourceLine" id="cb3-80" data-line-number="80"><span class="co">#&gt; $ ITEM_TYPECODE       &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
+<a class="sourceLine" id="cb3-81" data-line-number="81"><span class="co">#&gt; $ ITEM_SORTORDER      &lt;chr&gt; "0", "0", "1", "1", "2", "2", "3", "3", "4...</span></a>
+<a class="sourceLine" id="cb3-82" data-line-number="82"><span class="co">#&gt; $ MEASURES            &lt;chr&gt; "20100", "20201", "20100", "20201", "20100...</span></a>
+<a class="sourceLine" id="cb3-83" data-line-number="83"><span class="co">#&gt; $ MEASURES_NAME       &lt;chr&gt; "Persons claiming JSA", "Workplace-based e...</span></a>
+<a class="sourceLine" id="cb3-84" data-line-number="84"><span class="co">#&gt; $ OBS_VALUE           &lt;chr&gt; "277695", "1.5", NA, NA, NA, NA, NA, NA, N...</span></a>
+<a class="sourceLine" id="cb3-85" data-line-number="85"><span class="co">#&gt; $ OBS_STATUS          &lt;chr&gt; "A", "A", "Q", "Q", "Q", "Q", "Q", "Q", "Q...</span></a>
+<a class="sourceLine" id="cb3-86" data-line-number="86"><span class="co">#&gt; $ OBS_STATUS_NAME     &lt;chr&gt; "Normal Value", "Normal Value", "These fig...</span></a>
+<a class="sourceLine" id="cb3-87" data-line-number="87"><span class="co">#&gt; $ OBS_CONF            &lt;chr&gt; "F", "F", "F", "F", "F", "F", "F", "F", "F...</span></a>
+<a class="sourceLine" id="cb3-88" data-line-number="88"><span class="co">#&gt; $ OBS_CONF_NAME       &lt;chr&gt; "Free (free for publication)", "Free (free...</span></a>
+<a class="sourceLine" id="cb3-89" data-line-number="89"><span class="co">#&gt; $ URN                 &lt;chr&gt; "Nm-1d1d32293e0d2092957697d5d1d20100", "Nm...</span></a>
+<a class="sourceLine" id="cb3-90" data-line-number="90"><span class="co">#&gt; $ RECORD_OFFSET       &lt;chr&gt; "0", "1", "2", "3", "4", "5", "6", "7", "8...</span></a>
+<a class="sourceLine" id="cb3-91" data-line-number="91"><span class="co">#&gt; $ RECORD_COUNT        &lt;chr&gt; "70", "70", "70", "70", "70", "70", "70", ...</span></a></code></pre></div>
 <p>There is a lot of data available through Nomis, and there are some limits to the amount of data that can be retrieved within a certain period of time, although those are not published. For more details, see the <a href="https://www.nomisweb.co.uk/api/v01/help">full API documentation</a> from Nomis. Full package documentation is available at <a href="https://docs.evanodell.com/nomisr">docs.evanodell.com/nomisr</a></p>
 </div>
 <div id="meta" class="section level2">
@@ -241,13 +244,13 @@
 <p>Please note that this project is released with a <a href="CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 <p>Please note that this project is not affiliated with the Office for National Statistics or the University of Durham.</p>
 <p>Get citation information for <code>nomisr</code> in R with <code>citation(package = 'nomisr')</code></p>
-<p>Odell E (2018). <em>nomisr: Access Nomis UK labour market data on with R</em>. doi: 10.5281/zenodo.1157908 (URL: <a href="http://doi.org/10.5281/zenodo.1157908" class="uri">http://doi.org/10.5281/zenodo.1157908</a>), R package version 0.1.0, &lt;URL: <a href="https://github.com/ropensci/nomisr" class="uri">https://github.com/ropensci/nomisr</a>&gt;.</p>
+<p>Odell E (2018). <em>nomisr: Access Nomis UK labour market data on with R</em>. doi: 10.5281/zenodo.1246845 (URL: <a href="http://doi.org/10.5281/zenodo.1246845" class="uri">http://doi.org/10.5281/zenodo.1246845</a>), R package version 0.2.0, &lt;URL: <a href="https://github.com/ropensci/nomisr" class="uri">https://github.com/ropensci/nomisr</a>&gt;.</p>
 <p>A BibTeX entry for LaTeX users is</p>
 <pre><code>  @Manual{,
     title = {{nomisr}: Access Nomis UK Labour Market Data With R},
     author = {Evan Odell},
     year = {2018},
-    note = {R package version 0.1.0},
+    note = {R package version 0.2.0},
     doi = {10.5281/zenodo.1157908},
     url = {https://github.com/ropensci/nomisr},
   }</code></pre>
@@ -299,9 +302,9 @@
 <li><a href="https://github.com/ropensci/nomisr"><img src="https://img.shields.io/github/tag/ropensci/nomisr.svg" alt="GitHub tag"></a></li>
 <li><a href="https://dgrtwo.shinyapps.io/cranview/"><img src="https://cranlogs.r-pkg.org/badges/grand-total/nomisr"></a></li>
 <li><a href="https://travis-ci.org/ropensci/nomisr"><img src="https://travis-ci.org/ropensci/nomisr.svg?branch=master" alt="Travis-CI Build Status"></a></li>
-<li><a href="https://ci.appveyor.com/project/ropensci/nomisr"><img src="https://ci.appveyor.com/api/projects/status/github/ropensci/nomisr?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
+<li><a href="https://ci.appveyor.com/project/evanodell/nomisr"><img src="https://ci.appveyor.com/api/projects/status/github/evanodell/nomisr?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
 <li><a href="https://codecov.io/github/ropensci/nomisr?branch=master"><img src="https://img.shields.io/codecov/c/github/ropensci/nomisr/master.svg" alt="Coverage Status"></a></li>
-<li><a href="https://zenodo.org/badge/latestdoi/118144805"><img src="https://zenodo.org/badge/118144805.svg" alt="DOI"></a></li>
+<li><a href="https://doi.org/10.5281/zenodo.1246845"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1246845.svg" alt="DOI"></a></li>
 </ul>
 </div>
 </div>

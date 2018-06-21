@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -31,12 +33,13 @@
 <meta property="og:title" content="Nomis dataset content types — nomis_content_type" />
 
 <meta property="og:description" content="Nomis content type metadata is included in annotation tags, in the form of
-contenttype/&lt;contenttype&gt; in the annotationtitle column in
+contenttype/&amp;lt;contenttype&amp;gt; in the annotationtitle column in
 the annotations.annotation list-column returned from
 nomis_data_info. For example, the content types returned from
-dataset "NM_1658_1", using nomis_data_info("NM_1658_1"), are
-"geoglevel", "2001census" and "sources"." />
+dataset &quot;NM_1658_1&quot;, using nomis_data_info(&quot;NM_1658_1&quot;), are
+&quot;geoglevel&quot;, &quot;2001census&quot; and &quot;sources&quot;." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -73,7 +76,7 @@ dataset "NM_1658_1", using nomis_data_info("NM_1658_1"), are
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0</span>
       </span>
     </div>
 
@@ -194,8 +197,7 @@ dataset "NM_1658_1", using <code><a href='nomis_data_info.html'>nomis_data_info(
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_content_type</span>(<span class='st'>"sources"</span>)
+    <pre class="examples"><div class='input'><span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_content_type</span>(<span class='st'>"sources"</span>)
 
 <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>a</span>)</div><div class='output co'>#&gt; Observations: 16
 #&gt; Variables: 6
@@ -217,8 +219,7 @@ dataset "NM_1658_1", using <code><a href='nomis_data_info.html'>nomis_data_info(
 #&gt; $ item.name        &lt;chr&gt; "2011 Census", "2001 Census", "1991 Census", "1981...
 #&gt; $ item.type        &lt;chr&gt; "DataSourceSubGroup", "DataSourceSubGroup", "DataS...
 #&gt; $ name             &lt;fct&gt; Census of Population, Census of Population, Census...
-#&gt; $ type             &lt;fct&gt; DataSource, DataSource, DataSource, DataSource</div><div class='input'>
-</div></pre>
+#&gt; $ type             &lt;fct&gt; DataSource, DataSource, DataSource, DataSource</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

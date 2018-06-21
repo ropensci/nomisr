@@ -68,8 +68,15 @@ test_that("nomis_get_data return expected format", {
   expect_type(x_select, "list")
   expect_true(tibble::is_tibble(x_select))
 
-  # x_many <- nomis_get_data( id = "NM_1_1")
-  #   expect_message(nomis_get_data(id = "NM_1_1"), "Warning: You are trying to
-  # acess more than 350,000 rows of data. This may cause timeout issues and/or
-  #                  automatic rate limiting by the Nomis API.")
+  mort_data1 <- nomis_get_data(id = "NM_161_1", time = "latest",
+                              geography = "TYPE464", 
+                              CAUSE_OF_DEATH = "10381", 
+                              sex = 0, age = 0, MEASURE = 6)
+  
+  mort_data2 <- nomis_get_data(id = "NM_161_1", time = "latest",
+                               geography = "TYPE464", 
+                               cause_of_death = "10381", 
+                               sex = 0, age = 0, measure = 6)
+  
+  expect_true(all.equal(mort_data2, mort_data1))
 })

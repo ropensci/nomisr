@@ -1,7 +1,7 @@
 
 #' Nomis metadata concepts and types
 #'
-#' @description Retrieve all concept code options of all Nomis datasets, 
+#' @description Retrieve all concept code options of all Nomis datasets,
 #' concept code options for a given dataset, or the all the options for a given
 #' concept variable from a particular dataset. Specifying \code{concept} will
 #' return all the options for a given variable in a particular dataset.
@@ -26,16 +26,16 @@
 #'
 #' @param additional_queries Any other additional queries to pass to the API.
 #' See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
-#' query structure. Defaults to \code{NULL}. Deprecated in package 
+#' query structure. Defaults to \code{NULL}. Deprecated in package
 #' versions greater than 0.2.0 and will eventually be removed.
-#' 
+#'
 #' @param ... Use to pass any other parameters to the API.
 #'
 #' @seealso \code{\link{nomis_data_info}}
 #' @seealso \code{\link{nomis_get_data}}
 #' @seealso \code{\link{nomis_overview}}
 #'
-#' @return A tibble with metadata options for queries using 
+#' @return A tibble with metadata options for queries using
 #' \code{\link{nomis_get_data}}.
 #' @export
 #'
@@ -73,11 +73,11 @@ nomis_get_metadata <- function(id, concept = NULL,
   if (missing(id)) {
     stop("The dataset ID must be specified.", call. = FALSE)
   }
-  
+
   # Warning message for additional queries
   if (length(additional_queries) > 0) {
     additional_query <- additional_queries
-    
+
     message("The `additional_query` parameter is
             deprecated, please use ... instead")
   } else {
@@ -101,21 +101,21 @@ nomis_get_metadata <- function(id, concept = NULL,
         paste0(search, collapse = ",")
       )
     )
-    
+
     dots <- rlang::list2(...) ## eval the dots
-    
+
     dots_list <- c()
-    
+
     for (i in seq_along(dots)) { # retrieve the dots
       dots_list[i] <- ifelse(length(dots[[i]]) > 0,
-                     paste0(
-                       "&", names(dots[i]), "=",
-                       paste0(dots[[i]], collapse = ",")
-                     ),
-                     ""
+        paste0(
+          "&", names(dots[i]), "=",
+          paste0(dots[[i]], collapse = ",")
+        ),
+        ""
       )
     }
-    
+
     dots_query <- paste0(dots_list, collapse = "")
 
     df <- tibble::as.tibble(rsdmx::readSDMX(

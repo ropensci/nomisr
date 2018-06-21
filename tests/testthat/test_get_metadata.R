@@ -31,7 +31,7 @@ test_that("nomis_get_metadata return expected format", {
 
   e <- nomis_get_metadata(
     "NM_1_1", "item",
-     geography=1879048226,sex=5
+    geography = 1879048226, sex = 5
   )
   expect_length(e, 3)
   expect_equal(nrow(e), 5)

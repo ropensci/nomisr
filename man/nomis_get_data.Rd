@@ -53,9 +53,9 @@ other parameters. Defaults to \code{NULL}. In the rare instance that a
 geographic variable does not exist, if not \code{NULL}, the function
 will return an error.}
 
-\item{sex}{The code for sexes/genders to include in the dataset. 
-Accepts a string or number, or a vector of strings or numbers. 
-\code{nomisr} automatically voids any queries for sex if it is not an 
+\item{sex}{The code for sexes/genders to include in the dataset.
+Accepts a string or number, or a vector of strings or numbers.
+\code{nomisr} automatically voids any queries for sex if it is not an
 available code in the requested dataset.
 
 There are two different codings used for sex, depending on the dataset. For
@@ -64,8 +64,8 @@ males and females, \code{6} only females and \code{5} only males.
 Defaults to \code{NULL}, equivalent to \code{c(5,6,7)} for datasets where
 sex is an option. For datasets using \code{"C_SEX"}, \code{0} will return
 results for males and females, \code{1} only males and
-\code{2} only females. Some datasets use \code{"GENDER"} with the same 
-values as \code{"SEX"}, which works with both \code{sex} and 
+\code{2} only females. Some datasets use \code{"GENDER"} with the same
+values as \code{"SEX"}, which works with both \code{sex} and
 \code{gender = <code>} as a dot parameter.}
 
 \item{measures}{The code for the statistical measure(s) to include in the
@@ -75,7 +75,7 @@ to other parameters. Defaults to \code{NULL}.}
 
 \item{additional_queries}{Any other additional queries to pass to the API.
 See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
-query structure. Defaults to \code{NULL}. Deprecated in package 
+query structure. Defaults to \code{NULL}. Deprecated in package
 versions greater than 0.2.0 and will eventually be removed in a
 future version.}
 
@@ -85,14 +85,14 @@ Defaults to \code{FALSE}.}
 \item{select}{A character vector of one or more variables to select,
 excluding all others. \code{select} is not case sensitive.}
 
-\item{...}{Use to pass any other parameters to the API. Useful for passing 
+\item{...}{Use to pass any other parameters to the API. Useful for passing
 concepts that are not available through the default parameters. Only accepts
-concepts identified in \code{\link{nomis_get_metadata}} and concept values 
+concepts identified in \code{\link{nomis_get_metadata}} and concept values
 identified in \code{\link{nomis_codelist}}. Parameters can be quoted or
-unquoted, and are not case sensitive. Each parameter should have a name and
-a value. For example \code{cause_of_death = 10300} and 
-\code{CAUSE_OF_DEATH = 10300} will return the same result when querying 
-dataset "NM_161_1".}
+unquoted. Each parameter should have a name and a value. For example, 
+\code{CAUSE_OF_DEATH = 10300} when querying dataset "NM_161_1". Some 
+parameters are case sensitive and some are not, it is unclear why this is 
+the case. It is reccomended}
 }
 \value{
 A tibble containing the selected dataset.
@@ -106,15 +106,15 @@ in csv format and parsed with the \code{read_csv} function from the
 columns.
 
 To find the code options for a given dataset, use
-\code{\link{nomis_get_metadata}} for specific codes, and 
+\code{\link{nomis_get_metadata}} for specific codes, and
 \code{\link{nomis_codelist}} for code values.
 
 This can be a slow process if querying significant amounts of
 data. Guest users are limited to 25,000 rows per query, although
 \code{nomisr} identifies queries that will return more than 25,000 rows,
 sending individual queries and combining the results of those queries into
-a single tibble. In interactive sessions, \code{nomisr} will warn you if 
-guest users are requesting more than 350,000 rows of data, and if 
+a single tibble. In interactive sessions, \code{nomisr} will warn you if
+guest users are requesting more than 350,000 rows of data, and if
 registered users are requesting more than 1,500,000 rows.
 
 Note the difference between the \code{time} and \code{date}
@@ -154,16 +154,16 @@ emp_by_occupation <- nomis_get_data(id="NM_168_1", time="latest",
 tibble::glimpse(emp_by_occupation)
 
 # Deaths in 2016 and 2015 by three specified causes, g
-death <- nomis_get_data("NM_161_1", date = c("2016","2015"), 
-                        geography = "TYPE480", 
+death <- nomis_get_data("NM_161_1", date = c("2016","2015"),
+                        geography = "TYPE480",
                         cause_of_death=c(10300, 102088, 270))
-                    
+
 tibble::glimpse(death)
 
 
 # All causes of death in London in 2016
-london_death <- nomis_get_data("NM_1_1", date = c("2016"), 
-                               geography = "2013265927", sex = 1, age = 0)              
+london_death <- nomis_get_data("NM_1_1", date = c("2016"),
+                               geography = "2013265927", sex = 1, age = 0)
 
 tibble::glimpse(london_death)
 }

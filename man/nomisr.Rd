@@ -12,10 +12,10 @@ statistics and other economic and demographic data from the Office for
 National Statistics.
 }
 \details{
-The package provides functions to find what data is available, metadata, 
-including the variables and query options for different datasets and 
+The package provides functions to find what data is available, metadata,
+including the variables and query options for different datasets and
 a function for downloading data.
 
-The full API documentation and optional registration for an API key is 
+The full API documentation and optional registration for an API key is
 available at \url{https://www.nomisweb.co.uk/api/v01/help}.
 }

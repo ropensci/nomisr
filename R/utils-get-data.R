@@ -23,7 +23,8 @@ nomis_get_data_util <- function(query) {
   df <- tryCatch({
     readr::read_csv(
       api_get$url,
-      col_types = readr::cols(.default = readr::col_character())
+      col_types = readr::cols(.default = "c", 
+                              OBS_VALUE = "d")
     )
   }, error = function(cond) {
     message(

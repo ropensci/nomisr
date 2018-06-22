@@ -13,19 +13,19 @@ nomis_codelist(id, concept, search = NULL)
 left empty, returns all the variables for the dataset specified by \code{id}.
 Codes are not case sensitive and must be specified.}
 
-\item{search}{Search for codes that contain a given string. The wildcard 
-character \code{*} can be added to the beginning and/or end of each 
-search string. Search strings are not case sensitive. 
-Defaults to \code{NULL}. Note that the search function is not very powerful 
+\item{search}{Search for codes that contain a given string. The wildcard
+character \code{*} can be added to the beginning and/or end of each
+search string. Search strings are not case sensitive.
+Defaults to \code{NULL}. Note that the search function is not very powerful
 for some datasets.}
 }
 \value{
 A tibble with the codes used to query specific concepts.
 }
 \description{
-Nomis uses its own internal coding for query concepts. \code{nomis_codelist} 
-returns the codes for a given concept in a \code{tibble}, given a dataset 
-ID and a concept name. 
+Nomis uses its own internal coding for query concepts. \code{nomis_codelist}
+returns the codes for a given concept in a \code{tibble}, given a dataset
+ID and a concept name.
 Note that some codelists, particularly geography, can be very large.
 }
 \examples{

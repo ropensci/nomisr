@@ -25,17 +25,17 @@ search string.}
 
 \item{additional_queries}{Any other additional queries to pass to the API.
 See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
-query structure. Defaults to \code{NULL}. Deprecated in package 
+query structure. Defaults to \code{NULL}. Deprecated in package
 versions greater than 0.2.0 and will eventually be removed.}
 
 \item{...}{Use to pass any other parameters to the API.}
 }
 \value{
-A tibble with metadata options for queries using 
+A tibble with metadata options for queries using
 \code{\link{nomis_get_data}}.
 }
 \description{
-Retrieve all concept code options of all Nomis datasets, 
+Retrieve all concept code options of all Nomis datasets,
 concept code options for a given dataset, or the all the options for a given
 concept variable from a particular dataset. Specifying \code{concept} will
 return all the options for a given variable in a particular dataset.

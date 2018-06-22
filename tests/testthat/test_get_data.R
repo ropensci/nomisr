@@ -68,15 +68,15 @@ test_that("nomis_get_data return expected format", {
   expect_type(x_select, "list")
   expect_true(tibble::is_tibble(x_select))
 
-  mort_data1 <- nomis_get_data(id = "NM_161_1", time = "latest",
+  mort_data1 <- nomis_get_data(id = "NM_161_1", date = "2016",
                               geography = "TYPE464", 
                               CAUSE_OF_DEATH = "10381", 
                               sex = 0, age = 0, MEASURE = 6)
   
-  mort_data2 <- nomis_get_data(id = "NM_161_1", time = "latest",
-                               geography = "TYPE464", 
+  mort_data2 <- nomis_get_data(id = "NM_161_1", date = "2016",
+                               geography = "TYPE464", sex = 0, measures = NULL,
                                cause_of_death = "10381", 
-                               sex = 0, age = 0, measure = 6)
+                               age = 0, measure = "6")
   
   expect_true(all.equal(mort_data2, mort_data1))
 })

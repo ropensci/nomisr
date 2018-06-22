@@ -31,8 +31,8 @@ A tibble with details on all datasets matching the search query.
 }
 \description{
 A function to search for datasets on given topics. In the case of multiple
-search parameters, returns metadata on all datasets matching  one or more 
-of the parameters. The wildcard character \code{*} can be added to the 
+search parameters, returns metadata on all datasets matching  one or more
+of the parameters. The wildcard character \code{*} can be added to the
 beginning and/or end of each search string.
 }
 \examples{

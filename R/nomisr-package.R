@@ -19,7 +19,7 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble as_tibble enframe
 #' @importFrom httr http_type GET http_error status_code
-#' @importFrom readr read_csv
+#' @importFrom readr read_csv col_double col_character
 #' @importFrom dplyr bind_rows
 #' @importFrom utils menu
 #' @importFrom rsdmx readSDMX

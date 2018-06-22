@@ -111,10 +111,10 @@
 #' concepts that are not available through the default parameters. Only accepts
 #' concepts identified in \code{\link{nomis_get_metadata}} and concept values
 #' identified in \code{\link{nomis_codelist}}. Parameters can be quoted or
-#' unquoted, and are not case sensitive. Each parameter should have a name and
-#' a value. For example \code{cause_of_death = 10300} and
-#' \code{CAUSE_OF_DEATH = 10300} will return the same result when querying
-#' dataset "NM_161_1".
+#' unquoted. Each parameter should have a name and a value. For example, 
+#' \code{CAUSE_OF_DEATH = 10300} when querying dataset "NM_161_1". Some 
+#' parameters are case sensitive and some are not, it is unclear why this is 
+#' the case. It is reccomended 
 #'
 #' @return A tibble containing the selected dataset.
 #' By default, all tibble columns are parsed as characters.
@@ -244,7 +244,7 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
   for (i in seq_along(dots)) { # retrieve the dots
     x[i] <- ifelse(length(dots[[i]]) > 0,
       paste0(
-        "&", toupper(names(dots[i])), "=",
+        "&", toupper(names(dots[i])), "=", 
         paste0(dots[[i]], collapse = ",")
       ),
       ""

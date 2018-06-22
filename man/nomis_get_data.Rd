@@ -90,7 +90,7 @@ concepts that are not available through the default parameters. Only accepts
 concepts identified in \code{\link{nomis_get_metadata}} and concept values
 identified in \code{\link{nomis_codelist}}. Parameters can be quoted or
 unquoted. Each parameter should have a name and a value. For example, 
-\code{CAUSE_OF_DEATH = 10300} when querying dataset "NM_161_1". Some 
+\code{CAUSE_OF_DEATH = 10300} when querying dataset \code{"NM_161_1"}. Some 
 parameters are case sensitive and some are not, it is unclear why this is 
 the case. It is reccomended}
 }

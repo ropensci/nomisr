@@ -6,7 +6,8 @@
 \usage{
 nomis_get_data(id, time = NULL, date = NULL, geography = NULL,
   sex = NULL, measures = NULL, additional_queries = NULL,
-  exclude_missing = FALSE, select = NULL, ...)
+  exclude_missing = FALSE, select = NULL, tidy = TRUE,
+  tidy_style = "snake_case", ...)
 }
 \arguments{
 \item{id}{The ID of the dataset to retrieve.}
@@ -85,14 +86,20 @@ Defaults to \code{FALSE}.}
 \item{select}{A character vector of one or more variables to select,
 excluding all others. \code{select} is not case sensitive.}
 
+\item{tidy}{Logical parameter. If \code{TRUE}, converts variable names to
+\code{snake_case}. Defaults to \code{TRUE}.}
+
+\item{tidy_style}{The style to convert variable names to, if
+\code{tidy = TRUE}. Accepts one of \code{"snake_case"}, \code{"camelCase"}
+and \code{"period.case"}. Defaults to \code{"snake_case"}.}
+
 \item{...}{Use to pass any other parameters to the API. Useful for passing
 concepts that are not available through the default parameters. Only accepts
 concepts identified in \code{\link{nomis_get_metadata}} and concept values
 identified in \code{\link{nomis_codelist}}. Parameters can be quoted or
-unquoted. Each parameter should have a name and a value. For example, 
-\code{CAUSE_OF_DEATH = 10300} when querying dataset \code{"NM_161_1"}. Some 
-parameters are case sensitive and some are not, it is unclear why this is 
-the case. It is reccomended}
+unquoted. Each parameter should have a name and a value. For example,
+\code{CAUSE_OF_DEATH = 10300} when querying dataset \code{"NM_161_1"}.
+Parameters are not case sensitive.}
 }
 \value{
 A tibble containing the selected dataset.

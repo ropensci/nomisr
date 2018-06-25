@@ -23,10 +23,13 @@ nomis_get_data_util <- function(query) {
   df <- tryCatch({
     readr::read_csv(
       api_get$url,
-      col_types = readr::cols(.default = "c", 
-                              OBS_VALUE = "d")
+      col_types = readr::cols(
+        .default = "c",
+        OBS_VALUE = "d"
+      )
     )
-  }, error = function(cond) {
+  },
+  error = function(cond) {
     message(
       "It is likely that you have been automatically rate limited ",
       "by the Nomis API.\n",
@@ -35,7 +38,13 @@ nomis_get_data_util <- function(query) {
     )
 
     return(NA)
-  })
+  }, warning = function(cond) {
+    stop("The API request did not return any results.\n",
+      "Please check your parameters.",
+      call. = FALSE
+    )
+  }
+  )
 
   df
 }

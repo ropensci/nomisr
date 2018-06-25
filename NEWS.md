@@ -1,10 +1,19 @@
 
 # nomisr 0.3.0.9000
 
+## New features and function changes
+
+* `nomis_get_data()` now includes `tidy` and `tidy_style` parameters. 
+`nomis_get_data()` now defaults to converting all variable names to 
+"snake_case". `tidy_style` also accepts "camelCase" and "period.case" as name
+style options.
+
 ## Bug fixes
 
 * Dot queries to `nomis_get_data()` work with case-insensitive measurements 
 more persistently. 
+
+
 
 
 # nomisr 0.3.0

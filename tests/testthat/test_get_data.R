@@ -22,10 +22,10 @@ test_that("nomis_get_data return expected format", {
   expect_type(a, "list")
   expect_true(tibble::is_tibble(a))
   expect_equal(
-    as.numeric(a$RECORD_OFFSET[[nrow(a)]]) + 1,
-    as.numeric(a$RECORD_COUNT[[nrow(a)]])
+    as.numeric(a$record_offset[[nrow(a)]]) + 1,
+    as.numeric(a$record_count[[nrow(a)]])
   )
-  sum_check <- summary(diff(as.numeric(a$RECORD_OFFSET)))
+  sum_check <- summary(diff(as.numeric(a$record_offset)))
   expect_equal(sum_check[[1]], 1)
 
   expect_error(nomis_get_data(), "Dataset ID must be specified")
@@ -38,11 +38,11 @@ test_that("nomis_get_data return expected format", {
             deprecated, please use ... instead"
   )
 
-  expect_true(nrow(b) == b$RECORD_COUNT[1])
+  expect_true(nrow(b) == b$record_count[1])
   expect_length(b, 40)
   expect_type(b, "list")
   expect_true(tibble::is_tibble(b))
-  expect_true(nrow(a) == a$RECORD_COUNT[1])
+  expect_true(nrow(a) == a$record_count[1])
 
   c <- nomis_get_data(
     id = "NM_127_1", sex = "6",
@@ -51,7 +51,7 @@ test_that("nomis_get_data return expected format", {
   expect_length(c, 28)
   expect_type(c, "list")
   expect_true(tibble::is_tibble(c))
-  expect_true(nrow(c) == c$RECORD_COUNT[1])
+  expect_true(nrow(c) == c$record_count[1])
 
   expect_error(nomis_get_data(
     id = "NM_1_1", time = "latest",

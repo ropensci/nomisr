@@ -28,7 +28,7 @@ nomis_get_data_util <- function(query) {
         OBS_VALUE = "d"
       )
     )
-  }, 
+  },
   error = function(cond) {
     message(
       "It is likely that you have been automatically rate limited ",
@@ -40,8 +40,11 @@ nomis_get_data_util <- function(query) {
     return(NA)
   }, warning = function(cond) {
     stop("The API request did not return any results.\n",
-          "Please check your parameters.", call. = FALSE)
-  })
+      "Please check your parameters.",
+      call. = FALSE
+    )
+  }
+  )
 
   df
 }

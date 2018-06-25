@@ -87,15 +87,14 @@ test_that("nomis_get_data return expected format", {
 
   expect_true(all.equal(mort_data2, mort_data1))
   expect_true(is.numeric(mort_data2$obs_value))
-  
+
   expect_error(
-  mort_data3 <- nomis_get_data(
-    id = "NM_161_1", date = "2016",
-    geography = "TYPE46", sex = 0,
-    cause_of_death = "10381",
-    age = 0, measure = 6
-  ), 
-  "The API request did not return any results.\nPlease check your parameters.")
-  
-  
+    mort_data3 <- nomis_get_data(
+      id = "NM_161_1", date = "2016",
+      geography = "TYPE46", sex = 0,
+      cause_of_death = "10381",
+      age = 0, measure = 6
+    ),
+    "The API request did not return any results.\nPlease check your parameters."
+  )
 })

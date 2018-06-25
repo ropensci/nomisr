@@ -119,7 +119,7 @@
 #' concepts identified in \code{\link{nomis_get_metadata}} and concept values
 #' identified in \code{\link{nomis_codelist}}. Parameters can be quoted or
 #' unquoted. Each parameter should have a name and a value. For example,
-#' \code{CAUSE_OF_DEATH = 10300} when querying dataset \code{"NM_161_1"}. 
+#' \code{CAUSE_OF_DEATH = 10300} when querying dataset \code{"NM_161_1"}.
 #' Parameters are not case sensitive.
 #'
 #' @return A tibble containing the selected dataset.

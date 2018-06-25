@@ -30,10 +30,12 @@ test_that("nomis_get_data return expected format", {
 
   expect_error(nomis_get_data(), "Dataset ID must be specified")
 
+  expect_message(
   b <- nomis_get_data(
     id = "NM_168_1", time = "latest",
-    geography = "2013265925", sex = "0"
-  )
+    geography = "2013265925", sex = "0", additional_queries = ""
+  ), "The `additional_query` parameter is
+            deprecated, please use ... instead")
 
   expect_true(nrow(b) == b$RECORD_COUNT[1])
   expect_length(b, 40)
@@ -74,9 +76,11 @@ test_that("nomis_get_data return expected format", {
                               sex = 0, age = 0, MEASURE = 6)
   
   mort_data2 <- nomis_get_data(id = "NM_161_1", date = "2016",
-                               geography = "TYPE464", sex = 0, measures = NULL,
-                               cause_of_death = "10381", 
+                               geography = "TYPE464", sex = 0, 
+                               cause_of_death = "10381", measures = 20100,
                                age = 0, measure = "6")
   
   expect_true(all.equal(mort_data2, mort_data1))
+  expect_true(is.numeric(mort_data2$obs_value))
+  
 })

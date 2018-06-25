@@ -106,6 +106,13 @@
 #'
 #' @param select A character vector of one or more variables to select,
 #' excluding all others. \code{select} is not case sensitive.
+#' 
+#' @param tidy Logical parameter. If \code{TRUE}, converts variable names to 
+#' \code{snake_case}. Defaults to \code{TRUE}.
+#' 
+#' @param tidy_style The style to convert variable names to, if
+#' \code{tidy = TRUE}. Accepts one of \code{'snake_case'}, \code{'camelCase'}
+#' and \code{'period.case'}. Defaults to \code{'snake_case'}.
 #'
 #' @param ... Use to pass any other parameters to the API. Useful for passing
 #' concepts that are not available through the default parameters. Only accepts
@@ -165,7 +172,8 @@
 nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
                            sex = NULL, measures = NULL,
                            additional_queries = NULL, exclude_missing = FALSE,
-                           select = NULL, ...) {
+                           select = NULL, tidy = TRUE, 
+                           tidy_style = "snake_case", ...) {
   if (missing(id)) {
     stop("Dataset ID must be specified", call. = FALSE)
   }
@@ -226,7 +234,7 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     ""
   )
 
-  select_query <- ifelse(length(select) > 0,
+  select_query <- ifelse(!is.null(select),
     paste0(
       "&select=",
       paste0(
@@ -238,8 +246,33 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
   )
 
   dots <- rlang::list2(...) ## eval the dots
-
+  names(dots) <- toupper(names(dots))
   x <- c()
+  
+  ## Need some kind of solution to problem of datasets with both `measures` and `measure`
+  ## This currently is not working
+  if ("MEASURE" %in% names(dots) & !is.null(measures)) {
+  measures_query <- ifelse(!is.null(measures),
+                           paste0(
+                             "&measures=",
+                             paste0(measures, collapse = ",")
+                           ),
+                           ""
+  )
+  
+  measure_query <- paste0("&MEASURE=", paste0(dots$MEASURE, collapse = ","))
+  
+  dots$MEASURE <- NULL
+  
+  } else if (!is.null(measures)) {
+    measures_query <- paste0("&measures=",
+                             paste0(measures, collapse = ",")
+                             )
+    measure_query <- ""
+  } else {
+    measures_query <- ""
+    measure_query <- ""
+  }
 
   for (i in seq_along(dots)) { # retrieve the dots
     x[i] <- ifelse(length(dots[[i]]) > 0,
@@ -263,11 +296,14 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
 
   query <- paste0(
     id, ".data.csv?", time_query, geography_query, sex_query, measures_query,
-    exclude_query, select_query, api_query, additional_query, dots_query
+    exclude_query, select_query, api_query, additional_query, measure_query, 
+    dots_query
   )
 
   first_df <- nomis_get_data_util(query)
 
+  names(first_df) <- toupper(names(first_df))
+  
   if (nrow(first_df) == 0) {
     stop("The API request did not return any results.
          Please check your parameters.", call. = FALSE)
@@ -317,9 +353,14 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     df <- first_df
   }
 
-  if (length(select) > 0 & !("RECORD_COUNT" %in% select)) {
+  if (!is.null(select) & !("RECORD_COUNT" %in% toupper(select))) {
     df$RECORD_COUNT <- NULL
   }
+  
+  if (tidy == TRUE) {
+    df <- nomis_tidy(df, tidy_style)
+  }
+  
 
   df
 }

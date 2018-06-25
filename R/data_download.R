@@ -121,7 +121,7 @@
 #' unquoted. Each parameter should have a name and a value. For example,
 #' \code{CAUSE_OF_DEATH = 10300} when querying dataset \code{"NM_161_1"}.
 #' Parameters are not case sensitive. Note that R using partial matching for
-#' function variables, and so passing a parameter with the same opening 
+#' function variables, and so passing a parameter with the same opening
 #' characters as one of the above-named parameters can cause an error unless
 #' the value of the named parameter is specified. See example below:
 #'
@@ -171,14 +171,14 @@
 #' tibble::glimpse(london_death)
 #' }
 #' \dontrun{
-#'  ## Results in an error because `measure` is mistaken for `measures`  
-#'  mort_data1 <- nomis_get_data(id = "NM_161_1", date = "2016", 
-#'    geography = "TYPE464", sex = 0, cause_of_death = "10381", 
+#'  ## Results in an error because `measure` is mistaken for `measures`
+#'  mort_data1 <- nomis_get_data(id = "NM_161_1", date = "2016",
+#'    geography = "TYPE464", sex = 0, cause_of_death = "10381",
 #'    age = 0, measure = 6)
-#'  
+#'
 #'  ## Does not error because `measures` is specified
-#'  mort_data2 <- nomis_get_data(id = "NM_161_1", date = "2016", 
-#'    geography = "TYPE464", sex = 0, measures = NULL, 
+#'  mort_data2 <- nomis_get_data(id = "NM_161_1", date = "2016",
+#'    geography = "TYPE464", sex = 0, measures = NULL,
 #'    cause_of_death = "10381", age = 0, measure = 6)
 #' }
 
@@ -249,19 +249,19 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     ),
     ""
   )
-  
+
   measures_query <- ifelse(is.null(measures),
-                           paste0(
-                             "&MEASURES=",
-                             paste0(measures, collapse = ",")
-                             ),
-                           ""
-                           )
+    paste0(
+      "&MEASURES=",
+      paste0(measures, collapse = ",")
+    ),
+    ""
+  )
 
   dots <- rlang::list2(...) ## eval the dots
   names(dots) <- toupper(names(dots))
   x <- c()
-  
+
   for (i in seq_along(dots)) { # retrieve the dots
     x[i] <- ifelse(length(dots[[i]]) > 0,
       paste0(

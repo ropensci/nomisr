@@ -106,22 +106,21 @@
 #'
 #' @param select A character vector of one or more variables to select,
 #' excluding all others. \code{select} is not case sensitive.
-#' 
-#' @param tidy Logical parameter. If \code{TRUE}, converts variable names to 
+#'
+#' @param tidy Logical parameter. If \code{TRUE}, converts variable names to
 #' \code{snake_case}. Defaults to \code{TRUE}.
-#' 
+#'
 #' @param tidy_style The style to convert variable names to, if
-#' \code{tidy = TRUE}. Accepts one of \code{'snake_case'}, \code{'camelCase'}
-#' and \code{'period.case'}. Defaults to \code{'snake_case'}.
+#' \code{tidy = TRUE}. Accepts one of \code{"snake_case"}, \code{"camelCase"}
+#' and \code{"period.case"}. Defaults to \code{"snake_case"}.
 #'
 #' @param ... Use to pass any other parameters to the API. Useful for passing
 #' concepts that are not available through the default parameters. Only accepts
 #' concepts identified in \code{\link{nomis_get_metadata}} and concept values
 #' identified in \code{\link{nomis_codelist}}. Parameters can be quoted or
-#' unquoted. Each parameter should have a name and a value. For example, 
-#' \code{CAUSE_OF_DEATH = 10300} when querying dataset \code{"NM_161_1"}. Some 
-#' parameters are case sensitive and some are not, it is unclear why this is 
-#' the case. It is reccomended 
+#' unquoted. Each parameter should have a name and a value. For example,
+#' \code{CAUSE_OF_DEATH = 10300} when querying dataset \code{"NM_161_1"}. 
+#' Parameters are not case sensitive.
 #'
 #' @return A tibble containing the selected dataset.
 #' By default, all tibble columns are parsed as characters.
@@ -172,12 +171,12 @@
 nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
                            sex = NULL, measures = NULL,
                            additional_queries = NULL, exclude_missing = FALSE,
-                           select = NULL, tidy = TRUE, 
+                           select = NULL, tidy = TRUE,
                            tidy_style = "snake_case", ...) {
   if (missing(id)) {
     stop("Dataset ID must be specified", call. = FALSE)
   }
-  
+
   # check for use or time or data parameter
   if (is.null(date) == FALSE) {
     time_query <- paste0("&date=", paste0(date, collapse = ","))
@@ -244,22 +243,22 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     ),
     ""
   )
-  
+
   dots <- rlang::list2(...) ## eval the dots
   names(dots) <- toupper(names(dots))
   x <- c()
-  
-  
+
+
   for (i in seq_along(dots)) { # retrieve the dots
     x[i] <- ifelse(length(dots[[i]]) > 0,
-                   paste0(
-                     "&", toupper(names(dots[i])), "=", 
-                     paste0(dots[[i]], collapse = ",")
-                   ),
-                   ""
+      paste0(
+        "&", toupper(names(dots[i])), "=",
+        paste0(dots[[i]], collapse = ",")
+      ),
+      ""
     )
   }
-  
+
   dots_query <- paste0(x, collapse = "")
 
   if (!is.null(getOption("nomisr.API.key"))) {
@@ -271,20 +270,14 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
   }
 
   query <- paste0(
-    id, ".data.csv?",dots_query, time_query, geography_query, sex_query, 
-    exclude_query, select_query, api_query, 
+    id, ".data.csv?", dots_query, time_query, geography_query, sex_query,
+    exclude_query, select_query, api_query,
     additional_query, measures_query
-    
   )
 
   first_df <- nomis_get_data_util(query)
 
   names(first_df) <- toupper(names(first_df))
-  
-  if (nrow(first_df) == 0) {
-    stop("The API request did not return any results.
-         Please check your parameters.", call. = FALSE)
-  }
 
   if (as.numeric(first_df$RECORD_COUNT)[1] >= max_length) {
     # if amount available is over the limit of 15 total calls at a time
@@ -333,11 +326,10 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
   if (!is.null(select) & !("RECORD_COUNT" %in% toupper(select))) {
     df$RECORD_COUNT <- NULL
   }
-  
+
   if (tidy == TRUE) {
     df <- nomis_tidy(df, tidy_style)
   }
-  
 
   df
 }

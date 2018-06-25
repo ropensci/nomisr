@@ -177,7 +177,7 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
   if (missing(id)) {
     stop("Dataset ID must be specified", call. = FALSE)
   }
-
+  
   # check for use or time or data parameter
   if (is.null(date) == FALSE) {
     time_query <- paste0("&date=", paste0(date, collapse = ","))
@@ -187,7 +187,7 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     time_query <- ""
   }
 
-  geography_query <- ifelse(is.null(geography) == FALSE,
+  geography_query <- ifelse(!is.null(geography),
     paste0(
       "&geography=",
       paste0(geography, collapse = ",")
@@ -195,9 +195,9 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     ""
   )
 
-  measures_query <- ifelse(is.null(measures) == FALSE,
+  measures_query <- ifelse(!is.null(measures),
     paste0(
-      "&measures=",
+      "&MEASURE=",
       paste0(measures, collapse = ",")
     ),
     ""
@@ -244,46 +244,22 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     ),
     ""
   )
-
+  
   dots <- rlang::list2(...) ## eval the dots
   names(dots) <- toupper(names(dots))
   x <- c()
   
-  ## Need some kind of solution to problem of datasets with both `measures` and `measure`
-  ## This currently is not working
-  if ("MEASURE" %in% names(dots) & !is.null(measures)) {
-  measures_query <- ifelse(!is.null(measures),
-                           paste0(
-                             "&measures=",
-                             paste0(measures, collapse = ",")
-                           ),
-                           ""
-  )
   
-  measure_query <- paste0("&MEASURE=", paste0(dots$MEASURE, collapse = ","))
-  
-  dots$MEASURE <- NULL
-  
-  } else if (!is.null(measures)) {
-    measures_query <- paste0("&measures=",
-                             paste0(measures, collapse = ",")
-                             )
-    measure_query <- ""
-  } else {
-    measures_query <- ""
-    measure_query <- ""
-  }
-
   for (i in seq_along(dots)) { # retrieve the dots
     x[i] <- ifelse(length(dots[[i]]) > 0,
-      paste0(
-        "&", toupper(names(dots[i])), "=", 
-        paste0(dots[[i]], collapse = ",")
-      ),
-      ""
+                   paste0(
+                     "&", toupper(names(dots[i])), "=", 
+                     paste0(dots[[i]], collapse = ",")
+                   ),
+                   ""
     )
   }
-
+  
   dots_query <- paste0(x, collapse = "")
 
   if (!is.null(getOption("nomisr.API.key"))) {
@@ -295,9 +271,10 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
   }
 
   query <- paste0(
-    id, ".data.csv?", time_query, geography_query, sex_query, measures_query,
-    exclude_query, select_query, api_query, additional_query, measure_query, 
-    dots_query
+    id, ".data.csv?",dots_query, time_query, geography_query, sex_query, 
+    exclude_query, select_query, api_query, 
+    additional_query, measures_query
+    
   )
 
   first_df <- nomis_get_data_util(query)

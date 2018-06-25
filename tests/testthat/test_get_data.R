@@ -76,9 +76,9 @@ test_that("nomis_get_data return expected format", {
                               sex = 0, age = 0, MEASURE = 6)
   
   mort_data2 <- nomis_get_data(id = "NM_161_1", date = "2016",
-                               geography = "TYPE464", sex = 0, 
-                               cause_of_death = "10381", measures = 20100,
-                               age = 0, measure = "6")
+                               geography = "TYPE464", sex = 0,  
+                               cause_of_death = "10381", 
+                               age = 0, measure = 6)
   
   expect_true(all.equal(mort_data2, mort_data1))
   expect_true(is.numeric(mort_data2$obs_value))

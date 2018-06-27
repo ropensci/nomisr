@@ -250,7 +250,7 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     ""
   )
 
-  measures_query <- ifelse(is.null(measures),
+  measures_query <- ifelse(!is.null(measures),
     paste0(
       "&MEASURES=",
       paste0(measures, collapse = ",")

@@ -1,4 +1,11 @@
 
+
+# nomisr 0.3.1.9000
+
+## New features and function changes
+
+* The `tidy` parameter in `nomis_get_data()` now defaults to FALSE.
+
 # nomisr 0.3.1
 
 ## New features and function changes

@@ -1,10 +1,11 @@
 
 
-# nomisr 0.3.1.9000
+# nomisr 0.3.2
 
 ## New features and function changes
 
-* The `tidy` parameter in `nomis_get_data()` now defaults to FALSE.
+* The `tidy` parameter in `nomis_get_data()` now defaults to `FALSE` in order
+to preserve existing workflows.
 
 # nomisr 0.3.1
 

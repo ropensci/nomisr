@@ -4,7 +4,7 @@ authors:
 - affiliation: '1'
   name: Evan Odell
   orcid: 0000-0003-1845-808X
-date: "2018-07-23"
+date: "2018-07-27"
 output:
   html_document:
     keep_md: yes
@@ -36,6 +36,13 @@ Data downloaded with `nomisr` is in a `tibble` that is ready for plotting (see F
 
 ![](paper_files/figure-html/plot-demo-1.png)<!-- -->
 Figure 1. Data retrieved with `nomisr` is ready for plotting.
+
+
+`nomisr` is available on GitHub at <https://github.com/ropensci/nomisr>.
+
+# Acknowledgements
+
+I thank Paul Egeler for his contributions to `nomisr` and his code review comments, and Christophe Dervieux for his code review comments.
 
 
 # References

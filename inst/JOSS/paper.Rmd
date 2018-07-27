@@ -69,4 +69,11 @@ blood_cancer
 Figure 1. Data retrieved with `nomisr` is ready for plotting.
 
 
+`nomisr` is available on GitHub at <https://github.com/ropensci/nomisr>.
+
+# Acknowledgements
+
+I thank Paul Egeler for his contributions to `nomisr` and his code review comments, and Christophe Dervieux for his code review comments.
+
+
 # References

@@ -108,7 +108,8 @@
 #' excluding all others. \code{select} is not case sensitive.
 #'
 #' @param tidy Logical parameter. If \code{TRUE}, converts variable names to
-#' \code{snake_case}. Defaults to \code{TRUE}.
+#' \code{snake_case}, or another style as specified by the 
+#' \code{tidy_style} parameter. Defaults to \code{FALSE}.
 #'
 #' @param tidy_style The style to convert variable names to, if
 #' \code{tidy = TRUE}. Accepts one of \code{"snake_case"}, \code{"camelCase"}
@@ -185,7 +186,7 @@
 nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
                            sex = NULL, measures = NULL,
                            additional_queries = NULL, exclude_missing = FALSE,
-                           select = NULL, tidy = TRUE,
+                           select = NULL, tidy = FALSE,
                            tidy_style = "snake_case", ...) {
   if (missing(id)) {
     stop("Dataset ID must be specified", call. = FALSE)

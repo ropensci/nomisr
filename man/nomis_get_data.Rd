@@ -6,7 +6,7 @@
 \usage{
 nomis_get_data(id, time = NULL, date = NULL, geography = NULL,
   sex = NULL, measures = NULL, additional_queries = NULL,
-  exclude_missing = FALSE, select = NULL, tidy = TRUE,
+  exclude_missing = FALSE, select = NULL, tidy = FALSE,
   tidy_style = "snake_case", ...)
 }
 \arguments{
@@ -87,7 +87,8 @@ Defaults to \code{FALSE}.}
 excluding all others. \code{select} is not case sensitive.}
 
 \item{tidy}{Logical parameter. If \code{TRUE}, converts variable names to
-\code{snake_case}. Defaults to \code{TRUE}.}
+\code{snake_case}, or another style as specified by the 
+\code{tidy_style} parameter. Defaults to \code{FALSE}.}
 
 \item{tidy_style}{The style to convert variable names to, if
 \code{tidy = TRUE}. Accepts one of \code{"snake_case"}, \code{"camelCase"}

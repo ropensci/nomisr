@@ -1,5 +1,13 @@
 
-# nomisr 0.3.0.9000
+
+# nomisr 0.3.2
+
+## New features and function changes
+
+* The `tidy` parameter in `nomis_get_data()` now defaults to `FALSE` in order
+to preserve existing workflows.
+
+# nomisr 0.3.1
 
 ## New features and function changes
 
@@ -13,7 +21,10 @@ style options.
 * Dot queries to `nomis_get_data()` work with case-insensitive measurements 
 more persistently. 
 
+## Other updates
 
+* Clarification of need to specified as `NULL` unused named parameters in
+`nomis_get_data()` when using similarly named parameters in `...`.
 
 
 # nomisr 0.3.0

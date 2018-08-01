@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0.9000</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
       <h1>Introduction to nomisr</h1>
                         <h4 class="author">Evan Odell</h4>
             
-            <h4 class="date">2018-06-21</h4>
+            <h4 class="date">2018-07-01</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/nomisr/blob/master/../docs/vignettes/introduction.Rmd"><code>../docs/vignettes/introduction.Rmd</code></a></small>
       <div class="hidden name"><code>introduction.Rmd</code></div>
@@ -332,47 +332,47 @@
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">  b &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nomis_get_metadata.html">nomis_get_metadata</a></span>(<span class="dt">id =</span> <span class="st">"NM_893_1"</span>, <span class="dt">concept =</span> <span class="st">"GEOGRAPHY"</span>)</a>
 <a class="sourceLine" id="cb33-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb33-3" data-line-number="3">  <span class="kw">print</span>(b)</a></code></pre></div>
-<pre><code>## # A tibble: 3 x 3
-##   id         parentCode label.en         
-##   &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;            
-## 1 2092957703 &lt;NA&gt;       England and Wales
-## 2 2092957699 &lt;NA&gt;       England          
-## 3 2092957700 2092957700 Wales</code></pre>
+<pre><code>## # A tibble: 3 x 4
+##   id         parentCode label.en          description.en   
+##   &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;            
+## 1 2092957703 &lt;NA&gt;       England and Wales England and Wales
+## 2 2092957699 &lt;NA&gt;       England           England          
+## 3 2092957700 2092957700 Wales             Wales</code></pre>
 <p>We can now pass a generic “type” string to the <code>type</code> parameter in <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code>, which returns all available geography types for dataset “NM_893_1”.</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">  c &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nomis_get_metadata.html">nomis_get_metadata</a></span>(<span class="dt">id =</span> <span class="st">"NM_893_1"</span>, <span class="dt">concept =</span> <span class="st">"geography"</span>, <span class="dt">type =</span> <span class="st">"type"</span>)</a>
 <a class="sourceLine" id="cb35-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb35-3" data-line-number="3">  <span class="kw">print</span>(c)</a></code></pre></div>
-<pre><code>## # A tibble: 22 x 2
-##    id      label.en                                          
-##    &lt;chr&gt;   &lt;chr&gt;                                             
-##  1 TYPE265 NHS area teams                                    
-##  2 TYPE266 clinical commissioning groups                     
-##  3 TYPE267 built-up areas including subdivisions             
-##  4 TYPE269 built-up areas                                    
-##  5 TYPE273 national assembly for wales electoral regions 2010
-##  6 TYPE274 postcode areas                                    
-##  7 TYPE275 postcode districts                                
-##  8 TYPE276 postcode sectors                                  
-##  9 TYPE277 national assembly for wales constituencies 2010   
-## 10 TYPE279 parishes 2011                                     
+<pre><code>## # A tibble: 22 x 3
+##    id      label.en                       description.en                  
+##    &lt;chr&gt;   &lt;chr&gt;                          &lt;chr&gt;                           
+##  1 TYPE265 NHS area teams                 NHS area teams                  
+##  2 TYPE266 clinical commissioning groups  clinical commissioning groups   
+##  3 TYPE267 built-up areas including subd… built-up areas including subdiv…
+##  4 TYPE269 built-up areas                 built-up areas                  
+##  5 TYPE273 national assembly for wales e… national assembly for wales ele…
+##  6 TYPE274 postcode areas                 postcode areas                  
+##  7 TYPE275 postcode districts             postcode districts              
+##  8 TYPE276 postcode sectors               postcode sectors                
+##  9 TYPE277 national assembly for wales c… national assembly for wales con…
+## 10 TYPE279 parishes 2011                  parishes 2011                   
 ## # ... with 12 more rows</code></pre>
 <p>Passing a specific type to the <code>type</code> parameter, in this case “TYPE460” for all post-2010 parliamentary constituencies, returns a tibble with geographic codes for those specific constituencies, which can be used to filter queries.</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">  d &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nomis_get_metadata.html">nomis_get_metadata</a></span>(<span class="dt">id =</span> <span class="st">"NM_893_1"</span>, <span class="dt">concept =</span> <span class="st">"geography"</span>, <span class="dt">type =</span> <span class="st">"TYPE460"</span>)</a>
 <a class="sourceLine" id="cb37-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb37-3" data-line-number="3">  <span class="kw">print</span>(d)</a></code></pre></div>
-<pre><code>## # A tibble: 573 x 3
-##    id         parentCode label.en          
-##    &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;             
-##  1 1929379865 2013265921 Berwick-upon-Tweed
-##  2 1929379880 2013265921 Bishop Auckland   
-##  3 1929379885 2013265921 Blaydon           
-##  4 1929379886 2013265921 Blyth Valley      
-##  5 1929379952 2013265921 City of Durham    
-##  6 1929379969 2013265921 Darlington        
-##  7 1929379988 2013265921 Easington         
-##  8 1929380020 2013265921 Gateshead         
-##  9 1929380044 2013265921 Hartlepool        
-## 10 1929380057 2013265921 Hexham            
+<pre><code>## # A tibble: 573 x 4
+##    id         parentCode label.en           description.en    
+##    &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;              &lt;chr&gt;             
+##  1 1929379865 2013265921 Berwick-upon-Tweed Berwick-upon-Tweed
+##  2 1929379880 2013265921 Bishop Auckland    Bishop Auckland   
+##  3 1929379885 2013265921 Blaydon            Blaydon           
+##  4 1929379886 2013265921 Blyth Valley       Blyth Valley      
+##  5 1929379952 2013265921 City of Durham     City of Durham    
+##  6 1929379969 2013265921 Darlington         Darlington        
+##  7 1929379988 2013265921 Easington          Easington         
+##  8 1929380020 2013265921 Gateshead          Gateshead         
+##  9 1929380044 2013265921 Hartlepool         Hartlepool        
+## 10 1929380057 2013265921 Hexham             Hexham            
 ## # ... with 563 more rows</code></pre>
 <p>The vast majority (98% as of February 2018) of Nomis datasets include a geographic variable.</p>
 </div>
@@ -408,7 +408,7 @@
 ## #   C_AHTHUK11 &lt;chr&gt;, C_AHTHUK11_NAME &lt;chr&gt;, C_AHTHUK11_CODE &lt;chr&gt;,
 ## #   C_AHTHUK11_TYPE &lt;chr&gt;, C_AHTHUK11_TYPECODE &lt;chr&gt;,
 ## #   C_AHTHUK11_SORTORDER &lt;chr&gt;, MEASURES &lt;chr&gt;, MEASURES_NAME &lt;chr&gt;,
-## #   OBS_VALUE &lt;chr&gt;, OBS_STATUS &lt;chr&gt;, OBS_STATUS_NAME &lt;chr&gt;,
+## #   OBS_VALUE &lt;dbl&gt;, OBS_STATUS &lt;chr&gt;, OBS_STATUS_NAME &lt;chr&gt;,
 ## #   OBS_CONF &lt;chr&gt;, OBS_CONF_NAME &lt;chr&gt;, URN &lt;chr&gt;, RECORD_OFFSET &lt;chr&gt;,
 ## #   RECORD_COUNT &lt;chr&gt;</code></pre>
 <p>We can also query bedroom occupancy per household type in the Manchester, Gorton and Manchester, Withington parliamentary constituencies.</p>
@@ -439,7 +439,7 @@
 ## #   C_AHTHUK11 &lt;chr&gt;, C_AHTHUK11_NAME &lt;chr&gt;, C_AHTHUK11_CODE &lt;chr&gt;,
 ## #   C_AHTHUK11_TYPE &lt;chr&gt;, C_AHTHUK11_TYPECODE &lt;chr&gt;,
 ## #   C_AHTHUK11_SORTORDER &lt;chr&gt;, MEASURES &lt;chr&gt;, MEASURES_NAME &lt;chr&gt;,
-## #   OBS_VALUE &lt;chr&gt;, OBS_STATUS &lt;chr&gt;, OBS_STATUS_NAME &lt;chr&gt;,
+## #   OBS_VALUE &lt;dbl&gt;, OBS_STATUS &lt;chr&gt;, OBS_STATUS_NAME &lt;chr&gt;,
 ## #   OBS_CONF &lt;chr&gt;, OBS_CONF_NAME &lt;chr&gt;, URN &lt;chr&gt;, RECORD_OFFSET &lt;chr&gt;,
 ## #   RECORD_COUNT &lt;chr&gt;</code></pre>
 </div>

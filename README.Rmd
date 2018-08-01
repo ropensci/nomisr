@@ -21,8 +21,9 @@ knitr::opts_chunk$set(
 [![Travis-CI Build Status](https://travis-ci.org/ropensci/nomisr.svg?branch=master)](https://travis-ci.org/ropensci/nomisr)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/evanodell/nomisr?branch=master&svg=true)](https://ci.appveyor.com/project/evanodell/nomisr)
 [![Coverage Status](https://img.shields.io/codecov/c/github/ropensci/nomisr/master.svg)](https://codecov.io/github/ropensci/nomisr?branch=master)
+[![ropensci](https://badges.ropensci.org/190_status.svg)](https://github.com/ropensci/onboarding/issues/190)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1246845.svg)](https://doi.org/10.5281/zenodo.1246845)
-
+[![DOI](http://joss.theoj.org/papers/10.21105/joss.00859/status.svg)](https://doi.org/10.21105/joss.00859)
 
 
 `nomisr` is for accessing UK official statistics from the [Nomis](https://www.nomisweb.co.uk/) database through R. Nomis contains data from the Census, the Labour Force Survey, DWP benefit statistics and other economic and demographic data, and is maintained on behalf of the Office for National Statistics by the University of Durham.
@@ -89,20 +90,24 @@ Please note that this project is not affiliated with the Office for National Sta
 
 Get citation information for `nomisr` in R with `citation(package = 'nomisr')`
 
-Odell E (2018). _nomisr: Access Nomis UK labour market data on with R_. doi: 10.5281/zenodo.1246845 (URL:
-http://doi.org/10.5281/zenodo.1246845), R package version 0.2.0, <URL:
-https://github.com/ropensci/nomisr>.
+Odell, (2018). nomisr: Access 'Nomis' UK Labour Market Data. Journal of Open Source Software, 3(27), 859, https://doi.org/10.21105/joss.00859.
 
 A BibTeX entry for LaTeX users is
 ```
-  @Manual{,
-    title = {{nomisr}: Access Nomis UK Labour Market Data With R},
-    author = {Evan Odell},
-    year = {2018},
-    note = {R package version 0.2.0},
-    doi = {10.5281/zenodo.1157908},
-    url = {https://github.com/ropensci/nomisr},
-  }
+@article{odell2018d,
+  title = {Nomisr: {{Access Nomis UK Labour Market Data}}},
+  volume = {3},
+  issn = {2475-9066},
+  url = {https://github.com/ropensci/nomisr},
+  doi = {10.21105/joss.00859},
+  number = {27},
+  journaltitle = {Journal of Open Source Software},
+  urldate = {2018-08-01},
+  note = {R package version 0.3.2}
+  date = {2018-07-28},
+  pages = {859},
+  author = {Odell, Evan}
+}
 ```
 License: [MIT](LICENSE.md)
 

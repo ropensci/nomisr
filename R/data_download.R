@@ -1,5 +1,4 @@
 
-
 #' Retrieve Nomis datasets
 #'
 #' @description Retrieves specific datasets from Nomis, based on their ID. To
@@ -33,10 +32,11 @@
 #'
 #' @param id The ID of the dataset to retrieve.
 #'
-#' @param time Parameter for selecting dates and date ranges. There are two
-#' styles of values that can be used to query time.
+#' @param time Parameter for selecting dates and date ranges. Accepts either a 
+#' single date value, or two date values and returns all data between the two 
+#' date values, There are two styles of values that can be used to query time.
 #'
-#' The first is one or more of \code{"latest"} (returns the latest available
+#' The first is one or two of \code{"latest"} (returns the latest available
 #' data), \code{"previous"} (the date prior to \code{"latest"}),
 #' \code{"prevyear"} (the date one year prior to \code{"latest"}) or
 #' \code{"first"} (the oldest available data for the dataset).
@@ -51,8 +51,12 @@
 #'
 #' Defaults to \code{NULL}.
 #'
-#' @param date Parameter for selecting specific dates. There are two styles
-#' of values that can be used to query time.
+#' @param date Parameter for selecting specific dates. Accepts one or more date 
+#' values. If given multiple values, only data for the given dates will be 
+#' returned, but there is no limit to the number of data values. For example, 
+#' \code{date=c("latest,latestMINUS3,latestMINUS6")} will return the latest 
+#' data, data from three months prior to the latest data and six months prior 
+#' to the latest data. There are two styles of values that can be used to query time.
 #'
 #' The first is one or more of \code{"latest"} (returns the latest available
 #' data), \code{"previous"} (the date prior to \code{"latest"}),
@@ -92,7 +96,7 @@
 #' sex is an option. For datasets using \code{"C_SEX"}, \code{0} will return
 #' results for males and females, \code{1} only males and
 #' \code{2} only females. Some datasets use \code{"GENDER"} with the same
-#' values as \code{"SEX"}, which works with both \code{sex} and
+#' values as \code{"SEX"}, which works with both \code{sex = <code>} and
 #' \code{gender = <code>} as a dot parameter.
 #'
 #' @param additional_queries Any other additional queries to pass to the API.
@@ -218,7 +222,7 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     additional_query <- NULL
   }
 
-  # Check for sex queries and return either sex or c_sex
+  # Check for sex queries and return either sex or c_sex or gender
   if (length(sex) > 0) {
     sex_lookup <- nomis_data_info(id)$components.dimension[[1]]$conceptref
 
@@ -261,10 +265,10 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
 
   dots <- rlang::list2(...) ## eval the dots
   names(dots) <- toupper(names(dots))
-  x <- c()
+  dots_vector <- c()
 
   for (i in seq_along(dots)) { # retrieve the dots
-    x[i] <- ifelse(length(dots[[i]]) > 0,
+    dots_vector[i] <- ifelse(length(dots[[i]]) > 0,
       paste0(
         "&", toupper(names(dots[i])), "=",
         paste0(dots[[i]], collapse = ",")
@@ -273,7 +277,7 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     )
   }
 
-  dots_query <- paste0(x, collapse = "")
+  dots_query <- paste0(dots_vector, collapse = "")
 
   if (!is.null(getOption("nomisr.API.key"))) {
     api_query <- paste0("&uid=", getOption("nomisr.API.key"))

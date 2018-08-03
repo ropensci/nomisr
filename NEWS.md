@@ -1,13 +1,22 @@
 
 
-# nomisr 0.3.2
+# nomisr 0.4.0
+
+* Version bump for CRAN
+
+* Citation now refers to JOSS paper
+
+* Some minor changes to internal code for easier maintenance
+
+
+# nomisr 0.3.2 (non-CRAN release)
 
 ## New features and function changes
 
 * The `tidy` parameter in `nomis_get_data()` now defaults to `FALSE` in order
 to preserve existing workflows.
 
-# nomisr 0.3.1
+# nomisr 0.3.1 (non-CRAN release)
 
 ## New features and function changes
 
@@ -25,7 +34,6 @@ more persistently.
 
 * Clarification of need to specified as `NULL` unused named parameters in
 `nomis_get_data()` when using similarly named parameters in `...`.
-
 
 # nomisr 0.3.0
 

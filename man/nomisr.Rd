@@ -3,7 +3,6 @@
 \docType{package}
 \name{nomisr}
 \alias{nomisr-package}
-\alias{nomisr-package}
 \title{nomisr: Access Nomis UK Labour Market Data with R}
 \description{
 Access UK official statistics from the Nomis database. Nomis

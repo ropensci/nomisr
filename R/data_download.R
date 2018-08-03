@@ -32,8 +32,8 @@
 #'
 #' @param id The ID of the dataset to retrieve.
 #'
-#' @param time Parameter for selecting dates and date ranges. Accepts either a 
-#' single date value, or two date values and returns all data between the two 
+#' @param time Parameter for selecting dates and date ranges. Accepts either a
+#' single date value, or two date values and returns all data between the two
 #' date values, There are two styles of values that can be used to query time.
 #'
 #' The first is one or two of \code{"latest"} (returns the latest available
@@ -51,12 +51,13 @@
 #'
 #' Defaults to \code{NULL}.
 #'
-#' @param date Parameter for selecting specific dates. Accepts one or more date 
-#' values. If given multiple values, only data for the given dates will be 
-#' returned, but there is no limit to the number of data values. For example, 
-#' \code{date=c("latest,latestMINUS3,latestMINUS6")} will return the latest 
-#' data, data from three months prior to the latest data and six months prior 
-#' to the latest data. There are two styles of values that can be used to query time.
+#' @param date Parameter for selecting specific dates. Accepts one or more date
+#' values. If given multiple values, only data for the given dates will be
+#' returned, but there is no limit to the number of data values. For example,
+#' \code{date=c("latest, latestMINUS3, latestMINUS6")} will return the latest
+#' data, data from three months prior to the latest data and six months prior
+#' to the latest data. There are two styles of values that can be used to 
+#' query time.
 #'
 #' The first is one or more of \code{"latest"} (returns the latest available
 #' data), \code{"previous"} (the date prior to \code{"latest"}),
@@ -112,7 +113,7 @@
 #' excluding all others. \code{select} is not case sensitive.
 #'
 #' @param tidy Logical parameter. If \code{TRUE}, converts variable names to
-#' \code{snake_case}, or another style as specified by the 
+#' \code{snake_case}, or another style as specified by the
 #' \code{tidy_style} parameter. Defaults to \code{FALSE}.
 #'
 #' @param tidy_style The style to convert variable names to, if

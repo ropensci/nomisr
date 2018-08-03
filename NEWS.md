@@ -8,6 +8,9 @@
 
 * Some minor changes to internal code for easier maintenance
 
+* Documentation updates to clarify difference between `time` and `date` 
+parameters in `nomis_get_data()`
+
 
 # nomisr 0.3.2 (non-CRAN release)
 
@@ -40,7 +43,7 @@ more persistently.
 ## New features and function changes
 
 * New `nomis_codelist()` function, which returns the internal coding for 
-different concepts used by the NOMIS API in a \code{tibble}, given a dataset 
+different concepts used by the NOMIS API in a `tibble`, given a dataset 
 ID and a concept name. 
 
 * The `additional_queries` parameter in `nomis_get_data()` and 

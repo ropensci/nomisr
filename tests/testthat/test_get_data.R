@@ -16,7 +16,7 @@ test_that("nomis_get_data return expected format", {
   ## Test queries of over 25000 observatiosn
   a <- nomis_get_data(
     id = "NM_893_1", date = "latest",
-    geography = "TYPE266", exclude_missing = FALSE, tidy= TRUE
+    geography = "TYPE266", exclude_missing = FALSE, tidy = TRUE
   )
   expect_length(a, 40)
   expect_type(a, "list")
@@ -31,7 +31,8 @@ test_that("nomis_get_data return expected format", {
   expect_error(nomis_get_data(), "Dataset ID must be specified")
 
   expect_message(
-    b <- nomis_get_data(tidy = TRUE,
+    b <- nomis_get_data(
+      tidy = TRUE,
       id = "NM_168_1", time = "latest",
       geography = "2013265925", sex = "0", additional_queries = ""
     ), "The `additional_query` parameter is
@@ -60,7 +61,7 @@ test_that("nomis_get_data return expected format", {
   ))
 
   x_select <- nomis_get_data(
-    id = "NM_168_1", time = "latest", 
+    id = "NM_168_1", time = "latest",
     geography = "2013265925", sex = "0",
     select = c(
       "geography_code", "C_OCCPUK11H_0_NAME",
@@ -72,14 +73,14 @@ test_that("nomis_get_data return expected format", {
   expect_true(tibble::is_tibble(x_select))
 
   mort_data1 <- nomis_get_data(
-    id = "NM_161_1", date = "2016", tidy= TRUE,
+    id = "NM_161_1", date = "2016", tidy = TRUE,
     geography = "TYPE464",
     CAUSE_OF_DEATH = "10381",
     sex = 0, age = 0, MEASURE = 6
   )
 
   mort_data2 <- nomis_get_data(
-    id = "NM_161_1", date = "2016", tidy= TRUE,
+    id = "NM_161_1", date = "2016", tidy = TRUE,
     geography = "TYPE464", sex = 0,
     cause_of_death = "10381",
     age = 0, measure = 6, measures = NULL

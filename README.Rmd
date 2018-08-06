@@ -94,7 +94,7 @@ Odell, (2018). nomisr: Access 'Nomis' UK Labour Market Data. Journal of Open Sou
 
 A BibTeX entry for LaTeX users is
 ```
-@article{odell2018d,
+@article{odell2018,
   title = {Nomisr: {{Access Nomis UK Labour Market Data}}},
   volume = {3},
   issn = {2475-9066},
@@ -103,7 +103,7 @@ A BibTeX entry for LaTeX users is
   number = {27},
   journaltitle = {Journal of Open Source Software},
   urldate = {2018-08-01},
-  note = {R package version 0.3.2}
+  note = {R package version 0.4.0}
   date = {2018-07-28},
   pages = {859},
   author = {Odell, Evan}

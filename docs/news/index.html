@@ -68,14 +68,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="http://docs.evanodell.com">Docs Home</a>
+  <a href="https://docs.evanodell.com">Docs Home</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -94,29 +94,29 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="http://docs.evanodell.com">Documentation Home</a>
+      <a href="https://docs.evanodell.com">Documentation Home</a>
     </li>
     <li class="divider"></li>
     <li>
-      <a href="http://docs.evanodell.com/hansard">hansard</a>
+      <a href="https://docs.evanodell.com/hansard">hansard</a>
     </li>
     <li>
-      <a href="http://docs.evanodell.com/mnis">mnis</a>
+      <a href="https://docs.evanodell.com/mnis">mnis</a>
     </li>
     <li>
-      <a href="http://docs.evanodell.com/parlitools">parlitools</a>
+      <a href="https://docs.evanodell.com/parlitools">parlitools</a>
     </li>
     <li>
-      <a href="http://docs.evanodell.com/nomisr">nomisr</a>
+      <a href="https://docs.evanodell.com/nomisr">nomisr</a>
     </li>
     <li>
-      <a href="http://docs.evanodell.com/fixerapi">fixerapi</a>
+      <a href="https://docs.evanodell.com/fixerapi">fixerapi</a>
     </li>
     <li>
-      <a href="http://docs.evanodell.com/refuge">refuge</a>
+      <a href="https://docs.evanodell.com/refuge">refuge</a>
     </li>
     <li>
-      <a href="http://docs.evanodell.com/emisc">emisc</a>
+      <a href="https://docs.evanodell.com/emisc">emisc</a>
     </li>
   </ul>
 </li>
@@ -130,7 +130,7 @@
   </a>
 </li>
 <li>
-  <a href="http://evanodell.com">
+  <a href="https://evanodell.com">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -151,13 +151,25 @@
       <small>Source: <a href='https://github.com/ropensci/nomisr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="nomisr-0-3-0-9000" class="section level1">
+    <div id="nomisr-0-3-2" class="section level1">
 <h1 class="page-header">
-<a href="#nomisr-0-3-0-9000" class="anchor"></a>nomisr 0.3.0.9000<small> Unreleased </small>
+<a href="#nomisr-0-3-2" class="anchor"></a>nomisr 0.3.2<small> Unreleased </small>
 </h1>
 <div id="new-features-and-function-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-features-and-function-changes" class="anchor"></a>New features and function changes</h2>
+<ul>
+<li>The <code>tidy</code> parameter in <code><a href="../reference/nomis_get_data.html">nomis_get_data()</a></code> now defaults to <code>FALSE</code> in order to preserve existing workflows.</li>
+</ul>
+</div>
+</div>
+    <div id="nomisr-0-3-1" class="section level1">
+<h1 class="page-header">
+<a href="#nomisr-0-3-1" class="anchor"></a>nomisr 0.3.1<small> Unreleased </small>
+</h1>
+<div id="new-features-and-function-changes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features-and-function-changes-1" class="anchor"></a>New features and function changes</h2>
 <ul>
 <li>
 <code><a href="../reference/nomis_get_data.html">nomis_get_data()</a></code> now includes <code>tidy</code> and <code>tidy_style</code> parameters. <code><a href="../reference/nomis_get_data.html">nomis_get_data()</a></code> now defaults to converting all variable names to “snake_case”. <code>tidy_style</code> also accepts “camelCase” and “period.case” as name style options.</li>
@@ -170,14 +182,21 @@
 <li>Dot queries to <code><a href="../reference/nomis_get_data.html">nomis_get_data()</a></code> work with case-insensitive measurements more persistently.</li>
 </ul>
 </div>
+<div id="other-updates" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other-updates" class="anchor"></a>Other updates</h2>
+<ul>
+<li>Clarification of need to specified as <code>NULL</code> unused named parameters in <code><a href="../reference/nomis_get_data.html">nomis_get_data()</a></code> when using similarly named parameters in <code>...</code>.</li>
+</ul>
+</div>
 </div>
     <div id="nomisr-0-3-0" class="section level1">
 <h1 class="page-header">
 <a href="#nomisr-0-3-0" class="anchor"></a>nomisr 0.3.0<small> 2018-06-18 </small>
 </h1>
-<div id="new-features-and-function-changes-1" class="section level2">
+<div id="new-features-and-function-changes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-and-function-changes-1" class="anchor"></a>New features and function changes</h2>
+<a href="#new-features-and-function-changes-2" class="anchor"></a>New features and function changes</h2>
 <ul>
 <li><p>New <code><a href="../reference/nomis_codelist.html">nomis_codelist()</a></code> function, which returns the internal coding for different concepts used by the NOMIS API in a \code{tibble}, given a dataset ID and a concept name.</p></li>
 <li><p>The <code>additional_queries</code> parameter in <code><a href="../reference/nomis_get_data.html">nomis_get_data()</a></code> and <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code> has been deprecated and will eventually be removed. Please use the <code>...</code> parameter for queries including concepts not available through the default parameters.</p></li>
@@ -234,7 +253,8 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#nomisr-0-3-0-9000">0.3.0.9000</a></li>
+        <li><a href="#nomisr-0-3-2">0.3.2</a></li>
+        <li><a href="#nomisr-0-3-1">0.3.1</a></li>
         <li><a href="#nomisr-0-3-0">0.3.0</a></li>
         <li><a href="#nomisr-0-2-0">0.2.0</a></li>
         <li><a href="#nomisr-0-1-0">0.1.0</a></li>

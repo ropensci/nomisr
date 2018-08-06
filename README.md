@@ -17,7 +17,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/evanodell/nomisr?bran
 Status](https://img.shields.io/codecov/c/github/ropensci/nomisr/master.svg)](https://codecov.io/github/ropensci/nomisr?branch=master)
 [![ropensci](https://badges.ropensci.org/190_status.svg)](https://github.com/ropensci/onboarding/issues/190)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1246845.svg)](https://doi.org/10.5281/zenodo.1246845)
-[![DOI](http://joss.theoj.org/papers/10.21105/joss.00859/status.svg)](https://doi.org/10.21105/joss.00859)
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.00859/status.svg)](https://doi.org/10.21105/joss.00859)
 
 `nomisr` is for accessing UK official statistics from the
 [Nomis](https://www.nomisweb.co.uk/) database through R. Nomis contains
@@ -57,7 +57,7 @@ devtools::install_github("ropensci/nomisr")
 
 `nomisr` contains functions to search for datasets, identify the query
 options for different datasets and retrieve data from queries, all done
-with [`tibbles`](http://tibble.tidyverse.org/), to take advantage of how
+with [`tibbles`](https://tibble.tidyverse.org/), to take advantage of how
 `tibble` manages list-columns. The use of metadata queries, rather than
 simply downloading all available data, is useful to avoid overwhelming
 the rate limits of the API. For full details on all available functions

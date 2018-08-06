@@ -39,14 +39,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">nomisr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="http://docs.evanodell.com">Docs Home</a>
+  <a href="https://docs.evanodell.com">Docs Home</a>
 </li>
 <li>
   <a href="news/index.html">News</a>
@@ -65,30 +65,30 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="http://docs.evanodell.com">Documentation Home</a>
+      <a href="https://docs.evanodell.com">Documentation Home</a>
     </li>
     <li class="divider">
     </li>
 <li>
-      <a href="http://docs.evanodell.com/hansard">hansard</a>
+      <a href="https://docs.evanodell.com/hansard">hansard</a>
     </li>
     <li>
-      <a href="http://docs.evanodell.com/mnis">mnis</a>
+      <a href="https://docs.evanodell.com/mnis">mnis</a>
     </li>
     <li>
-      <a href="http://docs.evanodell.com/parlitools">parlitools</a>
+      <a href="https://docs.evanodell.com/parlitools">parlitools</a>
     </li>
     <li>
-      <a href="http://docs.evanodell.com/nomisr">nomisr</a>
+      <a href="https://docs.evanodell.com/nomisr">nomisr</a>
     </li>
     <li>
-      <a href="http://docs.evanodell.com/fixerapi">fixerapi</a>
+      <a href="https://docs.evanodell.com/fixerapi">fixerapi</a>
     </li>
     <li>
-      <a href="http://docs.evanodell.com/refuge">refuge</a>
+      <a href="https://docs.evanodell.com/refuge">refuge</a>
     </li>
     <li>
-      <a href="http://docs.evanodell.com/emisc">emisc</a>
+      <a href="https://docs.evanodell.com/emisc">emisc</a>
     </li>
   </ul>
 </li>
@@ -101,7 +101,7 @@
   </a>
 </li>
 <li>
-  <a href="http://evanodell.com">
+  <a href="https://evanodell.com">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -142,7 +142,7 @@
 <h2 class="hasAnchor">
 <a href="#using-nomisr" class="anchor"></a>Using <code>nomisr</code>
 </h2>
-<p><code>nomisr</code> contains functions to search for datasets, identify the query options for different datasets and retrieve data from queries, all done with <a href="http://tibble.tidyverse.org/"><code>tibbles</code></a>, to take advantage of how <code>tibble</code> manages list-columns. The use of metadata queries, rather than simply downloading all available data, is useful to avoid overwhelming the rate limits of the API. For full details on all available functions and demonstrations of their use, please see the package <a href="https://docs.evanodell.com/nomisr/articles/introduction.html">vignette</a>.</p>
+<p><code>nomisr</code> contains functions to search for datasets, identify the query options for different datasets and retrieve data from queries, all done with <a href="https://tibble.tidyverse.org/"><code>tibbles</code></a>, to take advantage of how <code>tibble</code> manages list-columns. The use of metadata queries, rather than simply downloading all available data, is useful to avoid overwhelming the rate limits of the API. For full details on all available functions and demonstrations of their use, please see the package <a href="https://docs.evanodell.com/nomisr/articles/introduction.html">vignette</a>.</p>
 <p>The example below gets the latest data on Jobseeker’s Allowance with rates and proportions, on a national level, with all male claimants and workforce.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"> <span class="kw">library</span>(nomisr)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"> jobseekers_search &lt;-<span class="st"> </span><span class="kw"><a href="reference/nomis_search.html">nomis_search</a></span>(<span class="dt">name =</span> <span class="st">"*Jobseeker*"</span>)</a>
@@ -178,14 +178,14 @@
 <a class="sourceLine" id="cb3-32" data-line-number="32"> </a>
 <a class="sourceLine" id="cb3-33" data-line-number="33"> <span class="kw">tail</span>(jobseekers_geography)</a>
 <a class="sourceLine" id="cb3-34" data-line-number="34"><span class="co">#&gt; # A tibble: 6 x 3</span></a>
-<a class="sourceLine" id="cb3-35" data-line-number="35"><span class="co">#&gt;   id      label.en                        description.en                  </span></a>
-<a class="sourceLine" id="cb3-36" data-line-number="36"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;                           &lt;chr&gt;                           </span></a>
-<a class="sourceLine" id="cb3-37" data-line-number="37"><span class="co">#&gt; 1 TYPE490 government office regions tec … government office regions tec /…</span></a>
-<a class="sourceLine" id="cb3-38" data-line-number="38"><span class="co">#&gt; 2 TYPE491 government office regions (for… government office regions (form…</span></a>
-<a class="sourceLine" id="cb3-39" data-line-number="39"><span class="co">#&gt; 3 TYPE492 standard statistical regions    standard statistical regions    </span></a>
-<a class="sourceLine" id="cb3-40" data-line-number="40"><span class="co">#&gt; 4 TYPE496 pre-1996 local authority distr… pre-1996 local authority distri…</span></a>
-<a class="sourceLine" id="cb3-41" data-line-number="41"><span class="co">#&gt; 5 TYPE498 pre-1996 counties / scottish r… pre-1996 counties / scottish re…</span></a>
-<a class="sourceLine" id="cb3-42" data-line-number="42"><span class="co">#&gt; 6 TYPE499 countries                       countries</span></a>
+<a class="sourceLine" id="cb3-35" data-line-number="35"><span class="co">#&gt;   id      label.en                       description.en                   </span></a>
+<a class="sourceLine" id="cb3-36" data-line-number="36"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;                          &lt;chr&gt;                            </span></a>
+<a class="sourceLine" id="cb3-37" data-line-number="37"><span class="co">#&gt; 1 TYPE490 government office regions tec… government office regions tec / …</span></a>
+<a class="sourceLine" id="cb3-38" data-line-number="38"><span class="co">#&gt; 2 TYPE491 government office regions (fo… government office regions (forme…</span></a>
+<a class="sourceLine" id="cb3-39" data-line-number="39"><span class="co">#&gt; 3 TYPE492 standard statistical regions   standard statistical regions     </span></a>
+<a class="sourceLine" id="cb3-40" data-line-number="40"><span class="co">#&gt; 4 TYPE496 pre-1996 local authority dist… pre-1996 local authority distric…</span></a>
+<a class="sourceLine" id="cb3-41" data-line-number="41"><span class="co">#&gt; 5 TYPE498 pre-1996 counties / scottish … pre-1996 counties / scottish reg…</span></a>
+<a class="sourceLine" id="cb3-42" data-line-number="42"><span class="co">#&gt; 6 TYPE499 countries                      countries</span></a>
 <a class="sourceLine" id="cb3-43" data-line-number="43"> </a>
 <a class="sourceLine" id="cb3-44" data-line-number="44"> jobseekers_sex &lt;-<span class="st"> </span><span class="kw"><a href="reference/nomis_get_metadata.html">nomis_get_metadata</a></span>(<span class="st">"NM_1_1"</span>, <span class="st">"sex"</span>, <span class="st">"TYPE"</span>)</a>
 <a class="sourceLine" id="cb3-45" data-line-number="45"> </a>
@@ -203,9 +203,9 @@
 <a class="sourceLine" id="cb3-57" data-line-number="57"> tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(z)</a>
 <a class="sourceLine" id="cb3-58" data-line-number="58"><span class="co">#&gt; Observations: 70</span></a>
 <a class="sourceLine" id="cb3-59" data-line-number="59"><span class="co">#&gt; Variables: 34</span></a>
-<a class="sourceLine" id="cb3-60" data-line-number="60"><span class="co">#&gt; $ DATE                &lt;chr&gt; "2018-05", "2018-05", "2018-05", "2018-05"...</span></a>
-<a class="sourceLine" id="cb3-61" data-line-number="61"><span class="co">#&gt; $ DATE_NAME           &lt;chr&gt; "May 2018", "May 2018", "May 2018", "May 2...</span></a>
-<a class="sourceLine" id="cb3-62" data-line-number="62"><span class="co">#&gt; $ DATE_CODE           &lt;chr&gt; "2018-05", "2018-05", "2018-05", "2018-05"...</span></a>
+<a class="sourceLine" id="cb3-60" data-line-number="60"><span class="co">#&gt; $ DATE                &lt;chr&gt; "2018-06", "2018-06", "2018-06", "2018-06"...</span></a>
+<a class="sourceLine" id="cb3-61" data-line-number="61"><span class="co">#&gt; $ DATE_NAME           &lt;chr&gt; "June 2018", "June 2018", "June 2018", "Ju...</span></a>
+<a class="sourceLine" id="cb3-62" data-line-number="62"><span class="co">#&gt; $ DATE_CODE           &lt;chr&gt; "2018-06", "2018-06", "2018-06", "2018-06"...</span></a>
 <a class="sourceLine" id="cb3-63" data-line-number="63"><span class="co">#&gt; $ DATE_TYPE           &lt;chr&gt; "date", "date", "date", "date", "date", "d...</span></a>
 <a class="sourceLine" id="cb3-64" data-line-number="64"><span class="co">#&gt; $ DATE_TYPECODE       &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
 <a class="sourceLine" id="cb3-65" data-line-number="65"><span class="co">#&gt; $ DATE_SORTORDER      &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0...</span></a>
@@ -229,12 +229,12 @@
 <a class="sourceLine" id="cb3-83" data-line-number="83"><span class="co">#&gt; $ ITEM_SORTORDER      &lt;chr&gt; "0", "0", "1", "1", "2", "2", "3", "3", "4...</span></a>
 <a class="sourceLine" id="cb3-84" data-line-number="84"><span class="co">#&gt; $ MEASURES            &lt;chr&gt; "20100", "20201", "20100", "20201", "20100...</span></a>
 <a class="sourceLine" id="cb3-85" data-line-number="85"><span class="co">#&gt; $ MEASURES_NAME       &lt;chr&gt; "Persons claiming JSA", "Workplace-based e...</span></a>
-<a class="sourceLine" id="cb3-86" data-line-number="86"><span class="co">#&gt; $ OBS_VALUE           &lt;dbl&gt; 277695.0, 1.5, NA, NA, NA, NA, NA, NA, NA,...</span></a>
+<a class="sourceLine" id="cb3-86" data-line-number="86"><span class="co">#&gt; $ OBS_VALUE           &lt;dbl&gt; 265106.0, 1.4, NA, NA, NA, NA, NA, NA, NA,...</span></a>
 <a class="sourceLine" id="cb3-87" data-line-number="87"><span class="co">#&gt; $ OBS_STATUS          &lt;chr&gt; "A", "A", "Q", "Q", "Q", "Q", "Q", "Q", "Q...</span></a>
 <a class="sourceLine" id="cb3-88" data-line-number="88"><span class="co">#&gt; $ OBS_STATUS_NAME     &lt;chr&gt; "Normal Value", "Normal Value", "These fig...</span></a>
 <a class="sourceLine" id="cb3-89" data-line-number="89"><span class="co">#&gt; $ OBS_CONF            &lt;chr&gt; "F", "F", "F", "F", "F", "F", "F", "F", "F...</span></a>
 <a class="sourceLine" id="cb3-90" data-line-number="90"><span class="co">#&gt; $ OBS_CONF_NAME       &lt;chr&gt; "Free (free for publication)", "Free (free...</span></a>
-<a class="sourceLine" id="cb3-91" data-line-number="91"><span class="co">#&gt; $ URN                 &lt;chr&gt; "Nm-1d1d32293e0d2092957697d5d1d20100", "Nm...</span></a>
+<a class="sourceLine" id="cb3-91" data-line-number="91"><span class="co">#&gt; $ URN                 &lt;chr&gt; "Nm-1d1d32294e0d2092957697d5d1d20100", "Nm...</span></a>
 <a class="sourceLine" id="cb3-92" data-line-number="92"><span class="co">#&gt; $ RECORD_OFFSET       &lt;chr&gt; "0", "1", "2", "3", "4", "5", "6", "7", "8...</span></a>
 <a class="sourceLine" id="cb3-93" data-line-number="93"><span class="co">#&gt; $ RECORD_COUNT        &lt;chr&gt; "70", "70", "70", "70", "70", "70", "70", ...</span></a></code></pre></div>
 <p>There is a lot of data available through Nomis, and there are some limits to the amount of data that can be retrieved within a certain period of time, although those are not published. For more details, see the <a href="https://www.nomisweb.co.uk/api/v01/help">full API documentation</a> from Nomis. Full package documentation is available at <a href="https://docs.evanodell.com/nomisr">docs.evanodell.com/nomisr</a></p>
@@ -246,16 +246,22 @@
 <p>Please note that this project is released with a <a href="CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 <p>Please note that this project is not affiliated with the Office for National Statistics or the University of Durham.</p>
 <p>Get citation information for <code>nomisr</code> in R with <code>citation(package = 'nomisr')</code></p>
-<p>Odell E (2018). <em>nomisr: Access Nomis UK labour market data on with R</em>. doi: 10.5281/zenodo.1246845 (URL: <a href="http://doi.org/10.5281/zenodo.1246845" class="uri">http://doi.org/10.5281/zenodo.1246845</a>), R package version 0.2.0, &lt;URL: <a href="https://github.com/ropensci/nomisr" class="uri">https://github.com/ropensci/nomisr</a>&gt;.</p>
+<p>Odell, (2018). nomisr: Access ‘Nomis’ UK Labour Market Data. Journal of Open Source Software, 3(27), 859, <a href="https://doi.org/10.21105/joss.00859" class="uri">https://doi.org/10.21105/joss.00859</a>.</p>
 <p>A BibTeX entry for LaTeX users is</p>
-<pre><code>  @Manual{,
-    title = {{nomisr}: Access Nomis UK Labour Market Data With R},
-    author = {Evan Odell},
-    year = {2018},
-    note = {R package version 0.2.0},
-    doi = {10.5281/zenodo.1157908},
-    url = {https://github.com/ropensci/nomisr},
-  }</code></pre>
+<pre><code>@article{odell2018d,
+  title = {Nomisr: {{Access Nomis UK Labour Market Data}}},
+  volume = {3},
+  issn = {2475-9066},
+  url = {https://github.com/ropensci/nomisr},
+  doi = {10.21105/joss.00859},
+  number = {27},
+  journaltitle = {Journal of Open Source Software},
+  urldate = {2018-08-01},
+  note = {R package version 0.3.2}
+  date = {2018-07-28},
+  pages = {859},
+  author = {Odell, Evan}
+}</code></pre>
 <p>License: <a href="LICENSE.html">MIT</a></p>
 <p><a href="https://ropensci.org"><img src="https://ropensci.org/public_images/ropensci_footer.png" alt="ropensci_footer"></a></p>
 </div>
@@ -306,7 +312,9 @@
 <li><a href="https://travis-ci.org/ropensci/nomisr"><img src="https://travis-ci.org/ropensci/nomisr.svg?branch=master" alt="Travis-CI Build Status"></a></li>
 <li><a href="https://ci.appveyor.com/project/evanodell/nomisr"><img src="https://ci.appveyor.com/api/projects/status/github/evanodell/nomisr?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
 <li><a href="https://codecov.io/github/ropensci/nomisr?branch=master"><img src="https://img.shields.io/codecov/c/github/ropensci/nomisr/master.svg" alt="Coverage Status"></a></li>
+<li><a href="https://github.com/ropensci/onboarding/issues/190"><img src="https://badges.ropensci.org/190_status.svg" alt="ropensci"></a></li>
 <li><a href="https://doi.org/10.5281/zenodo.1246845"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1246845.svg" alt="DOI"></a></li>
+<li><a href="https://doi.org/10.21105/joss.00859"><img src="https://joss.theoj.org/papers/10.21105/joss.00859/status.svg" alt="DOI"></a></li>
 </ul>
 </div>
 </div>

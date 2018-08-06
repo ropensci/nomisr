@@ -30,7 +30,7 @@ Imports:
   utils,
   rsdmx,
   rlang
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Suggests:
   knitr,
   rmarkdown,
@@ -39,3 +39,4 @@ Suggests:
   tidyr,
   magrittr
 VignetteBuilder: knitr
+Encoding: UTF-8

@@ -7,7 +7,7 @@
 nomis_get_data(id, time = NULL, date = NULL, geography = NULL,
   sex = NULL, measures = NULL, additional_queries = NULL,
   exclude_missing = FALSE, select = NULL, tidy = FALSE,
-  tidy_style = "snake_case", ...)
+  tidy_style = "snake_case", query_id = NULL, ...)
 }
 \arguments{
 \item{id}{The ID of the dataset to retrieve.}
@@ -23,7 +23,7 @@ data), \code{"previous"} (the date prior to \code{"latest"}),
 
 The second style is to use or a specific date or multiple dates, in the
 style of the time variable codelist, which can be found using the
-\code{\link{nomis_get_metadata}} function.
+\code{\link[=nomis_get_metadata]{nomis_get_metadata()}} function.
 
 Values for the \code{time} and \code{date} parameters should not be used
 at the same time. If they are, the function will retrieve data based
@@ -36,7 +36,7 @@ values. If given multiple values, only data for the given dates will be
 returned, but there is no limit to the number of data values. For example,
 \code{date=c("latest, latestMINUS3, latestMINUS6")} will return the latest
 data, data from three months prior to the latest data and six months prior
-to the latest data. There are two styles of values that can be used to 
+to the latest data. There are two styles of values that can be used to
 query time.
 
 The first is one or more of \code{"latest"} (returns the latest available
@@ -46,7 +46,7 @@ data), \code{"previous"} (the date prior to \code{"latest"}),
 
 The second style is to use or a specific date or multiple dates, in the
 style of the time variable codelist, which can be found using the
-\code{\link{nomis_get_metadata}} function.
+\code{\link[=nomis_get_metadata]{nomis_get_metadata()}} function.
 
 Values for the \code{time} and \code{date} parameters should not be used at
 the same time. If they are, the function will retrieve data based on the
@@ -63,7 +63,8 @@ will return an error.}
 \item{sex}{The code for sexes/genders to include in the dataset.
 Accepts a string or number, or a vector of strings or numbers.
 \code{nomisr} automatically voids any queries for sex if it is not an
-available code in the requested dataset.
+available code in the requested dataset. Defaults to \code{NULL} and returns
+all available sex/gender data.
 
 There are two different codings used for sex, depending on the dataset. For
 datasets using \code{"SEX"}, \code{7} will return results for
@@ -100,10 +101,15 @@ excluding all others. \code{select} is not case sensitive.}
 \code{tidy = TRUE}. Accepts one of \code{"snake_case"}, \code{"camelCase"}
 and \code{"period.case"}. Defaults to \code{"snake_case"}.}
 
+\item{query_id}{Results can be labelled as belonging to a certain query
+made to the API. \code{query_id} accepts any value as a string, and will
+be included in every row of the tibble returned by \code{nomis_get_data}
+in a column labelled "QUERY_ID". Defaults to \code{NULL}.}
+
 \item{...}{Use to pass any other parameters to the API. Useful for passing
 concepts that are not available through the default parameters. Only accepts
-concepts identified in \code{\link{nomis_get_metadata}} and concept values
-identified in \code{\link{nomis_codelist}}. Parameters can be quoted or
+concepts identified in \code{\link[=nomis_get_metadata]{nomis_get_metadata()}} and concept values
+identified in \code{\link[=nomis_codelist]{nomis_codelist()}}. Parameters can be quoted or
 unquoted. Each parameter should have a name and a value. For example,
 \code{CAUSE_OF_DEATH = 10300} when querying dataset \code{"NM_161_1"}.
 Parameters are not case sensitive. Note that R using partial matching for
@@ -117,14 +123,14 @@ By default, all tibble columns are parsed as characters.
 }
 \description{
 Retrieves specific datasets from Nomis, based on their ID. To
-find dataset IDs, use \code{\link{nomis_data_info}}. Datasets are retrived
+find dataset IDs, use \code{\link[=nomis_data_info]{nomis_data_info()}}. Datasets are retrived
 in csv format and parsed with the \code{read_csv} function from the
 \code{readr} package into a tibble, with all columns parsed as character
 columns.
 
 To find the code options for a given dataset, use
-\code{\link{nomis_get_metadata}} for specific codes, and
-\code{\link{nomis_codelist}} for code values.
+\code{\link[=nomis_get_metadata]{nomis_get_metadata()}} for specific codes, and
+\code{\link[=nomis_codelist]{nomis_codelist()}} for code values.
 
 This can be a slow process if querying significant amounts of
 data. Guest users are limited to 25,000 rows per query, although
@@ -197,11 +203,11 @@ tibble::glimpse(london_death)
 }
 }
 \seealso{
-\code{\link{nomis_data_info}}
+\code{\link[=nomis_data_info]{nomis_data_info()}}
 
-\code{\link{nomis_get_metadata}}
+\code{\link[=nomis_get_metadata]{nomis_get_metadata()}}
 
-\code{\link{nomis_codelist}}
+\code{\link[=nomis_codelist]{nomis_codelist()}}
 
-\code{\link{nomis_overview}}
+\code{\link[=nomis_overview]{nomis_overview()}}
 }

@@ -1,3 +1,8 @@
+# nomisr 0.4.0.9000
+
+* Adding `query_id` parameter to `nomis_get_data()`
+
+* Changed documentation to use `roxygen` markdown
 
 
 # nomisr 0.4.0

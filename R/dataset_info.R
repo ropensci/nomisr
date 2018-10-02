@@ -9,10 +9,10 @@
 #'
 #' @return A tibble with all available datasets and their metadata.
 #' @export
-#' @seealso \code{\link{nomis_get_data}}
-#' @seealso \code{\link{nomis_get_metadata}}
-#' @seealso \code{\link{nomis_overview}}
-#' @seealso \code{\link{nomis_codelist}}
+#' @seealso [nomis_get_data()]
+#' @seealso [nomis_get_metadata()]
+#' @seealso [nomis_overview()]
+#' @seealso [nomis_codelist()]
 #'
 #' @examples \donttest{
 #'

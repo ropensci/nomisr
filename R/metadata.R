@@ -3,40 +3,40 @@
 #'
 #' @description Retrieve all concept code options of all Nomis datasets,
 #' concept code options for a given dataset, or the all the options for a given
-#' concept variable from a particular dataset. Specifying \code{concept} will
+#' concept variable from a particular dataset. Specifying `concept` will
 #' return all the options for a given variable in a particular dataset.
 #'
 #' @description If looking for a more detailed overview of all available
-#' metadata for a given dataset, see \code{\link{nomis_overview}}.
+#' metadata for a given dataset, see [nomis_overview()].
 #'
 #' @param id The ID of the particular dataset. Returns no data if not specified.
 #'
 #' @param concept A string with the variable concept to return options for. If
-#' left empty, returns all the variables for the dataset specified by \code{id}.
-#' Codes are not case sensitive. Defaults to \code{NULL}.
+#' left empty, returns all the variables for the dataset specified by `id`.
+#' Codes are not case sensitive. Defaults to `NULL`.
 #'
 #' @param type A string with options for a particular code value, to return
-#' types of variables available for a given code. Defaults to \code{NULL}. If
-#' \code{concept == NULL}, \code{type} will be ignored.
+#' types of variables available for a given code. Defaults to `NULL`. If
+#' `concept == NULL`, `type` will be ignored.
 #'
 #' @param search  A string or character vector of strings to search for in the
-#' metadata. Defaults to \code{NULL}. As in \code{\link{nomis_search}}, the
-#' wildcard character \code{*} can be added to the beginning and/or end of each
+#' metadata. Defaults to `NULL`. As in [nomis_search()], the
+#' wildcard character `*` can be added to the beginning and/or end of each
 #' search string.
 #'
 #' @param additional_queries Any other additional queries to pass to the API.
 #' See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
-#' query structure. Defaults to \code{NULL}. Deprecated in package
+#' query structure. Defaults to `NULL`. Deprecated in package
 #' versions greater than 0.2.0 and will eventually be removed.
 #'
 #' @param ... Use to pass any other parameters to the API.
 #'
-#' @seealso \code{\link{nomis_data_info}}
-#' @seealso \code{\link{nomis_get_data}}
-#' @seealso \code{\link{nomis_overview}}
+#' @seealso [nomis_data_info()]
+#' @seealso [nomis_get_data()]
+#' @seealso [nomis_overview()]
 #'
 #' @return A tibble with metadata options for queries using
-#' \code{\link{nomis_get_data}}.
+#' [nomis_get_data()].
 #' @export
 #'
 #' @examples \donttest{

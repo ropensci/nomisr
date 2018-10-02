@@ -71,7 +71,7 @@ s \%>\% tidyr::unnest(name) \%>\% glimpse()
 }
 }
 \seealso{
-\code{\link{nomis_data_info}}
+\code{\link[=nomis_data_info]{nomis_data_info()}}
 
-\code{\link{nomis_get_metadata}}
+\code{\link[=nomis_get_metadata]{nomis_get_metadata()}}
 }

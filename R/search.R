@@ -4,30 +4,30 @@
 #'
 #' A function to search for datasets on given topics. In the case of multiple
 #' search parameters, returns metadata on all datasets matching  one or more
-#' of the parameters. The wildcard character \code{*} can be added to the
+#' of the parameters. The wildcard character `*` can be added to the
 #' beginning and/or end of each search string.
 #'
 #' @param name A string or character vector of strings to search for in
-#' available dataset names. Defaults to \code{NULL}.
+#' available dataset names. Defaults to `NULL`.
 #'
 #' @param description A string or character vector of strings to search for in
-#' available dataset descriptions. Note that \code{description} looks for
+#' available dataset descriptions. Note that `description` looks for
 #' complete matches, so wildcards should be used at the start and end of
-#' each string. Defaults to \code{NULL}.
+#' each string. Defaults to `NULL`.
 #'
 #' @param keywords A string or character vector of strings to search for in
-#' available dataset keywords. Defaults to \code{NULL}.
+#' available dataset keywords. Defaults to `NULL`.
 #'
 #' @param content_type A string or character vector of strings to search for
-#' in available dataset content types. \code{content_type} can include an
-#' optional ID for that content type. Defaults to \code{NULL}.
+#' in available dataset content types. `content_type` can include an
+#' optional ID for that content type. Defaults to `NULL`.
 #'
 #' @param units A string or character vector of strings to search for in
-#' available dataset units. Defaults to \code{NULL}.
+#' available dataset units. Defaults to `NULL`.
 #'
 #' @return A tibble with details on all datasets matching the search query.
 #' @export
-#' @seealso \code{\link{nomis_content_type}}
+#' @seealso [nomis_content_type()]
 #'
 #' @examples \donttest{
 #' x <- nomis_search(name = '*seekers*')

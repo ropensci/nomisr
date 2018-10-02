@@ -19,7 +19,7 @@ types of variables available for a given code. Defaults to \code{NULL}. If
 \code{concept == NULL}, \code{type} will be ignored.}
 
 \item{search}{A string or character vector of strings to search for in the
-metadata. Defaults to \code{NULL}. As in \code{\link{nomis_search}}, the
+metadata. Defaults to \code{NULL}. As in \code{\link[=nomis_search]{nomis_search()}}, the
 wildcard character \code{*} can be added to the beginning and/or end of each
 search string.}
 
@@ -32,7 +32,7 @@ versions greater than 0.2.0 and will eventually be removed.}
 }
 \value{
 A tibble with metadata options for queries using
-\code{\link{nomis_get_data}}.
+\code{\link[=nomis_get_data]{nomis_get_data()}}.
 }
 \description{
 Retrieve all concept code options of all Nomis datasets,
@@ -41,7 +41,7 @@ concept variable from a particular dataset. Specifying \code{concept} will
 return all the options for a given variable in a particular dataset.
 
 If looking for a more detailed overview of all available
-metadata for a given dataset, see \code{\link{nomis_overview}}.
+metadata for a given dataset, see \code{\link[=nomis_overview]{nomis_overview()}}.
 }
 \examples{
 \donttest{
@@ -73,9 +73,9 @@ tibble::glimpse(f)
 }
 }
 \seealso{
-\code{\link{nomis_data_info}}
+\code{\link[=nomis_data_info]{nomis_data_info()}}
 
-\code{\link{nomis_get_data}}
+\code{\link[=nomis_get_data]{nomis_get_data()}}
 
-\code{\link{nomis_overview}}
+\code{\link[=nomis_overview]{nomis_overview()}}
 }

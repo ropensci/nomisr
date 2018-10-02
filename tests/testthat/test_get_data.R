@@ -53,8 +53,8 @@ test_that("nomis_get_data return expected format", {
   expect_type(c, "list")
   expect_true(tibble::is_tibble(c))
   expect_true(nrow(c) == c$record_count[1])
-  expect_equal(names(c)[[1]] == "query_id")
-  expect_equal(c$query_id[[543]] == "my_query123")
+  expect_equal(names(c)[[1]], "query_id")
+  expect_equal(c$query_id[[543]], "my_query123")
 
   expect_error(nomis_get_data(
     id = "NM_1_1", time = "latest",

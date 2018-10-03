@@ -10,16 +10,17 @@ nomis_get_data(id, time = NULL, date = NULL, geography = NULL,
   tidy_style = "snake_case", query_id = NULL, ...)
 }
 \arguments{
-\item{id}{The ID of the dataset to retrieve.}
+\item{id}{A string containing the ID of the dataset to retrieve,
+in \code{"nm_***_*"} format. The \code{id} parameter is not case sensitive.}
 
 \item{time}{Parameter for selecting dates and date ranges. Accepts either a
 single date value, or two date values and returns all data between the two
 date values, There are two styles of values that can be used to query time.
 
 The first is one or two of \code{"latest"} (returns the latest available
-data), \code{"previous"} (the date prior to \code{"latest"}),
-\code{"prevyear"} (the date one year prior to \code{"latest"}) or
-\code{"first"} (the oldest available data for the dataset).
+data), \code{"previous"} (the date prior to \code{"latest"}), \code{"prevyear"}
+(the date one year prior to \code{"latest"}) or \code{"first"}
+(the oldest available data for the dataset).
 
 The second style is to use or a specific date or multiple dates, in the
 style of the time variable codelist, which can be found using the
@@ -67,14 +68,13 @@ available code in the requested dataset. Defaults to \code{NULL} and returns
 all available sex/gender data.
 
 There are two different codings used for sex, depending on the dataset. For
-datasets using \code{"SEX"}, \code{7} will return results for
-males and females, \code{6} only females and \code{5} only males.
-Defaults to \code{NULL}, equivalent to \code{c(5,6,7)} for datasets where
-sex is an option. For datasets using \code{"C_SEX"}, \code{0} will return
-results for males and females, \code{1} only males and
-\code{2} only females. Some datasets use \code{"GENDER"} with the same
-values as \code{"SEX"}, which works with both \code{sex = <code>} and
-\code{gender = <code>} as a dot parameter.}
+datasets using \code{"SEX"}, \code{7} will return results for males and females, \code{6}
+only females and \code{5} only males. Defaults to \code{NULL}, equivalent to
+\code{c(5,6,7)} for datasets where sex is an option. For datasets using
+\code{"C_SEX"}, \code{0} will return results for males and females, \code{1} only males
+and \code{2} only females. Some datasets use \code{"GENDER"} with the same values
+as \code{"SEX"}, which works with both \code{sex = <code>} and \code{gender = <code>}
+as a dot parameter.}
 
 \item{measures}{The code for the statistical measure(s) to include in the
 data. Accepts a single string or number, or a list of strings or numbers.
@@ -83,9 +83,8 @@ to other parameters. Defaults to \code{NULL}.}
 
 \item{additional_queries}{Any other additional queries to pass to the API.
 See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
-query structure. Defaults to \code{NULL}. Deprecated in package
-versions greater than 0.2.0 and will eventually be removed in a
-future version.}
+query structure. Defaults to \code{NULL}. Deprecated in package versions greater
+than 0.2.0 and will eventually be removed in a future version.}
 
 \item{exclude_missing}{If \code{TRUE}, excludes all missing values.
 Defaults to \code{FALSE}.}
@@ -95,7 +94,8 @@ excluding all others. \code{select} is not case sensitive.}
 
 \item{tidy}{Logical parameter. If \code{TRUE}, converts variable names to
 \code{snake_case}, or another style as specified by the
-\code{tidy_style} parameter. Defaults to \code{FALSE}.}
+\code{tidy_style} parameter. Defaults to \code{FALSE}. The default variable name style
+from the API is SCREAMING_SNAKE_CASE.}
 
 \item{tidy_style}{The style to convert variable names to, if
 \code{tidy = TRUE}. Accepts one of \code{"snake_case"}, \code{"camelCase"}
@@ -104,7 +104,8 @@ and \code{"period.case"}. Defaults to \code{"snake_case"}.}
 \item{query_id}{Results can be labelled as belonging to a certain query
 made to the API. \code{query_id} accepts any value as a string, and will
 be included in every row of the tibble returned by \code{nomis_get_data}
-in a column labelled "QUERY_ID". Defaults to \code{NULL}.}
+in a column labelled "QUERY_ID" in the default SCREAMING_SNAKE_CASE
+used by the API. Defaults to \code{NULL}.}
 
 \item{...}{Use to pass any other parameters to the API. Useful for passing
 concepts that are not available through the default parameters. Only accepts
@@ -115,11 +116,12 @@ unquoted. Each parameter should have a name and a value. For example,
 Parameters are not case sensitive. Note that R using partial matching for
 function variables, and so passing a parameter with the same opening
 characters as one of the above-named parameters can cause an error unless
-the value of the named parameter is specified. See example below:}
+the value of the named parameter is specified, including as \code{NULL}.
+See example below:}
 }
 \value{
-A tibble containing the selected dataset.
-By default, all tibble columns are parsed as characters.
+A tibble containing the selected dataset. By default, all tibble
+columns except for the \code{"OBS_VALUE"} column are parsed as characters.
 }
 \description{
 Retrieves specific datasets from Nomis, based on their ID. To
@@ -141,62 +143,61 @@ guest users are requesting more than 350,000 rows of data, and if
 registered users are requesting more than 1,500,000 rows.
 
 Note the difference between the \code{time} and \code{date}
-parameters.
-The \code{time} and \code{date} parameters should not be used at the same
+parameters. The \code{time} and \code{date} parameters should not be used at the same
 time. If they are, the function will retrieve data based on the the
 \code{date} parameter. If given more than one query, \code{time} will
 return all data available between those queries, inclusively, while
 \code{date} will only return data for the exact queries specified. So
 \code{time = c("first", "latest")} will return all data, while
-\code{date = c("first", "latest")} will return only the first and latest
+\code{date = c("first", "latest")} will return only the earliest and latest
 data published.
 }
 \examples{
 \donttest{
 
-# Return data for each country
-jobseekers_country <- nomis_get_data(id="NM_1_1", time="latest",
+# Return data on Jobseekers Allowance for each country in the UK
+jobseekers_country <- nomis_get_data(id = "NM_1_1", time = "latest",
                                      geography = "TYPE499",
-                                     measures=c(20100, 20201), sex=5)
+                                     measures = c(20100, 20201), sex = 5)
 
 tibble::glimpse(jobseekers_country)
 
-# Return data for Wigan
-jobseekers_wigan <- nomis_get_data(id="NM_1_1", time="latest",
+# Return data on Jobseekers Allowance for Wigan
+jobseekers_wigan <- nomis_get_data(id = "NM_1_1", time = "latest",
                                    geography = "1879048226",
-                                   measures=c(20100, 20201), sex="5")
+                                   measures = c(20100, 20201), sex = "5")
 
 tibble::glimpse(jobseekers_wigan)
 
 # annual population survey - regional - employment by occupation
-emp_by_occupation <- nomis_get_data(id="NM_168_1", time="latest",
-                                    geography = "2013265925", sex="0",
+emp_by_occupation <- nomis_get_data(id = "NM_168_1", time = "latest",
+                                    geography = "2013265925", sex = "0",
                                     select = c("geography_code",
                                     "C_OCCPUK11H_0_NAME", "obs_vAlUE"))
 
 tibble::glimpse(emp_by_occupation)
 
-# Deaths in 2016 and 2015 by three specified causes, g
+# Deaths in 2016 and 2015 by three specified causes, 
+# identified with nomis_get_metadata()
 death <- nomis_get_data("NM_161_1", date = c("2016","2015"),
                         geography = "TYPE480",
-                        cause_of_death=c(10300, 102088, 270))
+                        cause_of_death = c(10300, 102088, 270))
 
 tibble::glimpse(death)
 
-
 # All causes of death in London in 2016
-london_death <- nomis_get_data("NM_1_1", date = c("2016"),
+london_death <- nomis_get_data("NM_161_1", date = c("2016"),
                                geography = "2013265927", sex = 1, age = 0)
 
 tibble::glimpse(london_death)
 }
 \dontrun{
- ## Results in an error because `measure` is mistaken for `measures`
+ # Results in an error because `measure` is mistaken for `measures`
  mort_data1 <- nomis_get_data(id = "NM_161_1", date = "2016",
    geography = "TYPE464", sex = 0, cause_of_death = "10381",
    age = 0, measure = 6)
 
- ## Does not error because `measures` is specified
+ # Does not error because `measures` is specified
  mort_data2 <- nomis_get_data(id = "NM_161_1", date = "2016",
    geography = "TYPE464", sex = 0, measures = NULL,
    cause_of_death = "10381", age = 0, measure = 6)

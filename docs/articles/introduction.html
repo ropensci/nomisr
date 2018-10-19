@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0.9000</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
       <h1>Introduction to nomisr</h1>
                         <h4 class="author">Evan Odell</h4>
             
-            <h4 class="date">2018-07-01</h4>
+            <h4 class="date">2018-10-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/nomisr/blob/master/../docs/vignettes/introduction.Rmd"><code>../docs/vignettes/introduction.Rmd</code></a></small>
       <div class="hidden name"><code>introduction.Rmd</code></div>
@@ -141,14 +141,14 @@
 <a class="sourceLine" id="cb1-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nomis_data_info.html">nomis_data_info</a></span>()</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">head</span>(x)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 14
-##   agencyid id     uri    version annotations.annotati… components.attribu…
-##   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;list&gt;                &lt;list&gt;             
-## 1 NOMIS    NM_1_1 Nm-1d1       1 &lt;data.frame [10 × 2]&gt; &lt;data.frame [7 × 4…
-## 2 NOMIS    NM_2_1 Nm-2d1       1 &lt;data.frame [6 × 2]&gt;  &lt;data.frame [7 × 4…
-## 3 NOMIS    NM_4_1 Nm-4d1       1 &lt;data.frame [8 × 2]&gt;  &lt;data.frame [7 × 4…
-## 4 NOMIS    NM_5_1 Nm-5d1       1 &lt;data.frame [5 × 2]&gt;  &lt;data.frame [7 × 4…
-## 5 NOMIS    NM_6_1 Nm-6d1       1 &lt;data.frame [6 × 2]&gt;  &lt;data.frame [7 × 4…
-## 6 NOMIS    NM_7_1 Nm-7d1       1 &lt;data.frame [6 × 2]&gt;  &lt;data.frame [7 × 4…
+##   agencyid id    uri   version annotations.ann~ components.attr~
+##   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;list&gt;           &lt;list&gt;          
+## 1 NOMIS    NM_1~ Nm-1~       1 &lt;data.frame [10~ &lt;data.frame [7 ~
+## 2 NOMIS    NM_2~ Nm-2~       1 &lt;data.frame [6 ~ &lt;data.frame [7 ~
+## 3 NOMIS    NM_4~ Nm-4~       1 &lt;data.frame [8 ~ &lt;data.frame [7 ~
+## 4 NOMIS    NM_5~ Nm-5~       1 &lt;data.frame [5 ~ &lt;data.frame [7 ~
+## 5 NOMIS    NM_6~ Nm-6~       1 &lt;data.frame [6 ~ &lt;data.frame [7 ~
+## 6 NOMIS    NM_7~ Nm-7~       1 &lt;data.frame [6 ~ &lt;data.frame [7 ~
 ## # ... with 8 more variables: components.dimension &lt;list&gt;,
 ## #   components.primarymeasure.conceptref &lt;chr&gt;,
 ## #   components.timedimension.codelist &lt;chr&gt;,
@@ -182,14 +182,14 @@
 <pre><code>## [1] 1</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">y<span class="op">$</span>annotations.annotation[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">class</span>()</a></code></pre></div>
 <pre><code>## [1] "data.frame"</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">y <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(annotations.annotation) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">class</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">y <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>(annotations.annotation) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">class</span>()</a></code></pre></div>
 <pre><code>## [1] "list"</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">y <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(annotations.annotation) <span class="op">%&gt;%</span><span class="st"> </span>.[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">class</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">y <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>(annotations.annotation) <span class="op">%&gt;%</span><span class="st"> </span>.[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">class</span>()</a></code></pre></div>
 <pre><code>## [1] "data.frame"</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">y <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(annotations.annotation) <span class="op">%&gt;%</span><span class="st"> </span>purrr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/pluck">pluck</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">class</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">y <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>(annotations.annotation) <span class="op">%&gt;%</span><span class="st"> </span>purrr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/pluck">pluck</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">class</span>()</a></code></pre></div>
 <pre><code>## [1] "list"</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">## Unnesting list columns</a>
-<a class="sourceLine" id="cb17-2" data-line-number="2">y <span class="op">%&gt;%</span><span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>(annotations.annotation) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="co">## Unnesting list columns</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">y <span class="op">%&gt;%</span><span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>(annotations.annotation) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 14
 ## Variables: 11
 ## $ agencyid                             &lt;chr&gt; "NOMIS", "NOMIS", "NOMIS"...
@@ -226,7 +226,7 @@
 ## $ description.lang                     &lt;chr&gt; "en", "en", "en", "en", N...
 ## $ name.value                           &lt;chr&gt; "Jobseeker's Allowance wi...
 ## $ name.lang                            &lt;chr&gt; "en", "en", "en", "en", "...</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">a <span class="op">%&gt;%</span><span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>(components.attribute) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">a <span class="op">%&gt;%</span><span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>(components.attribute) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 231
 ## Variables: 15
 ## $ agencyid                             &lt;chr&gt; "NOMIS", "NOMIS", "NOMIS"...
@@ -263,7 +263,7 @@
 ## $ description.lang                     &lt;chr&gt; "en", "en", "en", "en", "...
 ## $ name.value                           &lt;chr&gt; "Jobseeker's Allowance wi...
 ## $ name.lang                            &lt;chr&gt; "en", "en", "en", "en", "...</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">b <span class="op">%&gt;%</span><span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>(components.attribute) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">b <span class="op">%&gt;%</span><span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>(components.attribute) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 574
 ## Variables: 15
 ## $ agencyid                             &lt;chr&gt; "NOMIS", "NOMIS", "NOMIS"...
@@ -288,7 +288,7 @@
 <p><code><a href="../reference/nomis_overview.html">nomis_overview()</a></code> returns a tibble with a generalised overview of a given dataset.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">q &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nomis_overview.html">nomis_overview</a></span>(<span class="st">"NM_1650_1"</span>)</a>
 <a class="sourceLine" id="cb27-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb27-3" data-line-number="3">q <span class="op">%&gt;%</span><span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>(name) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>()</a></code></pre></div>
+<a class="sourceLine" id="cb27-3" data-line-number="3">q <span class="op">%&gt;%</span><span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>(name) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 20
 ## Variables: 2
 ## $ value &lt;list&gt; [[&lt;c("1", "4", "5"), c("NM_1650_1", "NM_1650_4", "NM_16...
@@ -296,7 +296,7 @@
 <p><code><a href="../reference/nomis_overview.html">nomis_overview()</a></code> has a <code>select</code> parameter that can be used to select only particular elements of the overview to return.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"> s &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nomis_overview.html">nomis_overview</a></span>(<span class="st">"NM_1650_1"</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">"units"</span>, <span class="st">"keywords"</span>))</a>
 <a class="sourceLine" id="cb29-2" data-line-number="2"> </a>
-<a class="sourceLine" id="cb29-3" data-line-number="3"> s <span class="op">%&gt;%</span><span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>(name) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>()</a></code></pre></div>
+<a class="sourceLine" id="cb29-3" data-line-number="3"> s <span class="op">%&gt;%</span><span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>(name) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 3
 ## Variables: 2
 ## $ value &lt;list&gt; ["NM_1650_1", "Year last worked", [["Persons"]]]
@@ -347,13 +347,13 @@
 ##    &lt;chr&gt;   &lt;chr&gt;                          &lt;chr&gt;                           
 ##  1 TYPE265 NHS area teams                 NHS area teams                  
 ##  2 TYPE266 clinical commissioning groups  clinical commissioning groups   
-##  3 TYPE267 built-up areas including subd… built-up areas including subdiv…
+##  3 TYPE267 built-up areas including subd~ built-up areas including subdiv~
 ##  4 TYPE269 built-up areas                 built-up areas                  
-##  5 TYPE273 national assembly for wales e… national assembly for wales ele…
+##  5 TYPE273 national assembly for wales e~ national assembly for wales ele~
 ##  6 TYPE274 postcode areas                 postcode areas                  
 ##  7 TYPE275 postcode districts             postcode districts              
 ##  8 TYPE276 postcode sectors               postcode sectors                
-##  9 TYPE277 national assembly for wales c… national assembly for wales con…
+##  9 TYPE277 national assembly for wales c~ national assembly for wales con~
 ## 10 TYPE279 parishes 2011                  parishes 2011                   
 ## # ... with 12 more rows</code></pre>
 <p>Passing a specific type to the <code>type</code> parameter, in this case “TYPE460” for all post-2010 parliamentary constituencies, returns a tibble with geographic codes for those specific constituencies, which can be used to filter queries.</p>
@@ -381,9 +381,9 @@
 <h2 class="hasAnchor">
 <a href="#downloading-data" class="anchor"></a>Downloading data</h2>
 <p>Using the information above, we can now query the latest data on bedroom occupancy per household type in different NHS clinical commissioning groups.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">z &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nomis_get_data.html">nomis_get_data</a></span>(<span class="dt">id =</span> <span class="st">"NM_893_1"</span>, <span class="dt">time =</span> <span class="st">"latest"</span>, <span class="dt">geography =</span> <span class="st">"TYPE266"</span>)</a>
-<a class="sourceLine" id="cb39-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb39-3" data-line-number="3"><span class="kw">print</span>(z)</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">z &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nomis_get_data.html">nomis_get_data</a></span>(<span class="dt">id =</span> <span class="st">"NM_893_1"</span>, <span class="dt">time =</span> <span class="st">"latest"</span>, <span class="dt">geography =</span> <span class="st">"TYPE266"</span>)</a></code></pre></div>
+<pre><code>## Retrieving additional pages 1 of 1</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">print</span>(z)</a></code></pre></div>
 <pre><code>## # A tibble: 44,310 x 40
 ##    DATE  DATE_NAME DATE_CODE DATE_TYPE DATE_TYPECODE DATE_SORTORDER
 ##    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;         
@@ -412,9 +412,9 @@
 ## #   OBS_CONF &lt;chr&gt;, OBS_CONF_NAME &lt;chr&gt;, URN &lt;chr&gt;, RECORD_OFFSET &lt;chr&gt;,
 ## #   RECORD_COUNT &lt;chr&gt;</code></pre>
 <p>We can also query bedroom occupancy per household type in the Manchester, Gorton and Manchester, Withington parliamentary constituencies.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"> x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nomis_get_data.html">nomis_get_data</a></span>(<span class="dt">id =</span> <span class="st">"NM_893_1"</span>, <span class="dt">time =</span> <span class="st">"latest"</span>, <span class="dt">geography =</span> <span class="kw">c</span>(<span class="st">"1929380119"</span>, <span class="st">"1929380120"</span>))</a>
-<a class="sourceLine" id="cb41-2" data-line-number="2"> </a>
-<a class="sourceLine" id="cb41-3" data-line-number="3"><span class="kw">print</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"> x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nomis_get_data.html">nomis_get_data</a></span>(<span class="dt">id =</span> <span class="st">"NM_893_1"</span>, <span class="dt">time =</span> <span class="st">"latest"</span>, <span class="dt">geography =</span> <span class="kw">c</span>(<span class="st">"1929380119"</span>, <span class="st">"1929380120"</span>))</a>
+<a class="sourceLine" id="cb43-2" data-line-number="2"> </a>
+<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="kw">print</span>(x)</a></code></pre></div>
 <pre><code>## # A tibble: 420 x 40
 ##    DATE  DATE_NAME DATE_CODE DATE_TYPE DATE_TYPECODE DATE_SORTORDER
 ##    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;         

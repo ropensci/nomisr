@@ -35,7 +35,7 @@
 <meta property="og:description" content="Nomis content type metadata is included in annotation tags, in the form of
 contenttype/&amp;lt;contenttype&amp;gt; in the annotationtitle column in
 the annotations.annotation list-column returned from
-nomis_data_info. For example, the content types returned from
+nomis_data_info(). For example, the content types returned from
 dataset &quot;NM_1658_1&quot;, using nomis_data_info(&quot;NM_1658_1&quot;), are
 &quot;geoglevel&quot;, &quot;2001census&quot; and &quot;sources&quot;." />
 <meta name="twitter:card" content="summary" />
@@ -76,7 +76,7 @@ dataset &quot;NM_1658_1&quot;, using nomis_data_info(&quot;NM_1658_1&quot;), are
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0.9000</span>
       </span>
     </div>
 
@@ -165,7 +165,7 @@ dataset &quot;NM_1658_1&quot;, using nomis_data_info(&quot;NM_1658_1&quot;), are
     <p>Nomis content type metadata is included in annotation tags, in the form of
 <code>contenttype/&lt;contenttype&gt;</code> in the <code>annotationtitle</code> column in
 the <code>annotations.annotation</code> list-column returned from
-<code><a href='nomis_data_info.html'>nomis_data_info</a></code>. For example, the content types returned from
+<code><a href='nomis_data_info.html'>nomis_data_info()</a></code>. For example, the content types returned from
 dataset "NM_1658_1", using <code><a href='nomis_data_info.html'>nomis_data_info("NM_1658_1")</a></code>, are
 "geoglevel", "2001census" and "sources".</p>
     
@@ -192,8 +192,8 @@ dataset "NM_1658_1", using <code><a href='nomis_data_info.html'>nomis_data_info(
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='nomis_search.html'>nomis_search</a></code></p>
-<p><code><a href='nomis_data_info.html'>nomis_data_info</a></code></p></div>
+    <div class='dont-index'><p><code><a href='nomis_search.html'>nomis_search()</a></code></p>
+<p><code><a href='nomis_data_info.html'>nomis_data_info()</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -206,7 +206,7 @@ dataset "NM_1658_1", using <code><a href='nomis_data_info.html'>nomis_data_info(
 #&gt; $ name        &lt;chr&gt; "Annual Civil Service Employment Survey", "Annual Popul...
 #&gt; $ type        &lt;chr&gt; "DataSource", "DataSource", "DataSource", "DataSource",...
 #&gt; $ item        &lt;list&gt; [NULL, NULL, NULL, &lt;c("NA", "NA"), c("bres_curr", "bre...
-#&gt; $ status      &lt;chr&gt; NA, NA, NA, NA, NA, NA, "archived", "archived", NA, NA,...</div><div class='input'>
+#&gt; $ status      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, "archived", NA, NA, NA, NA,...</div><div class='input'>
 <span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_content_type</span>(<span class='st'>"sources"</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"census"</span>)
 
 <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>b</span>)</div><div class='output co'>#&gt; Observations: 4

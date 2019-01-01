@@ -1,7 +1,7 @@
 
 nomis_tidy <- function(df, tidy_style) {
   if (nrow(df) > 0) {
-    names(df) <- tolower(names(df))
+    names(df) <- tolower(names(df)) # NOMIS defaults to screaming snake case
 
     if (tidy_style == "camelCase") {
       names(df) <- gsub("(^|[^[:alnum:]])([[:alnum:]])", "\\U\\2",
@@ -13,7 +13,7 @@ nomis_tidy <- function(df, tidy_style) {
     } else if (tidy_style == "period.case") {
       names(df) <- gsub("_", "\\.", names(df), perl = TRUE)
     }
-  }
+  } 
 
   df
 }

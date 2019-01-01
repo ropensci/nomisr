@@ -7,8 +7,8 @@
 #' @param id The ID of the particular dataset. Returns no data if not specified.
 #'
 #' @param select A string or character vector of one or more overview parts to
-#' select, excluding all others. \code{select} is not case sensitive. The
-#' options for \code{select} are described below, and are taken from the
+#' select, excluding all others. `select` is not case sensitive. The
+#' options for `select` are described below, and are taken from the
 #' \href{https://www.nomisweb.co.uk/api/v01/help}{Nomis API help page}.
 #'
 #' @return A tibble with two columns, one a character vector with the name of
@@ -50,8 +50,8 @@
 #'
 #' @export
 #'
-#' @seealso \code{\link{nomis_data_info}}
-#' @seealso \code{\link{nomis_get_metadata}}
+#' @seealso [nomis_data_info()]
+#' @seealso [nomis_get_metadata()]
 #'
 #' @examples \donttest{
 #' library(dplyr)

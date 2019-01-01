@@ -5,7 +5,7 @@ r:
   - release
   - devel
 
-sudo: required
+sudo: true
 cache: packages
 
 before_install:

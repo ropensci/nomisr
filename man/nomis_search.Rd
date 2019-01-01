@@ -51,5 +51,5 @@ b <- nomis_search(content_type = "sources-acses")
 }
 }
 \seealso{
-\code{\link{nomis_content_type}}
+\code{\link[=nomis_content_type]{nomis_content_type()}}
 }

@@ -7,17 +7,17 @@
 #'   rows can be returned per call, which can speed up larger data requests and
 #'   reduce the chances of being rate limited or having requests timing out.
 #'
-#' @details By default, \code{nomisr} will look for the environment variable
-#'   \code{NOMIS_API_KEY} when the package is loaded. If found, the API key will
-#'   be stored in the session option \code{nomisr.API.key}. If you would like to
+#' @details By default, `nomisr` will look for the environment variable
+#'   `NOMIS_API_KEY` when the package is loaded. If found, the API key will
+#'   be stored in the session option `nomisr.API.key`. If you would like to
 #'   reload the API key or would like to manually enter one in, this function
 #'   may be used.
 #'
-#' @details You can sign up for an API key
-#'   \href{https://www.nomisweb.co.uk/myaccount/userjoin.asp}{here}.
+#' @details You can sign up for an API key 
+#' [here](https://www.nomisweb.co.uk/myaccount/userjoin.asp).
 #'
 #' @param check_env If TRUE, will check the environment variable
-#'   \code{NOMIS_API_KEY} first before asking for user input.
+#'   `NOMIS_API_KEY` first before asking for user input.
 #'
 #' @export
 nomis_api_key <- function(check_env = FALSE) {

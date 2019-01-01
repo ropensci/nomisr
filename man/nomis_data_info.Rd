@@ -33,11 +33,11 @@ tibble::glimpse(y)
 }
 }
 \seealso{
-\code{\link{nomis_get_data}}
+\code{\link[=nomis_get_data]{nomis_get_data()}}
 
-\code{\link{nomis_get_metadata}}
+\code{\link[=nomis_get_metadata]{nomis_get_metadata()}}
 
-\code{\link{nomis_overview}}
+\code{\link[=nomis_overview]{nomis_overview()}}
 
-\code{\link{nomis_codelist}}
+\code{\link[=nomis_codelist]{nomis_codelist()}}
 }

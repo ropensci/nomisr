@@ -76,7 +76,7 @@ metadata for a given dataset, see nomis_overview." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
       </span>
     </div>
 
@@ -252,12 +252,12 @@ versions greater than 0.2.0 and will eventually be removed.</p></td>
 <span class='co'># returns geography types available within Wigan</span>
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_metadata</span>(<span class='st'>'NM_1_1'</span>, <span class='st'>'geography'</span>, <span class='st'>'1879048226'</span>)
 
-<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>d</span>)</div><div class='output co'>#&gt; Observations: 3
+<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>d</span>)</div><div class='output co'>#&gt; Observations: 12
 #&gt; Variables: 4
-#&gt; $ id             &lt;chr&gt; "1879048226", "1879048226TYPE464", "1879048226TYPE486"
-#&gt; $ parentCode     &lt;chr&gt; "2013265922", NA, NA
-#&gt; $ label.en       &lt;chr&gt; "Wigan", "local authorities: district / unitary (pri...
-#&gt; $ description.en &lt;chr&gt; "Wigan", "local authorities: district / unitary (pri...</div><div class='input'>
+#&gt; $ id             &lt;chr&gt; "1879048226", "1879048226TYPE236", "1879048226TYPE29...
+#&gt; $ parentCode     &lt;chr&gt; "2013265922", NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...
+#&gt; $ label.en       &lt;chr&gt; "Wigan", "2011 census frozen wards within Wigan", "2...
+#&gt; $ description.en &lt;chr&gt; "Wigan", "2011 census frozen wards within Wigan", "2...</div><div class='input'>
 <span class='no'>e</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_metadata</span>(<span class='st'>'NM_1_1'</span>, <span class='st'>'item'</span>, <span class='kw'>geography</span> <span class='kw'>=</span> <span class='fl'>1879048226</span>, <span class='kw'>sex</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 
 <span class='fu'>print</span>(<span class='no'>e</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 4

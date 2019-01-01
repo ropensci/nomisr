@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
       </span>
     </div>
 
@@ -151,9 +151,20 @@
       <small>Source: <a href='https://github.com/ropensci/nomisr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="nomisr-0-3-2" class="section level1">
+    <div id="nomisr-0-4-0" class="section level1">
 <h1 class="page-header">
-<a href="#nomisr-0-3-2" class="anchor"></a>nomisr 0.3.2<small> Unreleased </small>
+<a href="#nomisr-0-4-0" class="anchor"></a>nomisr 0.4.0<small> 2018-08-03 </small>
+</h1>
+<ul>
+<li><p>Version bump for CRAN</p></li>
+<li><p>Citation now refers to JOSS paper</p></li>
+<li><p>Some minor changes to internal code for easier maintenance</p></li>
+<li><p>Documentation updates to clarify difference between <code>time</code> and <code>date</code> parameters in <code><a href="../reference/nomis_get_data.html">nomis_get_data()</a></code></p></li>
+</ul>
+</div>
+    <div id="nomisr-0-3-2-non-cran-release" class="section level1">
+<h1 class="page-header">
+<a href="#nomisr-0-3-2-non-cran-release" class="anchor"></a>nomisr 0.3.2 (non-CRAN release)<small> Unreleased </small>
 </h1>
 <div id="new-features-and-function-changes" class="section level2">
 <h2 class="hasAnchor">
@@ -163,9 +174,9 @@
 </ul>
 </div>
 </div>
-    <div id="nomisr-0-3-1" class="section level1">
+    <div id="nomisr-0-3-1-non-cran-release" class="section level1">
 <h1 class="page-header">
-<a href="#nomisr-0-3-1" class="anchor"></a>nomisr 0.3.1<small> Unreleased </small>
+<a href="#nomisr-0-3-1-non-cran-release" class="anchor"></a>nomisr 0.3.1 (non-CRAN release)<small> Unreleased </small>
 </h1>
 <div id="new-features-and-function-changes-1" class="section level2">
 <h2 class="hasAnchor">
@@ -198,7 +209,7 @@
 <h2 class="hasAnchor">
 <a href="#new-features-and-function-changes-2" class="anchor"></a>New features and function changes</h2>
 <ul>
-<li><p>New <code><a href="../reference/nomis_codelist.html">nomis_codelist()</a></code> function, which returns the internal coding for different concepts used by the NOMIS API in a \code{tibble}, given a dataset ID and a concept name.</p></li>
+<li><p>New <code><a href="../reference/nomis_codelist.html">nomis_codelist()</a></code> function, which returns the internal coding for different concepts used by the NOMIS API in a <code>tibble</code>, given a dataset ID and a concept name.</p></li>
 <li><p>The <code>additional_queries</code> parameter in <code><a href="../reference/nomis_get_data.html">nomis_get_data()</a></code> and <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code> has been deprecated and will eventually be removed. Please use the <code>...</code> parameter for queries including concepts not available through the default parameters.</p></li>
 <li><p>The <code>sex</code> parameter in <code><a href="../reference/nomis_get_data.html">nomis_get_data()</a></code> will also work with datasets that use “gender” instead of “sex”.</p></li>
 </ul>
@@ -253,8 +264,9 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#nomisr-0-3-2">0.3.2</a></li>
-        <li><a href="#nomisr-0-3-1">0.3.1</a></li>
+        <li><a href="#nomisr-0-4-0">0.4.0</a></li>
+        <li><a href="#nomisr-0-3-2-non-cran-release">0.3.2</a></li>
+        <li><a href="#nomisr-0-3-1-non-cran-release">0.3.1</a></li>
         <li><a href="#nomisr-0-3-0">0.3.0</a></li>
         <li><a href="#nomisr-0-2-0">0.2.0</a></li>
         <li><a href="#nomisr-0-1-0">0.1.0</a></li>

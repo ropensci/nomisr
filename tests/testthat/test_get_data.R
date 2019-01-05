@@ -97,7 +97,6 @@ test_that("nomis_get_data return expected format", {
       geography = "TYPE464", sex = 0,
       cause_of_death = "10381",
       age = 0, measure = 6
-    ),
-    "The API request did not return any results.\nPlease check your parameters."
+    )
   )
 })

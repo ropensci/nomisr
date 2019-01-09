@@ -108,8 +108,8 @@
 #' @param exclude_missing If `TRUE`, excludes all missing values.
 #' Defaults to `FALSE`.
 #'
-#' @param select A character vector of one or more variables to select,
-#' excluding all others. `select` is not case sensitive.
+#' @param select A character vector of one or more variables to include in
+#' the returned data, excluding all others. `select` is not case sensitive.
 #'
 #' @param tidy Logical parameter. If `TRUE`, converts variable names to
 #' `snake_case`, or another style as specified by the

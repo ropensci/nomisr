@@ -1,8 +1,13 @@
-# nomisr 0.4.0.9000
+# nomisr 0.4.1
 
 * Adding `query_id` parameter to `nomis_get_data()`
 
 * Changed documentation to use `roxygen` markdown
+
+## Bug fixes
+
+* Fixed bug where the `select` parameter in `nomis_get_data()` didn't work if 
+  "OBS_VALUE" was not one of the variables. (@JimShady, #12)
 
 
 # nomisr 0.4.0

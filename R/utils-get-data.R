@@ -24,8 +24,7 @@ nomis_get_data_util <- function(query) {
     readr::read_csv(
       api_get$url,
       col_types = readr::cols(
-        .default = "c",
-        OBS_VALUE = "d"
+        .default = "c"
       )
     )
   },
@@ -46,5 +45,11 @@ nomis_get_data_util <- function(query) {
   }
   )
 
+  if ("OBS_VALUE" %in% names(df)) {
+    df$OBS_VALUE <- as.double(df$OBS_VALUE)
+  }
+  
   df
+  
+  
 }

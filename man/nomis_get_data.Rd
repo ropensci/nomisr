@@ -89,8 +89,8 @@ than 0.2.0 and will eventually be removed in a future version.}
 \item{exclude_missing}{If \code{TRUE}, excludes all missing values.
 Defaults to \code{FALSE}.}
 
-\item{select}{A character vector of one or more variables to select,
-excluding all others. \code{select} is not case sensitive.}
+\item{select}{A character vector of one or more variables to include in
+the returned data, excluding all others. \code{select} is not case sensitive.}
 
 \item{tidy}{Logical parameter. If \code{TRUE}, converts variable names to
 \code{snake_case}, or another style as specified by the

@@ -24,7 +24,8 @@
 #' @seealso [nomis_get_metadata()]
 #' @seealso [nomis_overview()]
 #'
-#' @examples \donttest{
+#' @examples
+#' \donttest{
 #' x <- nomis_codelist("NM_1_1", "item")
 #'
 #'
@@ -34,7 +35,7 @@
 #'
 #' z <- nomis_codelist("NM_161_1", "cause_of_death")
 #' }
-
+#'
 nomis_codelist <- function(id, concept, search = NULL) {
   if (missing(id)) {
     stop("id must be specified", call. = FALSE)

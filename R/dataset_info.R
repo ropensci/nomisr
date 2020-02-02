@@ -14,7 +14,8 @@
 #' @seealso [nomis_overview()]
 #' @seealso [nomis_codelist()]
 #'
-#' @examples \donttest{
+#' @examples
+#' \donttest{
 #'
 #' # Get info on all datasets
 #' x <- nomis_data_info()
@@ -22,12 +23,11 @@
 #' tibble::glimpse(x)
 #'
 #' # Get info on a particular dataset
-#' y <- nomis_data_info('NM_1658_1')
+#' y <- nomis_data_info("NM_1658_1")
 #'
 #' tibble::glimpse(y)
-#'
 #' }
-
+#'
 nomis_data_info <- function(id) {
   if (missing(id)) {
     data_info_query <- "def.sdmx.json"

@@ -13,7 +13,7 @@ nomis_tidy <- function(df, tidy_style) {
     } else if (tidy_style == "period.case") {
       names(df) <- gsub("_", "\\.", names(df), perl = TRUE)
     }
-  } 
+  }
 
   df
 }

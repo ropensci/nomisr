@@ -29,7 +29,7 @@
 #' `date = c("first", "latest")` will return only the earliest and latest
 #' data published.
 #'
-#' @param id A string containing the ID of the dataset to retrieve, 
+#' @param id A string containing the ID of the dataset to retrieve,
 #' in `"nm_***_*"` format. The `id` parameter is not case sensitive.
 #'
 #' @param time Parameter for selecting dates and date ranges. Accepts either a
@@ -37,8 +37,8 @@
 #' date values, There are two styles of values that can be used to query time.
 #'
 #' The first is one or two of `"latest"` (returns the latest available
-#' data), `"previous"` (the date prior to `"latest"`), `"prevyear"` 
-#' (the date one year prior to `"latest"`) or `"first"` 
+#' data), `"previous"` (the date prior to `"latest"`), `"prevyear"`
+#' (the date one year prior to `"latest"`) or `"first"`
 #' (the oldest available data for the dataset).
 #'
 #' The second style is to use or a specific date or multiple dates, in the
@@ -56,7 +56,7 @@
 #' returned, but there is no limit to the number of data values. For example,
 #' `date=c("latest, latestMINUS3, latestMINUS6")` will return the latest
 #' data, data from three months prior to the latest data and six months prior
-#' to the latest data. There are two styles of values that can be used to 
+#' to the latest data. There are two styles of values that can be used to
 #' query time.
 #'
 #' The first is one or more of `"latest"` (returns the latest available
@@ -92,17 +92,17 @@
 #' all available sex/gender data.
 #'
 #' There are two different codings used for sex, depending on the dataset. For
-#' datasets using `"SEX"`, `7` will return results for males and females, `6` 
-#' only females and `5` only males. Defaults to `NULL`, equivalent to 
-#' `c(5,6,7)` for datasets where sex is an option. For datasets using 
-#' `"C_SEX"`, `0` will return results for males and females, `1` only males 
-#' and `2` only females. Some datasets use `"GENDER"` with the same values 
-#' as `"SEX"`, which works with both `sex = <code>` and `gender = <code>` 
+#' datasets using `"SEX"`, `7` will return results for males and females, `6`
+#' only females and `5` only males. Defaults to `NULL`, equivalent to
+#' `c(5,6,7)` for datasets where sex is an option. For datasets using
+#' `"C_SEX"`, `0` will return results for males and females, `1` only males
+#' and `2` only females. Some datasets use `"GENDER"` with the same values
+#' as `"SEX"`, which works with both `sex = <code>` and `gender = <code>`
 #' as a dot parameter.
 #'
 #' @param additional_queries Any other additional queries to pass to the API.
 #' See \url{https://www.nomisweb.co.uk/api/v01/help} for instructions on
-#' query structure. Defaults to `NULL`. Deprecated in package versions greater 
+#' query structure. Defaults to `NULL`. Deprecated in package versions greater
 #' than 0.2.0 and will eventually be removed in a future version.
 #'
 #' @param exclude_missing If `TRUE`, excludes all missing values.
@@ -119,11 +119,11 @@
 #' @param tidy_style The style to convert variable names to, if
 #' `tidy = TRUE`. Accepts one of `"snake_case"`, `"camelCase"`
 #' and `"period.case"`. Defaults to `"snake_case"`.
-#' 
-#' @param query_id Results can be labelled as belonging to a certain query 
-#' made to the API. `query_id` accepts any value as a string, and will 
-#' be included in every row of the tibble returned by `nomis_get_data` 
-#' in a column labelled "QUERY_ID" in the default SCREAMING_SNAKE_CASE 
+#'
+#' @param query_id Results can be labelled as belonging to a certain query
+#' made to the API. `query_id` accepts any value as a string, and will
+#' be included in every row of the tibble returned by `nomis_get_data`
+#' in a column labelled "QUERY_ID" in the default SCREAMING_SNAKE_CASE
 #' used by the API. Defaults to `NULL`.
 #'
 #' @param ... Use to pass any other parameters to the API. Useful for passing
@@ -135,66 +135,83 @@
 #' Parameters are not case sensitive. Note that R using partial matching for
 #' function variables, and so passing a parameter with the same opening
 #' characters as one of the above-named parameters can cause an error unless
-#' the value of the named parameter is specified, including as `NULL`. 
+#' the value of the named parameter is specified, including as `NULL`.
 #' See example below:
 #'
-#' @return A tibble containing the selected dataset. By default, all tibble 
+#' @return A tibble containing the selected dataset. By default, all tibble
 #' columns except for the `"OBS_VALUE"` column are parsed as characters.
 #' @export
 #' @seealso [nomis_data_info()]
 #' @seealso [nomis_get_metadata()]
 #' @seealso [nomis_codelist()]
 #' @seealso [nomis_overview()]
-#' @examples \donttest{
+#' @examples
+#' \donttest{
 #'
 #' # Return data on Jobseekers Allowance for each country in the UK
-#' jobseekers_country <- nomis_get_data(id = "NM_1_1", time = "latest",
-#'                                      geography = "TYPE499",
-#'                                      measures = c(20100, 20201), sex = 5)
+#' jobseekers_country <- nomis_get_data(
+#'   id = "NM_1_1", time = "latest",
+#'   geography = "TYPE499",
+#'   measures = c(20100, 20201), sex = 5
+#' )
 #'
 #' tibble::glimpse(jobseekers_country)
 #'
 #' # Return data on Jobseekers Allowance for Wigan
-#' jobseekers_wigan <- nomis_get_data(id = "NM_1_1", time = "latest",
-#'                                    geography = "1879048226",
-#'                                    measures = c(20100, 20201), sex = "5")
+#' jobseekers_wigan <- nomis_get_data(
+#'   id = "NM_1_1", time = "latest",
+#'   geography = "1879048226",
+#'   measures = c(20100, 20201), sex = "5"
+#' )
 #'
 #' tibble::glimpse(jobseekers_wigan)
 #'
 #' # annual population survey - regional - employment by occupation
-#' emp_by_occupation <- nomis_get_data(id = "NM_168_1", time = "latest",
-#'                                     geography = "2013265925", sex = "0",
-#'                                     select = c("geography_code",
-#'                                     "C_OCCPUK11H_0_NAME", "obs_vAlUE"))
+#' emp_by_occupation <- nomis_get_data(
+#'   id = "NM_168_1", time = "latest",
+#'   geography = "2013265925", sex = "0",
+#'   select = c(
+#'     "geography_code",
+#'     "C_OCCPUK11H_0_NAME", "obs_vAlUE"
+#'   )
+#' )
 #'
 #' tibble::glimpse(emp_by_occupation)
 #'
-#' # Deaths in 2016 and 2015 by three specified causes, 
+#' # Deaths in 2016 and 2015 by three specified causes,
 #' # identified with nomis_get_metadata()
-#' death <- nomis_get_data("NM_161_1", date = c("2016","2015"),
-#'                         geography = "TYPE480",
-#'                         cause_of_death = c(10300, 102088, 270))
+#' death <- nomis_get_data("NM_161_1",
+#'   date = c("2016", "2015"),
+#'   geography = "TYPE480",
+#'   cause_of_death = c(10300, 102088, 270)
+#' )
 #'
 #' tibble::glimpse(death)
 #'
 #' # All causes of death in London in 2016
-#' london_death <- nomis_get_data("NM_161_1", date = c("2016"),
-#'                                geography = "2013265927", sex = 1, age = 0)
+#' london_death <- nomis_get_data("NM_161_1",
+#'   date = c("2016"),
+#'   geography = "2013265927", sex = 1, age = 0
+#' )
 #'
 #' tibble::glimpse(london_death)
 #' }
 #' \dontrun{
-#'  # Results in an error because `measure` is mistaken for `measures`
-#'  mort_data1 <- nomis_get_data(id = "NM_161_1", date = "2016",
-#'    geography = "TYPE464", sex = 0, cause_of_death = "10381",
-#'    age = 0, measure = 6)
+#' # Results in an error because `measure` is mistaken for `measures`
+#' mort_data1 <- nomis_get_data(
+#'   id = "NM_161_1", date = "2016",
+#'   geography = "TYPE464", sex = 0, cause_of_death = "10381",
+#'   age = 0, measure = 6
+#' )
 #'
-#'  # Does not error because `measures` is specified
-#'  mort_data2 <- nomis_get_data(id = "NM_161_1", date = "2016",
-#'    geography = "TYPE464", sex = 0, measures = NULL,
-#'    cause_of_death = "10381", age = 0, measure = 6)
+#' # Does not error because `measures` is specified
+#' mort_data2 <- nomis_get_data(
+#'   id = "NM_161_1", date = "2016",
+#'   geography = "TYPE464", sex = 0, measures = NULL,
+#'   cause_of_death = "10381", age = 0, measure = 6
+#' )
 #' }
-
+#'
 nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
                            sex = NULL, measures = NULL,
                            additional_queries = NULL, exclude_missing = FALSE,
@@ -270,7 +287,7 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
     ),
     ""
   )
-  
+
   query_id <- ifelse(!is.null(query_id), paste0("&queryid=", query_id), "")
 
   dots <- rlang::list2(...) ## eval the dots

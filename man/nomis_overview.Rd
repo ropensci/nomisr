@@ -63,12 +63,17 @@ library(dplyr)
 
 q <- nomis_overview("NM_1650_1")
 
-q \%>\% tidyr::unnest(name) \%>\% glimpse()
+q \%>\%
+  tidyr::unnest(name) \%>\%
+  glimpse()
 
 s <- nomis_overview("NM_1650_1", select = c("Units", "Keywords"))
 
-s \%>\% tidyr::unnest(name) \%>\% glimpse()
+s \%>\%
+  tidyr::unnest(name) \%>\%
+  glimpse()
 }
+
 }
 \seealso{
 \code{\link[=nomis_data_info]{nomis_data_info()}}

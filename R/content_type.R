@@ -18,7 +18,8 @@
 #' @seealso [nomis_search()]
 #' @seealso [nomis_data_info()]
 #'
-#' @examples \donttest{
+#' @examples
+#' \donttest{
 #' a <- nomis_content_type("sources")
 #'
 #' tibble::glimpse(a)
@@ -27,8 +28,7 @@
 #'
 #' tibble::glimpse(b)
 #' }
-
-
+#'
 nomis_content_type <- function(content_type, id = NULL) {
   if (missing(content_type)) {
     stop("content_type must be specified", call. = FALSE)

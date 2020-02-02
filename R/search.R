@@ -29,10 +29,11 @@
 #' @export
 #' @seealso [nomis_content_type()]
 #'
-#' @examples \donttest{
-#' x <- nomis_search(name = '*seekers*')
+#' @examples
+#' \donttest{
+#' x <- nomis_search(name = "*seekers*")
 #'
-#' y <- nomis_search(keywords = 'Claimants')
+#' y <- nomis_search(keywords = "Claimants")
 #'
 #' # Return metadata of all datasets with content_type "sources".
 #' a <- nomis_search(content_type = "sources")
@@ -42,8 +43,7 @@
 #' # source ID "acses"
 #' b <- nomis_search(content_type = "sources-acses")
 #' }
-
-
+#'
 nomis_search <- function(name = NULL, description = NULL,
                          keywords = NULL, content_type = NULL, units = NULL) {
   if (length(name) > 0) {

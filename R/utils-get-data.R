@@ -20,24 +20,26 @@ nomis_get_data_util <- function(query) {
     )
   }
 
-  df <- tryCatch({
-    httr::content(api_get)
-  },
-  error = function(cond) {
-    message(
-      "It is likely that you have been automatically rate limited ",
-      "by the Nomis API.\n",
-      "You can make smaller data requests, or try again later.\n\n",
-      "Here's the original error message:\n", cond
-    )
+  df <- tryCatch(
+    {
+      httr::content(api_get)
+    },
+    error = function(cond) {
+      message(
+        "It is likely that you have been automatically rate limited ",
+        "by the Nomis API.\n",
+        "You can make smaller data requests, or try again later.\n\n",
+        "Here's the original error message:\n", cond
+      )
 
-    return(NA)
-  }, warning = function(cond) {
-    stop("The API request did not return any results.\n",
-      "Please check your parameters.",
-      call. = FALSE
-    )
-  }
+      return(NA)
+    },
+    warning = function(cond) {
+      stop("The API request did not return any results.\n",
+        "Please check your parameters.",
+        call. = FALSE
+      )
+    }
   )
 
   if ("OBS_VALUE" %in% names(df)) {
@@ -45,5 +47,4 @@ nomis_get_data_util <- function(query) {
   }
 
   df
-
 }

@@ -73,19 +73,25 @@ test_that("nomis_get_data return expected format", {
   expect_length(x_select, 3)
   expect_type(x_select, "list")
   expect_true(tibble::is_tibble(x_select))
-  
 
-  select_no_obs <- nomis_get_data(id = "NM_1208_1", time = "latest",
-                                  USUAL_RESIDENCE = "TYPE499",
-                                  PLACE_OF_WORK = "TYPE499", 
-                                  TRANSPORT_POWPEW11 = "2",
-                                  select = c("USUAL_RESIDENCE_NAME", 
-                                             "PLACE_OF_WORK_NAME"))
+
+  select_no_obs <- nomis_get_data(
+    id = "NM_1208_1", time = "latest",
+    USUAL_RESIDENCE = "TYPE499",
+    PLACE_OF_WORK = "TYPE499",
+    TRANSPORT_POWPEW11 = "2",
+    select = c(
+      "USUAL_RESIDENCE_NAME",
+      "PLACE_OF_WORK_NAME"
+    )
+  )
   expect_length(select_no_obs, 2)
   expect_true(tibble::is_tibble(select_no_obs))
-  expect_true(all(names(select_no_obs)==c("USUAL_RESIDENCE_NAME",
-                                          "PLACE_OF_WORK_NAME")))
-  
+  expect_true(all(names(select_no_obs) == c(
+    "USUAL_RESIDENCE_NAME",
+    "PLACE_OF_WORK_NAME"
+  )))
+
 
   mort_data1 <- nomis_get_data(
     id = "NM_161_1", date = "2016", tidy = TRUE,

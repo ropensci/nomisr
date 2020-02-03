@@ -60,8 +60,9 @@ test_that("nomis_get_data return expected format", {
     id = "NM_1_1", time = "latest",
     measures = c(20100, 20201), sex = 0,
     exclude_missing = FALSE, geography = "TYPE499"
-  ))
-
+  ), 
+  "The API request did not return any results. Please check your parameters.")
+  
   x_select <- nomis_get_data(
     id = "NM_168_1", time = "latest",
     geography = "2013265925", sex = "0",

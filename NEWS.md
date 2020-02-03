@@ -1,3 +1,11 @@
+
+
+# nomisr 0.4.1.9000
+
+* Error handling improvements when using non-existent parameters, and clarifies
+  error messages when no data is available for a given query.
+
+
 # nomisr 0.4.1
 
 * Adding `query_id` parameter to `nomis_get_data()`

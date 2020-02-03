@@ -4,11 +4,13 @@
 \alias{nomis_data_info}
 \title{Nomis data structures}
 \usage{
-nomis_data_info(id)
+nomis_data_info(id, tidy = FALSE)
 }
 \arguments{
 \item{id}{Dataset ID. If empty, returns data on all available datasets.
 If the ID of a dataset, returns metadata for that particular dataset.}
+
+\item{tidy}{If \code{TRUE}, converts tibble names to snakecase.}
 }
 \value{
 A tibble with all available datasets and their metadata.

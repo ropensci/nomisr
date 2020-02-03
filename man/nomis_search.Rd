@@ -9,7 +9,8 @@ nomis_search(
   description = NULL,
   keywords = NULL,
   content_type = NULL,
-  units = NULL
+  units = NULL,
+  tidy = FALSE
 )
 }
 \arguments{
@@ -30,6 +31,8 @@ optional ID for that content type. Defaults to \code{NULL}.}
 
 \item{units}{A string or character vector of strings to search for in
 available dataset units. Defaults to \code{NULL}.}
+
+\item{tidy}{If \code{TRUE}, converts tibble names to snakecase.}
 }
 \value{
 A tibble with details on all datasets matching the search query.

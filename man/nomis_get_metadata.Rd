@@ -10,7 +10,8 @@ nomis_get_metadata(
   type = NULL,
   search = NULL,
   additional_queries = NULL,
-  ...
+  ...,
+  tidy = FALSE
 )
 }
 \arguments{
@@ -35,6 +36,8 @@ query structure. Defaults to \code{NULL}. Deprecated in package
 versions greater than 0.2.0 and will eventually be removed.}
 
 \item{...}{Use to pass any other parameters to the API.}
+
+\item{tidy}{If \code{TRUE}, converts tibble names to snakecase.}
 }
 \value{
 A tibble with metadata options for queries using

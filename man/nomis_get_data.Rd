@@ -4,10 +4,21 @@
 \alias{nomis_get_data}
 \title{Retrieve Nomis datasets}
 \usage{
-nomis_get_data(id, time = NULL, date = NULL, geography = NULL,
-  sex = NULL, measures = NULL, additional_queries = NULL,
-  exclude_missing = FALSE, select = NULL, tidy = FALSE,
-  tidy_style = "snake_case", query_id = NULL, ...)
+nomis_get_data(
+  id,
+  time = NULL,
+  date = NULL,
+  geography = NULL,
+  sex = NULL,
+  measures = NULL,
+  additional_queries = NULL,
+  exclude_missing = FALSE,
+  select = NULL,
+  tidy = FALSE,
+  tidy_style = "snake_case",
+  query_id = NULL,
+  ...
+)
 }
 \arguments{
 \item{id}{A string containing the ID of the dataset to retrieve,
@@ -73,7 +84,7 @@ only females and \code{5} only males. Defaults to \code{NULL}, equivalent to
 \code{c(5,6,7)} for datasets where sex is an option. For datasets using
 \code{"C_SEX"}, \code{0} will return results for males and females, \code{1} only males
 and \code{2} only females. Some datasets use \code{"GENDER"} with the same values
-as \code{"SEX"}, which works with both \code{sex = <code>} and \code{gender = <code>}
+as \code{"SEX"}, which works with both \verb{sex = <code>} and \verb{gender = <code>}
 as a dot parameter.}
 
 \item{measures}{The code for the statistical measure(s) to include in the

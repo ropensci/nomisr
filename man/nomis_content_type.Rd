@@ -16,7 +16,7 @@ A tibble with metadata on a given content type.
 }
 \description{
 Nomis content type metadata is included in annotation tags, in the form of
-\code{contenttype/<contenttype>} in the \code{annotationtitle} column in
+\verb{contenttype/<contenttype>} in the \code{annotationtitle} column in
 the \code{annotations.annotation} list-column returned from
 \code{\link[=nomis_data_info]{nomis_data_info()}}. For example, the content types returned from
 dataset "NM_1658_1", using \code{nomis_data_info("NM_1658_1")}, are

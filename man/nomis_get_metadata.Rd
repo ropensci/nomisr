@@ -4,8 +4,14 @@
 \alias{nomis_get_metadata}
 \title{Nomis metadata concepts and types}
 \usage{
-nomis_get_metadata(id, concept = NULL, type = NULL, search = NULL,
-  additional_queries = NULL, ...)
+nomis_get_metadata(
+  id,
+  concept = NULL,
+  type = NULL,
+  search = NULL,
+  additional_queries = NULL,
+  ...
+)
 }
 \arguments{
 \item{id}{The ID of the particular dataset. Returns no data if not specified.}

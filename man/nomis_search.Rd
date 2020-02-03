@@ -4,8 +4,13 @@
 \alias{nomis_search}
 \title{Search Nomis datasets}
 \usage{
-nomis_search(name = NULL, description = NULL, keywords = NULL,
-  content_type = NULL, units = NULL)
+nomis_search(
+  name = NULL,
+  description = NULL,
+  keywords = NULL,
+  content_type = NULL,
+  units = NULL
+)
 }
 \arguments{
 \item{name}{A string or character vector of strings to search for in

@@ -32,6 +32,7 @@ b <- nomis_content_type("sources", id = "census")
 
 tibble::glimpse(b)
 }
+
 }
 \seealso{
 \code{\link[=nomis_search]{nomis_search()}}

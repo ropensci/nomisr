@@ -53,19 +53,23 @@
 #' @seealso [nomis_data_info()]
 #' @seealso [nomis_get_metadata()]
 #'
-#' @examples \donttest{
+#' @examples
+#' \donttest{
 #' library(dplyr)
 #'
 #' q <- nomis_overview("NM_1650_1")
 #'
-#' q %>% tidyr::unnest(name) %>% glimpse()
+#' q %>%
+#'   tidyr::unnest(name) %>%
+#'   glimpse()
 #'
 #' s <- nomis_overview("NM_1650_1", select = c("Units", "Keywords"))
 #'
-#' s %>% tidyr::unnest(name) %>% glimpse()
+#' s %>%
+#'   tidyr::unnest(name) %>%
+#'   glimpse()
 #' }
-
-
+#'
 nomis_overview <- function(id, select = NULL) {
   if (missing(id)) {
     stop("The dataset ID must be specified.", call. = FALSE)

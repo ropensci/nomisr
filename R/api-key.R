@@ -13,7 +13,7 @@
 #'   reload the API key or would like to manually enter one in, this function
 #'   may be used.
 #'
-#' @details You can sign up for an API key 
+#' @details You can sign up for an API key
 #' [here](https://www.nomisweb.co.uk/myaccount/userjoin.asp).
 #'
 #' @param check_env If TRUE, will check the environment variable

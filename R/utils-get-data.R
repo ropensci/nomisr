@@ -20,14 +20,10 @@ nomis_get_data_util <- function(query) {
     )
   }
 
-  df <- tryCatch({
-    readr::read_csv(
-      api_get$url,
-      col_types = readr::cols(
-        .default = "c"
-      )
-    )
-  },
+  df <- tryCatch(
+    {
+      httr::content(api_get)
+    },
   error = function(cond) {
     err <- conditionMessage(cond)
     if (startsWith(err, "Cannot read file")) {
@@ -55,8 +51,6 @@ nomis_get_data_util <- function(query) {
   if ("OBS_VALUE" %in% names(df)) {
     df$OBS_VALUE <- as.double(df$OBS_VALUE)
   }
-  
+
   df
-  
-  
 }

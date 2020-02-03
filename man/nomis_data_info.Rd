@@ -26,11 +26,11 @@ x <- nomis_data_info()
 tibble::glimpse(x)
 
 # Get info on a particular dataset
-y <- nomis_data_info('NM_1658_1')
+y <- nomis_data_info("NM_1658_1")
 
 tibble::glimpse(y)
-
 }
+
 }
 \seealso{
 \code{\link[=nomis_get_data]{nomis_get_data()}}

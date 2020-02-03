@@ -42,9 +42,9 @@ beginning and/or end of each search string.
 }
 \examples{
 \donttest{
-x <- nomis_search(name = '*seekers*')
+x <- nomis_search(name = "*seekers*")
 
-y <- nomis_search(keywords = 'Claimants')
+y <- nomis_search(keywords = "Claimants")
 
 # Return metadata of all datasets with content_type "sources".
 a <- nomis_search(content_type = "sources")
@@ -54,6 +54,7 @@ a <- nomis_search(content_type = "sources")
 # source ID "acses"
 b <- nomis_search(content_type = "sources-acses")
 }
+
 }
 \seealso{
 \code{\link[=nomis_content_type]{nomis_content_type()}}

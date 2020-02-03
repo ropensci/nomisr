@@ -22,14 +22,15 @@ BugReports: https://github.com/ropensci/nomisr/issues
 License: MIT + file LICENSE
 Depends: R (>= 3.4.0)
 Imports:
-  jsonlite,
-  tibble,
-  readr,
-  dplyr,
-  httr,
-  utils,
-  rsdmx,
-  rlang
+    jsonlite,
+    tibble,
+    readr,
+    dplyr,
+    httr,
+    utils,
+    rsdmx,
+    rlang,
+    snakecase
 RoxygenNote: 7.0.2
 Suggests:
   knitr,

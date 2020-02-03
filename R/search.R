@@ -24,6 +24,8 @@
 #'
 #' @param units A string or character vector of strings to search for in
 #' available dataset units. Defaults to `NULL`.
+#' 
+#' @param tidy If `TRUE`, converts tibble names to snakecase. 
 #'
 #' @return A tibble with details on all datasets matching the search query.
 #' @export
@@ -45,7 +47,8 @@
 #' }
 #'
 nomis_search <- function(name = NULL, description = NULL,
-                         keywords = NULL, content_type = NULL, units = NULL) {
+                         keywords = NULL, content_type = NULL, units = NULL,
+                         tidy = FALSE) {
   if (length(name) > 0) {
     name_query <- paste0(
       "&search=name-",
@@ -96,7 +99,7 @@ nomis_search <- function(name = NULL, description = NULL,
     keywords_query, content_type_query, units_query
   )
 
-  df <- nomis_query_util(query)
+  df <- nomis_query_util(query, tidy)
 
   df
 }

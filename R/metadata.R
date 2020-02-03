@@ -30,6 +30,8 @@
 #' versions greater than 0.2.0 and will eventually be removed.
 #'
 #' @param ... Use to pass any other parameters to the API.
+#' 
+#' @param tidy If `TRUE`, converts tibble names to snakecase.
 #'
 #' @seealso [nomis_data_info()]
 #' @seealso [nomis_get_data()]
@@ -68,9 +70,8 @@
 #' tibble::glimpse(f)
 #' }
 #'
-nomis_get_metadata <- function(id, concept = NULL,
-                               type = NULL, search = NULL,
-                               additional_queries = NULL, ...) {
+nomis_get_metadata <- function(id, concept = NULL, type = NULL, search = NULL,
+                               additional_queries = NULL, ..., tidy = FALSE) {
   if (missing(id)) {
     stop("The dataset ID must be specified.", call. = FALSE)
   }
@@ -80,7 +81,7 @@ nomis_get_metadata <- function(id, concept = NULL,
     additional_query <- additional_queries
 
     message("The `additional_query` parameter is
-            deprecated, please use ... instead")
+            deprecated, please use `...` instead")
   } else {
     additional_query <- NULL
   }
@@ -129,5 +130,9 @@ nomis_get_metadata <- function(id, concept = NULL,
     ))
   }
 
+  if (tidy) {
+    names(df) <- snakecase::to_snake_case(names(df))
+  }
+  
   df
 }

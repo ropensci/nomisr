@@ -16,7 +16,7 @@ test_that("nomis_data_info return expected format", {
     "Nomis API did not return data in required json format"
   )
 
-  y <- nomis_data_info("NM_1658_1")
+  y <- nomis_data_info("NM_1658_1", tidy = TRUE)
   expect_length(y, 12)
   expect_type(y, "list")
   expect_true(tibble::is_tibble(y))

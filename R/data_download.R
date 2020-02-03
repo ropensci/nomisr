@@ -118,7 +118,8 @@
 #'
 #' @param tidy_style The style to convert variable names to, if
 #' `tidy = TRUE`. Accepts one of `"snake_case"`, `"camelCase"`
-#' and `"period.case"`. Defaults to `"snake_case"`.
+#' and `"period.case"`, or any of the options accepted by
+#'  [snakecase::to_any_case()]. Defaults to `"snake_case"`.
 #'
 #' @param query_id Results can be labelled as belonging to a certain query
 #' made to the API. `query_id` accepts any value as a string, and will
@@ -323,11 +324,11 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
   first_df <- nomis_get_data_util(query)
 
   names(first_df) <- toupper(names(first_df))
-  
+
   if (nrow(first_df) <= 0) {
     stop("The API request did not return any results. ",
-         "Please check your parameters.",
-         call. = FALSE
+      "Please check your parameters.",
+      call. = FALSE
     )
   }
 

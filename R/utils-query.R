@@ -2,7 +2,7 @@
 ## utility function for queries on available data
 
 
-nomis_query_util <- function(query) {
+nomis_query_util <- function(query, tidy) {
   api_resp <- httr::GET(paste0(base_url, query))
   if (http_type(api_resp) != "application/json") {
     stop("Nomis API did not return data in required json format", call. = FALSE)
@@ -24,6 +24,10 @@ nomis_query_util <- function(query) {
 
   if (nrow(df) == 0) {
     stop("API request did not return any results", call. = FALSE)
+  }
+  
+  if (tidy) {
+    names(df) <- snakecase::to_snake_case(names(df))
   }
 
   df

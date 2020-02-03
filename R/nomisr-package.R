@@ -24,6 +24,7 @@
 #' @importFrom utils menu
 #' @importFrom rsdmx readSDMX
 #' @importFrom rlang list2
+#' @importFrom snakecase to_snake_case to_any_case
 #' @aliases NULL nomisr-package
 NULL
 

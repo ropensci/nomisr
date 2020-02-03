@@ -1,3 +1,17 @@
+
+
+# nomisr 0.4.1.9000
+
+* Error handling improvements when using non-existent parameters, and clarifies
+  error messages when no data is available for a given query.
+  
+* Removes redundant call to API (#19), thanks @Chrisjb
+
+* New `tidy` parameter in `nomis_get_metadata` to convert names to snake_case,
+  and now uses the snakecase package to implement name cleaning, providing
+  a broader range of options if wanted.
+
+
 # nomisr 0.4.1
 
 * Adding `query_id` parameter to `nomis_get_data()`

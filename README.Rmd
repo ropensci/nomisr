@@ -103,7 +103,6 @@ A BibTeX entry for LaTeX users is
   number = {27},
   journaltitle = {Journal of Open Source Software},
   urldate = {2018-08-01},
-  note = {R package version 0.4.0}
   date = {2018-07-28},
   pages = {859},
   author = {Odell, Evan}

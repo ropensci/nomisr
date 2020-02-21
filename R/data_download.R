@@ -118,7 +118,7 @@
 #'
 #' @param tidy_style The style to convert variable names to, if
 #' `tidy = TRUE`. Accepts one of `"snake_case"`, `"camelCase"`
-#' and `"period.case"`, or any of the options accepted by
+#' and `"period.case"`, or any of the `case` options accepted by
 #'  [snakecase::to_any_case()]. Defaults to `"snake_case"`.
 #'
 #' @param query_id Results can be labelled as belonging to a certain query

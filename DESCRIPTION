@@ -1,7 +1,7 @@
 Package: nomisr
 Type: Package
 Title: Access 'Nomis' UK Labour Market Data
-Version: 0.4.1.9000
+Version: 0.4.2
 Authors@R: c(
     person(
       "Evan", "Odell", email = "evanodell91@gmail.com", role = c("aut", "cre"),
@@ -33,12 +33,12 @@ Imports:
     snakecase
 RoxygenNote: 7.0.2
 Suggests:
-  knitr,
-  rmarkdown,
-  testthat,
-  purrr,
-  tidyr,
-  magrittr
+    knitr,
+    rmarkdown,
+    testthat,
+    purrr,
+    tidyr,
+    magrittr
 VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

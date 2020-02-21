@@ -110,7 +110,7 @@ from the API is SCREAMING_SNAKE_CASE.}
 
 \item{tidy_style}{The style to convert variable names to, if
 \code{tidy = TRUE}. Accepts one of \code{"snake_case"}, \code{"camelCase"}
-and \code{"period.case"}, or any of the options accepted by
+and \code{"period.case"}, or any of the \code{case} options accepted by
 \code{\link[snakecase:to_any_case]{snakecase::to_any_case()}}. Defaults to \code{"snake_case"}.}
 
 \item{query_id}{Results can be labelled as belonging to a certain query

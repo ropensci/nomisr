@@ -36,4 +36,5 @@ test_that("nomis_get_metadata return expected format", {
   f <- nomis_get_metadata("NM_1_1", "item", search = "*married*")
   expect_equal(nrow(f), 1)
   expect_true(tibble::is_tibble(f))
+  
 })

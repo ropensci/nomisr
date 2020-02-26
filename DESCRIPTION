@@ -38,7 +38,8 @@ Suggests:
     testthat,
     purrr,
     tidyr,
-    magrittr
+    magrittr,
+    ggplot2
 VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

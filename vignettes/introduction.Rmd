@@ -29,7 +29,7 @@ The `nomis_data_info()` function is focused on the structure and coverage of the
 
 Use the `nomis_data_info()` function without any parameters to get a tibble with metadata for all available datasets:
 
-```{r, echo=TRUE}
+```{r all-datasets, echo=TRUE}
 library(nomisr)
 x <- nomis_data_info()
 head(x)
@@ -38,7 +38,7 @@ head(x)
 
 `nomis_data_info()` can also be used to query metadata from a specific dataset, using its ID. The example below uses the "LC4408EW - Tenure by number of persons per bedroom in household by household type" dataset from the 2011 census, which has the ID "NM_893_1". 
 
-```{r, echo=TRUE}
+```{r specific-dataset, echo=TRUE}
 y <- nomis_data_info("NM_893_1")
 
 tibble::glimpse(y)
@@ -48,7 +48,7 @@ When a tibble with metadata for all datasets or a specific dataset is returned, 
 
 The example below shows how to access data stored in list columns returned from the Nomis API. In the case of requests for metadata from a single dataset, the three columns are all lists with a length of 1. If requesting all dataset information with `nomis_data_info()`, each row is a list of length 1. Each list contains a data.frame, of varrying dimensions depending on the column and dataset. You can unnest individual list-columns to display their data in the same row as data from the rest of the tibble. Due to the differing lengths of the list-columns returned by `nomis_data_info()`, only one list-column can be unnested at a time.
 
-```{r, echo=TRUE}
+```{r specific-dataset-exam, echo=TRUE}
 library(dplyr, warn.conflicts = F)
 
 y$annotations.annotation %>% class()
@@ -71,7 +71,7 @@ y %>% tidyr::unnest(annotations.annotation) %>% glimpse()
 
 `nomisr` also contains the `nomis_search()` function to search for datasets on particular topics. `nomis_search()` can be used to search in one or more of dataset names, descriptions, keywords, content type and units. If using multiple parameters, `nomis_search()` will return information on all datasets that match one or more parameters. Character vectors of strings can be used in searches, and likewise `nomis_search()` will return information on datasets that match one or more queries. The * is used as a wildcard symbol. `nomis_search()` returns metadata in the same format as `nomis_data_info()`, including using list-columns. The `nomis_content_type()` function can assist in identifying content type IDs for `nomis_search()`.
 
-```{r, echo=TRUE}
+```{r data-searching, echo=TRUE}
 a <- nomis_search(name = '*jobseekers*', keywords = 'Claimants')
 
 tibble::glimpse(a)
@@ -92,7 +92,7 @@ b %>% tidyr::unnest(components.attribute) %>% glimpse()
 `nomis_overview()` returns a tibble with a generalised overview of a given dataset.
 
 
-```{r, echo=TRUE}
+```{r overview, echo=TRUE}
 q <- nomis_overview("NM_1650_1")
 
 q %>% tidyr::unnest(name) %>% glimpse()
@@ -101,10 +101,10 @@ q %>% tidyr::unnest(name) %>% glimpse()
 
 `nomis_overview()` has a `select` parameter that can be used to select only particular elements of the overview to return.
 
-```{r, echo=TRUE}
- s <- nomis_overview("NM_1650_1", select = c("units", "keywords"))
+```{r overview-select, echo=TRUE}
+s <- nomis_overview("NM_1650_1", select = c("units", "keywords"))
  
- s %>% tidyr::unnest(name) %>% glimpse()
+s %>% tidyr::unnest(name) %>% glimpse()
 ```
 
 
@@ -118,39 +118,38 @@ The example below queries some of the metadata available through the API for the
 
 If provided with just a dataset ID, `nomis_get_metadata()` will return the concepts available for the given dataset. 
 
-```{r, echo=TRUE}
+```{r get-metadata, echo=TRUE}
+a <- nomis_get_metadata(id = "NM_893_1")
 
-  a <- nomis_get_metadata(id = "NM_893_1")
-
-  print(a)
+print(a)
 ```
 
 ### Concept Values
   
 If provided with a concept name it returns the available values for that concept. However, in some cases, espescially with the geography concept, there are multiple options available, which Nomis labels types. In that case `nomis_get_metadata()` returns the values of the lowest indexed type available.
   
-```{r, echo=TRUE}  
-  b <- nomis_get_metadata(id = "NM_893_1", concept = "GEOGRAPHY")
+```{r concepts, echo=TRUE}  
+b <- nomis_get_metadata(id = "NM_893_1", concept = "GEOGRAPHY")
 
-  print(b)
+print(b)
 ```
 
 We can now pass a generic "type" string to the `type` parameter in `nomis_get_metadata()`, which returns all available geography types for dataset "NM_893_1".
 
   
-```{r, echo=TRUE}  
-  c <- nomis_get_metadata(id = "NM_893_1", concept = "geography", type = "type")
+```{r concept-types, echo=TRUE}  
+c <- nomis_get_metadata(id = "NM_893_1", concept = "geography", type = "type")
 
-  print(c)
+print(c)
 ```
 
   
 Passing a specific type to the `type` parameter, in this case "TYPE460" for all post-2010 parliamentary constituencies, returns a tibble with geographic codes for those specific constituencies, which can be used to filter queries.
   
-```{r, echo=TRUE}  
-  d <- nomis_get_metadata(id = "NM_893_1", concept = "geography", type = "TYPE460")
+```{r concept-type460, echo=TRUE}  
+d <- nomis_get_metadata(id = "NM_893_1", concept = "geography", type = "TYPE460")
 
-  print(d)
+print(d)
 ```
 
 
@@ -160,7 +159,7 @@ The vast majority (98% as of February 2018) of Nomis datasets include a geograph
 
 Using the information above, we can now query the latest data on bedroom occupancy per household type in different NHS clinical commissioning groups.
 
-```{r, echo=TRUE}
+```{r download-data, echo=TRUE}
 z <- nomis_get_data(id = "NM_893_1", time = "latest", geography = "TYPE266")
 
 print(z)
@@ -169,14 +168,43 @@ print(z)
 
 We can also query bedroom occupancy per household type in the Manchester, Gorton and Manchester, Withington parliamentary constituencies.
 
-```{r, echo=TRUE}
- x <- nomis_get_data(id = "NM_893_1", time = "latest", geography = c("1929380119", "1929380120"))
+```{r download-specific-area, echo=TRUE}
+x <- nomis_get_data(id = "NM_893_1", time = "latest", geography = c("1929380119", "1929380120"))
  
 print(x)
 ```
 
 
+`nomisr` also allows for time series queries. The example below shows how to retrieve the percentage of the workforce claiming Jobseekers Allowance from January 2015 to January 2020, inclusive, for each region of the UK, divided by male and female claimants, with an accompanying graph.
 
+
+```{r jsa-claimaints}
+library(ggplot2)
+
+jsa <- nomis_get_data(id = "NM_1_1", time = "2015-01-2020-01",
+                      geography = "TYPE480", measures=20201,
+                      sex=c(5,6), item = 1, tidy = TRUE)
+
+jsa <- jsa %>% 
+  mutate(date = as.Date(paste0(date, "-01")),
+         obs_value = obs_value/100)
+
+theme_set(theme_bw())
+
+p_jsa <- ggplot(jsa, aes(x = date, y = obs_value, colour = sex_name)) + 
+  geom_line(size = 1.15) +
+  scale_colour_viridis_d(end = 0.75, begin = 0.1, name = "Gender") + 
+  scale_x_date(breaks = "6 months", date_labels = "%b %Y") + 
+  scale_y_continuous(labels = scales::percent) + 
+  theme(axis.text.x = element_text(angle = 30, hjust = 1, size = 8),
+        legend.position = "bottom") + 
+  labs(x = "Date", y= "JSA Claimants (Percentage of Workforce)") + 
+  facet_wrap(~geography_name, scales = "free_y")
+
+
+p_jsa
+
+```
 
 
 

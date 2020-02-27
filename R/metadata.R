@@ -45,7 +45,7 @@
 #' \donttest{
 #' a <- nomis_get_metadata("NM_1_1")
 #'
-#' tibble::glimpse(a)
+#' print(a)
 #'
 #' b <- nomis_get_metadata("NM_1_1", "geography")
 #'
@@ -89,9 +89,16 @@ nomis_get_metadata <- function(id, concept = NULL, type = NULL, search = NULL,
   if (is.null(concept)) {
     no_code_q <- nomis_data_info(id)
 
-    df <- tibble::as_tibble(
+    df1 <- tibble::as_tibble(
       as.data.frame(no_code_q$components.dimension)
     )
+    
+    names(no_code_q) <- gsub("components.timedimension.", "",
+                             names(no_code_q), fixed = TRUE)
+    
+    no_code_q <- no_code_q[c("codelist", "conceptref")]
+
+    df <- bind_rows(df1, no_code_q)
 
     df$isfrequencydimension[is.na(df$isfrequencydimension)] <- "false"
   } else {

@@ -11,6 +11,9 @@
 
 * Now using the `snakecase` package to implement name cleaning, 
   providing a broader range of naming styles.
+  
+* `nomis_get_metadata()` now makes existence of time concept explicit in the 
+  tibble returned by `nomis_get_metadata({id})`.
 
 
 # nomisr 0.4.1

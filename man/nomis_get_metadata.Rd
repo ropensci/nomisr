@@ -56,7 +56,7 @@ metadata for a given dataset, see \code{\link[=nomis_overview]{nomis_overview()}
 \donttest{
 a <- nomis_get_metadata("NM_1_1")
 
-tibble::glimpse(a)
+print(a)
 
 b <- nomis_get_metadata("NM_1_1", "geography")
 

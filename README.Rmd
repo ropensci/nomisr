@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/nomisr)](https://cran.r-project.org/package=nomisr)
 [![GitHub tag](https://img.shields.io/github/tag/ropensci/nomisr.svg)](https://github.com/ropensci/nomisr)
-[![](https://cranlogs.r-pkg.org/badges/grand-total/nomisr)](https://dgrtwo.shinyapps.io/cranview/)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/nomisr)](https://cran.r-project.org/package=nomisr)
 [![Travis-CI Build Status](https://travis-ci.org/ropensci/nomisr.svg?branch=master)](https://travis-ci.org/ropensci/nomisr)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/evanodell/nomisr?branch=master&svg=true)](https://ci.appveyor.com/project/evanodell/nomisr)
 [![Coverage Status](https://img.shields.io/codecov/c/github/ropensci/nomisr/master.svg)](https://codecov.io/github/ropensci/nomisr?branch=master)

@@ -1,5 +1,3 @@
-note <- sprintf("R package version %s", meta$Version)
-
 bibentry(bibtype = "article",
          title = "{nomisr}: Access Nomis UK Labour Market Data With R",
          volume = 3,
@@ -9,6 +7,4 @@ bibentry(bibtype = "article",
          year = 2018,
          month = "July",
          pages = 859,
-         author = c(person("Evan", "Odell")),
-         note = note,
-         url = c("https://github.com/ropensci/nomisr"))
+         author = c(person("Evan", "Odell")))

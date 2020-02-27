@@ -1,13 +1,14 @@
 
 ## Release summary
 
-This is an update of the `nomisr` package, version number 0.4.1. 
-This version has a new `query_id`  parameter in the `nomis_get_data()` function
-and fixes a bug with the `select` parameter in `nomis_get_data()`.
+This is an update of the `nomisr` package, version number 0.4.2. It includes
+more informative error messages, optimisations to remove extra calls to the 
+Nomis API, and more flexibility on returned variable name styles.
+
 
 ## Test environments
-* local OS X install, R 3.5.2
-* ubuntu 14.04 (on travis-ci), (devel and release)
+* local OS X install, R 3.6.2
+* ubuntu 16.04 (on travis-ci), (devel and release)
 * win-builder (devel and release)
 
 ## R CMD check results

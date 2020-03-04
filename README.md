@@ -197,11 +197,13 @@ from Nomis. Full package documentation is available at
 ## Meta
 
 Bug reports, suggestions, and code contributions are all welcome. Please
-see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+see
+[CONTRIBUTING.md](https://github.com/ropensci/nomisr/blob/master/CONTRIBUTING.md)
+for details.
 
 Please note that this project is released with a [Contributor Code of
-Conduct](CONDUCT.md). By participating in this project you agree to
-abide by its terms.
+Conduct](https://github.com/ropensci/nomisr/blob/master/CODE_OF_CONDUCT.md).
+By participating in this project you agree to abide by its terms.
 
 Please note that this project is not affiliated with the Office for
 National Statistics or the University of Durham (who run Nomis on behalf
@@ -230,6 +232,7 @@ A BibTeX entry for LaTeX users is
       author = {Odell, Evan}
     }
 
-License: [MIT](LICENSE.md)
+License:
+[MIT](https://github.com/ropensci/nomisr/blob/master/LICENSE.md)
 
 [![ropensci\_footer](https://ropensci.org/public_images/ropensci_footer.png)](https://ropensci.org)

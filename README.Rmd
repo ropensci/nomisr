@@ -82,9 +82,9 @@ There is a lot of data available through Nomis, and there are some limits to the
 
 ## Meta
 
-Bug reports, suggestions, and code contributions are all welcome. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Bug reports, suggestions, and code contributions are all welcome. Please see [CONTRIBUTING.md](https://github.com/ropensci/nomisr/blob/master/CONTRIBUTING.md) for details.
 
-Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/ropensci/nomisr/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 Please note that this project is not affiliated with the Office for National Statistics or the University of Durham (who run Nomis on behalf o the Office for National Statistics).
 
@@ -108,7 +108,7 @@ A BibTeX entry for LaTeX users is
   author = {Odell, Evan}
 }
 ```
-License: [MIT](LICENSE.md)
+License: [MIT](https://github.com/ropensci/nomisr/blob/master/LICENSE.md)
 
 [![ropensci_footer](https://ropensci.org/public_images/ropensci_footer.png)](https://ropensci.org)
 

@@ -127,7 +127,7 @@ nomis_get_metadata <- function(id, concept = NULL, type = NULL, search = NULL,
 
     dots_query <- paste0(dots_list, collapse = "")
 
-    df <- tibble::as.tibble(rsdmx::readSDMX(
+    df <- tibble::as_tibble(rsdmx::readSDMX(
       paste0(
         base_url, id, "/", concept,
         type_query, "/def.sdmx.xml?",

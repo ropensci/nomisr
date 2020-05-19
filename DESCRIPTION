@@ -1,7 +1,7 @@
 Package: nomisr
 Type: Package
 Title: Access 'Nomis' UK Labour Market Data
-Version: 0.4.3
+Version: 0.4.3.9000
 Authors@R: c(
     person(
       "Evan", "Odell", email = "evanodell91@gmail.com", role = c("aut", "cre"),

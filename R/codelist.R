@@ -52,7 +52,7 @@ nomis_codelist <- function(id, concept, search = NULL) {
     ".def.sdmx.xml", search_query
   )
 
-  df <- tibble::as.tibble(as.data.frame(rsdmx::readSDMX(code_query)))
+  df <- tibble::as_tibble(as.data.frame(rsdmx::readSDMX(code_query)))
 
   df
 }

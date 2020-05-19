@@ -1,4 +1,10 @@
 
+# nomisr 0.4.3.9000
+
+* replaced `as.tibble` with `as_tibble`
+
+
+
 # nomisr 0.4.3
 
 * Fix readme links

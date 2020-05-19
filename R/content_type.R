@@ -44,7 +44,7 @@ nomis_content_type <- function(content_type, id = NULL) {
 
   content_query2 <- jsonlite::fromJSON(content_query, flatten = TRUE)
 
-  df <- tibble::as.tibble(data.frame(content_query2$contenttype$item))
+  df <- tibble::as_tibble(data.frame(content_query2$contenttype$item))
 
   df
 }

@@ -1,0 +1,628 @@
+---
+title: "Vignette"
+author: "Nina Robery"
+date: "6 May 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Introduction to some of the outputs that can be created using nomisr
+
+The nomisr package is an easy way to obtain data from Nomis. In this introduction you can see some of the functionality of the tool to create bespoke charts. These charts use Bolton as the area of interest.
+
+## Querying data availability
+
+The first step is to understanding what datasets are available in `nomisr` and this can be done using the `nomis_get_info()` function. If no particular id is inputted inside the brackets, the command will return all available datasets.
+
+```{r packages, echo=FALSE}
+
+library(dplyr)
+library(nomisr)
+
+```
+
+```{r all_datasets, echo=TRUE}
+
+nomis_data <- nomis_data_info() %>%
+  select(id, description.value, name.value)
+head(nomis_data)
+
+```
+
+This gives you a list of all available datasets in nomis. The list of ids/datasets used in this script are:
+
++ NM_17_5   (Annual Population Survey (APS): contains data on the working age population, economic activity & inactivity)
+
++ NM_134_1  (Benefit Claimants - Employment and Support Allowance (ESA): contains data on ICDGP condition by ESA)
+
+If you wanted to look at more information on a specific dataset, you can add this inside the bracket of the `nomis_get_info()` function or use the `nomis_get_metadata()` function. Both of these will provide you with the different options (concepts) available for your chosen dataset.
+
+```{r APS_Dataset, echo=TRUE}
+
+NM_17_5 <- nomis_data_info("NM_17_5") 
+tibble::glimpse(NM_17_5)
+
+
+NM_17_5 <- nomis_get_metadata("NM_17_5")
+head(NM_17_5)
+
+```
+
+## Querying data variables
+
+### Getting concepts:
+
+As mentioned previously, the `nomis_get_info()` and `nomis_get_metadata()` functions will provide you with a list of concepts that we can explore further to see what data is available e.g. dates, measures, geographies and variables. The concepts will differ depending on your chosen dataset, so it is a good idea to run the `nomis_get_metadata()` for each new dataset you are looking at. 
+
+To explore the concepts we need to specify this in the code. For example to explore the dates available in the APS dataset, we need to specify the concept as "time". 
+
+```{r Exploring_Dates, echo=TRUE}
+
+NM_17_5_DATES <- nomis_get_metadata("NM_17_5", concept = "time") 
+tail(NM_17_5_DATES)
+
+```
+
+Instead of referring to the ids for the specific dates you can also use the following options:
+
++ latest - latest available data
++ previous - the date prior to the latest
++ previousMINUS2 etc. - two quarters ago
++ prevyear - the date one year prior to the latest
++ first - the oldest available data for the dataset
+
+To explore the variables available in the APS dataset, we need to specify the concept as "variable". 
+
+```{r Exploring_Variables, echo=TRUE}
+
+NM_17_5_VARIABLE <- nomis_get_metadata("NM_17_5", concept = "variable") 
+head(NM_17_5_VARIABLE)
+
+```
+
+To have a look at what geographies are available in the APS dataset, we need to specify the concept as "geography". 
+
+```{r Exploring_Geography, echo=TRUE}
+
+NM_17_5_GEOG <- nomis_get_metadata("NM_17_5", concept = "geography") 
+head(NM_17_5_GEOG)
+
+```
+
+This gives the top level geographies available but if we wanted to identify what type of geographies are available, we would need to use 'type' in the code.
+
+```{r Exploring_Geography_Type, echo=TRUE}
+
+NM_17_5_GEOG <- nomis_get_metadata("NM_17_5", concept = "geography", "type") 
+head(NM_17_5_GEOG)
+
+```
+
+If you wanted all local authorities, combined authorities and regions in England, it is easier to create a vector which you can then feed into the `nomis_get_data()` function.
+
+```{r Creating_Geography_Vector, echo=TRUE}
+
+EN_LAs <- nomis_get_metadata(id = "NM_17_5", concept = "geography", type = "TYPE464")[1:326, ] %>%
+  mutate(type = 464)
+EN_CAs <- nomis_get_metadata(id = "NM_17_5", concept = "geography", type = "TYPE442") %>%
+  mutate(type = 442)
+EN_Regions <- nomis_get_metadata(id = "NM_17_5", concept = "geography", type = "TYPE480")[1:9, ] %>%
+  mutate(type = 480)
+EN_Country <- nomis_get_metadata(id = "NM_17_5", concept = "geography", type = "TYPE499")[3, ] %>%
+  mutate(type = 499)
+
+# use rbind to combine all of the above objects together to create a single object containing all geographies of interest and select only the id, parentCode, label.en and type  
+EN_geos <- rbind(EN_LAs, EN_CAs, EN_Regions, EN_Country) %>%
+  select(id, parentCode, label.en, type)
+print(EN_geos)
+
+# Save it as a vector so can plug it into nomis_get_data function
+EN_geographies <- c(1946157057:1946157382, 1853882369:1853882372, 1853882374:1853882379, 2013265921:2013265929, 2092957699)
+
+```
+
+## Downloading data
+
+Now you have enough information to use the nomis_get_data function. 
+
++ Step 1: specify the id/dataset of interest - in this example the NM_17_5 (APS) dataset is used
++ Step 2: set the year of interest - in this example the date has been set to 'latest' available 
++ Step 3: select geography of interest - in this example the vector 'EN_geographies' created earlier is used
++ Step 4: select the variable(s) of interest - in this example the working age population aged 16-64 years [id = 18] has been selected
++ Step 5: select the measures of interest - in this example all measures available are pulled
+
+```{r working_age_pop, echo=TRUE}
+
+working_age_pop <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = 18, measures = c(20599, 21001, 21002, 21003))
+print(working_age_pop)
+
+```
+
+### Stacked bar chart showing labour market summary for Bolton
+
+The following steps show how to make a stacked bar chart, which will show:
+
+Stack 1: working age population
+
++ Economic activity rate - aged 16-64 [id=18]
+
+Stack 2: economically active and economically inactive
+
++ Unemployment rate - aged 16-64 (economically active will be the denominator) [id=84]
++ % who are economically inactive - aged 16-64 [id=111]
+
+Stack 3: employed, unemployed, want a job, don't want a job
+
++ Employment rate - aged 16-64 [id=45]
++ Unemployment rate - aged 16-64 [id=84]
++ % of economically inactive who want a job [id=1487] 
++ % of economically inactive who do not want a job [id=1488]
+
+Stack 4: economically active, long term sick, temp sick, student, looking after family/home, retired, other, discouraged
+
++ Unemployment rate - aged 16-64 (economically active will be the denominator) [id=84]
++ % of economically inactive student [id=1493]
++ % of economically inactive looking after family/home [id=1494]
++ % of economically inactive temporary sick [id=1495]
++ % of economically inactive long-term sick [id=1496]
++ % of economically inactive discouraged [id=1497]
++ % of economically inactive retired [id=1498]
++ % of economically inactive other [id=1499]
+
+The data extracted is for all of the geographies outlined in the 'EN_geographies' vector, but the chart is filtered for Bolton only.
+
+```{r Stacked_Bar, echo=TRUE}
+
+library(ggplot2)
+
+# FIRST STACK: Working age population
+
+# Need to extract the denominator from our previously created working_age_pop dataframe:
+first_stack <- working_age_pop %>%
+  filter(MEASURES_NAME == "Denominator") %>%
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE) %>%
+  mutate(grouping = 1)
+
+# replace na with 0
+first_stack[is.na(first_stack)] <- 0
+print(first_stack)
+
+# SECOND STACK: Economically active and economically inactive
+
+# Extract economically active variable:
+econ_active <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = 84, measures = c(20599, 21001, 21002, 21003)) %>%
+  filter(MEASURES_NAME == "Denominator") %>%
+  select(-VARIABLE_NAME) %>%
+  mutate(VARIABLE_NAME = "economically active") %>%
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE)
+
+# Extract economically inactive variable:
+econ_inactive <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = 111, measures = c(20599, 21001, 21002, 21003)) %>%
+  filter(MEASURES_NAME == "Numerator") %>%
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE)
+
+# Bind the econ_active and econ_inactive datasets together to create the second stack:
+second_stack <- rbind(econ_active, econ_inactive) %>%
+  arrange(GEOGRAPHY) %>%
+  mutate(grouping = 2)
+
+# replace na with 0
+second_stack[is.na(second_stack)] <- 0
+print(second_stack)
+
+# THIRD STACK: Employed, unemployed, want a job, don't want a job
+
+# Extract employed variable:
+employed <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = 45, measures = c(20599, 21001, 21002, 21003)) %>%
+  filter(MEASURES_NAME == "Numerator") %>%
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE)
+
+# Extract unemployed variable:
+unemployed <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = 84, measures = c(20599, 21001, 21002, 21003)) %>%
+  filter(MEASURES_NAME == "Numerator") %>%
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE)
+
+# Extract want a job variable:
+want_job <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = 1487, measures = c(20599, 21001, 21002, 21003)) %>%
+  filter(MEASURES_NAME == "Numerator") %>%
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE)
+
+# Extract don't want a job variable:
+dont_want_job <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = 1488, measures = c(20599, 21001, 21002, 21003)) %>%
+  filter(MEASURES_NAME == "Numerator") %>%
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE)
+
+# Bind datasets together to create third stack:
+third_stack <- rbind(employed, unemployed, want_job, dont_want_job) %>%
+  arrange(GEOGRAPHY) %>%
+  mutate(grouping = 3)
+
+# replace na with 0
+third_stack[is.na(third_stack)] <- 0
+print(third_stack)
+
+# FOURTH STACK: Economically active, LT sick, temp sick, student, looking after family/home, retired, other, discouraged
+
+# For the fourth stack you don't want the econ active shown so bind with missing variable name dataset:
+econ_active_missing <- econ_active %>%
+  mutate(Active = "") %>%
+  select(DATE_NAME: GEOGRAPHY_CODE, Active, OBS_VALUE) %>%
+  rename(VARIABLE_NAME = Active)
+
+# Extract reasons variables:
+reasons <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = c(1493:1499), measures = c(20599, 21001, 21002, 21003)) %>%
+  filter(MEASURES_NAME == "Numerator") %>%
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE)
+
+# Bind two datasets together to create the fourth stack:
+fourth_stack <- rbind(econ_active_missing, reasons) %>%
+  arrange(GEOGRAPHY) %>%
+  mutate(grouping = 4)
+
+# replace na with 0
+fourth_stack[is.na(fourth_stack)] <- 0
+print(fourth_stack)
+
+# Have all the data to make the stacked bar chart - now to bind the datasets together 
+stacked_bar <- rbind(first_stack, second_stack, third_stack, fourth_stack) %>%
+  arrange(desc(grouping, OBS_VALUE))
+
+## Filter to area of interest - Enter geographical code for area of interest e.g. "E08000001" for Bolton 
+area_of_interest_code <- "E08000001"
+
+# Filter to area:
+data <- stacked_bar %>%
+  filter(GEOGRAPHY_CODE == area_of_interest_code) %>%
+  mutate(Key = VARIABLE_NAME) %>%
+  arrange(VARIABLE_NAME)
+
+area_of_interest_name <- as.character(data[1,"GEOGRAPHY_NAME"])
+
+# Sort out category names:
+data$Key[data$Key == "Economic activity rate - aged 16-64"] <- "1. Working age population"
+data$Key[data$Key == "% who are economically inactive - aged 16-64"] <- "2b. Economically inactive"
+data$Key[data$Key == "economically active"] <- "2a. Economically active"
+data$Key[data$Key == "Employment rate - aged 16-64"] <- "3a. Employed"
+data$Key[data$Key == "Unemployment rate - aged 16-64"] <- "3b. Unemployed"
+data$Key[data$Key == "% of economically inactive who want a job"] <- "3c. Want a job"
+data$Key[data$Key == "% of economically inactive who do not want a job"] <- "3d. Don't want a job"
+data$Key[data$Key == "% of economically inactive long-term sick"] <- "4a. Long-term sick"
+data$Key[data$Key == "% of economically inactive temporary sick"] <- "4b. Temporary sick"
+data$Key[data$Key == "% of economically inactive student"] <- "4c. Student"
+data$Key[data$Key == "% of economically inactive looking after family/home"] <- "4d. Looking after family/home"
+data$Key[data$Key == "% of economically inactive retired"] <- "4e. Retired"
+data$Key[data$Key == "% of economically inactive other"] <- "4f. Other"
+data$Key[data$Key == "% of economically inactive discouraged"] <- "4g. Discouraged"
+
+# Get 15 colours - first one is white as you don't want it shown on the chart:
+colours <- c("#FFFFFF", "#1B927D", "#006182", "#4D6594", "#D2D1C7", "#A7B0B6", "#D59F68", "#E9A225", "#A7A917", "#09A659", "#77B5B5", "#3277AC", "#234389", "#6B2865", "#C51A4A")
+
+
+# Plot chart
+p <- ggplot(data, aes(fill=Key, y=OBS_VALUE, x=grouping)) + 
+  theme_void() + 
+  theme(axis.line.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        plot.title = element_text(hjust = 0),
+        plot.caption = element_text(hjust = 0)) +
+  geom_bar(position=position_stack(reverse = TRUE), stat="identity") + 
+  scale_fill_manual(values = colours) +
+  coord_flip() + 
+  scale_x_reverse() +
+  labs(title = paste0("Labour market summary, ", area_of_interest_name, ", January 2019 to December 2019.")) +
+  theme(legend.position = "right") 
+
+p
+
+```
+
+### Pie charts showing economic activity in Bolton 
+
+The following steps show how to make pie charts, which will show:
+
+Pie 1: Economic activity of 'Healthy' working age population (16-64 years)
+
++ Employment rate - aged 16-64 [id=45]
++ Unemployment rate - aged 16-64 [id=84]
++ % who are economically inactive - aged 16-64 [id=111]
+
+Pie 2: Economic activity of 16+ population with health conditions & illnesses lasting more than 12 months
+
++ % In employment with health conditions or illnesses lasting more than 12 months (16+) [id=1715]
++ % Unemployed with health conditions or illnesses lasting more than 12 months (16+) [id=1716]
++ % Inactive with health conditions or illnesses lasting more than 12 months (16+) [id=1717]
+
+The data extracted is for all of the geographies outlined in the 'EN_geographies' vector, but the chart is filtered for Bolton only. 
+
+```{r Pie_Charts, echo=TRUE}
+
+# Economic activity of the 'healthy' working age population (16-64): Pie 1
+
+# Save variables needed as a vector:
+pie_vars <- NM_17_5_VARIABLE %>%
+  mutate(pie = if_else(id == 45, 1, 
+                       if_else(id == 84, 1, 
+                               if_else(id == 111, 1,
+                                       if_else(id == 1715, 1, 
+                                               if_else(id == 1716, 1, 
+                                                       if_else(id == 1717, 1, 0 ))))))) %>%
+  filter(pie == 1) %>%
+  select(id) %>%
+  pull(id)
+
+# get data for pie
+pie_data <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = pie_vars, measures = c(20599, 21001, 21002, 21003)) %>%
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, VARIABLE_CODE, MEASURES_NAME, OBS_VALUE)
+
+# replace na with 0
+pie_data[is.na(pie_data)] <- 0
+
+# create the groupings for the two pie charts:
+pie_data <- pie_data %>%
+  filter(MEASURES_NAME == "Variable") %>%
+  mutate(group = VARIABLE_CODE,
+         group = as.numeric(group))
+
+pie_data <- pie_data[order(pie_data$group),]
+
+pie_data$group[pie_data$group == 45] <- 1
+pie_data$group[pie_data$group == 84] <- 1
+pie_data$group[pie_data$group == 111] <- 1
+pie_data$group[pie_data$group == 1715] <- 2
+pie_data$group[pie_data$group == 1716] <- 2
+pie_data$group[pie_data$group == 1717] <- 2
+
+pie_data <- pie_data %>%
+  arrange(GEOGRAPHY_NAME) %>%
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE, group)
+print(pie_data)
+
+# Have all the data to create the pie charts
+
+# Filter to area of interest and first pie data:
+pie1_data <- pie_data %>%
+  filter(GEOGRAPHY_CODE == area_of_interest_code,
+         group == 1) %>%
+  mutate(Key = VARIABLE_NAME)
+
+area_of_interest_name <- as.character(pie1_data[1,"GEOGRAPHY_NAME"])
+
+# Sort out category names
+pie1_data$Key[pie1_data$Key == "% who are economically inactive - aged 16-64"] <- "Economically inactive"
+pie1_data$Key[pie1_data$Key == "Employment rate - aged 16-64"] <- "In employment"
+pie1_data$Key[pie1_data$Key == "Unemployment rate - aged 16-64"] <- "Unemployment"
+
+pie1_data <- pie1_data %>%
+  arrange(Key)
+
+#creating a pie chart using ggplot
+pie1 <- ggplot(pie1_data, aes(x = "", y = OBS_VALUE, fill = Key))+
+  geom_bar(stat="identity", width=1)
+
+pie1 = pie1 + coord_polar("y", start=0) + geom_text(aes(label = paste0(OBS_VALUE, "%")), position = position_stack(vjust = 0.5))
+
+# Choose colours for the slides
+pie1 = pie1 + scale_fill_manual(values=c("#862633","#00AB8E","#01216A"))
+
+pie1 = pie1 + labs(x = NULL, y = NULL, fill = NULL, title = (paste0("Participation in the labour market, ", area_of_interest_name, ", January 2019 to December 2019")), subtitle = "Working age population (16-64)")
+
+
+# Tidy up the theme
+pie1 = pie1 + theme_classic() + 
+  theme(axis.line = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        plot.title = element_text(hjust = 0, size=12),
+        plot.subtitle = element_text(hjust = 0))
+
+pie1
+
+
+# Economic activity of the 16+ population with health conditions & illnesses lasting more than 12 months: Pie 2
+
+#Filter to correct area and second pie data
+pie2_data <- pie_data %>%
+  filter(GEOGRAPHY_CODE == area_of_interest_code,
+         group == 2) %>%
+  mutate(Key = VARIABLE_NAME)
+
+area_of_interest_name <- as.character(pie2_data[1,"GEOGRAPHY_NAME"])
+
+# Sort out category names:
+pie2_data$Key[pie2_data$Key == "% In employment with health conditions or illnesses lasting more than 12 months (aged 16+)"] <- "In employment"
+pie2_data$Key[pie2_data$Key == "% Inactive with health conditions or illnesses lasting more than 12 months (aged 16+)"] <- "Economically inactive"
+pie2_data$Key[pie2_data$Key == "% Unemployed with health conditions or illnesses lasting more than 12 months (aged 16+)"] <- "Unemployment"
+
+pie2_data <- pie2_data %>%
+  arrange(Key)
+
+#creating a pie chart using ggplot
+
+pie2 <- ggplot(pie2_data, aes(x = "", y = OBS_VALUE, fill = Key))+
+  geom_bar(stat="identity", width=1)
+
+pie2 = pie2 + coord_polar("y", start=0) + geom_text(aes(label = paste0(OBS_VALUE, "%")), position = position_stack(vjust = 0.5))
+
+#using phe colours for the slices
+pie2 = pie2 + scale_fill_manual(values=c("#862633","#00AB8E","#01216A"))
+
+pie2 = pie2 + labs(x = NULL, y = NULL, fill = NULL, title = (paste0("Participation in the labour market, ", area_of_interest_name, ", January 2019 to December 2019")), subtitle = "Working age population with conditions or illnesses lasting more than 12 months")
+
+
+# Tidy up the theme
+pie2 = pie2 + theme_classic() + 
+  theme(axis.line = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        plot.title = element_text(hjust = 0, size=12),
+        plot.subtitle = element_text(hjust = 0))
+
+pie2
+
+```
+
+### Treemap showing ESA claimants by specific conditions in Bolton  
+
+The following steps show how to create a treemap: 
+
++ Step 1: Identify which conditions contribute the most to ESA claimants and rank them
++ Step 2: Extract conditions to map on to treemap and create appropriate age-groups
++ Step 3: Join two tables together to identify highest contributary conditions
+
+The data extracted is for all of the geographies outlined in the 'EN_geographies' vector, but the chart is filtered for Bolton only.
+
+```{r Treemap, echo=TRUE}
+
+# Step 1: Contribution of conditions to total ESA claims
+
+# get ESA data by condition for latest data, call object ESA_data_condition
+# Note: the 'totals' (ID = 0) isn't the sum of the values in the dataset - hence hasn't been included in the code:
+ESA_data_condition <- nomis_get_data(id = "NM_134_1", date = "latest", geography = EN_geographies, icdgp_condition = c(1:23),
+                                     sex = 7, esa_phase = 0, payment_type = 0, ethnic_group = 0, age = c(1:8),
+                                     duration = 0, measures = 20100)
+
+# replace na with 0
+ESA_data_condition[is.na(ESA_data_condition)] <- 0
+
+# Calculate total for each condition (i.e. all ages)
+ESA_data_condition <- ESA_data_condition %>%
+  group_by(GEOGRAPHY_CODE, ICDGP_CONDITION) %>%
+  mutate(total = sum(OBS_VALUE)) %>%
+  select(DATE_NAME, GEOGRAPHY: GEOGRAPHY_CODE, ICDGP_CONDITION: ICDGP_CONDITION_NAME, SEX_NAME, total) %>%
+  distinct(total, .keep_all = TRUE)
+
+# Total for each area
+ESA_total <- ESA_data_condition %>%
+  group_by(GEOGRAPHY) %>%
+  mutate(tot = sum(total)) %>%
+  select(GEOGRAPHY: GEOGRAPHY_CODE, tot) %>%
+  distinct(tot, .keep_all = TRUE)
+
+# Link the two tables together to calculate the percentage contributed
+ESA_total_final <- left_join(ESA_data_condition, ESA_total, by = c("GEOGRAPHY_CODE", "GEOGRAPHY_NAME")) %>%
+  select(DATE_NAME: ICDGP_CONDITION_NAME, SEX_NAME, total, tot) %>%
+  mutate(PERC = total / tot *100,
+         PERC = round(PERC, 1)) %>%
+  arrange(GEOGRAPHY_CODE, desc(PERC))
+print(ESA_total_final)
+
+# Remove factors from the above table & rank them based on highest to lowest
+# Can then use this as a lookup for the treemap and which conditions to plot
+ESA_condition_rank <- ESA_total_final %>%
+  filter(ICDGP_CONDITION != 21) %>%
+  arrange(GEOGRAPHY_CODE, desc(PERC)) %>%
+  group_by(GEOGRAPHY_CODE) %>%
+  mutate(rank = 1:n()) %>%
+  select(GEOGRAPHY_CODE, GEOGRAPHY_NAME, ICDGP_CONDITION: ICDGP_CONDITION_NAME, rank)
+print(ESA_condition_rank)
+
+# Step 2: Extract conditions to map on to treemap and create appropriate age-groups
+
+# get ESA data by condition for latest data 
+# Don't need the total (ID=0), factors (ID=21), Codes for special purposes (ID=22), Claimants without any diagnosis (ID=23)
+treemap_data <- nomis_get_data(id = "NM_134_1", date = "latest", geography = EN_geographies, icdgp_condition = c(1:19),
+                               sex = 7, esa_phase = 0, payment_type = 0, ethnic_group = 0, age = c(1:8),
+                               duration = 0, measures = 20100) %>%
+  select(DATE_NAME, GEOGRAPHY: GEOGRAPHY_CODE, ICDGP_CONDITION: ICDGP_CONDITION_NAME, SEX_NAME, AGE:AGE_NAME, OBS_VALUE)
+
+
+# replace na with 0
+treemap_data[is.na(treemap_data)] <- 0
+
+# Create appropriate age-groups i.e. 16-24, 25-34, 35-44, 45-54, 55-64
+agegrp1 <- treemap_data %>%
+  mutate(NEW_AGE = AGE) %>%
+  arrange(NEW_AGE)
+
+agegrp1$NEW_AGE[agegrp1$NEW_AGE == 1] <- "16-24yrs"
+agegrp1$NEW_AGE[agegrp1$NEW_AGE == 2] <- "16-24yrs"
+agegrp1$NEW_AGE[agegrp1$NEW_AGE == 3] <- "25-34yrs"
+agegrp1$NEW_AGE[agegrp1$NEW_AGE == 4] <- "35-44yrs"
+agegrp1$NEW_AGE[agegrp1$NEW_AGE == 5] <- "45-54yrs"
+agegrp1$NEW_AGE[agegrp1$NEW_AGE == 6] <- "45-54yrs"
+agegrp1$NEW_AGE[agegrp1$NEW_AGE == 7] <- "55-64yrs"
+agegrp1$NEW_AGE[agegrp1$NEW_AGE == 8] <- "55-64yrs"
+
+#Calculate observations based on new age-bands:
+treemap_data_final <- agegrp1 %>%
+  arrange(GEOGRAPHY, ICDGP_CONDITION_NAME, NEW_AGE) %>%
+  group_by(GEOGRAPHY, ICDGP_CONDITION_NAME, NEW_AGE) %>%
+  mutate(OBS = sum(OBS_VALUE)) %>%
+  select(DATE_NAME, GEOGRAPHY: GEOGRAPHY_CODE, ICDGP_CONDITION: ICDGP_CONDITION_NAME, SEX_NAME, NEW_AGE, OBS) %>%
+  distinct(GEOGRAPHY, ICDGP_CONDITION_NAME, NEW_AGE, .keep_all = TRUE)
+print(treemap_data_final)
+
+# Will need to arrange it based on the highest conditions
+
+# Step 3: Join two tables together to identify highest contributary conditions:
+treemap_ranked <- left_join(treemap_data_final, ESA_condition_rank, by = c("GEOGRAPHY_CODE", "GEOGRAPHY_NAME", "ICDGP_CONDITION", "ICDGP_CONDITION_NAME"))
+
+# Conditions that have a 1-7 rank should be included in the treemap - rest can be filtered out
+treemap <- treemap_ranked %>%
+  filter(rank == 1 | rank == 2 | rank == 3 | rank == 4 | rank == 5 | rank == 6 | rank == 7) %>%
+  arrange(GEOGRAPHY_CODE, rank)
+
+# Sort out the labels for the treemap:
+treemap <- treemap %>%
+  mutate(CHART_LABS = paste(NEW_AGE, OBS),
+         CON_SHORT = if_else(grepl("Certain conditions originating in the perinatal period", ICDGP_CONDITION_NAME) == TRUE, "Perinatal conditions",
+                             if_else(grepl("Certain infections and parasitic diseases", ICDGP_CONDITION_NAME) == TRUE, "Infectious diseases",
+                                     if_else(grepl("Congenital malformations, deformations and chromosomal abnormalities", ICDGP_CONDITION_NAME) == TRUE, "Congenital malformations",
+                                             if_else(grepl("Diseases of the blood and blood forming organs and certain diseases involving the immune mechansim", ICDGP_CONDITION_NAME) == TRUE, "Blood-related conditions",
+                                                     if_else(grepl("Diseases of the circulatory system", ICDGP_CONDITION_NAME) == TRUE, "Circulatory",
+                                                             if_else(grepl("Diseases of the digestive system", ICDGP_CONDITION_NAME) == TRUE, "Digestive",
+                                                                     if_else(grepl("Diseases of the ear and mastoid process", ICDGP_CONDITION_NAME) == TRUE, "Ear",
+                                                                             if_else(grepl("Diseases of the eye and adnexa", ICDGP_CONDITION_NAME) == TRUE, "Eye",
+                                                                                     if_else(grepl("Diseases of the genito-urinary system", ICDGP_CONDITION_NAME) == TRUE, "Genito-urinary conditions",
+                                                                                             if_else(grepl("Diseases of the musculoskeletal system and connective tissue", ICDGP_CONDITION_NAME) == TRUE, "Musculoskeletal conditions",
+                                                                                                     if_else(grepl("Diseases of the nervous system", ICDGP_CONDITION_NAME) == TRUE, "Nervous",
+                                                                                                             if_else(grepl("Diseases of the respiratory system", ICDGP_CONDITION_NAME) == TRUE, "Respiratory",
+                                                                                                                     if_else(grepl("Diseases of the skin and subcutaneous system", ICDGP_CONDITION_NAME) == TRUE, "Skin",
+                                                                                                                             if_else(grepl("Endocrine, nutritional and metabolic disease", ICDGP_CONDITION_NAME) == TRUE, "Endocrine & metabolic diseases",
+                                                                                                                                     if_else(grepl("Injury, poisoning and certain other consequences of external causes", ICDGP_CONDITION_NAME) == TRUE, "Injuries & poisoning",
+                                                                                                                                             if_else(grepl("Mental and behavioural disorders", ICDGP_CONDITION_NAME) == TRUE, "Mental health conditions",
+                                                                                                                                                     if_else(grepl("Neoplasms", ICDGP_CONDITION_NAME) == TRUE, "Cancer",
+                                                                                                                                                             if_else(grepl("Pregnancy, childbirth and the puerperium", ICDGP_CONDITION_NAME) == TRUE, "Pregnancy & childbirth",
+                                                                                                                                                                     if_else(grepl("Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified", ICDGP_CONDITION_NAME) == TRUE, "Symptoms & abnormalities", "None"))))))))))))))))))))
+
+
+
+print(treemap)
+
+# Filter to area of interest:
+data <- treemap %>%
+  filter(GEOGRAPHY_CODE == area_of_interest_code) %>%
+  arrange(rank, desc(OBS))
+print(data)
+
+area_of_interest_name <- as.character(data[1,"GEOGRAPHY_NAME"])
+
+
+# Get unique condition names:
+cond_names <- unique(data$CON_SHORT)
+
+# Specify colours for each category in the order of preference. 
+cat_colours <- c("#822433", "#00B092", "#002776", "#EAAB00", "#E9994A", "#A4AEB5", "#DAD7CB")
+cat_colours <- factor(cat_colours, levels=c("#822433", "#00B092", "#002776", "#EAAB00", "#E9994A", "#A4AEB5", "#DAD7CB"))
+
+library(treemapify)
+
+t <- ggplot2::ggplot(data, ggplot2::aes(area = OBS, fill = CON_SHORT, label = CHART_LABS,  subgroup = ICDGP_CONDITION_NAME, subgroup2 = NEW_AGE)) + 
+  geom_treemap() + 
+  geom_treemap_text(size = 6, colour = "white", place = "bottomleft") +
+  scale_fill_manual(values = levels(cat_colours)) + 
+  theme(legend.position = "top") +
+  theme(legend.title=element_blank()) +
+  labs(title = paste0("Conditions recorded as being the primary reason for ESA claim, ", area_of_interest_name, ", November 2018", fill = ""))
+
+t
+
+```
+
+

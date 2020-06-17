@@ -8,21 +8,29 @@
 
 <title>Changelog • nomisr</title>
 
-<!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<!-- jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,7 +38,9 @@
 
 
 
+
 <meta property="og:title" content="Changelog" />
+
 
 
 
@@ -54,9 +64,10 @@
   gtag('config', 'UA-90706059-1');
 </script>
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -70,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3.9000</span>
       </span>
     </div>
 
@@ -123,7 +134,6 @@
   </ul>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ropensci/nomisr">
@@ -144,26 +154,63 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
+      <h1 data-toc-skip>Changelog <small></small></h1>
       <small>Source: <a href='https://github.com/ropensci/nomisr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="nomisr-0409000" class="section level1">
-<h1 class="page-header">
-<a href="#nomisr-0409000" class="anchor"></a>nomisr 0.4.0.9000<small> Unreleased </small>
+    <div id="nomisr-0439000" class="section level1">
+<h1 class="page-header" data-toc-text="0.4.3.9000">
+<a href="#nomisr-0439000" class="anchor"></a>nomisr 0.4.3.9000<small> Unreleased </small>
+</h1>
+<ul>
+<li>replaced <code>as.tibble</code> with <code>as_tibble</code>
+</li>
+</ul>
+</div>
+    <div id="nomisr-043" class="section level1">
+<h1 class="page-header" data-toc-text="0.4.3">
+<a href="#nomisr-043" class="anchor"></a>nomisr 0.4.3<small> 2020-03-02 </small>
+</h1>
+<ul>
+<li>Fix readme links</li>
+</ul>
+</div>
+    <div id="nomisr-042" class="section level1">
+<h1 class="page-header" data-toc-text="0.4.2">
+<a href="#nomisr-042" class="anchor"></a>nomisr 0.4.2<small> Unreleased </small>
+</h1>
+<ul>
+<li><p>Error handling improvements when using non-existent parameters, and clarifies error messages when no data is available for a given query.</p></li>
+<li><p>Removes redundant call to API (<a href='https://github.com/ropensci/nomisr/issues/19'>#19</a>), thanks <a href='https://github.com/Chrisjb'>@Chrisjb</a></p></li>
+<li><p>New <code>tidy</code> parameter in <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code> to convert names to snake_case.</p></li>
+<li><p>Now using the <code>snakecase</code> package to implement name cleaning, providing a broader range of naming styles.</p></li>
+<li><p><code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code> now makes existence of time concept explicit in the tibble returned by <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata({id})</a></code>.</p></li>
+</ul>
+</div>
+    <div id="nomisr-041" class="section level1">
+<h1 class="page-header" data-toc-text="0.4.1">
+<a href="#nomisr-041" class="anchor"></a>nomisr 0.4.1<small> 2019-01-09 </small>
 </h1>
 <ul>
 <li><p>Adding <code>query_id</code> parameter to <code><a href="../reference/nomis_get_data.html">nomis_get_data()</a></code></p></li>
 <li><p>Changed documentation to use <code>roxygen</code> markdown</p></li>
 </ul>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>Fixed bug where the <code>select</code> parameter in <code><a href="../reference/nomis_get_data.html">nomis_get_data()</a></code> didn’t work if “OBS_VALUE” was not one of the variables. (<a href='https://github.com/JimShady'>@JimShady</a>, <a href='https://github.com/ropensci/nomisr/issues/12'>#12</a>)</li>
+</ul>
+</div>
 </div>
     <div id="nomisr-040" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.4.0">
 <a href="#nomisr-040" class="anchor"></a>nomisr 0.4.0<small> 2018-08-03 </small>
 </h1>
 <ul>
@@ -174,7 +221,7 @@
 </ul>
 </div>
     <div id="nomisr-032-non-cran-release" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.3.2">
 <a href="#nomisr-032-non-cran-release" class="anchor"></a>nomisr 0.3.2 (non-CRAN release)<small> Unreleased </small>
 </h1>
 <div id="new-features-and-function-changes" class="section level2">
@@ -186,7 +233,7 @@
 </div>
 </div>
     <div id="nomisr-031-non-cran-release" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.3.1">
 <a href="#nomisr-031-non-cran-release" class="anchor"></a>nomisr 0.3.1 (non-CRAN release)<small> Unreleased </small>
 </h1>
 <div id="new-features-and-function-changes-1" class="section level2">
@@ -197,9 +244,9 @@
 <code><a href="../reference/nomis_get_data.html">nomis_get_data()</a></code> now includes <code>tidy</code> and <code>tidy_style</code> parameters. <code><a href="../reference/nomis_get_data.html">nomis_get_data()</a></code> now defaults to converting all variable names to “snake_case”. <code>tidy_style</code> also accepts “camelCase” and “period.case” as name style options.</li>
 </ul>
 </div>
-<div id="bug-fixes" class="section level2">
+<div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Dot queries to <code><a href="../reference/nomis_get_data.html">nomis_get_data()</a></code> work with case-insensitive measurements more persistently.</li>
 </ul>
@@ -213,7 +260,7 @@
 </div>
 </div>
     <div id="nomisr-030" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.3.0">
 <a href="#nomisr-030" class="anchor"></a>nomisr 0.3.0<small> 2018-06-18 </small>
 </h1>
 <div id="new-features-and-function-changes-2" class="section level2">
@@ -234,7 +281,7 @@
 </div>
 </div>
     <div id="nomisr-020" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.2.0">
 <a href="#nomisr-020" class="anchor"></a>nomisr 0.2.0<small> 2018-04-19 </small>
 </h1>
 <ul>
@@ -244,7 +291,7 @@
 </ul>
 </div>
     <div id="nomisr-010" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.1.0">
 <a href="#nomisr-010" class="anchor"></a>nomisr 0.1.0<small> Unreleased </small>
 </h1>
 <ul>
@@ -254,7 +301,7 @@
 </ul>
 </div>
     <div id="nomisr-002" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.0.2">
 <a href="#nomisr-002" class="anchor"></a>nomisr 0.0.2<small> Unreleased </small>
 </h1>
 <ul>
@@ -262,7 +309,7 @@
 </ul>
 </div>
     <div id="nomisr-001" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.0.1">
 <a href="#nomisr-001" class="anchor"></a>nomisr 0.0.1<small> Unreleased </small>
 </h1>
 <ul>
@@ -271,24 +318,14 @@
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#nomisr-0409000">0.4.0.9000</a></li>
-        <li><a href="#nomisr-040">0.4.0</a></li>
-        <li><a href="#nomisr-032-non-cran-release">0.3.2</a></li>
-        <li><a href="#nomisr-031-non-cran-release">0.3.1</a></li>
-        <li><a href="#nomisr-030">0.3.0</a></li>
-        <li><a href="#nomisr-020">0.2.0</a></li>
-        <li><a href="#nomisr-010">0.1.0</a></li>
-        <li><a href="#nomisr-002">0.0.2</a></li>
-        <li><a href="#nomisr-001">0.0.1</a></li>
-      </ul>
-    </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -296,13 +333,16 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

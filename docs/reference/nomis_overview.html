@@ -8,21 +8,29 @@
 
 <title>Nomis dataset overview — nomis_overview • nomisr</title>
 
-<!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<!-- jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +38,10 @@
 
 
 
-<meta property="og:title" content="Nomis dataset overview — nomis_overview" />
 
+<meta property="og:title" content="Nomis dataset overview — nomis_overview" />
 <meta property="og:description" content="Returns an overview of available metadata for a given dataset." />
-<meta name="twitter:card" content="summary" />
+
 
 
 
@@ -57,9 +65,10 @@
   gtag('config', 'UA-90706059-1');
 </script>
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -73,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3.9000</span>
       </span>
     </div>
 
@@ -126,7 +135,6 @@
   </ul>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ropensci/nomisr">
@@ -147,6 +155,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -158,13 +167,11 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Returns an overview of available metadata for a given dataset.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>nomis_overview</span>(<span class='no'>id</span>, <span class='kw'>select</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -180,17 +187,18 @@ options for <code>select</code> are described below, and are taken from the
 <a href='https://www.nomisweb.co.uk/api/v01/help'>Nomis API help page</a>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble with two columns, one a character vector with the name of
 the metadata category, and the other a list column of values for each
 category.</p>
-    
     <h2 class="hasAnchor" id="overview-part-options"><a class="anchor" href="#overview-part-options"></a>Overview part options</h2>
 
     
-    <dl class='dl-horizontal'>
+
+
+<dl'>
 <dt>DatasetInfo</dt><dd><p>General dataset information such as name, description,
 sub-description, mnemonic, restricted access and status</p></dd>
 <dt>Coverage</dt><dd><p>Shows the geographic coverage of the main geography
@@ -219,52 +227,48 @@ level (Requires "Dimensions" or equivalent to be selected too)</p></dd>
 the MAKE parameter when querying data (Requires "Dimensions" or equivalent
 to be selected too)</p></dd>
 <dt>DatasetMetadata</dt><dd><p>Metadata attached at the dataset level</p></dd>
+
 </dl>
-    
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='nomis_data_info.html'>nomis_data_info()</a></code></p>
 <p><code><a href='nomis_get_metadata.html'>nomis_get_metadata()</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:testthat’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    matches</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'>
 <span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_overview</span>(<span class='st'>"NM_1650_1"</span>)
 
-<span class='no'>q</span> <span class='kw'>%&gt;%</span> <span class='kw pkg'>tidyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/unnest.html'>unnest</a></span>(<span class='no'>name</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/reexports.html'>glimpse</a></span>()</div><div class='output co'>#&gt; Observations: 20
-#&gt; Variables: 2
-#&gt; $ value &lt;list&gt; [[&lt;c("1", "4", "5"), c("NM_1650_1", "NM_1650_4", "NM_1650_5"...
-#&gt; $ name  &lt;chr&gt; "analyses", "analysisname", "analysisnumber", "contact", "con...</div><div class='input'>
-<span class='no'>s</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_overview</span>(<span class='st'>"NM_1650_1"</span>, <span class='kw'>select</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Units"</span>, <span class='st'>"Keywords"</span>))
+<span class='no'>q</span> <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>tidyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/nest.html'>unnest</a></span>(<span class='no'>name</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>glimpse</a></span>()</div><div class='output co'>#&gt; Rows: 20
+#&gt; Columns: 2
+#&gt; $ name  <span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "analyses", "analysisname", "analysisnumber", "contact", "conte…
+#&gt; $ value </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span> [[&lt;data.frame[3 x 3]&gt;], "output data for a single date or rang…</div><div class='input'>
+<span class='no'>s</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_overview</span>(<span class='st'>"NM_1650_1"</span>, <span class='kw'>select</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Units"</span>, <span class='st'>"Keywords"</span>))
 
-<span class='no'>s</span> <span class='kw'>%&gt;%</span> <span class='kw pkg'>tidyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/unnest.html'>unnest</a></span>(<span class='no'>name</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/reexports.html'>glimpse</a></span>()</div><div class='output co'>#&gt; Observations: 3
-#&gt; Variables: 2
-#&gt; $ value &lt;list&gt; ["NM_1650_1", "Year last worked", [["Persons"]]]
-#&gt; $ name  &lt;chr&gt; "id", "keywords", "units"</div></pre>
+<span class='no'>s</span> <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>tidyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/nest.html'>unnest</a></span>(<span class='no'>name</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>glimpse</a></span>()</div><div class='output co'>#&gt; Rows: 3
+#&gt; Columns: 2
+#&gt; $ name  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "id", "keywords", "units"
+#&gt; $ value </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span> ["NM_1650_1", "Year last worked", [["Persons"]]]</div><div class='input'># }
+
+</div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#overview-part-options">Overview part options</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -272,13 +276,16 @@ to be selected too)</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

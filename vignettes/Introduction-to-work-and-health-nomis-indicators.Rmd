@@ -1,8 +1,16 @@
 ---
-title: "Vignette"
+title: "Work and Health Indicators with nomisr"
 author: "Nina Robery"
 date: "6 May 2020"
-output: html_document
+output: 
+    html_document:
+        toc: true
+        toc_float: true
+        theme: flatly
+vignette: >
+  %\VignetteIndexEntry{Introduction to nomisr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}
@@ -105,13 +113,17 @@ If you wanted all local authorities, combined authorities and regions in England
 
 ```{r Creating_Geography_Vector, echo=TRUE}
 
-EN_LAs <- nomis_get_metadata(id = "NM_17_5", concept = "geography", type = "TYPE464")[1:326, ] %>%
+EN_LAs <- nomis_get_metadata(id = "NM_17_5", concept = "geography",
+                             type = "TYPE464")[1:326, ] %>%
   mutate(type = 464)
-EN_CAs <- nomis_get_metadata(id = "NM_17_5", concept = "geography", type = "TYPE442") %>%
+EN_CAs <- nomis_get_metadata(id = "NM_17_5", concept = "geography",
+                             type = "TYPE442") %>%
   mutate(type = 442)
-EN_Regions <- nomis_get_metadata(id = "NM_17_5", concept = "geography", type = "TYPE480")[1:9, ] %>%
+EN_Regions <- nomis_get_metadata(id = "NM_17_5", concept = "geography",
+                                 type = "TYPE480")[1:9, ] %>%
   mutate(type = 480)
-EN_Country <- nomis_get_metadata(id = "NM_17_5", concept = "geography", type = "TYPE499")[3, ] %>%
+EN_Country <- nomis_get_metadata(id = "NM_17_5", concept = "geography",
+                                 type = "TYPE499")[3, ] %>%
   mutate(type = 499)
 
 # use rbind to combine all of the above objects together to create a single object containing all geographies of interest and select only the id, parentCode, label.en and type  
@@ -120,7 +132,8 @@ EN_geos <- rbind(EN_LAs, EN_CAs, EN_Regions, EN_Country) %>%
 print(EN_geos)
 
 # Save it as a vector so can plug it into nomis_get_data function
-EN_geographies <- c(1946157057:1946157382, 1853882369:1853882372, 1853882374:1853882379, 2013265921:2013265929, 2092957699)
+EN_geographies <- c(1946157057:1946157382, 1853882369:1853882372,
+                    1853882374:1853882379, 2013265921:2013265929, 2092957699)
 
 ```
 
@@ -136,7 +149,10 @@ Now you have enough information to use the nomis_get_data function.
 
 ```{r working_age_pop, echo=TRUE}
 
-working_age_pop <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = 18, measures = c(20599, 21001, 21002, 21003))
+working_age_pop <- nomis_get_data(id = "NM_17_5", date = "latest",
+                                  geography = EN_geographies,
+                                  variable = 18,
+                                  measures = c(20599, 21001, 21002, 21003))
 print(working_age_pop)
 
 ```
@@ -183,7 +199,8 @@ library(ggplot2)
 # Need to extract the denominator from our previously created working_age_pop dataframe:
 first_stack <- working_age_pop %>%
   filter(MEASURES_NAME == "Denominator") %>%
-  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE) %>%
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE,
+         VARIABLE_NAME, OBS_VALUE) %>%
   mutate(grouping = 1)
 
 # replace na with 0
@@ -193,16 +210,23 @@ print(first_stack)
 # SECOND STACK: Economically active and economically inactive
 
 # Extract economically active variable:
-econ_active <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = 84, measures = c(20599, 21001, 21002, 21003)) %>%
+econ_active <- nomis_get_data(id = "NM_17_5", date = "latest",
+                              geography = EN_geographies,
+                              variable = 84,
+                              measures = c(20599, 21001, 21002, 21003)) %>%
   filter(MEASURES_NAME == "Denominator") %>%
   select(-VARIABLE_NAME) %>%
   mutate(VARIABLE_NAME = "economically active") %>%
-  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE)
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE,
+         VARIABLE_NAME, OBS_VALUE)
 
 # Extract economically inactive variable:
-econ_inactive <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = 111, measures = c(20599, 21001, 21002, 21003)) %>%
+econ_inactive <- nomis_get_data(id = "NM_17_5", date = "latest",
+                                geography = EN_geographies, variable = 111,
+                                measures = c(20599, 21001, 21002, 21003)) %>%
   filter(MEASURES_NAME == "Numerator") %>%
-  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE)
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE,
+         VARIABLE_NAME, OBS_VALUE)
 
 # Bind the econ_active and econ_inactive datasets together to create the second stack:
 second_stack <- rbind(econ_active, econ_inactive) %>%
@@ -216,24 +240,36 @@ print(second_stack)
 # THIRD STACK: Employed, unemployed, want a job, don't want a job
 
 # Extract employed variable:
-employed <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = 45, measures = c(20599, 21001, 21002, 21003)) %>%
+employed <- nomis_get_data(id = "NM_17_5", date = "latest",
+                           geography = EN_geographies, variable = 45,
+                           measures = c(20599, 21001, 21002, 21003)) %>%
   filter(MEASURES_NAME == "Numerator") %>%
-  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE)
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE,
+         VARIABLE_NAME, OBS_VALUE)
 
 # Extract unemployed variable:
-unemployed <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = 84, measures = c(20599, 21001, 21002, 21003)) %>%
+unemployed <- nomis_get_data(id = "NM_17_5", date = "latest",
+                             geography = EN_geographies, variable = 84,
+                             measures = c(20599, 21001, 21002, 21003)) %>%
   filter(MEASURES_NAME == "Numerator") %>%
-  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE)
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE,
+         VARIABLE_NAME, OBS_VALUE)
 
 # Extract want a job variable:
-want_job <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = 1487, measures = c(20599, 21001, 21002, 21003)) %>%
+want_job <- nomis_get_data(id = "NM_17_5", date = "latest",
+                           geography = EN_geographies, variable = 1487,
+                           measures = c(20599, 21001, 21002, 21003)) %>%
   filter(MEASURES_NAME == "Numerator") %>%
-  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE)
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE,
+         VARIABLE_NAME, OBS_VALUE)
 
 # Extract don't want a job variable:
-dont_want_job <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = 1488, measures = c(20599, 21001, 21002, 21003)) %>%
+dont_want_job <- nomis_get_data(id = "NM_17_5", date = "latest",
+                                geography = EN_geographies, variable = 1488,
+                                measures = c(20599, 21001, 21002, 21003)) %>%
   filter(MEASURES_NAME == "Numerator") %>%
-  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE)
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE,
+         VARIABLE_NAME, OBS_VALUE)
 
 # Bind datasets together to create third stack:
 third_stack <- rbind(employed, unemployed, want_job, dont_want_job) %>%
@@ -253,9 +289,12 @@ econ_active_missing <- econ_active %>%
   rename(VARIABLE_NAME = Active)
 
 # Extract reasons variables:
-reasons <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = c(1493:1499), measures = c(20599, 21001, 21002, 21003)) %>%
+reasons <- nomis_get_data(id = "NM_17_5", date = "latest",
+                          geography = EN_geographies, variable = c(1493:1499),
+                          measures = c(20599, 21001, 21002, 21003)) %>%
   filter(MEASURES_NAME == "Numerator") %>%
-  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE)
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE,
+         VARIABLE_NAME, OBS_VALUE)
 
 # Bind two datasets together to create the fourth stack:
 fourth_stack <- rbind(econ_active_missing, reasons) %>%
@@ -298,7 +337,9 @@ data$Key[data$Key == "% of economically inactive other"] <- "4f. Other"
 data$Key[data$Key == "% of economically inactive discouraged"] <- "4g. Discouraged"
 
 # Get 15 colours - first one is white as you don't want it shown on the chart:
-colours <- c("#FFFFFF", "#1B927D", "#006182", "#4D6594", "#D2D1C7", "#A7B0B6", "#D59F68", "#E9A225", "#A7A917", "#09A659", "#77B5B5", "#3277AC", "#234389", "#6B2865", "#C51A4A")
+colours <- c("#FFFFFF", "#1B927D", "#006182", "#4D6594", "#D2D1C7", "#A7B0B6",
+             "#D59F68", "#E9A225", "#A7A917", "#09A659", "#77B5B5", "#3277AC",
+             "#234389", "#6B2865", "#C51A4A")
 
 
 # Plot chart
@@ -315,7 +356,8 @@ p <- ggplot(data, aes(fill=Key, y=OBS_VALUE, x=grouping)) +
   scale_fill_manual(values = colours) +
   coord_flip() + 
   scale_x_reverse() +
-  labs(title = paste0("Labour market summary, ", area_of_interest_name, ", January 2019 to December 2019.")) +
+  labs(title = paste0("Labour market summary, ", area_of_interest_name,
+                      ", January 2019 to December 2019.")) +
   theme(legend.position = "right") 
 
 p
@@ -357,8 +399,11 @@ pie_vars <- NM_17_5_VARIABLE %>%
   pull(id)
 
 # get data for pie
-pie_data <- nomis_get_data(id = "NM_17_5", date = "latest", geography = EN_geographies, variable = pie_vars, measures = c(20599, 21001, 21002, 21003)) %>%
-  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, VARIABLE_CODE, MEASURES_NAME, OBS_VALUE)
+pie_data <- nomis_get_data(id = "NM_17_5", date = "latest",
+                           geography = EN_geographies, variable = pie_vars,
+                           measures = c(20599, 21001, 21002, 21003)) %>%
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME,
+         VARIABLE_CODE, MEASURES_NAME, OBS_VALUE)
 
 # replace na with 0
 pie_data[is.na(pie_data)] <- 0
@@ -380,7 +425,8 @@ pie_data$group[pie_data$group == 1717] <- 2
 
 pie_data <- pie_data %>%
   arrange(GEOGRAPHY_NAME) %>%
-  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME, OBS_VALUE, group)
+  select(DATE_NAME, GEOGRAPHY, GEOGRAPHY_NAME, GEOGRAPHY_CODE, VARIABLE_NAME,
+         OBS_VALUE, group)
 print(pie_data)
 
 # Have all the data to create the pie charts
@@ -405,12 +451,18 @@ pie1_data <- pie1_data %>%
 pie1 <- ggplot(pie1_data, aes(x = "", y = OBS_VALUE, fill = Key))+
   geom_bar(stat="identity", width=1)
 
-pie1 = pie1 + coord_polar("y", start=0) + geom_text(aes(label = paste0(OBS_VALUE, "%")), position = position_stack(vjust = 0.5))
+pie1 = pie1 + coord_polar("y", start=0) +
+  geom_text(aes(label = paste0(OBS_VALUE, "%")),
+            position = position_stack(vjust = 0.5))
 
 # Choose colours for the slides
 pie1 = pie1 + scale_fill_manual(values=c("#862633","#00AB8E","#01216A"))
 
-pie1 = pie1 + labs(x = NULL, y = NULL, fill = NULL, title = (paste0("Participation in the labour market, ", area_of_interest_name, ", January 2019 to December 2019")), subtitle = "Working age population (16-64)")
+pie1 = pie1 + labs(x = NULL, y = NULL, fill = NULL,
+                   title = (paste0("Participation in the labour market, ",
+                                   area_of_interest_name, ",
+                                   January 2019 to December 2019")),
+                   subtitle = "Working age population (16-64)")
 
 
 # Tidy up the theme

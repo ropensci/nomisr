@@ -60,10 +60,16 @@ options for different datasets and retrieve data from queries, all done
 with [`tibbles`](https://tibble.tidyverse.org/), to take advantage of
 how `tibble` manages list-columns. The use of metadata queries, rather
 than simply downloading all available data, is useful to avoid
-overwhelming the rate limits of the API. For full details on all
-available functions and demonstrations of their use, please see the
-package
-[vignette](https://docs.evanodell.com/nomisr/articles/introduction.html).
+overwhelming the rate limits of the API.
+
+There are two `nomisr` vignettes. The
+[introduction](https://docs.evanodell.com/nomisr/articles/introduction.html)
+has details on all available functions and basic demonstrations of their
+use. The [Work and Health Indicators with
+nomisr](https://docs.evanodell.com/nomisr/articles/introduction-to-work-and-health-nomis-indicators)
+vignette shows a worked-through demonstration demonstrating the use of
+key indicators, courtesy of [Nina Robery](github.com/ninarobery) from
+Public Health England.
 
 The example below demostrates a workflow to retrieve the latest data on
 Jobseeker’s Allowance with rates and proportions, on a national level,
@@ -74,8 +80,8 @@ with all male claimants and workforce.
  jobseekers_search <- nomis_search(name = "*Jobseeker*")
  
  tibble::glimpse(jobseekers_search)
-#> Observations: 17
-#> Variables: 14
+#> Rows: 17
+#> Columns: 14
 #> $ agencyid                             <chr> "NOMIS", "NOMIS", "NOMIS", "NOMI…
 #> $ id                                   <chr> "NM_1_1", "NM_4_1", "NM_8_1", "N…
 #> $ uri                                  <chr> "Nm-1d1", "Nm-4d1", "Nm-8d1", "N…
@@ -94,8 +100,8 @@ with all male claimants and workforce.
  jobseekers_measures <- nomis_get_metadata("NM_1_1", "measures")
  
  tibble::glimpse(jobseekers_measures)
-#> Observations: 4
-#> Variables: 3
+#> Rows: 4
+#> Columns: 3
 #> $ id             <chr> "20100", "20201", "20202", "20203"
 #> $ label.en       <chr> "claimants", "workforce", "active", "residence"
 #> $ description.en <chr> "claimants", "workforce", "active", "residence"
@@ -116,8 +122,8 @@ with all male claimants and workforce.
  jobseekers_sex <- nomis_get_metadata("NM_1_1", "sex", "TYPE")
  
  tibble::glimpse(jobseekers_sex)
-#> Observations: 3
-#> Variables: 4
+#> Rows: 3
+#> Columns: 4
 #> $ id             <chr> "5", "6", "7"
 #> $ parentCode     <chr> "7", "7", NA
 #> $ label.en       <chr> "Male", "Female", "Total"
@@ -149,11 +155,11 @@ with all male claimants and workforce.
 #> See spec(...) for full column specifications.
  
  tibble::glimpse(z)
-#> Observations: 70
-#> Variables: 34
-#> $ DATE                <chr> "2020-01", "2020-01", "2020-01", "2020-01", "2020…
-#> $ DATE_NAME           <chr> "January 2020", "January 2020", "January 2020", "…
-#> $ DATE_CODE           <chr> "2020-01", "2020-01", "2020-01", "2020-01", "2020…
+#> Rows: 70
+#> Columns: 34
+#> $ DATE                <chr> "2020-05", "2020-05", "2020-05", "2020-05", "2020…
+#> $ DATE_NAME           <chr> "May 2020", "May 2020", "May 2020", "May 2020", "…
+#> $ DATE_CODE           <chr> "2020-05", "2020-05", "2020-05", "2020-05", "2020…
 #> $ DATE_TYPE           <chr> "date", "date", "date", "date", "date", "date", "…
 #> $ DATE_TYPECODE       <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
 #> $ DATE_SORTORDER      <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
@@ -177,12 +183,12 @@ with all male claimants and workforce.
 #> $ ITEM_SORTORDER      <dbl> 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 0, 0, 1, 1, 2, 2, 3…
 #> $ MEASURES            <dbl> 20100, 20201, 20100, 20201, 20100, 20201, 20100, …
 #> $ MEASURES_NAME       <chr> "Persons claiming JSA", "Workplace-based estimate…
-#> $ OBS_VALUE           <dbl> 105592.0, 0.6, NA, NA, NA, NA, NA, NA, NA, NA, 98…
+#> $ OBS_VALUE           <dbl> 177301.0, 0.9, NA, NA, NA, NA, NA, NA, NA, NA, 16…
 #> $ OBS_STATUS          <chr> "A", "A", "Q", "Q", "Q", "Q", "Q", "Q", "Q", "Q",…
 #> $ OBS_STATUS_NAME     <chr> "Normal Value", "Normal Value", "These figures ar…
 #> $ OBS_CONF            <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
 #> $ OBS_CONF_NAME       <chr> "Free (free for publication)", "Free (free for pu…
-#> $ URN                 <chr> "Nm-1d1d32321e0d2092957697d5d1d20100", "Nm-1d1d32…
+#> $ URN                 <chr> "Nm-1d1d32325e0d2092957697d5d1d20100", "Nm-1d1d32…
 #> $ RECORD_OFFSET       <dbl> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,…
 #> $ RECORD_COUNT        <dbl> 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 7…
 ```
@@ -192,7 +198,7 @@ limits to the amount of data that can be retrieved within a certain
 period of time, although those are not published. For more details, see
 the [full API documentation](https://www.nomisweb.co.uk/api/v01/help)
 from Nomis. Full package documentation is available at
-[docs.evanodell.com/nomisr](https://docs.evanodell.com/nomisr)
+[docs.evanodell.com/nomisr](https://docs.evanodell.com/nomisr).
 
 ## Meta
 
@@ -209,28 +215,26 @@ Please note that this project is not affiliated with the Office for
 National Statistics or the University of Durham (who run Nomis on behalf
 o the Office for National Statistics).
 
-Please use the reference below when citing `nomisr`, which is the same
-as `citation(package = 'nomisr')`.
+Please use the reference below when citing `nomisr`, or use
+`citation(package = 'nomisr')`.
 
 Odell, (2018). nomisr: Access ‘Nomis’ UK Labour Market Data. *Journal of
-Open Source Software*, 3(27), 859,
-<https://doi.org/10.21105/joss.00859>.
+Open Source Software*, 3(27), 859, doi:
+[10.21105/joss.00859](https://doi.org/10.21105/joss.00859).
 
 A BibTeX entry for LaTeX users is
 
-    @article{odell2018,
-      title = {Nomisr: {{Access Nomis UK Labour Market Data}}},
-      volume = {3},
-      issn = {2475-9066},
-      url = {https://github.com/ropensci/nomisr},
-      doi = {10.21105/joss.00859},
-      number = {27},
-      journaltitle = {Journal of Open Source Software},
-      urldate = {2018-08-01},
-      date = {2018-07-28},
-      pages = {859},
-      author = {Odell, Evan}
-    }
+    @Article{odell2018,
+        title = {{nomisr}: Access Nomis UK Labour Market Data With R},
+        volume = {3},
+        doi = {10.21105/joss.00859},
+        number = {27},
+        journal = {The Journal of Open Source Software},
+        year = {2018},
+        month = {July},
+        pages = {859},
+        author = {Evan Odell},
+      }
 
 License:
 [MIT](https://github.com/ropensci/nomisr/blob/master/LICENSE.md)

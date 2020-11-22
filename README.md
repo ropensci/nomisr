@@ -3,14 +3,16 @@
 
 # nomisr
 
+<!-- badges: start -->
+
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/nomisr)](https://cran.r-project.org/package=nomisr)
 [![GitHub
 tag](https://img.shields.io/github/tag/ropensci/nomisr.svg)](https://github.com/ropensci/nomisr)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/nomisr)](https://cran.r-project.org/package=nomisr)
-[![Travis-CI Build
-Status](https://travis-ci.org/ropensci/nomisr.svg?branch=master)](https://travis-ci.org/ropensci/nomisr)
+[![R build
+status](https://github.com/ropensci/nomisr/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/nomisr/actions)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/evanodell/nomisr?branch=master&svg=true)](https://ci.appveyor.com/project/evanodell/nomisr)
 [![Coverage
@@ -18,6 +20,7 @@ Status](https://img.shields.io/codecov/c/github/ropensci/nomisr/master.svg)](htt
 [![ropensci](https://badges.ropensci.org/190_status.svg)](https://github.com/ropensci/onboarding/issues/190)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1157908.svg)](https://doi.org/10.5281/zenodo.1157908)
 [![DOI](https://joss.theoj.org/papers/10.21105/joss.00859/status.svg)](https://doi.org/10.21105/joss.00859)
+<!-- badges: end -->
 
 `nomisr` is for accessing UK official statistics from the
 [Nomis](https://www.nomisweb.co.uk/) database through R. Nomis contains
@@ -98,6 +101,11 @@ with all male claimants and workforce.
 #> $ name.lang                            <chr> "en", "en", "en", "en", "en", "e…
 
  jobseekers_measures <- nomis_get_metadata("NM_1_1", "measures")
+#> Warning: `as.tibble()` is deprecated as of tibble 2.0.0.
+#> Please use `as_tibble()` instead.
+#> The signature and semantics have changed, see `?as_tibble`.
+#> This warning is displayed once every 8 hours.
+#> Call `lifecycle::last_warnings()` to see where this warning was generated.
  
  tibble::glimpse(jobseekers_measures)
 #> Rows: 4
@@ -131,7 +139,8 @@ with all male claimants and workforce.
  
  z <- nomis_get_data(id = "NM_1_1", time = "latest", geography = "TYPE499",
                      measures=c(20100, 20201), sex=5)
-#> Parsed with column specification:
+#> 
+#> ── Column specification ────────────────────────────────────────────────────────
 #> cols(
 #>   .default = col_double(),
 #>   DATE = col_character(),
@@ -152,14 +161,14 @@ with all male claimants and workforce.
 #>   OBS_CONF_NAME = col_character(),
 #>   URN = col_character()
 #> )
-#> See spec(...) for full column specifications.
+#> ℹ Use `spec()` for the full column specifications.
  
  tibble::glimpse(z)
 #> Rows: 70
 #> Columns: 34
-#> $ DATE                <chr> "2020-05", "2020-05", "2020-05", "2020-05", "2020…
-#> $ DATE_NAME           <chr> "May 2020", "May 2020", "May 2020", "May 2020", "…
-#> $ DATE_CODE           <chr> "2020-05", "2020-05", "2020-05", "2020-05", "2020…
+#> $ DATE                <chr> "2020-10", "2020-10", "2020-10", "2020-10", "2020…
+#> $ DATE_NAME           <chr> "October 2020", "October 2020", "October 2020", "…
+#> $ DATE_CODE           <chr> "2020-10", "2020-10", "2020-10", "2020-10", "2020…
 #> $ DATE_TYPE           <chr> "date", "date", "date", "date", "date", "date", "…
 #> $ DATE_TYPECODE       <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
 #> $ DATE_SORTORDER      <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
@@ -183,12 +192,12 @@ with all male claimants and workforce.
 #> $ ITEM_SORTORDER      <dbl> 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 0, 0, 1, 1, 2, 2, 3…
 #> $ MEASURES            <dbl> 20100, 20201, 20100, 20201, 20100, 20201, 20100, …
 #> $ MEASURES_NAME       <chr> "Persons claiming JSA", "Workplace-based estimate…
-#> $ OBS_VALUE           <dbl> 177301.0, 0.9, NA, NA, NA, NA, NA, NA, NA, NA, 16…
+#> $ OBS_VALUE           <dbl> 182756.0, 1.0, NA, NA, NA, NA, NA, NA, NA, NA, 17…
 #> $ OBS_STATUS          <chr> "A", "A", "Q", "Q", "Q", "Q", "Q", "Q", "Q", "Q",…
 #> $ OBS_STATUS_NAME     <chr> "Normal Value", "Normal Value", "These figures ar…
 #> $ OBS_CONF            <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
 #> $ OBS_CONF_NAME       <chr> "Free (free for publication)", "Free (free for pu…
-#> $ URN                 <chr> "Nm-1d1d32325e0d2092957697d5d1d20100", "Nm-1d1d32…
+#> $ URN                 <chr> "Nm-1d1d32330e0d2092957697d5d1d20100", "Nm-1d1d32…
 #> $ RECORD_OFFSET       <dbl> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,…
 #> $ RECORD_COUNT        <dbl> 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 7…
 ```

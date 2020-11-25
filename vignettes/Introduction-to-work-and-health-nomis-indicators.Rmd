@@ -17,11 +17,11 @@ vignette: >
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# Introduction to some of the outputs that can be created using nomisr
+# Introduction 
 
 The nomisr package is an easy way to obtain data from Nomis. In this introduction you can see some of the functionality of the tool to create bespoke charts. These charts use Bolton as the area of interest.
 
-## Querying data availability
+# Querying data availability
 
 The first step is to understanding what datasets are available in `nomisr` and this can be done using the `nomis_get_info()` function. If no particular id is inputted inside the brackets, the command will return all available datasets.
 
@@ -59,9 +59,9 @@ head(NM_17_5)
 
 ```
 
-## Querying data variables
+# Querying data variables
 
-### Getting concepts:
+## Getting concepts:
 
 As mentioned previously, the `nomis_get_info()` and `nomis_get_metadata()` functions will provide you with a list of concepts that we can explore further to see what data is available e.g. dates, measures, geographies and variables. The concepts will differ depending on your chosen dataset, so it is a good idea to run the `nomis_get_metadata()` for each new dataset you are looking at. 
 
@@ -137,9 +137,9 @@ EN_geographies <- c(1946157057:1946157382, 1853882369:1853882372,
 
 ```
 
-## Downloading data
+# Downloading data
 
-Now you have enough information to use the nomis_get_data function. 
+Now you have enough information to use the `nomis_get_data()` function. 
 
 + Step 1: specify the id/dataset of interest - in this example the NM_17_5 (APS) dataset is used
 + Step 2: set the year of interest - in this example the date has been set to 'latest' available 
@@ -157,7 +157,7 @@ print(working_age_pop)
 
 ```
 
-### Stacked bar chart showing labour market summary for Bolton
+## Stacked bar chart showing labour market summary for Bolton
 
 The following steps show how to make a stacked bar chart, which will show:
 
@@ -364,7 +364,7 @@ p
 
 ```
 
-### Pie charts showing economic activity in Bolton 
+## Pie charts showing economic activity in Bolton 
 
 The following steps show how to make pie charts, which will show:
 
@@ -519,7 +519,7 @@ pie2
 
 ```
 
-### Treemap showing ESA claimants by specific conditions in Bolton  
+## Treemap showing ESA claimants by specific conditions in Bolton  
 
 The following steps show how to create a treemap: 
 
@@ -676,5 +676,3 @@ t <- ggplot2::ggplot(data, ggplot2::aes(area = OBS, fill = CON_SHORT, label = CH
 t
 
 ```
-
-

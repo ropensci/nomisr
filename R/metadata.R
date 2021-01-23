@@ -37,8 +37,7 @@
 #' @seealso [nomis_get_data()]
 #' @seealso [nomis_overview()]
 #'
-#' @return A tibble with metadata options for queries using
-#' [nomis_get_data()].
+#' @return A tibble with metadata options for queries using [nomis_get_data()].
 #' @export
 #'
 #' @examples

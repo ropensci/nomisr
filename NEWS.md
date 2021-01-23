@@ -1,9 +1,9 @@
 
-# nomisr 0.4.3.9000
+# nomisr 0.4.4
 
 * replaced `as.tibble` with `as_tibble`
 
-
+* Includes second vignette "Work and Health Indicators with nomisr"
 
 # nomisr 0.4.3
 

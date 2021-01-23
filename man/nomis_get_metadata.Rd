@@ -40,8 +40,7 @@ versions greater than 0.2.0 and will eventually be removed.}
 \item{tidy}{If \code{TRUE}, converts tibble names to snakecase.}
 }
 \value{
-A tibble with metadata options for queries using
-\code{\link[=nomis_get_data]{nomis_get_data()}}.
+A tibble with metadata options for queries using \code{\link[=nomis_get_data]{nomis_get_data()}}.
 }
 \description{
 Retrieve all concept code options of all Nomis datasets,

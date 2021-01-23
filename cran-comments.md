@@ -1,18 +1,17 @@
 
 ## Release summary
 
-This is an resubmission of the `nomisr` package, version number 0.4.3. It 
-fixes an issue with broken links in the README in version 0.4.2 from
-2020-02-28 by including fully specified URLS. 
-Overall the package includes more informative error messages, 
-optimisations to remove extra calls to the  Nomis API, and more flexibility 
-on returned variable name styles.
+This is an resubmission of the `nomisr` package, version number 0.4.4. It 
+removes the use of the deprecated `tibble::as.tibble` function. 
+It also includes a second vignette showing a detailed package use case.
 
 
 ## Test environments
-* local OS X install, R 3.6.2
-* ubuntu 16.04 (on travis-ci), (devel and release)
+* local macOS install, R 4.0.3
 * win-builder (devel and release)
+* Windows Server 2019, release (on GitHub Actions)
+* macOS Catalina 10.15, release (on GitHub Actions)
+* ubuntu 20.04 (devel and release) (on GitHub Actions)
 
 ## R CMD check results
 

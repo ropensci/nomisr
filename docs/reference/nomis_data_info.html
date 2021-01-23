@@ -172,7 +172,7 @@ data sets or the information available in a specific dataset based on its ID." /
 data sets or the information available in a specific dataset based on its ID.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nomis_data_info</span>(<span class='no'>id</span>, <span class='kw'>tidy</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>nomis_data_info</span><span class='op'>(</span><span class='va'>id</span>, tidy <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -202,9 +202,10 @@ If the ID of a dataset, returns metadata for that particular dataset.</p></td>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 
 <span class='co'># Get info on all datasets</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_data_info</span>()
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_data_info</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Rows: 1,248
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 1,250
 #&gt; Columns: 14
 #&gt; $ agencyid                             <span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "NOMIS", "NOMIS", "NOMIS", "NOMI…
 #&gt; $ id                                   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "NM_1_1", "NM_2_1", "NM_4_1", "N…
@@ -221,9 +222,10 @@ If the ID of a dataset, returns metadata for that particular dataset.</p></td>
 #&gt; $ name.value                           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Jobseeker's Allowance with rate…
 #&gt; $ name.lang                            </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "en", "en", "en", "en", "en", "e…</div><div class='input'>
 <span class='co'># Get info on a particular dataset</span>
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_data_info</span>(<span class='st'>"NM_1658_1"</span>)
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_data_info</span><span class='op'>(</span><span class='st'>"NM_1658_1"</span><span class='op'>)</span>
 
-<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; Rows: 1
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 1
 #&gt; Columns: 12
 #&gt; $ agencyid                             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "NOMIS"
 #&gt; $ id                                   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "NM_1658_1"
@@ -236,7 +238,7 @@ If the ID of a dataset, returns metadata for that particular dataset.</p></td>
 #&gt; $ components.timedimension.codelist    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "CL_1658_1_TIME"
 #&gt; $ components.timedimension.conceptref  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "TIME"
 #&gt; $ name.value                           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "UV035 - Distance travelled to w…
-#&gt; $ name.lang                            </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "en"</div><div class='input'># }
+#&gt; $ name.lang                            </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "en"</div><div class='input'><span class='co'># }</span>
 
 </div></span></pre>
   </div>
@@ -254,7 +256,7 @@ If the ID of a dataset, returns metadata for that particular dataset.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

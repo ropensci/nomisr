@@ -30,7 +30,7 @@
 #' versions greater than 0.2.0 and will eventually be removed.
 #'
 #' @param ... Use to pass any other parameters to the API.
-#' 
+#'
 #' @param tidy If `TRUE`, converts tibble names to snakecase.
 #'
 #' @seealso [nomis_data_info()]
@@ -92,10 +92,12 @@ nomis_get_metadata <- function(id, concept = NULL, type = NULL, search = NULL,
     df1 <- tibble::as_tibble(
       as.data.frame(no_code_q$components.dimension)
     )
-    
+
     names(no_code_q) <- gsub("components.timedimension.", "",
-                             names(no_code_q), fixed = TRUE)
-    
+      names(no_code_q),
+      fixed = TRUE
+    )
+
     no_code_q <- no_code_q[c("codelist", "conceptref")]
 
     df <- bind_rows(df1, no_code_q)
@@ -140,6 +142,6 @@ nomis_get_metadata <- function(id, concept = NULL, type = NULL, search = NULL,
   if (tidy) {
     names(df) <- snakecase::to_snake_case(names(df))
   }
-  
+
   df
 }

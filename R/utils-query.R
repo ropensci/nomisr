@@ -25,7 +25,7 @@ nomis_query_util <- function(query, tidy) {
   if (nrow(df) == 0) {
     stop("API request did not return any results", call. = FALSE)
   }
-  
+
   if (tidy) {
     names(df) <- snakecase::to_snake_case(names(df))
   }

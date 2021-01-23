@@ -216,21 +216,21 @@ return all data available between those queries, inclusively, while
 data published.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nomis_get_data</span>(
-  <span class='no'>id</span>,
-  <span class='kw'>time</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>geography</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sex</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>measures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>additional_queries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>exclude_missing</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>select</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>tidy</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>tidy_style</span> <span class='kw'>=</span> <span class='st'>"snake_case"</span>,
-  <span class='kw'>query_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>nomis_get_data</span><span class='op'>(</span>
+  <span class='va'>id</span>,
+  time <span class='op'>=</span> <span class='cn'>NULL</span>,
+  date <span class='op'>=</span> <span class='cn'>NULL</span>,
+  geography <span class='op'>=</span> <span class='cn'>NULL</span>,
+  sex <span class='op'>=</span> <span class='cn'>NULL</span>,
+  measures <span class='op'>=</span> <span class='cn'>NULL</span>,
+  additional_queries <span class='op'>=</span> <span class='cn'>NULL</span>,
+  exclude_missing <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  select <span class='op'>=</span> <span class='cn'>NULL</span>,
+  tidy <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  tidy_style <span class='op'>=</span> <span class='st'>"snake_case"</span>,
+  query_id <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -379,14 +379,16 @@ columns except for the <code>"OBS_VALUE"</code> column are parsed as characters.
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 
 <span class='co'># Return data on Jobseekers Allowance for each country in the UK</span>
-<span class='no'>jobseekers_country</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_data</span>(
-  <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"NM_1_1"</span>, <span class='kw'>time</span> <span class='kw'>=</span> <span class='st'>"latest"</span>,
-  <span class='kw'>geography</span> <span class='kw'>=</span> <span class='st'>"TYPE499"</span>,
-  <span class='kw'>measures</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>20100</span>, <span class='fl'>20201</span>), <span class='kw'>sex</span> <span class='kw'>=</span> <span class='fl'>5</span>
-)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+<span class='va'>jobseekers_country</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_data</span><span class='op'>(</span>
+  id <span class='op'>=</span> <span class='st'>"NM_1_1"</span>, time <span class='op'>=</span> <span class='st'>"latest"</span>,
+  geography <span class='op'>=</span> <span class='st'>"TYPE499"</span>,
+  measures <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>20100</span>, <span class='fl'>20201</span><span class='op'>)</span>, sex <span class='op'>=</span> <span class='fl'>5</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'><span style='color: #00BBBB;'>──</span><span> </span><span style='font-weight: bold;'>Column specification</span><span> </span><span style='color: #00BBBB;'>────────────────────────────────────────────────────────</span><span></span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  .default = col_double(),</span>
-#&gt; <span class='message'>  DATE = <span style='color: #BB0000;'>col_character()</span><span>,</span>
+#&gt; <span class='message'>  DATE = </span><span style='color: #BB0000;'>col_character()</span><span>,</span>
 #&gt; <span class='message'>  DATE_NAME = </span><span style='color: #BB0000;'>col_character()</span><span>,</span>
 #&gt; <span class='message'>  DATE_CODE = </span><span style='color: #BB0000;'>col_character()</span><span>,</span>
 #&gt; <span class='message'>  DATE_TYPE = </span><span style='color: #BB0000;'>col_character()</span><span>,</span>
@@ -403,12 +405,14 @@ columns except for the <code>"OBS_VALUE"</code> column are parsed as characters.
 #&gt; <span class='message'>  OBS_CONF = </span><span style='color: #BBBB00;'>col_logical()</span><span>,</span>
 #&gt; <span class='message'>  OBS_CONF_NAME = </span><span style='color: #BB0000;'>col_character()</span><span>,</span>
 #&gt; <span class='message'>  URN = </span><span style='color: #BB0000;'>col_character()</span><span></span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>See spec(...) for full column specifications.</span></div><div class='input'>
-<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span>(<span class='no'>jobseekers_country</span>)</div><div class='output co'>#&gt; Rows: 70
+#&gt; <span class='message'>)</span>
+#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Use </span><span style='color: #000000;background-color: #BBBBBB;'>`spec()`</span><span> for the full column specifications.</span></div><div class='input'>
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>jobseekers_country</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 70
 #&gt; Columns: 34
-#&gt; $ DATE                </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "2020-05", "2020-05", "2020-05", "2020-05", "2020…
-#&gt; $ DATE_NAME           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "May 2020", "May 2020", "May 2020", "May 2020", "…
-#&gt; $ DATE_CODE           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "2020-05", "2020-05", "2020-05", "2020-05", "2020…
+#&gt; $ DATE                </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "2020-10", "2020-10", "2020-10", "2020-10", "2020…
+#&gt; $ DATE_NAME           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "October 2020", "October 2020", "October 2020", "…
+#&gt; $ DATE_CODE           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "2020-10", "2020-10", "2020-10", "2020-10", "2020…
 #&gt; $ DATE_TYPE           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "date", "date", "date", "date", "date", "date", "…
 #&gt; $ DATE_TYPECODE       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
 #&gt; $ DATE_SORTORDER      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
@@ -432,20 +436,22 @@ columns except for the <code>"OBS_VALUE"</code> column are parsed as characters.
 #&gt; $ ITEM_SORTORDER      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 0, 0, 1, 1, 2, 2, 3…
 #&gt; $ MEASURES            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 20100, 20201, 20100, 20201, 20100, 20201, 20100, …
 #&gt; $ MEASURES_NAME       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Persons claiming JSA", "Workplace-based estimate…
-#&gt; $ OBS_VALUE           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 177301.0, 0.9, NA, NA, NA, NA, NA, NA, NA, NA, 16…
+#&gt; $ OBS_VALUE           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 182756.0, 1.0, NA, NA, NA, NA, NA, NA, NA, NA, 17…
 #&gt; $ OBS_STATUS          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "A", "A", "Q", "Q", "Q", "Q", "Q", "Q", "Q", "Q",…
 #&gt; $ OBS_STATUS_NAME     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Normal Value", "Normal Value", "These figures ar…
 #&gt; $ OBS_CONF            </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
 #&gt; $ OBS_CONF_NAME       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Free (free for publication)", "Free (free for pu…
-#&gt; $ URN                 </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Nm-1d1d32325e0d2092957697d5d1d20100", "Nm-1d1d32…
+#&gt; $ URN                 </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Nm-1d1d32330e0d2092957697d5d1d20100", "Nm-1d1d32…
 #&gt; $ RECORD_OFFSET       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,…
 #&gt; $ RECORD_COUNT        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 7…</div><div class='input'>
 <span class='co'># Return data on Jobseekers Allowance for Wigan</span>
-<span class='no'>jobseekers_wigan</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_data</span>(
-  <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"NM_1_1"</span>, <span class='kw'>time</span> <span class='kw'>=</span> <span class='st'>"latest"</span>,
-  <span class='kw'>geography</span> <span class='kw'>=</span> <span class='st'>"1879048226"</span>,
-  <span class='kw'>measures</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>20100</span>, <span class='fl'>20201</span>), <span class='kw'>sex</span> <span class='kw'>=</span> <span class='st'>"5"</span>
-)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+<span class='va'>jobseekers_wigan</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_data</span><span class='op'>(</span>
+  id <span class='op'>=</span> <span class='st'>"NM_1_1"</span>, time <span class='op'>=</span> <span class='st'>"latest"</span>,
+  geography <span class='op'>=</span> <span class='st'>"1879048226"</span>,
+  measures <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>20100</span>, <span class='fl'>20201</span><span class='op'>)</span>, sex <span class='op'>=</span> <span class='st'>"5"</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'></span><span style='color: #00BBBB;'>──</span><span> </span><span style='font-weight: bold;'>Column specification</span><span> </span><span style='color: #00BBBB;'>────────────────────────────────────────────────────────</span><span></span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  .default = col_double(),</span>
 #&gt; <span class='message'>  DATE = </span><span style='color: #BB0000;'>col_character()</span><span>,</span>
@@ -465,12 +471,14 @@ columns except for the <code>"OBS_VALUE"</code> column are parsed as characters.
 #&gt; <span class='message'>  OBS_CONF = </span><span style='color: #BBBB00;'>col_logical()</span><span>,</span>
 #&gt; <span class='message'>  OBS_CONF_NAME = </span><span style='color: #BB0000;'>col_character()</span><span>,</span>
 #&gt; <span class='message'>  URN = </span><span style='color: #BB0000;'>col_character()</span><span></span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>See spec(...) for full column specifications.</span></div><div class='input'>
-<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span>(<span class='no'>jobseekers_wigan</span>)</div><div class='output co'>#&gt; Rows: 10
+#&gt; <span class='message'>)</span>
+#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Use </span><span style='color: #000000;background-color: #BBBBBB;'>`spec()`</span><span> for the full column specifications.</span></div><div class='input'>
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>jobseekers_wigan</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 10
 #&gt; Columns: 34
-#&gt; $ DATE                </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "2020-05", "2020-05", "2020-05", "2020-05", "2020…
-#&gt; $ DATE_NAME           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "May 2020", "May 2020", "May 2020", "May 2020", "…
-#&gt; $ DATE_CODE           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "2020-05", "2020-05", "2020-05", "2020-05", "2020…
+#&gt; $ DATE                </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "2020-10", "2020-10", "2020-10", "2020-10", "2020…
+#&gt; $ DATE_NAME           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "October 2020", "October 2020", "October 2020", "…
+#&gt; $ DATE_CODE           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "2020-10", "2020-10", "2020-10", "2020-10", "2020…
 #&gt; $ DATE_TYPE           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "date", "date", "date", "date", "date", "date", "…
 #&gt; $ DATE_TYPECODE       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 #&gt; $ DATE_SORTORDER      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
@@ -494,41 +502,46 @@ columns except for the <code>"OBS_VALUE"</code> column are parsed as characters.
 #&gt; $ ITEM_SORTORDER      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 0, 0, 1, 1, 2, 2, 3, 3, 4, 4
 #&gt; $ MEASURES            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 20100, 20201, 20100, 20201, 20100, 20201, 20100, …
 #&gt; $ MEASURES_NAME       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Persons claiming JSA", "Workplace-based estimate…
-#&gt; $ OBS_VALUE           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 1018, NA, NA, NA, NA, NA, NA, NA, NA, NA
+#&gt; $ OBS_VALUE           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 953, NA, NA, NA, NA, NA, NA, NA, NA, NA
 #&gt; $ OBS_STATUS          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "A", "Q", "Q", "Q", "Q", "Q", "Q", "Q", "Q", "Q"
 #&gt; $ OBS_STATUS_NAME     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Normal Value", "These figures are missing.", "Th…
 #&gt; $ OBS_CONF            </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
 #&gt; $ OBS_CONF_NAME       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Free (free for publication)", "Free (free for pu…
-#&gt; $ URN                 </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Nm-1d1d32325e0d1879048226d5d1d20100", "Nm-1d1d32…
+#&gt; $ URN                 </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Nm-1d1d32330e0d1879048226d5d1d20100", "Nm-1d1d32…
 #&gt; $ RECORD_OFFSET       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 #&gt; $ RECORD_COUNT        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 10, 10, 10, 10, 10, 10, 10, 10, 10, 10</div><div class='input'>
 <span class='co'># annual population survey - regional - employment by occupation</span>
-<span class='no'>emp_by_occupation</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_data</span>(
-  <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"NM_168_1"</span>, <span class='kw'>time</span> <span class='kw'>=</span> <span class='st'>"latest"</span>,
-  <span class='kw'>geography</span> <span class='kw'>=</span> <span class='st'>"2013265925"</span>, <span class='kw'>sex</span> <span class='kw'>=</span> <span class='st'>"0"</span>,
-  <span class='kw'>select</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
+<span class='va'>emp_by_occupation</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_data</span><span class='op'>(</span>
+  id <span class='op'>=</span> <span class='st'>"NM_168_1"</span>, time <span class='op'>=</span> <span class='st'>"latest"</span>,
+  geography <span class='op'>=</span> <span class='st'>"2013265925"</span>, sex <span class='op'>=</span> <span class='st'>"0"</span>,
+  select <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
     <span class='st'>"geography_code"</span>,
     <span class='st'>"C_OCCPUK11H_0_NAME"</span>, <span class='st'>"obs_vAlUE"</span>
-  )
-)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'></span><span style='color: #00BBBB;'>──</span><span> </span><span style='font-weight: bold;'>Column specification</span><span> </span><span style='color: #00BBBB;'>────────────────────────────────────────────────────────</span><span></span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  GEOGRAPHY_CODE = </span><span style='color: #BB0000;'>col_character()</span><span>,</span>
 #&gt; <span class='message'>  C_OCCPUK11H_0_NAME = </span><span style='color: #BB0000;'>col_character()</span><span>,</span>
 #&gt; <span class='message'>  OBS_VALUE = </span><span style='color: #00BB00;'>col_double()</span><span>,</span>
 #&gt; <span class='message'>  RECORD_COUNT = </span><span style='color: #00BB00;'>col_double()</span><span></span>
 #&gt; <span class='message'>)</span></div><div class='input'>
-<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span>(<span class='no'>emp_by_occupation</span>)</div><div class='output co'>#&gt; Rows: 1,976
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>emp_by_occupation</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 1,976
 #&gt; Columns: 3
 #&gt; $ GEOGRAPHY_CODE     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "E12000005", "E12000005", "E12000005", "E12000005"…
 #&gt; $ C_OCCPUK11H_0_NAME </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Total", "Total", "Total", "Total", "1 Managers, d…
-#&gt; $ OBS_VALUE          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 2773300.0, 54300.0, 100.0, NA, 286000.0, 17400.0, …</div><div class='input'>
+#&gt; $ OBS_VALUE          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 2797100.0, 58200.0, 100.0, NA, 293900.0, 18900.0, …</div><div class='input'>
 <span class='co'># Deaths in 2016 and 2015 by three specified causes,</span>
 <span class='co'># identified with nomis_get_metadata()</span>
-<span class='no'>death</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_data</span>(<span class='st'>"NM_161_1"</span>,
-  <span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2016"</span>, <span class='st'>"2015"</span>),
-  <span class='kw'>geography</span> <span class='kw'>=</span> <span class='st'>"TYPE480"</span>,
-  <span class='kw'>cause_of_death</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>10300</span>, <span class='fl'>102088</span>, <span class='fl'>270</span>)
-)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+<span class='va'>death</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_data</span><span class='op'>(</span><span class='st'>"NM_161_1"</span>,
+  date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"2016"</span>, <span class='st'>"2015"</span><span class='op'>)</span>,
+  geography <span class='op'>=</span> <span class='st'>"TYPE480"</span>,
+  cause_of_death <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10300</span>, <span class='fl'>102088</span>, <span class='fl'>270</span><span class='op'>)</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'></span><span style='color: #00BBBB;'>──</span><span> </span><span style='font-weight: bold;'>Column specification</span><span> </span><span style='color: #00BBBB;'>────────────────────────────────────────────────────────</span><span></span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  .default = col_double(),</span>
 #&gt; <span class='message'>  DATE_TYPE = </span><span style='color: #BB0000;'>col_character()</span><span>,</span>
@@ -550,8 +563,10 @@ columns except for the <code>"OBS_VALUE"</code> column are parsed as characters.
 #&gt; <span class='message'>  OBS_CONF = </span><span style='color: #BBBB00;'>col_logical()</span><span>,</span>
 #&gt; <span class='message'>  OBS_CONF_NAME = </span><span style='color: #BB0000;'>col_character()</span><span>,</span>
 #&gt; <span class='message'>  URN = </span><span style='color: #BB0000;'>col_character()</span><span></span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>See spec(...) for full column specifications.</span></div><div class='input'>
-<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span>(<span class='no'>death</span>)</div><div class='output co'>#&gt; Rows: 22,680
+#&gt; <span class='message'>)</span>
+#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Use </span><span style='color: #000000;background-color: #BBBBBB;'>`spec()`</span><span> for the full column specifications.</span></div><div class='input'>
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>death</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 22,680
 #&gt; Columns: 46
 #&gt; $ DATE                     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 2016, 2016, 2016, 2016, 2016, 2016, 2016, 20…
 #&gt; $ DATE_NAME                </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 2016, 2016, 2016, 2016, 2016, 2016, 2016, 20…
@@ -600,10 +615,12 @@ columns except for the <code>"OBS_VALUE"</code> column are parsed as characters.
 #&gt; $ RECORD_OFFSET            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13…
 #&gt; $ RECORD_COUNT             </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 22680, 22680, 22680, 22680, 22680, 22680, 22…</div><div class='input'>
 <span class='co'># All causes of death in London in 2016</span>
-<span class='no'>london_death</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_data</span>(<span class='st'>"NM_161_1"</span>,
-  <span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2016"</span>),
-  <span class='kw'>geography</span> <span class='kw'>=</span> <span class='st'>"2013265927"</span>, <span class='kw'>sex</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>age</span> <span class='kw'>=</span> <span class='fl'>0</span>
-)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+<span class='va'>london_death</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_data</span><span class='op'>(</span><span class='st'>"NM_161_1"</span>,
+  date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"2016"</span><span class='op'>)</span>,
+  geography <span class='op'>=</span> <span class='st'>"2013265927"</span>, sex <span class='op'>=</span> <span class='fl'>1</span>, age <span class='op'>=</span> <span class='fl'>0</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'></span><span style='color: #00BBBB;'>──</span><span> </span><span style='font-weight: bold;'>Column specification</span><span> </span><span style='color: #00BBBB;'>────────────────────────────────────────────────────────</span><span></span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  .default = col_double(),</span>
 #&gt; <span class='message'>  DATE_TYPE = </span><span style='color: #BB0000;'>col_character()</span><span>,</span>
@@ -625,8 +642,10 @@ columns except for the <code>"OBS_VALUE"</code> column are parsed as characters.
 #&gt; <span class='message'>  OBS_CONF = </span><span style='color: #BBBB00;'>col_logical()</span><span>,</span>
 #&gt; <span class='message'>  OBS_CONF_NAME = </span><span style='color: #BB0000;'>col_character()</span><span>,</span>
 #&gt; <span class='message'>  URN = </span><span style='color: #BB0000;'>col_character()</span><span></span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>See spec(...) for full column specifications.</span></div><div class='input'>
-<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span>(<span class='no'>london_death</span>)</div><div class='output co'>#&gt; Rows: 61,992
+#&gt; <span class='message'>)</span>
+#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Use </span><span style='color: #000000;background-color: #BBBBBB;'>`spec()`</span><span> for the full column specifications.</span></div><div class='input'>
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>london_death</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 61,992
 #&gt; Columns: 46
 #&gt; $ DATE                     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 2016, 2016, 2016, 2016, 2016, 2016, 2016, 20…
 #&gt; $ DATE_NAME                </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 2016, 2016, 2016, 2016, 2016, 2016, 2016, 20…
@@ -674,21 +693,23 @@ columns except for the <code>"OBS_VALUE"</code> column are parsed as characters.
 #&gt; $ URN                      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Nm-161d1d32256e0d2013265927d98a99d1d0d1d201…
 #&gt; $ RECORD_OFFSET            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13…
 #&gt; $ RECORD_COUNT             </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 61992, 61992, 61992, 61992, 61992, 61992, 61…</div><div class='input'><span class='co'># }</span>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># Results in an error because `measure` is mistaken for `measures`</span>
-<span class='no'>mort_data1</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_data</span>(
-  <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"NM_161_1"</span>, <span class='kw'>date</span> <span class='kw'>=</span> <span class='st'>"2016"</span>,
-  <span class='kw'>geography</span> <span class='kw'>=</span> <span class='st'>"TYPE464"</span>, <span class='kw'>sex</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>cause_of_death</span> <span class='kw'>=</span> <span class='st'>"10381"</span>,
-  <span class='kw'>age</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>measure</span> <span class='kw'>=</span> <span class='fl'>6</span>
-)
+<span class='va'>mort_data1</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_data</span><span class='op'>(</span>
+  id <span class='op'>=</span> <span class='st'>"NM_161_1"</span>, date <span class='op'>=</span> <span class='st'>"2016"</span>,
+  geography <span class='op'>=</span> <span class='st'>"TYPE464"</span>, sex <span class='op'>=</span> <span class='fl'>0</span>, cause_of_death <span class='op'>=</span> <span class='st'>"10381"</span>,
+  age <span class='op'>=</span> <span class='fl'>0</span>, measure <span class='op'>=</span> <span class='fl'>6</span>
+<span class='op'>)</span>
 
 <span class='co'># Does not error because `measures` is specified</span>
-<span class='no'>mort_data2</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_data</span>(
-  <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"NM_161_1"</span>, <span class='kw'>date</span> <span class='kw'>=</span> <span class='st'>"2016"</span>,
-  <span class='kw'>geography</span> <span class='kw'>=</span> <span class='st'>"TYPE464"</span>, <span class='kw'>sex</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>measures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cause_of_death</span> <span class='kw'>=</span> <span class='st'>"10381"</span>, <span class='kw'>age</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>measure</span> <span class='kw'>=</span> <span class='fl'>6</span>
-)
-}</div></span></pre>
+<span class='va'>mort_data2</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_data</span><span class='op'>(</span>
+  id <span class='op'>=</span> <span class='st'>"NM_161_1"</span>, date <span class='op'>=</span> <span class='st'>"2016"</span>,
+  geography <span class='op'>=</span> <span class='st'>"TYPE464"</span>, sex <span class='op'>=</span> <span class='fl'>0</span>, measures <span class='op'>=</span> <span class='cn'>NULL</span>,
+  cause_of_death <span class='op'>=</span> <span class='st'>"10381"</span>, age <span class='op'>=</span> <span class='fl'>0</span>, measure <span class='op'>=</span> <span class='fl'>6</span>
+<span class='op'>)</span>
+<span class='op'>}</span>
+
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -704,7 +725,7 @@ columns except for the <code>"OBS_VALUE"</code> column are parsed as characters.
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -43,9 +43,7 @@ nomis_codelist <- function(id, concept, search = NULL) {
 
   id_query <- paste0(gsub("NM", "CL", id), "_")
 
-  search_query <- ifelse(is.null(search), "",
-    paste0("?search=", search)
-  )
+  search_query <- ifelse(is.null(search), "", paste0("?search=", search))
 
   code_query <- paste0(
     codelist_url, id_query, concept,

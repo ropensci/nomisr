@@ -176,7 +176,7 @@ ID and a concept name.
 Note that some codelists, particularly geography, can be very large.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nomis_codelist</span>(<span class='no'>id</span>, <span class='no'>concept</span>, <span class='kw'>search</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>nomis_codelist</span><span class='op'>(</span><span class='va'>id</span>, <span class='va'>concept</span>, search <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -194,7 +194,7 @@ Codes are not case sensitive and must be specified.</p></td>
     <tr>
       <th>search</th>
       <td><p>Search for codes that contain a given string. The wildcard
-character <code>*</code> can be added to the beginning and/or end of each
+character <code><a href='https://rdrr.io/r/base/Arithmetic.html'>*</a></code> can be added to the beginning and/or end of each
 search string. Search strings are not case sensitive.
 Defaults to <code>NULL</code>. Note that the search function is not very powerful
 for some datasets.</p></td>
@@ -212,15 +212,17 @@ for some datasets.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_codelist</span>(<span class='st'>"NM_1_1"</span>, <span class='st'>"item"</span>)
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_codelist</span><span class='op'>(</span><span class='st'>"NM_1_1"</span>, <span class='st'>"item"</span><span class='op'>)</span>
 
 
 <span class='co'># Searching for codes ending with "london"</span>
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_codelist</span>(<span class='st'>"NM_1_1"</span>, <span class='st'>"geography"</span>, <span class='kw'>search</span> <span class='kw'>=</span> <span class='st'>"*london"</span>)
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_codelist</span><span class='op'>(</span><span class='st'>"NM_1_1"</span>, <span class='st'>"geography"</span>, search <span class='op'>=</span> <span class='st'>"*london"</span><span class='op'>)</span>
 
 
-<span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_codelist</span>(<span class='st'>"NM_161_1"</span>, <span class='st'>"cause_of_death"</span>)
-<span class='co'># }</span></div></pre>
+<span class='va'>z</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_codelist</span><span class='op'>(</span><span class='st'>"NM_161_1"</span>, <span class='st'>"cause_of_death"</span><span class='op'>)</span>
+<span class='co'># }</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -236,7 +238,7 @@ for some datasets.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

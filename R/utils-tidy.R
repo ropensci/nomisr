@@ -2,7 +2,7 @@
 nomis_tidy <- function(df, tidy_style) {
   if (nrow(df) > 0) {
     names(df) <- tolower(names(df)) # NOMIS defaults to screaming snake case
-    
+
     if (tidy_style == "snake_case") {
       case <- "snake"
     } else if (tidy_style == "camelCase") {

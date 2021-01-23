@@ -180,15 +180,15 @@ return all the options for a given variable in a particular dataset.</p>
 metadata for a given dataset, see <code><a href='nomis_overview.html'>nomis_overview()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nomis_get_metadata</span>(
-  <span class='no'>id</span>,
-  <span class='kw'>concept</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>search</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>additional_queries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>tidy</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>nomis_get_metadata</span><span class='op'>(</span>
+  <span class='va'>id</span>,
+  concept <span class='op'>=</span> <span class='cn'>NULL</span>,
+  type <span class='op'>=</span> <span class='cn'>NULL</span>,
+  search <span class='op'>=</span> <span class='cn'>NULL</span>,
+  additional_queries <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>,
+  tidy <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -213,7 +213,7 @@ types of variables available for a given code. Defaults to <code>NULL</code>. If
       <th>search</th>
       <td><p>A string or character vector of strings to search for in the
 metadata. Defaults to <code>NULL</code>. As in <code><a href='nomis_search.html'>nomis_search()</a></code>, the
-wildcard character <code>*</code> can be added to the beginning and/or end of each
+wildcard character <code><a href='https://rdrr.io/r/base/Arithmetic.html'>*</a></code> can be added to the beginning and/or end of each
 search string.</p></td>
     </tr>
     <tr>
@@ -245,9 +245,10 @@ versions greater than 0.2.0 and will eventually be removed.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_metadata</span>(<span class='st'>"NM_1_1"</span>)
+<span class='va'>a</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_metadata</span><span class='op'>(</span><span class='st'>"NM_1_1"</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>a</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 3</span><span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>a</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 3</span><span>
 #&gt;   codelist         conceptref isfrequencydimension
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>               
 #&gt; </span><span style='color: #555555;'>1</span><span> CL_1_1_GEOGRAPHY GEOGRAPHY  false               
@@ -256,34 +257,38 @@ versions greater than 0.2.0 and will eventually be removed.</p></td>
 #&gt; </span><span style='color: #555555;'>4</span><span> CL_1_1_MEASURES  MEASURES   false               
 #&gt; </span><span style='color: #555555;'>5</span><span> CL_1_1_FREQ      FREQ       true                
 #&gt; </span><span style='color: #555555;'>6</span><span> CL_1_1_TIME      TIME       false               </div><div class='input'>
-<span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_metadata</span>(<span class='st'>"NM_1_1"</span>, <span class='st'>"geography"</span>)
+<span class='va'>b</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_metadata</span><span class='op'>(</span><span class='st'>"NM_1_1"</span>, <span class='st'>"geography"</span><span class='op'>)</span>
 
-<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span>(<span class='no'>b</span>)</div><div class='output co'>#&gt; Rows: 7
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>b</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 7
 #&gt; Columns: 4
 #&gt; $ id             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "2092957697", "2092957698", "2092957699", "2092957700"…
 #&gt; $ parentCode     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> NA, NA, NA, "2092957700", "2092957701", "2092957702", …
 #&gt; $ label.en       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "United Kingdom", "Great Britain", "England", "Wales",…
 #&gt; $ description.en </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "United Kingdom", "Great Britain", "England", "Wales",…</div><div class='input'>
 <span class='co'># returns all types of geography</span>
-<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_metadata</span>(<span class='st'>"NM_1_1"</span>, <span class='st'>"geography"</span>, <span class='st'>"TYPE"</span>)
+<span class='va'>c</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_metadata</span><span class='op'>(</span><span class='st'>"NM_1_1"</span>, <span class='st'>"geography"</span>, <span class='st'>"TYPE"</span><span class='op'>)</span>
 
-<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; Rows: 101
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>c</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 102
 #&gt; Columns: 3
 #&gt; $ id             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "TYPE1", "TYPE8", "TYPE18", "TYPE27", "TYPE33", "TYPE4…
 #&gt; $ label.en       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "1991 frozen wards", "parliamentary constituencies 198…
 #&gt; $ description.en </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "1991 frozen wards", "parliamentary constituencies 198…</div><div class='input'>
 <span class='co'># returns geography types available within Wigan</span>
-<span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_metadata</span>(<span class='st'>"NM_1_1"</span>, <span class='st'>"geography"</span>, <span class='st'>"1879048226"</span>)
+<span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_metadata</span><span class='op'>(</span><span class='st'>"NM_1_1"</span>, <span class='st'>"geography"</span>, <span class='st'>"1879048226"</span><span class='op'>)</span>
 
-<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span>(<span class='no'>d</span>)</div><div class='output co'>#&gt; Rows: 12
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>d</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 12
 #&gt; Columns: 4
 #&gt; $ id             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "1879048226", "1879048226TYPE236", "1879048226TYPE297"…
 #&gt; $ parentCode     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "2013265922", NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 #&gt; $ label.en       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Wigan", "2011 census frozen wards within Wigan", "201…
 #&gt; $ description.en </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Wigan", "2011 census frozen wards within Wigan", "201…</div><div class='input'>
-<span class='no'>e</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_metadata</span>(<span class='st'>"NM_1_1"</span>, <span class='st'>"item"</span>, <span class='kw'>geography</span> <span class='kw'>=</span> <span class='fl'>1879048226</span>, <span class='kw'>sex</span> <span class='kw'>=</span> <span class='fl'>5</span>)
+<span class='va'>e</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_metadata</span><span class='op'>(</span><span class='st'>"NM_1_1"</span>, <span class='st'>"item"</span>, geography <span class='op'>=</span> <span class='fl'>1879048226</span>, sex <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>e</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 4</span><span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>e</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 4</span><span>
 #&gt;   id    parentCode label.en                 description.en          
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                   
 #&gt; </span><span style='color: #555555;'>1</span><span> 1     </span><span style='color: #BB0000;'>NA</span><span>         Total claimants          Total claimants         
@@ -291,14 +296,15 @@ versions greater than 0.2.0 and will eventually be removed.</p></td>
 #&gt; </span><span style='color: #555555;'>3</span><span> 3     1          Temporarily stopped      Temporarily stopped     
 #&gt; </span><span style='color: #555555;'>4</span><span> 4     1          Claimants under 18 years Claimants under 18 years
 #&gt; </span><span style='color: #555555;'>5</span><span> 9     1          Married females          Married females         </div><div class='input'>
-<span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_get_metadata</span>(<span class='st'>"NM_1_1"</span>, <span class='st'>"item"</span>, <span class='kw'>search</span> <span class='kw'>=</span> <span class='st'>"*married*"</span>)
+<span class='va'>f</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_metadata</span><span class='op'>(</span><span class='st'>"NM_1_1"</span>, <span class='st'>"item"</span>, search <span class='op'>=</span> <span class='st'>"*married*"</span><span class='op'>)</span>
 
-<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; Rows: 1
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>f</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 1
 #&gt; Columns: 4
 #&gt; $ id             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "9"
 #&gt; $ parentCode     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "1"
 #&gt; $ label.en       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Married females"
-#&gt; $ description.en </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Married females"</div><div class='input'># }
+#&gt; $ description.en </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Married females"</div><div class='input'><span class='co'># }</span>
 
 </div></span></pre>
   </div>
@@ -316,7 +322,7 @@ versions greater than 0.2.0 and will eventually be removed.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

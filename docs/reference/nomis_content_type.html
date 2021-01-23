@@ -180,7 +180,7 @@ dataset "NM_1658_1", using <code><a href='nomis_data_info.html'>nomis_data_info(
 "geoglevel", "2001census" and "sources".</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nomis_content_type</span>(<span class='no'>content_type</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>nomis_content_type</span><span class='op'>(</span><span class='va'>content_type</span>, id <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -205,29 +205,31 @@ dataset "NM_1658_1", using <code><a href='nomis_data_info.html'>nomis_data_info(
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_content_type</span>(<span class='st'>"sources"</span>)
+<span class='va'>a</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_content_type</span><span class='op'>(</span><span class='st'>"sources"</span><span class='op'>)</span>
 
-<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span>(<span class='no'>a</span>)</div><div class='output co'>#&gt; Rows: 16
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>a</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 16
 #&gt; Columns: 6
 #&gt; $ description <span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "A count of home Civil Service employees. It excludes the…
 #&gt; $ id          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "acses", "aps", "ashe", "bres", "census", "cc", "dwp", "v…
 #&gt; $ name        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Annual Civil Service Employment Survey", "Annual Populat…
 #&gt; $ type        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "DataSource", "DataSource", "DataSource", "DataSource", "…
-#&gt; $ item        </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span> [NULL, NULL, NULL, NULL, &lt;data.frame[4 x 5]&gt;, NULL, &lt;dat…
+#&gt; $ item        </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span> [NULL, NULL, NULL, NULL, &lt;data.frame[5 x 5]&gt;, NULL, &lt;dat…
 #&gt; $ status      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> NA, NA, NA, NA, NA, NA, NA, "archived", NA, NA, NA, NA, N…</div><div class='input'>
-<span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fu'>nomis_content_type</span>(<span class='st'>"sources"</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"census"</span>)
+<span class='va'>b</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_content_type</span><span class='op'>(</span><span class='st'>"sources"</span>, id <span class='op'>=</span> <span class='st'>"census"</span><span class='op'>)</span>
 
-<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span>(<span class='no'>b</span>)</div><div class='output co'>#&gt; Rows: 4
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>b</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 5
 #&gt; Columns: 9
 #&gt; $ description      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Census data from the 1981, 1991, 2001 and 2011 Cens…
-#&gt; $ id               </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "census", "census", "census", "census"
+#&gt; $ id               </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "census", "census", "census", "census", "census"
 #&gt; $ item.description </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "The 2011 Census was taken on 27th March 2011. The f…
 #&gt; $ item.id          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "census_2011", "census_2001", "census_1991", "census…
 #&gt; $ item.item        </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span> [&lt;data.frame[13 x 5]&gt;, &lt;data.frame[6 x 5]&gt;, NULL, N…
 #&gt; $ item.name        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "2011 Census", "2001 Census", "1991 Census", "1981 C…
 #&gt; $ item.type        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "DataSourceSubGroup", "DataSourceSubGroup", "DataSou…
 #&gt; $ name             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Census of Population", "Census of Population", "Cen…
-#&gt; $ type             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "DataSource", "DataSource", "DataSource", "DataSourc…</div><div class='input'># }
+#&gt; $ type             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "DataSource", "DataSource", "DataSource", "DataSourc…</div><div class='input'><span class='co'># }</span>
 
 </div></span></pre>
   </div>
@@ -245,7 +247,7 @@ dataset "NM_1658_1", using <code><a href='nomis_data_info.html'>nomis_data_info(
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

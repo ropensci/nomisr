@@ -18,7 +18,7 @@ test_that("nomis_get_metadata return expected format", {
   c <- nomis_get_metadata("NM_1_1", "geography", "TYPE", tidy = TRUE)
   expect_true(tibble::is_tibble(c))
   expect_named(c, c("id", "label_en", "description_en"))
-  
+
   d <- nomis_get_metadata(
     id = "NM_893_1", concept = "C_AHTHUK11", type = "1"
   )
@@ -35,5 +35,4 @@ test_that("nomis_get_metadata return expected format", {
   f <- nomis_get_metadata("NM_1_1", "item", search = "*married*")
   expect_equal(nrow(f), 1)
   expect_true(tibble::is_tibble(f))
-  
 })

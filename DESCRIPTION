@@ -34,7 +34,7 @@ Imports:
     rsdmx,
     rlang,
     snakecase
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 Suggests:
     knitr,
     rmarkdown,

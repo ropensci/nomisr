@@ -24,8 +24,8 @@
 #'
 #' @param units A string or character vector of strings to search for in
 #' available dataset units. Defaults to `NULL`.
-#' 
-#' @param tidy If `TRUE`, converts tibble names to snakecase. 
+#'
+#' @param tidy If `TRUE`, converts tibble names to snakecase.
 #'
 #' @return A tibble with details on all datasets matching the search query.
 #' @export

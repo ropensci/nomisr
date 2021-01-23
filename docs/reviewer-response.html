@@ -198,9 +198,9 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 <div id="about-community-guidelines" class="section level4">
 <h4 class="hasAnchor">
 <a href="#about-community-guidelines" class="anchor"></a>About Community Guidelines</h4>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>There is no contribution guidelines <span class="cf">in</span> the README or other CONTRIBUTING.md.</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>There is no contribution guidelines <span class="cf">in</span> the README or other CONTRIBUTING.md.</span></code></pre></div>
 <p><strong>Response:</strong> Added a CONTRIBUTING.md in <a href="https://github.com/evanodell/nomisr/commit/e4bbb0229709a861b1ef2141e9ecf6da6ff8fc10" class="uri">https://github.com/evanodell/nomisr/commit/e4bbb0229709a861b1ef2141e9ecf6da6ff8fc10</a></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>DESCRIPTION needs some improvement <span class="op">:</span><span class="st"> </span>no need to use Author and Maintainer fields <span class="cf">if</span> you are using Authors<span class="op">@</span>R. You can just use the latest. You can find some good example <span class="cf">in</span> R package book.</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>DESCRIPTION needs some improvement <span class="sc">:</span> no need to use Author and Maintainer fields <span class="cf">if</span> you are using Authors<span class="sc">@</span>R. You can just use the latest. You can find some good example <span class="cf">in</span> R package book.</span></code></pre></div>
 <p><strong>Response:</strong> Now only using <a href="mailto:Authors@R" class="email">Authors@R</a></p>
 </div>
 <div id="improvement-for-the-packaging-guidelines" class="section level4">
@@ -257,25 +257,25 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 <li>Is this the reason why you enclosed each example in \dontrun{} statement ? am I not sure on what is the recommendation for API package like this one for example ? \dontrun{} does allow anyone to run examples with something like example(“nomis_codes”, package = “nomisr”). Idea : Maybe \donttest{} is better here: does show in help and runs with example, but not run by R CMD check (so not run by CRAN ?) - see rd vignette from roxygen2</li>
 </ul>
 <p><strong>Response:</strong> I’ve changed \dontrun{} to \donttest{}</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>I ran all tests with devtools<span class="op">::</span><span class="kw">run_examples</span>(<span class="dt">run =</span> <span class="ot">FALSE</span>) (<span class="cf">in</span> several time, due to timeout constraint). Everything is working. It works well <span class="cf">for</span> almost all, but your example assign systematically to a <span class="kw">variable</span> (named x or y <span class="op">-</span><span class="st"> </span>room <span class="cf">for</span> improvement) but never print to show head of results. I feel that is missing.</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>I ran all tests with devtools<span class="sc">::</span><span class="fu">run_examples</span>(<span class="at">run =</span> <span class="cn">FALSE</span>) (<span class="cf">in</span> several time, due to timeout constraint). Everything is working. It works well <span class="cf">for</span> almost all, but your example assign systematically to a <span class="fu">variable</span> (named x or y <span class="sc">-</span> room <span class="cf">for</span> improvement) but never print to show head of results. I feel that is missing.</span></code></pre></div>
 <p><strong>Response:</strong> I have changed the names in examples to be more descriptive of the data they are actually retrieving, and added a print call so the head is actually dixplayed.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>I said <span class="st">"almost all"</span> because there are some very long request <span class="cf">in</span> nomis_get_data. The warning that you put <span class="cf">in</span> Details states that it can be very slow process <span class="cf">if</span> calling significant amount of data. I would emphasize on this, saying this warning <span class="cf">in</span> Description part of the help file. And these example should definitely not be ran.</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>I said <span class="st">"almost all"</span> because there are some very long request <span class="cf">in</span> nomis_get_data. The warning that you put <span class="cf">in</span> Details states that it can be very slow process <span class="cf">if</span> calling significant amount of data. I would emphasize on this, saying this warning <span class="cf">in</span> Description part of the help file. And these example should definitely not be ran.</span></code></pre></div>
 <p><strong>Response:</strong> I’ve removed the very long examples from nomis_get_data - I considered wrapping them in \dontrun{} but I think dropping them is the better option.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>I saw you made a pkgdown website. This is great <span class="op">!!</span><span class="st"> </span>and nice theme<span class="op">!</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>I did not find the source code of this website. I would have thought it leaved with the package source code. But no docs folder or gh<span class="op">-</span>pages. I find it useful to have access <span class="cf">for</span> letting people PR your some typos or other thing and all the site from your package source code. However, you may have good reason.</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>I saw you made a pkgdown website. This is great <span class="sc">!!</span> and nice theme<span class="sc">!</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>I did not find the source code of this website. I would have thought it leaved with the package source code. But no docs folder or gh<span class="sc">-</span>pages. I find it useful to have access <span class="cf">for</span> letting people PR your some typos or other thing and all the site from your package source code. However, you may have good reason.</span></code></pre></div>
 <p><strong>Response:</strong> I keep all the source code for my documentation website in my <a href="https://github.com/evanodell/docs">docs repo</a>. I did this so I could host on netlify with a custom domain and https encryption which - at least when I set it up - was not available through github pages. I’m not sure if that is the best option or not.</p>
 </div>
 </div>
 <div id="various-comments-on-the-code" class="section level2">
 <h2 class="hasAnchor">
 <a href="#various-comments-on-the-code" class="anchor"></a>Various comments on the code</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>[minor] I would put the url of the API <span class="cf">in</span> its own variable. I think it is better practice and more efficient to maintain <span class="cf">in</span> case of change <span class="cf">in</span> the <span class="kw">url</span> (e.g V0<span class="fl">.2</span>). The url is used several time and a change would mean copy pasting. another utils <span class="cf">function</span> could help building the <span class="kw">url</span> (paste0 is used three times), with the same base url def.sdmx.json<span class="er">)</span>. Know that it exists some tools to help build some strings with parameters like glue, and specific one to handle url like urltools or those <span class="cf">in</span> httr. You may not need them here but it is worth knowing.</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>[minor] I would put the url of the API <span class="cf">in</span> its own variable. I think it is better practice and more efficient to maintain <span class="cf">in</span> case of change <span class="cf">in</span> the <span class="fu">url</span> (e.g V0<span class="fl">.2</span>). The url is used several time and a change would mean copy pasting. another utils <span class="cf">function</span> could help building the <span class="fu">url</span> (paste0 is used three times), with the same base url def.sdmx.json<span class="er">)</span>. Know that it exists some tools to help build some strings with parameters like glue, and specific one to handle url like urltools or those <span class="cf">in</span> httr. You may not need them here but it is worth knowing.</span></code></pre></div>
 <p><strong>Response:</strong> I’ve turned the API URL into its own variable.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>suppressMessage is used to hide the message of readr<span class="op">::</span>read_csv. However, the message appears because column types are guessed and not set. It is good practice to set column type <span class="cf">in</span> readr with column_types =<span class="st"> </span><span class="kw">cols</span>(<span class="op">&lt;</span>something<span class="op">&gt;</span>). In an API package like this one, it make even more sense because it could helps be aware of any change <span class="cf">in</span> the <span class="kw">format.</span> (using <span class="kw">stop_for_problems</span>() or just see a message appear) <span class="op">-</span><span class="st"> </span>see readr vignettes</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>suppressMessage is used to hide the message of readr<span class="sc">::</span>read_csv. However, the message appears because column types are guessed and not set. It is good practice to set column type <span class="cf">in</span> readr with column_types <span class="ot">=</span> <span class="fu">cols</span>(<span class="sc">&lt;</span>something<span class="sc">&gt;</span>). In an API package like this one, it make even more sense because it could helps be aware of any change <span class="cf">in</span> the <span class="fu">format.</span> (using <span class="fu">stop_for_problems</span>() or just see a message appear) <span class="sc">-</span> see readr vignettes</span></code></pre></div>
 <p><strong>Response:</strong> I’ve dropped suppressMessage and used <code>col_types = readr::cols(.default = readr::col_character())</code> to make columns characters by default.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>[minor] I don<span class="st">'t know what are the good practice on this one. I just feel that you have a dplyr dependency in import for three functions bind_rows, case_when and if_else than can be easily replace with rbind or if.else. I feel that, if the former are very useful interactively in an analysis, using them in a package can be unnecessary dependency to a "big" package that can cause you some effort later on if anything change in dplyr. More of a personal point of view on this one.</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="st">However, it relates on how you are build your query url</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>[minor] I don<span class="st">'t know what are the good practice on this one. I just feel that you have a dplyr dependency in import for three functions bind_rows, case_when and if_else than can be easily replace with rbind or if.else. I feel that, if the former are very useful interactively in an analysis, using them in a package can be unnecessary dependency to a "big" package that can cause you some effort later on if anything change in dplyr. More of a personal point of view on this one.</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">However, it relates on how you are build your query url</span></span></code></pre></div>
 <p>query &lt;- dplyr::if_else(keywords==FALSE, paste0(“/def.sdmx.json?search=<em>", search, "</em>”), paste0(“/def.sdmx.json?search=keywords-”, search, "*")</p>
 <p>could be rewritten without dplyr::if_else</p>
 <p>base_query &lt;- “/def.sdmx.json?search=” if (keyword) { keyword_term &lt;- “keywords-”) } else { keyword_term &lt;- "*" }</p>
@@ -285,24 +285,24 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 <p>query &lt;- paste0(base_query, key_word_term, search, "*")</p>
 <p>It would suppres a non essential dependency.</p>
 <p><strong>Response:</strong> I’ve dropped the use of case_when and if_else in favour the the style you described above. bind_rows is used to combine together a single tibble with a list of one or more tibbles, and using rbind in place of bind_rows would require an extra step. If there are changes to bind_rows in the future it is only in one location so should be easy to adjust for.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>The style <span class="cf">in</span> code could be improve <span class="cf">in</span> some places. You can follow some style guide to help you.</span>
-<span id="cb9-2"><a href="#cb9-2"></a>like the one <span class="cf">in</span> ROpensci Guidelines linking to Advanced R or more recent the one used <span class="cf">in</span> the tidyverse styleguide. They even build some tools to help like styler and lintr. Example of improvement<span class="op">:</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="st">    </span>put spaces after foror <span class="cf">if</span> and also around =, <span class="op">==</span>, <span class="op">+</span>, <span class="op">&gt;</span>, ...</span>
-<span id="cb9-4"><a href="#cb9-4"></a>    indentation of <span class="kw">code</span> (<span class="cf">in</span> RStudio CTRL<span class="op">+</span>i i useful). <span class="cf">for</span> example <span class="cf">in</span> <span class="cf">if</span> () { } <span class="cf">else</span> { }, lines of code that are inside brackets should be indented.</span>
-<span id="cb9-5"><a href="#cb9-5"></a>    use {} with <span class="cf">if</span> when it does not fit on one line</span>
-<span id="cb9-6"><a href="#cb9-6"></a>    More importantly, be consistent <span class="cf">in</span> all your script with the guideline you choose.</span>
-<span id="cb9-7"><a href="#cb9-7"></a>Know that when you want to stop on a condition, there is also stopifnot. For user experience, you can also return clearer error sometimes with <span class="kw">stop</span>(<span class="st">"API request did not return any results"</span>, <span class="dt">call. =</span> <span class="ot">FALSE</span>) to not show the call <span class="cf">for</span> example.</span>
-<span id="cb9-8"><a href="#cb9-8"></a>A good practice is also to use meaningful name inside your internal code, even <span class="cf">for</span> temporary variable. There are a lot of x, a, q, ... This will improve readability and the ease <span class="cf">for</span> others to collaborate on your <span class="kw">code</span> (including future you)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>The style <span class="cf">in</span> code could be improve <span class="cf">in</span> some places. You can follow some style guide to help you.</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>like the one <span class="cf">in</span> ROpensci Guidelines linking to Advanced R or more recent the one used <span class="cf">in</span> the tidyverse styleguide. They even build some tools to help like styler and lintr. Example of improvement<span class="sc">:</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    put spaces after foror <span class="cf">if</span> and also around <span class="ot">=</span>, <span class="sc">==</span>, <span class="sc">+</span>, <span class="sc">&gt;</span>, ...</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    indentation of <span class="fu">code</span> (<span class="cf">in</span> RStudio CTRL<span class="sc">+</span>i i useful). <span class="cf">for</span> example <span class="cf">in</span> <span class="cf">if</span> () { } <span class="cf">else</span> { }, lines of code that are inside brackets should be indented.</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    use {} with <span class="cf">if</span> when it does not fit on one line</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    More importantly, be consistent <span class="cf">in</span> all your script with the guideline you choose.</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>Know that when you want to stop on a condition, there is also stopifnot. For user experience, you can also return clearer error sometimes with <span class="fu">stop</span>(<span class="st">"API request did not return any results"</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>) to not show the call <span class="cf">for</span> example.</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>A good practice is also to use meaningful name inside your internal code, even <span class="cf">for</span> temporary variable. There are a lot of x, a, q, ... This will improve readability and the ease <span class="cf">for</span> others to collaborate on your <span class="fu">code</span> (including future you)</span></code></pre></div>
 <p><strong>Response:</strong> I’ve added <code>call. = FALSE</code> to the various stop messages.</p>
 <p><strong>Response:</strong> I’ve gone through the code and changed temporary variable names to be more meaningful, and formatted the code to improve indentation, spaces around if and for operators, ==, etc.</p>
 </div>
 <div id="about-the-timeout-and-size-of-data" class="section level1">
 <h1 class="hasAnchor">
 <a href="#about-the-timeout-and-size-of-data" class="anchor"></a>About the timeout and size of data</h1>
-<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>If session is <span class="kw">interactive</span>(), it may be a good idea to warn clearly and even ask <span class="cf">if</span> we want to continue when lots of data are being requested. I find myself playing with the example trying to retrieve <span class="dv">208888</span> of your pages</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>If session is <span class="fu">interactive</span>(), it may be a good idea to warn clearly and even ask <span class="cf">if</span> we want to continue when lots of data are being requested. I find myself playing with the example trying to retrieve <span class="dv">208888</span> of your pages</span></code></pre></div>
 <p>Retrieving additional pages 1 of 208888 Retrieving additional pages 2 of 208888</p>
 <p>I don’t know if some other API packages are doing something to help user or if it is all the user responsibility to know what is he doing. (users will surely be already NOMIS data users).</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>As another improvement, I think you should try to create custom error message <span class="cf">for</span> the timeout issue as you know it is an issue that will impact user experience but cannot really prevent. I encountered<span class="op">:</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>As another improvement, I think you should try to create custom error message <span class="cf">for</span> the timeout issue as you know it is an issue that will impact user experience but cannot really prevent. I encountered<span class="sc">:</span></span></code></pre></div>
 <p>a &lt;- nomis_codes(“NM_1_1”)</p>
 </div>
 <div id="error-in-openconnectioncon-rb-" class="section level1">
@@ -313,11 +313,11 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 <h1 class="hasAnchor">
 <a href="#timeout-was-reached-resolving-timed-out-after-10000-milliseconds" class="anchor"></a>Timeout was reached: Resolving timed out after 10000 milliseconds</h1>
 <p>You could use some tryCatch mechanism (some useful info in Advanced R).</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>[thoughts] You may need more control on the request mechanism to deal with timeout. First, it seems <span class="cf">for</span> the website one need to contact NOMIS help<span class="op">-</span>desk to know more about limitation. Then , your are relying on readr connection mechanism, and may need to use httr, crul or curl to better handle request to API with the specificity of NOMIS</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>[thoughts] You may need more control on the request mechanism to deal with timeout. First, it seems <span class="cf">for</span> the website one need to contact NOMIS help<span class="sc">-</span>desk to know more about limitation. Then , your are relying on readr connection mechanism, and may need to use httr, crul or curl to better handle request to API with the specificity of NOMIS</span></code></pre></div>
 <p><strong>Response:</strong> I’ve used tryCatch to hopefully provide more useful information in the case of time outs. I’ve also written, but not implemented, a warning and yes/no option in interactive sesssions with requests over 350,000 cells which are likely to cause rate limiting issues.</p>
 <p>About SMDX format on NOMIS</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>Do you know about the rsdmx package ? it is on github and CRAN, there is WIKI. I did not find NOMIS <span class="cf">in</span> their listing, so I did not know <span class="cf">if</span> it works <span class="cf">for</span> you and how it could overlap with your package.</span>
-<span id="cb13-2"><a href="#cb13-2"></a>rsdmx is definitely more a generic package than yours. I just wanted to point it to you <span class="cf">in</span> case you did not know.</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Do you know about the rsdmx package ? it is on github and CRAN, there is WIKI. I did not find NOMIS <span class="cf">in</span> their listing, so I did not know <span class="cf">if</span> it works <span class="cf">for</span> you and how it could overlap with your package.</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>rsdmx is definitely more a generic package than yours. I just wanted to point it to you <span class="cf">in</span> case you did not know.</span></code></pre></div>
 <p><strong>Response:</strong> I was not aware of it, but it is something I should explore for the future, thank you for pointing me towards it.</p>
 <div id="response-to-pegeler" class="section level2">
 <h2 class="hasAnchor">
@@ -325,50 +325,50 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 <p>Package Review for nomisr</p>
 <p>Onboarding submission: ropensci/onboarding#190</p>
 <p>Please check off boxes as applicable, and elaborate in comments below. Your review is not limited to these topics, as described in the reviewer guide</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>As the reviewer I confirm that there are no conflicts of interest <span class="cf">for</span> me to review this <span class="kw">work</span> (If you are unsure whether you are <span class="cf">in</span> conflict, please speak to your editor before starting your review).</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>As the reviewer I confirm that there are no conflicts of interest <span class="cf">for</span> me to review this <span class="fu">work</span> (If you are unsure whether you are <span class="cf">in</span> conflict, please speak to your editor before starting your review).</span></code></pre></div>
 <p>Documentation</p>
 <p>The package includes all the following forms of documentation:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>A statement of need clearly stating problems the software is designed to solve and its target audience <span class="cf">in</span> README</span>
-<span id="cb15-2"><a href="#cb15-2"></a>Installation instructions<span class="op">:</span><span class="st"> </span><span class="cf">for</span> the development version of package and any non<span class="op">-</span>standard dependencies <span class="cf">in</span> README</span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="kw">Vignette</span>(s) demonstrating major functionality that runs successfully locally</span>
-<span id="cb15-4"><a href="#cb15-4"></a>Function Documentation<span class="op">:</span><span class="st"> </span><span class="cf">for</span> all exported functions <span class="cf">in</span> R help</span>
-<span id="cb15-5"><a href="#cb15-5"></a>Examples <span class="cf">for</span> all exported functions <span class="cf">in</span> R Help that run successfully locally</span>
-<span id="cb15-6"><a href="#cb15-6"></a>Community guidelines including contribution guidelines <span class="cf">in</span> the README or CONTRIBUTING, and DESCRIPTION with URL, BugReports and <span class="kw">Maintainer</span> (which may be autogenerated via Authors<span class="op">@</span>R).</span>
-<span id="cb15-7"><a href="#cb15-7"></a></span>
-<span id="cb15-8"><a href="#cb15-8"></a>For packages co<span class="op">-</span>submitting to JOSS</span>
-<span id="cb15-9"><a href="#cb15-9"></a></span>
-<span id="cb15-10"><a href="#cb15-10"></a>    The package has an obvious research application according to JOSS<span class="st">'s definition</span></span>
-<span id="cb15-11"><a href="#cb15-11"></a></span>
-<span id="cb15-12"><a href="#cb15-12"></a><span class="st">The package contains a paper.md matching JOSS'</span>s requirements with<span class="op">:</span></span>
-<span id="cb15-13"><a href="#cb15-13"></a></span>
-<span id="cb15-14"><a href="#cb15-14"></a><span class="st">    </span>A short summary describing the high<span class="op">-</span>level functionality of the software</span>
-<span id="cb15-15"><a href="#cb15-15"></a>    Authors<span class="op">:</span><span class="st"> </span>A list of authors with their affiliations</span>
-<span id="cb15-16"><a href="#cb15-16"></a>    A statement of need clearly stating problems the software is designed to solve and its target audience.</span>
-<span id="cb15-17"><a href="#cb15-17"></a>    References<span class="op">:</span><span class="st"> </span>with DOIs <span class="cf">for</span> all those that have <span class="kw">one</span> (e.g. papers, datasets, software).</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>A statement of need clearly stating problems the software is designed to solve and its target audience <span class="cf">in</span> README</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>Installation instructions<span class="sc">:</span> <span class="cf">for</span> the development version of package and any non<span class="sc">-</span>standard dependencies <span class="cf">in</span> README</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Vignette</span>(s) demonstrating major functionality that runs successfully locally</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>Function Documentation<span class="sc">:</span> <span class="cf">for</span> all exported functions <span class="cf">in</span> R help</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>Examples <span class="cf">for</span> all exported functions <span class="cf">in</span> R Help that run successfully locally</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>Community guidelines including contribution guidelines <span class="cf">in</span> the README or CONTRIBUTING, and DESCRIPTION with URL, BugReports and <span class="fu">Maintainer</span> (which may be autogenerated via Authors<span class="sc">@</span>R).</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>For packages co<span class="sc">-</span>submitting to JOSS</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    The package has an obvious research application according to JOSS<span class="st">'s definition</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="st">The package contains a paper.md matching JOSS'</span>s requirements with<span class="sc">:</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    A short summary describing the high<span class="sc">-</span>level functionality of the software</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    Authors<span class="sc">:</span> A list of authors with their affiliations</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    A statement of need clearly stating problems the software is designed to solve and its target audience.</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    References<span class="sc">:</span> with DOIs <span class="cf">for</span> all those that have <span class="fu">one</span> (e.g. papers, datasets, software).</span></code></pre></div>
 <p>Functionality</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>Installation<span class="op">:</span><span class="st"> </span>Installation succeeds as documented.</span>
-<span id="cb16-2"><a href="#cb16-2"></a>Functionality<span class="op">:</span><span class="st"> </span>Any functional claims of the software been confirmed.</span>
-<span id="cb16-3"><a href="#cb16-3"></a>Performance<span class="op">:</span><span class="st"> </span>Any performance claims of the software been confirmed.</span>
-<span id="cb16-4"><a href="#cb16-4"></a>Automated tests<span class="op">:</span><span class="st"> </span>Unit tests cover essential functions of the package</span>
-<span id="cb16-5"><a href="#cb16-5"></a>and a reasonable range of inputs and conditions. All tests pass on the local machine.</span>
-<span id="cb16-6"><a href="#cb16-6"></a>Packaging guidelines<span class="op">:</span><span class="st"> </span>The package conforms to the rOpenSci packaging guidelines</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Installation<span class="sc">:</span> Installation succeeds as documented.</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>Functionality<span class="sc">:</span> Any functional claims of the software been confirmed.</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>Performance<span class="sc">:</span> Any performance claims of the software been confirmed.</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>Automated tests<span class="sc">:</span> Unit tests cover essential functions of the package</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>and a reasonable range of inputs and conditions. All tests pass on the local machine.</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>Packaging guidelines<span class="sc">:</span> The package conforms to the rOpenSci packaging guidelines</span></code></pre></div>
 <p>Final approval (post-review)</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>The author has responded to my review and made changes to my satisfaction. I recommend approving this package.</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>The author has responded to my review and made changes to my satisfaction. I recommend approving this package.</span></code></pre></div>
 <p>Estimated hours spent reviewing: 10 Review Comments</p>
 <p>Excellent work! This is a fine example of the level of quality and professionalism that I have come to expect from rOpenSci contributions. This package is a great addition to the complement of R functionality and provides a facile portal to a useful data source.</p>
 <p>Many of the comments that I had have been addressed as a result of @cderv’s prompt and thorough review. In addition, development has continued to be very active over the past few weeks! Issues are fixed as quickly as I find them! Below are a few more comments that I would like to add. Basic Package Structure Overview README.md</p>
 <p>The README.md does not contain citation information, per rOpenSci packaging guide. I am not sure how necessary that is since there is a CITATION file in the inst/ directory, however, it should be an easy add.</p>
 <p>I would concur with @cderv in suggesting additional usage examples. DESCRIPTION</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>The DESCRIPTION file does not currently specify a minimum version of R. I would</span>
-<span id="cb18-2"><a href="#cb18-2"></a>recommend doing so. A minor release is preferred over a patch release, e.g.</span>
-<span id="cb18-3"><a href="#cb18-3"></a></span>
-<span id="cb18-4"><a href="#cb18-4"></a>Depends<span class="op">:</span><span class="st"> </span><span class="kw">R</span> (<span class="op">&gt;=</span><span class="st"> </span><span class="dv">3</span>.<span class="fl">4.0</span>)</span>
-<span id="cb18-5"><a href="#cb18-5"></a></span>
-<span id="cb18-6"><a href="#cb18-6"></a>is better than</span>
-<span id="cb18-7"><a href="#cb18-7"></a></span>
-<span id="cb18-8"><a href="#cb18-8"></a>Depends<span class="op">:</span><span class="st"> </span><span class="kw">R</span> (<span class="op">&gt;=</span><span class="st"> </span><span class="dv">3</span>.<span class="fl">4.1</span>)</span>
-<span id="cb18-9"><a href="#cb18-9"></a></span>
-<span id="cb18-10"><a href="#cb18-10"></a>I am not seeing where curl is used even though it is <span class="cf">in</span> the Suggests list.</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>The DESCRIPTION file does not currently specify a minimum version of R. I would</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>recommend doing so. A minor release is preferred over a patch release, e.g.</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>Depends<span class="sc">:</span> <span class="fu">R</span> (<span class="sc">&gt;=</span> <span class="dv">3</span>.<span class="fl">4.0</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>is better than</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>Depends<span class="sc">:</span> <span class="fu">R</span> (<span class="sc">&gt;=</span> <span class="dv">3</span>.<span class="fl">4.1</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>I am not seeing where curl is used even though it is <span class="cf">in</span> the Suggests list.</span></code></pre></div>
 <p><strong>Response:</strong> I’ve added a minimum version of R (&gt;= 3.4.0) to the DESCRIPTION.</p>
 <p><strong>Response:</strong> Not including curl was causing errors with jsonlite on travis - I’m not sure why, as jsonlite is supposed to import curl itself.</p>
 <p>CITATION</p>
@@ -381,98 +381,98 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 <p>The CITATION file should also end in a newline character :)</p>
 <p><strong>Response:</strong> I’ve hardcoded 2018 into the CITATION file, which I think is the easiest solution, as its the year the package was first released, although I’m open to other suggestions as well.</p>
 <p>Documentation</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>The man page <span class="cf">for</span> the package is named nmisr, not nomisr. This appears to be a typo.</span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="op">@</span>seealso can link to the other package functions using \link{}.</span>
-<span id="cb19-3"><a href="#cb19-3"></a>It appears that some descriptions may be intended to be multi<span class="op">-</span>paragraph. Without explicitly</span>
-<span id="cb19-4"><a href="#cb19-4"></a>using the <span class="op">@</span>description and <span class="op">@</span>details tags, the third code block is assumed to be the <span class="st">'details'</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a>block by default. Therefore, using explicit roxygen tags might be helpful here.</span>
-<span id="cb19-6"><a href="#cb19-6"></a>Nomis data comes packaged <span class="cf">in</span> very complex data structures. Please don<span class="st">'t be afraid of '</span>over<span class="op">-</span>explaining<span class="st">'.</span></span>
-<span id="cb19-7"><a href="#cb19-7"></a><span class="st">The more information in the documentation and vignettes, the better for the user, especially if they do</span></span>
-<span id="cb19-8"><a href="#cb19-8"></a><span class="st">not have prior experience with Nomis data.</span></span>
-<span id="cb19-9"><a href="#cb19-9"></a><span class="st">'</span>Nomis<span class="st">' in the title for nomis_search() should be capitalized to be consistent with the rest of the package.</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>The man page <span class="cf">for</span> the package is named nmisr, not nomisr. This appears to be a typo.</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span>seealso can link to the other package functions using \link{}.</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>It appears that some descriptions may be intended to be multi<span class="sc">-</span>paragraph. Without explicitly</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>using the <span class="sc">@</span>description and <span class="sc">@</span>details tags, the third code block is assumed to be the <span class="st">'details'</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>block by default. Therefore, using explicit roxygen tags might be helpful here.</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>Nomis data comes packaged <span class="cf">in</span> very complex data structures. Please don<span class="st">'t be afraid of '</span>over<span class="sc">-</span>explaining<span class="st">'.</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="st">The more information in the documentation and vignettes, the better for the user, especially if they do</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="st">not have prior experience with Nomis data.</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="st">'</span>Nomis<span class="st">' in the title for nomis_search() should be capitalized to be consistent with the rest of the package.</span></span></code></pre></div>
 <p><strong>Response:</strong> I’ve expanded the documentation and used roxygen tags to improve organisation. I’ve also added an expanded explanation to the package vignette.</p>
 <p>Examples</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>The example <span class="cf">for</span> nomis_get_data failed due to lack of data. I recommend finding a specific</span>
-<span id="cb20-2"><a href="#cb20-2"></a>date range that will return results and then hard<span class="op">-</span>code that into the example.</span>
-<span id="cb20-3"><a href="#cb20-3"></a>Athough \donttest{} used to be perfect <span class="cf">for</span> API packages because it would not be run by</span>
-<span id="cb20-4"><a href="#cb20-4"></a>R CMD check but would be run by <span class="kw">example</span>() and would be included <span class="cf">in</span> the man page, it appears</span>
-<span id="cb20-5"><a href="#cb20-5"></a>that the functionality has changed.</span>
-<span id="cb20-6"><a href="#cb20-6"></a>Now, according to Hadley<span class="st">'s book, it appears that code enclosed</span></span>
-<span id="cb20-7"><a href="#cb20-7"></a><span class="st">in \donttest{} is indeed checked (though I have yet to confirm). Therefore,</span></span>
-<span id="cb20-8"><a href="#cb20-8"></a><span class="st">for long-running API calls, it might make sense to change back to \dontrun{} if you are</span></span>
-<span id="cb20-9"><a href="#cb20-9"></a><span class="st">concerned about time-out. I recall</span></span>
-<span id="cb20-10"><a href="#cb20-10"></a><span class="st">reading some best practice advice on CRAN'</span>s website at some point, but cannot find the reference</span>
-<span id="cb20-11"><a href="#cb20-11"></a>anymore.</span>
-<span id="cb20-12"><a href="#cb20-12"></a>The examples often show multiple ways to use the <span class="cf">function</span>, which is excellent. However,</span>
-<span id="cb20-13"><a href="#cb20-13"></a>it might be a nice enhancement to add a little extra code to glimpse the data <span class="cf">for</span> the users to get</span>
-<span id="cb20-14"><a href="#cb20-14"></a>a better feel <span class="cf">for</span> what they are getting out of the API call. This is especially helpful since</span>
-<span id="cb20-15"><a href="#cb20-15"></a>the data that is returned can differ greatly depending on what args are passed.</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>The example <span class="cf">for</span> nomis_get_data failed due to lack of data. I recommend finding a specific</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>date range that will return results and then hard<span class="sc">-</span>code that into the example.</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>Athough \donttest{} used to be perfect <span class="cf">for</span> API packages because it would not be run by</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>R CMD check but would be run by <span class="fu">example</span>() and would be included <span class="cf">in</span> the man page, it appears</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>that the functionality has changed.</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>Now, according to Hadley<span class="st">'s book, it appears that code enclosed</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="st">in \donttest{} is indeed checked (though I have yet to confirm). Therefore,</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="st">for long-running API calls, it might make sense to change back to \dontrun{} if you are</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="st">concerned about time-out. I recall</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="st">reading some best practice advice on CRAN'</span>s website at some point, but cannot find the reference</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>anymore.</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>The examples often show multiple ways to use the <span class="cf">function</span>, which is excellent. However,</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>it might be a nice enhancement to add a little extra code to glimpse the data <span class="cf">for</span> the users to get</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>a better feel <span class="cf">for</span> what they are getting out of the API call. This is especially helpful since</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>the data that is returned can differ greatly depending on what args are passed.</span></code></pre></div>
 <p><strong>Response:</strong> I’ve added glimpsing to the examples in different functions.</p>
 <p>Vignettes</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>I like the <span class="cf">switch</span> to echo =<span class="st"> </span><span class="ot">TRUE</span> <span class="cf">for</span> vignette code chunks. This is the user<span class="st">'s opportunity</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="st">to see the code in action for the first time. Including the code used to generate the results can</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="st">aid in understanding and readability.</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a><span class="st">Vignettes are not currently built. This is not a big deal. However, it would</span></span>
-<span id="cb21-5"><a href="#cb21-5"></a><span class="st">be a convenience for those installing from GitHub or local repos. This is especially true since</span></span>
-<span id="cb21-6"><a href="#cb21-6"></a><span class="st">the API calls can cause vignettes to take a long time to build. (Currently I cannot build vignettes</span></span>
-<span id="cb21-7"><a href="#cb21-7"></a><span class="st">because I keep getting hung up).</span></span>
-<span id="cb21-8"><a href="#cb21-8"></a><span class="st">The addition of the theme and TOC is a nice touch.</span></span>
-<span id="cb21-9"><a href="#cb21-9"></a><span class="st">It looks like the vignette might still be a little incomplete. I see that the final paragraph of</span></span>
-<span id="cb21-10"><a href="#cb21-10"></a><span class="st">Querying data variables is not finished.</span></span>
-<span id="cb21-11"><a href="#cb21-11"></a><span class="st">It'</span>s unnecessary to hard<span class="op">-</span>code the results <span class="cf">in</span> code chunks. The results will be output when the vignette is knit.</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>I like the <span class="cf">switch</span> to echo <span class="ot">=</span> <span class="cn">TRUE</span> <span class="cf">for</span> vignette code chunks. This is the user<span class="st">'s opportunity</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="st">to see the code in action for the first time. Including the code used to generate the results can</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="st">aid in understanding and readability.</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="st">Vignettes are not currently built. This is not a big deal. However, it would</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="st">be a convenience for those installing from GitHub or local repos. This is especially true since</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="st">the API calls can cause vignettes to take a long time to build. (Currently I cannot build vignettes</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="st">because I keep getting hung up).</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="st">The addition of the theme and TOC is a nice touch.</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="st">It looks like the vignette might still be a little incomplete. I see that the final paragraph of</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="st">Querying data variables is not finished.</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="st">It'</span>s unnecessary to hard<span class="sc">-</span>code the results <span class="cf">in</span> code chunks. The results will be output when the vignette is knit.</span></code></pre></div>
 <p><strong>Response:</strong> I’ve now pre-built the vignette.</p>
 <p>Functionality</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">nomis_search</span>()</span>
-<span id="cb22-2"><a href="#cb22-2"></a>    [suggestion] Currently, users can either search based on generic search terms or search <span class="cf">for</span> specific keywords.</span>
-<span id="cb22-3"><a href="#cb22-3"></a>    Looking at the API docs, I think there is an opportunity to improve functionality by taking advantage</span>
-<span id="cb22-4"><a href="#cb22-4"></a>    of some of the other search <span class="kw">categories</span> (e.g., name, description, content type, units). This would</span>
-<span id="cb22-5"><a href="#cb22-5"></a>    be doubly useful since content type and units are not searched when performing a generic search.</span>
-<span id="cb22-6"><a href="#cb22-6"></a>    </span>
-<span id="cb22-7"><a href="#cb22-7"></a>    [suggestion] Rather than automatically inserting <span class="kw">wildcards</span> (<span class="op">*</span>), I would recommend informing the user of the wildcard</span>
-<span id="cb22-8"><a href="#cb22-8"></a>    character so that they can have finer control over how wildcards are used <span class="cf">in</span> their search.</span>
-<span id="cb22-9"><a href="#cb22-9"></a>    It would be nice to mention <span class="cf">in</span> the documentation that several terms can be searched at once using</span>
-<span id="cb22-10"><a href="#cb22-10"></a>    a comma. Alternatively, the parameter could accept a character vector that could be</span>
-<span id="cb22-11"><a href="#cb22-11"></a>    collapsed with commas.</span>
-<span id="cb22-12"><a href="#cb22-12"></a>  </span>
-<span id="cb22-13"><a href="#cb22-13"></a>    [suggestion] The <span class="cf">function</span> could potentially accept character vectors from each of the <span class="kw">categories</span> (as well as</span>
-<span id="cb22-14"><a href="#cb22-14"></a>    a generic search term field) and then the appropriate search string could be created.</span>
-<span id="cb22-15"><a href="#cb22-15"></a>    </span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nomis_search</span>()</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    [suggestion] Currently, users can either search based on generic search terms or search <span class="cf">for</span> specific keywords.</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    Looking at the API docs, I think there is an opportunity to improve functionality by taking advantage</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    of some of the other search <span class="fu">categories</span> (e.g., name, description, content type, units). This would</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    be doubly useful since content type and units are not searched when performing a generic search.</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    [suggestion] Rather than automatically inserting <span class="fu">wildcards</span> (<span class="sc">*</span>), I would recommend informing the user of the wildcard</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    character so that they can have finer control over how wildcards are used <span class="cf">in</span> their search.</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    It would be nice to mention <span class="cf">in</span> the documentation that several terms can be searched at once using</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    a comma. Alternatively, the parameter could accept a character vector that could be</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    collapsed with commas.</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    [suggestion] The <span class="cf">function</span> could potentially accept character vectors from each of the <span class="fu">categories</span> (as well as</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    a generic search term field) and then the appropriate search string could be created.</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div>
 <p><strong>Response:</strong> I have re-written nomis_search in keeping with your suggestions. It now accepts five parameters - name, description, keywords, content_type, units - and can search in any or all of them at the same time, with or without wildcards. I’ve also added a nomis_content_type() function to assist in looking up specific content types, which may be used with nomis_search().</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">nomis_codes</span>()</span>
-<span id="cb23-2"><a href="#cb23-2"></a>    Generally, it is helpful to mirror the language of the source material when possible.</span>
-<span id="cb23-3"><a href="#cb23-3"></a>    The <span class="kw">nomis_codes</span>() <span class="cf">function</span> accepts a <span class="kw">dimension</span> (concept) and the <span class="cf">function</span> returns codes <span class="cf">for</span> that dimension.</span>
-<span id="cb23-4"><a href="#cb23-4"></a>    Therefore, the argument code might be renamed to dimension or concept, since the</span>
-<span id="cb23-5"><a href="#cb23-5"></a>    <span class="cf">function</span> searches <span class="cf">for</span> codes availalbe within a dimension.</span>
-<span id="cb23-6"><a href="#cb23-6"></a>    Related to above, I think the <span class="op">@</span>title could be more descriptive.</span>
-<span id="cb23-7"><a href="#cb23-7"></a>    </span>
-<span id="cb23-8"><a href="#cb23-8"></a>    [suggestion] The query is currently built using a hierarchal structure. E.g., <span class="op">/</span>api<span class="op">/</span>v01<span class="op">/</span>dataset<span class="op">/</span><span class="er">&lt;</span>ID<span class="op">&gt;</span><span class="er">/&lt;</span>DIMENSION<span class="op">&gt;</span><span class="er">/&lt;</span>CODE<span class="op">&gt;</span><span class="er">/</span>def.sdmx.json. However,</span>
-<span id="cb23-9"><a href="#cb23-9"></a>    I think there is an opportunity to make this query a little more flexible and extensible. Instead of enforcing the hierarchy,</span>
-<span id="cb23-10"><a href="#cb23-10"></a>    the funciton could use the GET verb to provide a little more control over how the data is filtered. A user could</span>
-<span id="cb23-11"><a href="#cb23-11"></a>    query on criteria from different dimensions than the one which they are interested <span class="cf">in</span> results from. For example,</span>
-<span id="cb23-12"><a href="#cb23-12"></a>    even <span class="cf">if</span> the user is interested <span class="cf">in</span> the <span class="st">'item'</span> dimension, they may want to filter on <span class="st">'geography'</span> and <span class="st">'sex'</span>. Using GET would allow</span>
-<span id="cb23-13"><a href="#cb23-13"></a>    <span class="cf">for</span> this. As an example<span class="op">:</span><span class="st"> </span><span class="er">/</span>api<span class="op">/</span>v01<span class="op">/</span>dataset<span class="op">/</span>NM_<span class="dv">1</span>_<span class="dv">1</span><span class="op">/</span>item.def.sdmx.json?geography=<span class="dv">2038432081</span><span class="op">&amp;</span>sex=<span class="fl">7.</span> This would also expose the user</span>
-<span id="cb23-14"><a href="#cb23-14"></a>    to options <span class="cf">for</span> specifying times and dates, which cannot otherwise be done. I fully acknowledge that this might be over<span class="op">-</span>building,</span>
-<span id="cb23-15"><a href="#cb23-15"></a>    since this <span class="cf">function</span> only provides a support role and will probably not be used that way.</span>
-<span id="cb23-16"><a href="#cb23-16"></a>    This is a minor concern, but I feel it<span class="st">'s cleaner to specify value if a test function returns TRUE first when using ifelse().</span></span>
-<span id="cb23-17"><a href="#cb23-17"></a><span class="st">    The code ifelse(is.null(type), "", paste0("/", type)) reads cleaner than ifelse(is.null(type) == FALSE, paste0("/", type), "") IMO.</span></span>
-<span id="cb23-18"><a href="#cb23-18"></a><span class="st">nomis_data_info()</span></span>
-<span id="cb23-19"><a href="#cb23-19"></a><span class="st">    The documentation could be more explicit in telling the user that the data returned by this function is metadata.</span></span>
-<span id="cb23-20"><a href="#cb23-20"></a><span class="st">    </span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nomis_codes</span>()</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    Generally, it is helpful to mirror the language of the source material when possible.</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    The <span class="fu">nomis_codes</span>() <span class="cf">function</span> accepts a <span class="fu">dimension</span> (concept) and the <span class="cf">function</span> returns codes <span class="cf">for</span> that dimension.</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    Therefore, the argument code might be renamed to dimension or concept, since the</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">function</span> searches <span class="cf">for</span> codes availalbe within a dimension.</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    Related to above, I think the <span class="sc">@</span>title could be more descriptive.</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    [suggestion] The query is currently built using a hierarchal structure. E.g., <span class="sc">/</span>api<span class="sc">/</span>v01<span class="sc">/</span>dataset<span class="sc">/</span><span class="er">&lt;</span>ID<span class="sc">&gt;</span><span class="er">/&lt;</span>DIMENSION<span class="sc">&gt;</span><span class="er">/&lt;</span>CODE<span class="sc">&gt;</span><span class="er">/</span>def.sdmx.json. However,</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    I think there is an opportunity to make this query a little more flexible and extensible. Instead of enforcing the hierarchy,</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    the funciton could use the GET verb to provide a little more control over how the data is filtered. A user could</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    query on criteria from different dimensions than the one which they are interested <span class="cf">in</span> results from. For example,</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    even <span class="cf">if</span> the user is interested <span class="cf">in</span> the <span class="st">'item'</span> dimension, they may want to filter on <span class="st">'geography'</span> and <span class="st">'sex'</span>. Using GET would allow</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> this. As an example<span class="sc">:</span> <span class="er">/</span>api<span class="sc">/</span>v01<span class="sc">/</span>dataset<span class="sc">/</span>NM_1_1<span class="sc">/</span>item.def.sdmx.json?geography<span class="ot">=</span><span class="dv">2038432081</span><span class="sc">&amp;</span>sex<span class="ot">=</span><span class="fl">7.</span> This would also expose the user</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    to options <span class="cf">for</span> specifying times and dates, which cannot otherwise be done. I fully acknowledge that this might be over<span class="sc">-</span>building,</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    since this <span class="cf">function</span> only provides a support role and will probably not be used that way.</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    This is a minor concern, but I feel it<span class="st">'s cleaner to specify value if a test function returns TRUE first when using ifelse().</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="st">    The code ifelse(is.null(type), "", paste0("/", type)) reads cleaner than ifelse(is.null(type) == FALSE, paste0("/", type), "") IMO.</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="st">nomis_data_info()</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="st">    The documentation could be more explicit in telling the user that the data returned by this function is metadata.</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="st">    </span></span></code></pre></div>
 <p><strong>Response:</strong> I’ve updated the documentation to be more explicit about what the function actually does, and improved the code readability. I changed the <code>code</code> parameter to <code>concept</code>, as you suggested, to be more in keeping with the syntax used in the original API. I’ve also added a specific <code>search</code> parameter, and a generic <code>additional_queries</code> parameter, as used in <code><a href="reference/nomis_get_data.html">nomis_get_data()</a></code></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>    [suggestion] Relating to the comment above, it may be a little clearer to rename the <span class="cf">function</span> something to the effect of <span class="kw">nomis_get_metadata</span>().</span>
-<span id="cb24-2"><a href="#cb24-2"></a>    This naming scheme is more <span class="cf">in</span> line with the pattern set forth by nomis_get_data naming scheme.</span>
-<span id="cb24-3"><a href="#cb24-3"></a><span class="kw">nomis_get_data</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>    [suggestion] Relating to the comment above, it may be a little clearer to rename the <span class="cf">function</span> something to the effect of <span class="fu">nomis_get_metadata</span>().</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    This naming scheme is more <span class="cf">in</span> line with the pattern set forth by nomis_get_data naming scheme.</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nomis_get_data</span>()</span></code></pre></div>
 <p><strong>Response:</strong> I’ve renamed the nomis_codes() function to nomis_get_metadata(), which I agree is more descriptive of what the function actually does. I’ve also added the nomis_overview() function, which returns a more general overview of all available metadata, without the flexibility and specificity offered by nomis_get_metadata().</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>    I see that the API documentation states, <span class="st">"you have a 25000 cell limit on the number of data values downloaded in these formats."</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a>    It appears that the code currently breaks the fetch into multiple steps <span class="cf">if</span> the record count is greater than or equal to 25k records.</span>
-<span id="cb25-3"><a href="#cb25-3"></a>    I am curious <span class="cf">if</span> this might be an oversight. It might be useful to test the edge case where the query returns more than 25k cells but</span>
-<span id="cb25-4"><a href="#cb25-4"></a>    fewer than 25k records to see <span class="cf">if</span> everything still works.</span>
-<span id="cb25-5"><a href="#cb25-5"></a>    </span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>    I see that the API documentation states, <span class="st">"you have a 25000 cell limit on the number of data values downloaded in these formats."</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    It appears that the code currently breaks the fetch into multiple steps <span class="cf">if</span> the record count is greater than or equal to 25k records.</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    I am curious <span class="cf">if</span> this might be an oversight. It might be useful to test the edge case where the query returns more than 25k cells but</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    fewer than 25k records to see <span class="cf">if</span> everything still works.</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div>
 <p><strong>Response:</strong> The 25k limit refers to the number of observation values, the documentation is rather confusing on that point.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>    Including a select parameter may be a good enhancement <span class="cf">for</span> the future. Right now, that can be accomplished with</span>
-<span id="cb26-2"><a href="#cb26-2"></a>    additional_queries but is probably important enough to be standalone. This would allow <span class="cf">for</span> additional documentation</span>
-<span id="cb26-3"><a href="#cb26-3"></a>    and sugar to be added <span class="cf">for</span> it.</span>
-<span id="cb26-4"><a href="#cb26-4"></a>    </span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>    Including a select parameter may be a good enhancement <span class="cf">for</span> the future. Right now, that can be accomplished with</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    additional_queries but is probably important enough to be standalone. This would allow <span class="cf">for</span> additional documentation</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    and sugar to be added <span class="cf">for</span> it.</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div>
 <p><strong>Response:</strong> I’ve added a select parameter as an enhancement, as it is straightforward to do and reduces the amount of information that could possibly need to be included under additional_queries.</p>
 <p>Conclusion</p>
 <p>This is a great package that will be valuable to anyone interested in analysis of this data. Nice work!</p>
@@ -499,7 +499,7 @@ library(nomisr) library(dplyr, warn.conflicts = F) y &lt;- nomis_data_info(“NM
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

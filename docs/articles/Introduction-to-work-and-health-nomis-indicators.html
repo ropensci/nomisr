@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.4</span>
       </span>
     </div>
 
@@ -93,13 +93,13 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/ropensci/nomisr">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://evanodell.com">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -113,8 +113,7 @@
 
       
 
-      </header><script src="Introduction-to-work-and-health-nomis-indicators_files/header-attrs-2.5/header-attrs.js"></script><link href="Introduction-to-work-and-health-nomis-indicators_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="Introduction-to-work-and-health-nomis-indicators_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="Introduction-to-work-and-health-nomis-indicators_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Work and Health Indicators with nomisr</h1>
@@ -167,7 +166,7 @@
 <p>If you wanted to look at more information on a specific dataset, you can add this inside the bracket of the <code>nomis_get_info()</code> function or use the <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code> function. Both of these will provide you with the different options (concepts) available for your chosen dataset.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">NM_17_5</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_data_info.html">nomis_data_info</a></span><span class="op">(</span><span class="st">"NM_17_5"</span><span class="op">)</span> 
-<span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">NM_17_5</span><span class="op">)</span></code></pre></div>
+<span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">NM_17_5</span><span class="op">)</span></code></pre></div>
 <pre><code>## Rows: 1
 ## Columns: 14
 ## $ agencyid                             &lt;chr&gt; "NOMIS"
@@ -180,9 +179,9 @@
 ## $ components.primarymeasure.conceptref &lt;chr&gt; "OBS_VALUE"
 ## $ components.timedimension.codelist    &lt;chr&gt; "CL_17_5_TIME"
 ## $ components.timedimension.conceptref  &lt;chr&gt; "TIME"
-## $ description.value                    &lt;chr&gt; "A residence based labour market…
+## $ description.value                    &lt;chr&gt; "A residence based labour market …
 ## $ description.lang                     &lt;chr&gt; "en"
-## $ name.value                           &lt;chr&gt; "annual population survey (varia…
+## $ name.value                           &lt;chr&gt; "annual population survey (variab…
 ## $ name.lang                            &lt;chr&gt; "en"</code></pre>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">NM_17_5</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_get_metadata.html">nomis_get_metadata</a></span><span class="op">(</span><span class="st">"NM_17_5"</span><span class="op">)</span>
@@ -210,12 +209,12 @@
 <pre><code>## # A tibble: 6 x 3
 ##   id      label.en          description.en   
 ##   &lt;chr&gt;   &lt;chr&gt;             &lt;chr&gt;            
-## 1 2019-03 Apr 2018-Mar 2019 Apr 2018-Mar 2019
-## 2 2019-06 Jul 2018-Jun 2019 Jul 2018-Jun 2019
-## 3 2019-09 Oct 2018-Sep 2019 Oct 2018-Sep 2019
-## 4 2019-12 Jan 2019-Dec 2019 Jan 2019-Dec 2019
-## 5 2020-03 Apr 2019-Mar 2020 Apr 2019-Mar 2020
-## 6 2020-06 Jul 2019-Jun 2020 Jul 2019-Jun 2020</code></pre>
+## 1 2019-06 Jul 2018-Jun 2019 Jul 2018-Jun 2019
+## 2 2019-09 Oct 2018-Sep 2019 Oct 2018-Sep 2019
+## 3 2019-12 Jan 2019-Dec 2019 Jan 2019-Dec 2019
+## 4 2020-03 Apr 2019-Mar 2020 Apr 2019-Mar 2020
+## 5 2020-06 Jul 2019-Jun 2020 Jul 2019-Jun 2020
+## 6 2020-09 Oct 2019-Sep 2020 Oct 2019-Sep 2020</code></pre>
 <p>Instead of referring to the ids for the specific dates you can also use the following options:</p>
 <ul>
 <li>latest - latest available data</li>
@@ -341,18 +340,18 @@
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">working_age_pop</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 1,384 x 28
-##    DATE  DATE_NAME DATE_CODE DATE_TYPE DATE_TYPECODE DATE_SORTORDER GEOGRAPHY
-##    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;             &lt;dbl&gt;          &lt;dbl&gt;     &lt;dbl&gt;
-##  1 2020… Jul 2019… 2020-06   date                  0              0    1.95e9
-##  2 2020… Jul 2019… 2020-06   date                  0              0    1.95e9
-##  3 2020… Jul 2019… 2020-06   date                  0              0    1.95e9
-##  4 2020… Jul 2019… 2020-06   date                  0              0    1.95e9
-##  5 2020… Jul 2019… 2020-06   date                  0              0    1.95e9
-##  6 2020… Jul 2019… 2020-06   date                  0              0    1.95e9
-##  7 2020… Jul 2019… 2020-06   date                  0              0    1.95e9
-##  8 2020… Jul 2019… 2020-06   date                  0              0    1.95e9
-##  9 2020… Jul 2019… 2020-06   date                  0              0    1.95e9
-## 10 2020… Jul 2019… 2020-06   date                  0              0    1.95e9
+##    DATE   DATE_NAME   DATE_CODE DATE_TYPE DATE_TYPECODE DATE_SORTORDER GEOGRAPHY
+##    &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;             &lt;dbl&gt;          &lt;dbl&gt;     &lt;dbl&gt;
+##  1 2020-… Oct 2019-S… 2020-09   date                  0              0    1.95e9
+##  2 2020-… Oct 2019-S… 2020-09   date                  0              0    1.95e9
+##  3 2020-… Oct 2019-S… 2020-09   date                  0              0    1.95e9
+##  4 2020-… Oct 2019-S… 2020-09   date                  0              0    1.95e9
+##  5 2020-… Oct 2019-S… 2020-09   date                  0              0    1.95e9
+##  6 2020-… Oct 2019-S… 2020-09   date                  0              0    1.95e9
+##  7 2020-… Oct 2019-S… 2020-09   date                  0              0    1.95e9
+##  8 2020-… Oct 2019-S… 2020-09   date                  0              0    1.95e9
+##  9 2020-… Oct 2019-S… 2020-09   date                  0              0    1.95e9
+## 10 2020-… Oct 2019-S… 2020-09   date                  0              0    1.95e9
 ## # … with 1,374 more rows, and 21 more variables: GEOGRAPHY_NAME &lt;chr&gt;,
 ## #   GEOGRAPHY_CODE &lt;chr&gt;, GEOGRAPHY_TYPE &lt;chr&gt;, GEOGRAPHY_TYPECODE &lt;dbl&gt;,
 ## #   GEOGRAPHY_SORTORDER &lt;dbl&gt;, VARIABLE &lt;dbl&gt;, VARIABLE_NAME &lt;chr&gt;,
@@ -393,7 +392,7 @@
 </ul>
 <p>The data extracted is for all of the geographies outlined in the ‘EN_geographies’ vector, but the chart is filtered for Bolton only.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 
 <span class="co"># FIRST STACK: Working age population</span>
 
@@ -408,18 +407,18 @@
 <span class="va">first_stack</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">first_stack</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">first_stack</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 346 x 7
-##    DATE_NAME GEOGRAPHY GEOGRAPHY_NAME GEOGRAPHY_CODE VARIABLE_NAME OBS_VALUE
-##    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;             &lt;dbl&gt;
-##  1 Jul 2019…    1.95e9 Darlington     E06000005      Economic act…     63400
-##  2 Jul 2019…    1.95e9 County Durham  E06000047      Economic act…    323600
-##  3 Jul 2019…    1.95e9 Hartlepool     E06000001      Economic act…     56100
-##  4 Jul 2019…    1.95e9 Middlesbrough  E06000002      Economic act…     88000
-##  5 Jul 2019…    1.95e9 Northumberland E06000057      Economic act…    183400
-##  6 Jul 2019…    1.95e9 Redcar and Cl… E06000003      Economic act…     80800
-##  7 Jul 2019…    1.95e9 Stockton-on-T… E06000004      Economic act…    119700
-##  8 Jul 2019…    1.95e9 Gateshead      E08000037      Economic act…    127800
-##  9 Jul 2019…    1.95e9 Newcastle upo… E08000021      Economic act…    200100
-## 10 Jul 2019…    1.95e9 North Tyneside E08000022      Economic act…    126400
+##    DATE_NAME   GEOGRAPHY GEOGRAPHY_NAME GEOGRAPHY_CODE VARIABLE_NAME   OBS_VALUE
+##    &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;               &lt;dbl&gt;
+##  1 Oct 2019-… 1946157057 Darlington     E06000005      Economic activ…     63700
+##  2 Oct 2019-… 1946157058 County Durham  E06000047      Economic activ…    323700
+##  3 Oct 2019-… 1946157059 Hartlepool     E06000001      Economic activ…     56200
+##  4 Oct 2019-… 1946157060 Middlesbrough  E06000002      Economic activ…     88100
+##  5 Oct 2019-… 1946157061 Northumberland E06000057      Economic activ…    182500
+##  6 Oct 2019-… 1946157062 Redcar and Cl… E06000003      Economic activ…     81000
+##  7 Oct 2019-… 1946157063 Stockton-on-T… E06000004      Economic activ…    119200
+##  8 Oct 2019-… 1946157064 Gateshead      E08000037      Economic activ…    128300
+##  9 Oct 2019-… 1946157065 Newcastle upo… E08000021      Economic activ…    199900
+## 10 Oct 2019-… 1946157066 North Tyneside E08000022      Economic activ…    126200
 ## # … with 336 more rows, and 1 more variable: grouping &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># SECOND STACK: Economically active and economically inactive</span>
@@ -492,18 +491,18 @@
 <span class="va">second_stack</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">second_stack</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">second_stack</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 692 x 7
-##    DATE_NAME GEOGRAPHY GEOGRAPHY_NAME GEOGRAPHY_CODE VARIABLE_NAME OBS_VALUE
-##    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;             &lt;dbl&gt;
-##  1 Jul 2019…    1.85e9 Greater Manch… E47000001      economically…   1377900
-##  2 Jul 2019…    1.85e9 Greater Manch… E47000001      % who are ec…    409600
-##  3 Jul 2019…    1.85e9 Sheffield Cit… E47000002      economically…    674800
-##  4 Jul 2019…    1.85e9 Sheffield Cit… E47000002      % who are ec…    206500
-##  5 Jul 2019…    1.85e9 West Yorkshire E47000003      economically…   1113600
-##  6 Jul 2019…    1.85e9 West Yorkshire E47000003      % who are ec…    339100
-##  7 Jul 2019…    1.85e9 Liverpool Cit… E47000004      economically…    739600
-##  8 Jul 2019…    1.85e9 Liverpool Cit… E47000004      % who are ec…    226400
-##  9 Jul 2019…    1.85e9 Tees Valley    E47000006      economically…    304500
-## 10 Jul 2019…    1.85e9 Tees Valley    E47000006      % who are ec…    103600
+##    DATE_NAME   GEOGRAPHY GEOGRAPHY_NAME GEOGRAPHY_CODE VARIABLE_NAME   OBS_VALUE
+##    &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;               &lt;dbl&gt;
+##  1 Oct 2019-… 1853882369 Greater Manch… E47000001      economically a…   1364300
+##  2 Oct 2019-… 1853882369 Greater Manch… E47000001      % who are econ…    424200
+##  3 Oct 2019-… 1853882370 Sheffield Cit… E47000002      economically a…    675500
+##  4 Oct 2019-… 1853882370 Sheffield Cit… E47000002      % who are econ…    206500
+##  5 Oct 2019-… 1853882371 West Yorkshire E47000003      economically a…   1128500
+##  6 Oct 2019-… 1853882371 West Yorkshire E47000003      % who are econ…    324700
+##  7 Oct 2019-… 1853882372 Liverpool Cit… E47000004      economically a…    731500
+##  8 Oct 2019-… 1853882372 Liverpool Cit… E47000004      % who are econ…    234200
+##  9 Oct 2019-… 1853882374 Tees Valley    E47000006      economically a…    305400
+## 10 Oct 2019-… 1853882374 Tees Valley    E47000006      % who are econ…    102800
 ## # … with 682 more rows, and 1 more variable: grouping &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># THIRD STACK: Employed, unemployed, want a job, don't want a job</span>
@@ -629,18 +628,18 @@
 <span class="va">third_stack</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">third_stack</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">third_stack</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 1,384 x 7
-##    DATE_NAME GEOGRAPHY GEOGRAPHY_NAME GEOGRAPHY_CODE VARIABLE_NAME OBS_VALUE
-##    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;             &lt;dbl&gt;
-##  1 Jul 2019…    1.85e9 Greater Manch… E47000001      Employment r…   1309600
-##  2 Jul 2019…    1.85e9 Greater Manch… E47000001      Unemployment…     68300
-##  3 Jul 2019…    1.85e9 Greater Manch… E47000001      % of economi…     75100
-##  4 Jul 2019…    1.85e9 Greater Manch… E47000001      % of economi…    334500
-##  5 Jul 2019…    1.85e9 Sheffield Cit… E47000002      Employment r…    645300
-##  6 Jul 2019…    1.85e9 Sheffield Cit… E47000002      Unemployment…     29500
-##  7 Jul 2019…    1.85e9 Sheffield Cit… E47000002      % of economi…     52600
-##  8 Jul 2019…    1.85e9 Sheffield Cit… E47000002      % of economi…    153900
-##  9 Jul 2019…    1.85e9 West Yorkshire E47000003      Employment r…   1069900
-## 10 Jul 2019…    1.85e9 West Yorkshire E47000003      Unemployment…     43700
+##    DATE_NAME   GEOGRAPHY GEOGRAPHY_NAME GEOGRAPHY_CODE VARIABLE_NAME   OBS_VALUE
+##    &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;               &lt;dbl&gt;
+##  1 Oct 2019-… 1853882369 Greater Manch… E47000001      Employment rat…   1291900
+##  2 Oct 2019-… 1853882369 Greater Manch… E47000001      Unemployment r…     72400
+##  3 Oct 2019-… 1853882369 Greater Manch… E47000001      % of economica…     85200
+##  4 Oct 2019-… 1853882369 Greater Manch… E47000001      % of economica…    339000
+##  5 Oct 2019-… 1853882370 Sheffield Cit… E47000002      Employment rat…    643500
+##  6 Oct 2019-… 1853882370 Sheffield Cit… E47000002      Unemployment r…     31900
+##  7 Oct 2019-… 1853882370 Sheffield Cit… E47000002      % of economica…     53700
+##  8 Oct 2019-… 1853882370 Sheffield Cit… E47000002      % of economica…    152900
+##  9 Oct 2019-… 1853882371 West Yorkshire E47000003      Employment rat…   1080000
+## 10 Oct 2019-… 1853882371 West Yorkshire E47000003      Unemployment r…     48400
 ## # … with 1,374 more rows, and 1 more variable: grouping &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># FOURTH STACK: Economically active, LT sick, temp sick, student, looking after family/home, retired, other, discouraged</span>
@@ -688,18 +687,18 @@
 <span class="va">fourth_stack</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">fourth_stack</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">fourth_stack</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 2,768 x 7
-##    DATE_NAME GEOGRAPHY GEOGRAPHY_NAME GEOGRAPHY_CODE VARIABLE_NAME OBS_VALUE
-##    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;             &lt;dbl&gt;
-##  1 Jul 2019…    1.85e9 Greater Manch… E47000001      ""              1377900
-##  2 Jul 2019…    1.85e9 Greater Manch… E47000001      "% of econom…    117900
-##  3 Jul 2019…    1.85e9 Greater Manch… E47000001      "% of econom…     94800
-##  4 Jul 2019…    1.85e9 Greater Manch… E47000001      "% of econom…      6600
-##  5 Jul 2019…    1.85e9 Greater Manch… E47000001      "% of econom…    105000
-##  6 Jul 2019…    1.85e9 Greater Manch… E47000001      "% of econom…      2000
-##  7 Jul 2019…    1.85e9 Greater Manch… E47000001      "% of econom…     43900
-##  8 Jul 2019…    1.85e9 Greater Manch… E47000001      "% of econom…     39600
-##  9 Jul 2019…    1.85e9 Sheffield Cit… E47000002      ""               674800
-## 10 Jul 2019…    1.85e9 Sheffield Cit… E47000002      "% of econom…     51500
+##    DATE_NAME   GEOGRAPHY GEOGRAPHY_NAME GEOGRAPHY_CODE VARIABLE_NAME   OBS_VALUE
+##    &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;               &lt;dbl&gt;
+##  1 Oct 2019-… 1853882369 Greater Manch… E47000001      ""                1364300
+##  2 Oct 2019-… 1853882369 Greater Manch… E47000001      "% of economic…    121400
+##  3 Oct 2019-… 1853882369 Greater Manch… E47000001      "% of economic…     96000
+##  4 Oct 2019-… 1853882369 Greater Manch… E47000001      "% of economic…      5000
+##  5 Oct 2019-… 1853882369 Greater Manch… E47000001      "% of economic…    110800
+##  6 Oct 2019-… 1853882369 Greater Manch… E47000001      "% of economic…      1900
+##  7 Oct 2019-… 1853882369 Greater Manch… E47000001      "% of economic…     45600
+##  8 Oct 2019-… 1853882369 Greater Manch… E47000001      "% of economic…     43500
+##  9 Oct 2019-… 1853882370 Sheffield Cit… E47000002      ""                 675500
+## 10 Oct 2019-… 1853882370 Sheffield Cit… E47000002      "% of economic…     48500
 ## # … with 2,758 more rows, and 1 more variable: grouping &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Have all the data to make the stacked bar chart - now to bind the datasets together </span>
@@ -843,18 +842,18 @@
          <span class="va">OBS_VALUE</span>, <span class="va">group</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">pie_data</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 2,076 x 7
-##    DATE_NAME GEOGRAPHY GEOGRAPHY_NAME GEOGRAPHY_CODE VARIABLE_NAME OBS_VALUE
-##    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;             &lt;dbl&gt;
-##  1 Jul 2019…    1.95e9 Adur           E07000223      Employment r…      85.6
-##  2 Jul 2019…    1.95e9 Adur           E07000223      Unemployment…       0  
-##  3 Jul 2019…    1.95e9 Adur           E07000223      % who are ec…      12.1
-##  4 Jul 2019…    1.95e9 Adur           E07000223      % In employm…      56.3
-##  5 Jul 2019…    1.95e9 Adur           E07000223      % Unemployed…       0  
-##  6 Jul 2019…    1.95e9 Adur           E07000223      % Inactive w…      43.7
-##  7 Jul 2019…    1.95e9 Allerdale      E07000026      Employment r…      83.7
-##  8 Jul 2019…    1.95e9 Allerdale      E07000026      Unemployment…       4.3
-##  9 Jul 2019…    1.95e9 Allerdale      E07000026      % who are ec…      12.5
-## 10 Jul 2019…    1.95e9 Allerdale      E07000026      % In employm…      48  
+##    DATE_NAME  GEOGRAPHY GEOGRAPHY_NAME GEOGRAPHY_CODE VARIABLE_NAME    OBS_VALUE
+##    &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;                &lt;dbl&gt;
+##  1 Oct 2019-…    1.95e9 Adur           E07000223      Employment rate…      85.8
+##  2 Oct 2019-…    1.95e9 Adur           E07000223      Unemployment ra…       0  
+##  3 Oct 2019-…    1.95e9 Adur           E07000223      % who are econo…      12.5
+##  4 Oct 2019-…    1.95e9 Adur           E07000223      % In employment…      53.6
+##  5 Oct 2019-…    1.95e9 Adur           E07000223      % Unemployed wi…       0  
+##  6 Oct 2019-…    1.95e9 Adur           E07000223      % Inactive with…      46.4
+##  7 Oct 2019-…    1.95e9 Allerdale      E07000026      Employment rate…      82.8
+##  8 Oct 2019-…    1.95e9 Allerdale      E07000026      Unemployment ra…       2.6
+##  9 Oct 2019-…    1.95e9 Allerdale      E07000026      % who are econo…      14.9
+## 10 Oct 2019-…    1.95e9 Allerdale      E07000026      % In employment…      46.2
 ## # … with 2,066 more rows, and 1 more variable: group &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Have all the data to create the pie charts</span>
@@ -1018,18 +1017,18 @@
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">ESA_total_final</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 7,958 x 10
 ## # Groups:   GEOGRAPHY_CODE, ICDGP_CONDITION [7,958]
-##    DATE_NAME GEOGRAPHY.x GEOGRAPHY_NAME GEOGRAPHY_CODE ICDGP_CONDITION
-##    &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;
-##  1 November…  1946157059 Hartlepool     E06000001                    5
-##  2 November…  1946157059 Hartlepool     E06000001                   13
-##  3 November…  1946157059 Hartlepool     E06000001                   18
-##  4 November…  1946157059 Hartlepool     E06000001                    6
-##  5 November…  1946157059 Hartlepool     E06000001                    9
-##  6 November…  1946157059 Hartlepool     E06000001                   10
-##  7 November…  1946157059 Hartlepool     E06000001                    2
-##  8 November…  1946157059 Hartlepool     E06000001                   19
-##  9 November…  1946157059 Hartlepool     E06000001                   21
-## 10 November…  1946157059 Hartlepool     E06000001                   11
+##    DATE_NAME     GEOGRAPHY.x GEOGRAPHY_NAME GEOGRAPHY_CODE ICDGP_CONDITION
+##    &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;
+##  1 November 2018  1946157059 Hartlepool     E06000001                    5
+##  2 November 2018  1946157059 Hartlepool     E06000001                   13
+##  3 November 2018  1946157059 Hartlepool     E06000001                   18
+##  4 November 2018  1946157059 Hartlepool     E06000001                    6
+##  5 November 2018  1946157059 Hartlepool     E06000001                    9
+##  6 November 2018  1946157059 Hartlepool     E06000001                   10
+##  7 November 2018  1946157059 Hartlepool     E06000001                    2
+##  8 November 2018  1946157059 Hartlepool     E06000001                   19
+##  9 November 2018  1946157059 Hartlepool     E06000001                   21
+## 10 November 2018  1946157059 Hartlepool     E06000001                   11
 ## # … with 7,948 more rows, and 5 more variables: ICDGP_CONDITION_NAME &lt;chr&gt;,
 ## #   SEX_NAME &lt;chr&gt;, total &lt;dbl&gt;, tot &lt;dbl&gt;, PERC &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
@@ -1121,18 +1120,18 @@
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">treemap_data_final</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 32,870 x 9
 ## # Groups:   GEOGRAPHY, ICDGP_CONDITION_NAME, NEW_AGE [32,870]
-##    DATE_NAME GEOGRAPHY GEOGRAPHY_NAME GEOGRAPHY_CODE ICDGP_CONDITION
-##    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;
-##  1 November…    1.85e9 Greater Manch… E47000001                   16
-##  2 November…    1.85e9 Greater Manch… E47000001                   16
-##  3 November…    1.85e9 Greater Manch… E47000001                   16
-##  4 November…    1.85e9 Greater Manch… E47000001                   16
-##  5 November…    1.85e9 Greater Manch… E47000001                   16
-##  6 November…    1.85e9 Greater Manch… E47000001                    1
-##  7 November…    1.85e9 Greater Manch… E47000001                    1
-##  8 November…    1.85e9 Greater Manch… E47000001                    1
-##  9 November…    1.85e9 Greater Manch… E47000001                    1
-## 10 November…    1.85e9 Greater Manch… E47000001                    1
+##    DATE_NAME      GEOGRAPHY GEOGRAPHY_NAME     GEOGRAPHY_CODE ICDGP_CONDITION
+##    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt;                    &lt;dbl&gt;
+##  1 November 2018 1853882369 Greater Manchester E47000001                   16
+##  2 November 2018 1853882369 Greater Manchester E47000001                   16
+##  3 November 2018 1853882369 Greater Manchester E47000001                   16
+##  4 November 2018 1853882369 Greater Manchester E47000001                   16
+##  5 November 2018 1853882369 Greater Manchester E47000001                   16
+##  6 November 2018 1853882369 Greater Manchester E47000001                    1
+##  7 November 2018 1853882369 Greater Manchester E47000001                    1
+##  8 November 2018 1853882369 Greater Manchester E47000001                    1
+##  9 November 2018 1853882369 Greater Manchester E47000001                    1
+## 10 November 2018 1853882369 Greater Manchester E47000001                    1
 ## # … with 32,860 more rows, and 4 more variables: ICDGP_CONDITION_NAME &lt;chr&gt;,
 ## #   SEX_NAME &lt;chr&gt;, NEW_AGE &lt;chr&gt;, OBS &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
@@ -1174,18 +1173,18 @@
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">treemap</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 12,110 x 12
 ## # Groups:   GEOGRAPHY, ICDGP_CONDITION_NAME, NEW_AGE [12,110]
-##    DATE_NAME GEOGRAPHY GEOGRAPHY_NAME GEOGRAPHY_CODE ICDGP_CONDITION
-##    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;
-##  1 November…    1.95e9 Hartlepool     E06000001                    5
-##  2 November…    1.95e9 Hartlepool     E06000001                    5
-##  3 November…    1.95e9 Hartlepool     E06000001                    5
-##  4 November…    1.95e9 Hartlepool     E06000001                    5
-##  5 November…    1.95e9 Hartlepool     E06000001                    5
-##  6 November…    1.95e9 Hartlepool     E06000001                   13
-##  7 November…    1.95e9 Hartlepool     E06000001                   13
-##  8 November…    1.95e9 Hartlepool     E06000001                   13
-##  9 November…    1.95e9 Hartlepool     E06000001                   13
-## 10 November…    1.95e9 Hartlepool     E06000001                   13
+##    DATE_NAME      GEOGRAPHY GEOGRAPHY_NAME GEOGRAPHY_CODE ICDGP_CONDITION
+##    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;
+##  1 November 2018 1946157059 Hartlepool     E06000001                    5
+##  2 November 2018 1946157059 Hartlepool     E06000001                    5
+##  3 November 2018 1946157059 Hartlepool     E06000001                    5
+##  4 November 2018 1946157059 Hartlepool     E06000001                    5
+##  5 November 2018 1946157059 Hartlepool     E06000001                    5
+##  6 November 2018 1946157059 Hartlepool     E06000001                   13
+##  7 November 2018 1946157059 Hartlepool     E06000001                   13
+##  8 November 2018 1946157059 Hartlepool     E06000001                   13
+##  9 November 2018 1946157059 Hartlepool     E06000001                   13
+## 10 November 2018 1946157059 Hartlepool     E06000001                   13
 ## # … with 12,100 more rows, and 7 more variables: ICDGP_CONDITION_NAME &lt;chr&gt;,
 ## #   SEX_NAME &lt;chr&gt;, NEW_AGE &lt;chr&gt;, OBS &lt;dbl&gt;, rank &lt;int&gt;, CHART_LABS &lt;chr&gt;,
 ## #   CON_SHORT &lt;chr&gt;</code></pre>
@@ -1197,18 +1196,18 @@
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 35 x 12
 ## # Groups:   GEOGRAPHY, ICDGP_CONDITION_NAME, NEW_AGE [35]
-##    DATE_NAME GEOGRAPHY GEOGRAPHY_NAME GEOGRAPHY_CODE ICDGP_CONDITION
-##    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;
-##  1 November…    1.95e9 Bolton         E08000001                    5
-##  2 November…    1.95e9 Bolton         E08000001                    5
-##  3 November…    1.95e9 Bolton         E08000001                    5
-##  4 November…    1.95e9 Bolton         E08000001                    5
-##  5 November…    1.95e9 Bolton         E08000001                    5
-##  6 November…    1.95e9 Bolton         E08000001                   13
-##  7 November…    1.95e9 Bolton         E08000001                   13
-##  8 November…    1.95e9 Bolton         E08000001                   13
-##  9 November…    1.95e9 Bolton         E08000001                   13
-## 10 November…    1.95e9 Bolton         E08000001                   13
+##    DATE_NAME      GEOGRAPHY GEOGRAPHY_NAME GEOGRAPHY_CODE ICDGP_CONDITION
+##    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;
+##  1 November 2018 1946157081 Bolton         E08000001                    5
+##  2 November 2018 1946157081 Bolton         E08000001                    5
+##  3 November 2018 1946157081 Bolton         E08000001                    5
+##  4 November 2018 1946157081 Bolton         E08000001                    5
+##  5 November 2018 1946157081 Bolton         E08000001                    5
+##  6 November 2018 1946157081 Bolton         E08000001                   13
+##  7 November 2018 1946157081 Bolton         E08000001                   13
+##  8 November 2018 1946157081 Bolton         E08000001                   13
+##  9 November 2018 1946157081 Bolton         E08000001                   13
+## 10 November 2018 1946157081 Bolton         E08000001                   13
 ## # … with 25 more rows, and 7 more variables: ICDGP_CONDITION_NAME &lt;chr&gt;,
 ## #   SEX_NAME &lt;chr&gt;, NEW_AGE &lt;chr&gt;, OBS &lt;dbl&gt;, rank &lt;int&gt;, CHART_LABS &lt;chr&gt;,
 ## #   CON_SHORT &lt;chr&gt;</code></pre>
@@ -1223,7 +1222,7 @@
 <span class="va">cat_colours</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#822433"</span>, <span class="st">"#00B092"</span>, <span class="st">"#002776"</span>, <span class="st">"#EAAB00"</span>, <span class="st">"#E9994A"</span>, <span class="st">"#A4AEB5"</span>, <span class="st">"#DAD7CB"</span><span class="op">)</span>
 <span class="va">cat_colours</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cat_colours</span>, levels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#822433"</span>, <span class="st">"#00B092"</span>, <span class="st">"#002776"</span>, <span class="st">"#EAAB00"</span>, <span class="st">"#E9994A"</span>, <span class="st">"#A4AEB5"</span>, <span class="st">"#DAD7CB"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkox.org/treemapify">treemapify</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkox.org/treemapify/">treemapify</a></span><span class="op">)</span>
 
 <span class="va">t</span> <span class="op">&lt;-</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>area <span class="op">=</span> <span class="va">OBS</span>, fill <span class="op">=</span> <span class="va">CON_SHORT</span>, label <span class="op">=</span> <span class="va">CHART_LABS</span>,  subgroup <span class="op">=</span> <span class="va">ICDGP_CONDITION_NAME</span>, subgroup2 <span class="op">=</span> <span class="va">NEW_AGE</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://wilkox.org/treemapify/reference/geom_treemap.html">geom_treemap</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 

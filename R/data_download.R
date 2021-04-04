@@ -323,6 +323,13 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
 
   first_df <- nomis_get_data_util(query)
 
+  if (is.null(first_df)) {
+    stop("The API request did not return any results. ",
+      "Please check your parameters.",
+      call. = FALSE
+    )
+  }
+
   names(first_df) <- toupper(names(first_df))
 
   if (nrow(first_df) <= 0) {
@@ -345,7 +352,7 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
       )
       message("This may cause timeout and/or automatic rate limiting.")
 
-      if (utils::menu(c("Yes", "No"),
+      if (menu(c("Yes", "No"),
         title = "Do you want to continue?"
       ) == 2) {
         stop(call. = FALSE)

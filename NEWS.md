@@ -1,4 +1,9 @@
 
+# nomisr 0.4.4.9000
+
+* Better error message when API returns empty data in some circumstances.
+
+
 # nomisr 0.4.4
 
 * replaced `as.tibble` with `as_tibble`

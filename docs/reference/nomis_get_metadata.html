@@ -87,7 +87,7 @@ metadata for a given dataset, see nomis_overview()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.4</span>
       </span>
     </div>
 
@@ -143,13 +143,13 @@ metadata for a given dataset, see nomis_overview()." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ropensci/nomisr">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://evanodell.com">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -235,8 +235,7 @@ versions greater than 0.2.0 and will eventually be removed.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble with metadata options for queries using
-<code><a href='nomis_get_data.html'>nomis_get_data()</a></code>.</p>
+    <p>A tibble with metadata options for queries using <code><a href='nomis_get_data.html'>nomis_get_data()</a></code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='nomis_data_info.html'>nomis_data_info()</a></code></p>
@@ -248,63 +247,63 @@ versions greater than 0.2.0 and will eventually be removed.</p></td>
 <span class='va'>a</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_metadata</span><span class='op'>(</span><span class='st'>"NM_1_1"</span><span class='op'>)</span>
 
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>a</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 3</span><span>
 #&gt;   codelist         conceptref isfrequencydimension
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>               
-#&gt; </span><span style='color: #555555;'>1</span><span> CL_1_1_GEOGRAPHY GEOGRAPHY  false               
-#&gt; </span><span style='color: #555555;'>2</span><span> CL_1_1_SEX       SEX        false               
-#&gt; </span><span style='color: #555555;'>3</span><span> CL_1_1_ITEM      ITEM       false               
-#&gt; </span><span style='color: #555555;'>4</span><span> CL_1_1_MEASURES  MEASURES   false               
-#&gt; </span><span style='color: #555555;'>5</span><span> CL_1_1_FREQ      FREQ       true                
-#&gt; </span><span style='color: #555555;'>6</span><span> CL_1_1_TIME      TIME       false               </div><div class='input'>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>               
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> CL_1_1_GEOGRAPHY GEOGRAPHY  false               
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> CL_1_1_SEX       SEX        false               
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> CL_1_1_ITEM      ITEM       false               
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> CL_1_1_MEASURES  MEASURES   false               
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> CL_1_1_FREQ      FREQ       true                
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> CL_1_1_TIME      TIME       false               </div><div class='input'>
 <span class='va'>b</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_metadata</span><span class='op'>(</span><span class='st'>"NM_1_1"</span>, <span class='st'>"geography"</span><span class='op'>)</span>
 
-<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>b</span><span class='op'>)</span>
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>b</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Rows: 7
 #&gt; Columns: 4
-#&gt; $ id             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "2092957697", "2092957698", "2092957699", "2092957700"…
-#&gt; $ parentCode     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> NA, NA, NA, "2092957700", "2092957701", "2092957702", …
-#&gt; $ label.en       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "United Kingdom", "Great Britain", "England", "Wales",…
-#&gt; $ description.en </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "United Kingdom", "Great Britain", "England", "Wales",…</div><div class='input'>
+#&gt; $ id             </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "2092957697", "2092957698", "2092957699", "2092957700",…
+#&gt; $ parentCode     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> NA, NA, NA, "2092957700", "2092957701", "2092957702", NA
+#&gt; $ label.en       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "United Kingdom", "Great Britain", "England", "Wales", …
+#&gt; $ description.en </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "United Kingdom", "Great Britain", "England", "Wales", …</div><div class='input'>
 <span class='co'># returns all types of geography</span>
 <span class='va'>c</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_metadata</span><span class='op'>(</span><span class='st'>"NM_1_1"</span>, <span class='st'>"geography"</span>, <span class='st'>"TYPE"</span><span class='op'>)</span>
 
-<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>c</span><span class='op'>)</span>
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>c</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Rows: 102
 #&gt; Columns: 3
-#&gt; $ id             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "TYPE1", "TYPE8", "TYPE18", "TYPE27", "TYPE33", "TYPE4…
-#&gt; $ label.en       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "1991 frozen wards", "parliamentary constituencies 198…
-#&gt; $ description.en </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "1991 frozen wards", "parliamentary constituencies 198…</div><div class='input'>
+#&gt; $ id             </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "TYPE1", "TYPE8", "TYPE18", "TYPE27", "TYPE33", "TYPE45…
+#&gt; $ label.en       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "1991 frozen wards", "parliamentary constituencies 1983…
+#&gt; $ description.en </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "1991 frozen wards", "parliamentary constituencies 1983…</div><div class='input'>
 <span class='co'># returns geography types available within Wigan</span>
 <span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_metadata</span><span class='op'>(</span><span class='st'>"NM_1_1"</span>, <span class='st'>"geography"</span>, <span class='st'>"1879048226"</span><span class='op'>)</span>
 
-<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>d</span><span class='op'>)</span>
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>d</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Rows: 12
 #&gt; Columns: 4
-#&gt; $ id             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "1879048226", "1879048226TYPE236", "1879048226TYPE297"…
-#&gt; $ parentCode     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "2013265922", NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-#&gt; $ label.en       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Wigan", "2011 census frozen wards within Wigan", "201…
-#&gt; $ description.en </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Wigan", "2011 census frozen wards within Wigan", "201…</div><div class='input'>
+#&gt; $ id             </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "1879048226", "1879048226TYPE236", "1879048226TYPE297",…
+#&gt; $ parentCode     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "2013265922", NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+#&gt; $ label.en       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "Wigan", "2011 census frozen wards within Wigan", "2011…
+#&gt; $ description.en </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "Wigan", "2011 census frozen wards within Wigan", "2011…</div><div class='input'>
 <span class='va'>e</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_metadata</span><span class='op'>(</span><span class='st'>"NM_1_1"</span>, <span class='st'>"item"</span>, geography <span class='op'>=</span> <span class='fl'>1879048226</span>, sex <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
 
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>e</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 4</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 5 x 4</span><span>
 #&gt;   id    parentCode label.en                 description.en          
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                   
-#&gt; </span><span style='color: #555555;'>1</span><span> 1     </span><span style='color: #BB0000;'>NA</span><span>         Total claimants          Total claimants         
-#&gt; </span><span style='color: #555555;'>2</span><span> 2     1          Students on vacation     Students on vacation    
-#&gt; </span><span style='color: #555555;'>3</span><span> 3     1          Temporarily stopped      Temporarily stopped     
-#&gt; </span><span style='color: #555555;'>4</span><span> 4     1          Claimants under 18 years Claimants under 18 years
-#&gt; </span><span style='color: #555555;'>5</span><span> 9     1          Married females          Married females         </div><div class='input'>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                   
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 1     </span><span style='color: #BB0000;'>NA</span><span>         Total claimants          Total claimants         
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 2     1          Students on vacation     Students on vacation    
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 3     1          Temporarily stopped      Temporarily stopped     
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> 4     1          Claimants under 18 years Claimants under 18 years
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> 9     1          Married females          Married females         </div><div class='input'>
 <span class='va'>f</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_get_metadata</span><span class='op'>(</span><span class='st'>"NM_1_1"</span>, <span class='st'>"item"</span>, search <span class='op'>=</span> <span class='st'>"*married*"</span><span class='op'>)</span>
 
-<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>f</span><span class='op'>)</span>
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>f</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Rows: 1
 #&gt; Columns: 4
-#&gt; $ id             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "9"
-#&gt; $ parentCode     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "1"
-#&gt; $ label.en       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Married females"
-#&gt; $ description.en </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Married females"</div><div class='input'><span class='co'># }</span>
+#&gt; $ id             </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "9"
+#&gt; $ parentCode     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "1"
+#&gt; $ label.en       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "Married females"
+#&gt; $ description.en </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "Married females"</div><div class='input'><span class='co'># }</span>
 
 </div></span></pre>
   </div>

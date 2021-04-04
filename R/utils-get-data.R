@@ -54,6 +54,5 @@ nomis_get_data_util <- function(query) {
   if ("OBS_VALUE" %in% names(df)) {
     df$OBS_VALUE <- as.double(df$OBS_VALUE)
   }
-
   df
 }

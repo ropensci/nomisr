@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.4</span>
       </span>
     </div>
 
@@ -138,13 +138,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ropensci/nomisr">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://evanodell.com">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -248,20 +248,20 @@ to be selected too)</p></dd>
 
 <span class='va'>q</span> <span class='op'>%&gt;%</span>
   <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/nest.html'>unnest</a></span><span class='op'>(</span><span class='va'>name</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Rows: 20
 #&gt; Columns: 2
-#&gt; $ name  <span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "analyses", "analysisname", "analysisnumber", "contact", "conte…
-#&gt; $ value </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span> [[&lt;data.frame[3 x 3]&gt;], "output data for a single date or rang…</div><div class='input'>
+#&gt; $ name  <span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "analyses", "analysisname", "analysisnumber", "contact", "conten…
+#&gt; $ value </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span> [[&lt;data.frame[3 x 3]&gt;]], "output data for a single date or rang…</div><div class='input'>
 <span class='va'>s</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_overview</span><span class='op'>(</span><span class='st'>"NM_1650_1"</span>, select <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Units"</span>, <span class='st'>"Keywords"</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='va'>s</span> <span class='op'>%&gt;%</span>
   <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/nest.html'>unnest</a></span><span class='op'>(</span><span class='va'>name</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Rows: 3
 #&gt; Columns: 2
-#&gt; $ name  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "id", "keywords", "units"
-#&gt; $ value </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span> ["NM_1650_1", "Year last worked", [["Persons"]]]</div><div class='input'><span class='co'># }</span>
+#&gt; $ name  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "id", "keywords", "units"
+#&gt; $ value </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span> "NM_1650_1", "Year last worked", [["Persons"]]</div><div class='input'><span class='co'># }</span>
 
 </div></span></pre>
   </div>

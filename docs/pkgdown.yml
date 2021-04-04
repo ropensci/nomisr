@@ -1,8 +1,8 @@
-pandoc: 2.11.2
+pandoc: '2.13'
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   Introduction-to-work-and-health-nomis-indicators: Introduction-to-work-and-health-nomis-indicators.html
   introduction: introduction.html
-last_built: 2020-11-29T10:36Z
+last_built: 2021-04-04T15:45Z
 

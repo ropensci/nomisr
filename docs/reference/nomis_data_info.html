@@ -83,7 +83,7 @@ data sets or the information available in a specific dataset based on its ID." /
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.4</span>
       </span>
     </div>
 
@@ -139,13 +139,13 @@ data sets or the information available in a specific dataset based on its ID." /
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ropensci/nomisr">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://evanodell.com">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -204,41 +204,41 @@ If the ID of a dataset, returns metadata for that particular dataset.</p></td>
 <span class='co'># Get info on all datasets</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_data_info</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Rows: 1,250
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 1,266
 #&gt; Columns: 14
-#&gt; $ agencyid                             <span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "NOMIS", "NOMIS", "NOMIS", "NOMI…
-#&gt; $ id                                   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "NM_1_1", "NM_2_1", "NM_4_1", "N…
-#&gt; $ uri                                  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Nm-1d1", "Nm-2d1", "Nm-4d1", "N…
-#&gt; $ version                              </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
-#&gt; $ annotations.annotation               </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span> [&lt;data.frame[10 x 2]&gt;, &lt;data.fr…
-#&gt; $ components.attribute                 </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span> [&lt;data.frame[7 x 4]&gt;, &lt;data.fra…
-#&gt; $ components.dimension                 </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span> [&lt;data.frame[5 x 3]&gt;, &lt;data.fra…
-#&gt; $ components.primarymeasure.conceptref </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "OBS_VALUE", "OBS_VALUE", "OBS_V…
-#&gt; $ components.timedimension.codelist    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "CL_1_1_TIME", "CL_2_1_TIME", "C…
-#&gt; $ components.timedimension.conceptref  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "TIME", "TIME", "TIME", "TIME", …
-#&gt; $ description.value                    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Records the number of people cl…
-#&gt; $ description.lang                     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "en", "en", "en", "en", "en", "e…
-#&gt; $ name.value                           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Jobseeker's Allowance with rate…
-#&gt; $ name.lang                            </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "en", "en", "en", "en", "en", "e…</div><div class='input'>
+#&gt; $ agencyid                             <span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "NOMIS", "NOMIS", "NOMIS", "NOMIS…
+#&gt; $ id                                   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "NM_1_1", "NM_2_1", "NM_4_1", "NM…
+#&gt; $ uri                                  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "Nm-1d1", "Nm-2d1", "Nm-4d1", "Nm…
+#&gt; $ version                              </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+#&gt; $ annotations.annotation               </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span> [&lt;data.frame[10 x 2]&gt;], [&lt;data.f…
+#&gt; $ components.attribute                 </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span> [&lt;data.frame[7 x 4]&gt;], [&lt;data.fr…
+#&gt; $ components.dimension                 </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span> [&lt;data.frame[5 x 3]&gt;], [&lt;data.fr…
+#&gt; $ components.primarymeasure.conceptref </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "OBS_VALUE", "OBS_VALUE", "OBS_VA…
+#&gt; $ components.timedimension.codelist    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "CL_1_1_TIME", "CL_2_1_TIME", "CL…
+#&gt; $ components.timedimension.conceptref  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "TIME", "TIME", "TIME", "TIME", "…
+#&gt; $ description.value                    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "Records the number of people cla…
+#&gt; $ description.lang                     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "en", "en", "en", "en", "en", "en…
+#&gt; $ name.value                           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "Jobseeker's Allowance with rates…
+#&gt; $ name.lang                            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "en", "en", "en", "en", "en", "en…</div><div class='input'>
 <span class='co'># Get info on a particular dataset</span>
 <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>nomis_data_info</span><span class='op'>(</span><span class='st'>"NM_1658_1"</span><span class='op'>)</span>
 
-<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span>
+<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Rows: 1
 #&gt; Columns: 12
-#&gt; $ agencyid                             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "NOMIS"
-#&gt; $ id                                   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "NM_1658_1"
-#&gt; $ uri                                  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "Nm-1658d1"
-#&gt; $ version                              </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 1
-#&gt; $ annotations.annotation               </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span> [&lt;data.frame[14 x 2]&gt;]
-#&gt; $ components.attribute                 </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span> [&lt;data.frame[7 x 4]&gt;]
-#&gt; $ components.dimension                 </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span> [&lt;data.frame[4 x 3]&gt;]
-#&gt; $ components.primarymeasure.conceptref </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "OBS_VALUE"
-#&gt; $ components.timedimension.codelist    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "CL_1658_1_TIME"
-#&gt; $ components.timedimension.conceptref  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "TIME"
-#&gt; $ name.value                           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "UV035 - Distance travelled to w…
-#&gt; $ name.lang                            </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "en"</div><div class='input'><span class='co'># }</span>
+#&gt; $ agencyid                             </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "NOMIS"
+#&gt; $ id                                   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "NM_1658_1"
+#&gt; $ uri                                  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "Nm-1658d1"
+#&gt; $ version                              </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> 1
+#&gt; $ annotations.annotation               </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span> [&lt;data.frame[14 x 2]&gt;]
+#&gt; $ components.attribute                 </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span> [&lt;data.frame[7 x 4]&gt;]
+#&gt; $ components.dimension                 </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span> [&lt;data.frame[4 x 3]&gt;]
+#&gt; $ components.primarymeasure.conceptref </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "OBS_VALUE"
+#&gt; $ components.timedimension.codelist    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "CL_1658_1_TIME"
+#&gt; $ components.timedimension.conceptref  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "TIME"
+#&gt; $ name.value                           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "UV035 - Distance travelled to wo…
+#&gt; $ name.lang                            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "en"</div><div class='input'><span class='co'># }</span>
 
 </div></span></pre>
   </div>

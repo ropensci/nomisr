@@ -535,9 +535,10 @@ The data extracted is for all of the geographies outlined in the 'EN_geographies
 
 # get ESA data by condition for latest data, call object ESA_data_condition
 # Note: the 'totals' (ID = 0) isn't the sum of the values in the dataset - hence hasn't been included in the code:
-ESA_data_condition <- nomis_get_data(id = "NM_134_1", date = "latest", geography = EN_geographies, icdgp_condition = c(1:23),
-                                     sex = 7, esa_phase = 0, payment_type = 0, ethnic_group = 0, age = c(1:8),
-                                     duration = 0, measures = 20100)
+ESA_data_condition <- nomis_get_data(
+  id = "NM_134_1", date = "latest", geography = EN_geographies,
+  icdgp_condition = c(1:23), sex = 7, esa_phase = 0, payment_type = 0,
+  ethnic_group = 0, age = c(1:8), duration = 0, measures = 20100)
 
 # replace na with 0
 ESA_data_condition[is.na(ESA_data_condition)] <- 0

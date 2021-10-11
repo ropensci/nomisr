@@ -1,11 +1,6 @@
 
 #' Retrieve Nomis datasets
 #'
-#' @description Retrieves specific datasets from Nomis, based on their ID. To
-#' find dataset IDs, use [nomis_data_info()]. Datasets are retrived
-#' in csv format and parsed with the `read_csv` function from the
-#' `readr` package into a tibble, with all columns parsed as character
-#' columns.
 #'
 #' @description To find the code options for a given dataset, use
 #' [nomis_get_metadata()] for specific codes, and

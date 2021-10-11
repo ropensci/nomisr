@@ -27,14 +27,13 @@ Depends: R (>= 3.4.0)
 Imports:
     jsonlite,
     tibble,
-    readr,
     dplyr,
     httr,
     utils,
     rsdmx,
     rlang,
     snakecase
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests:
     knitr,
     rmarkdown,

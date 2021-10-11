@@ -136,12 +136,6 @@ A tibble containing the selected dataset. By default, all tibble
 columns except for the \code{"OBS_VALUE"} column are parsed as characters.
 }
 \description{
-Retrieves specific datasets from Nomis, based on their ID. To
-find dataset IDs, use \code{\link[=nomis_data_info]{nomis_data_info()}}. Datasets are retrived
-in csv format and parsed with the \code{read_csv} function from the
-\code{readr} package into a tibble, with all columns parsed as character
-columns.
-
 To find the code options for a given dataset, use
 \code{\link[=nomis_get_metadata]{nomis_get_metadata()}} for specific codes, and
 \code{\link[=nomis_codelist]{nomis_codelist()}} for code values.

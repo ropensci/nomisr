@@ -22,7 +22,7 @@ nomis_get_data_util <- function(query) {
 
   df <- tryCatch(
     {
-      httr::content(api_get)
+      httr::content(api_get, show_col_types = FALSE)
     },
     error = function(cond) {
       err <- conditionMessage(cond)
@@ -40,7 +40,6 @@ nomis_get_data_util <- function(query) {
           "Here's the original error message:\n", cond
         )
       }
-
       return(NA)
     },
     warning = function(cond) {

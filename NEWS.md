@@ -6,7 +6,7 @@
 
 * Better error message when API returns empty data in some circumstances.
 
-* Suppressed printing of column types when reading CSV files (#25)
+* Suppressed printing of column types when reading CSV files (#25, thanks jackobailey)
 
 
 # nomisr 0.4.4

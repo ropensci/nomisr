@@ -1,13 +1,13 @@
 
 ## Release summary
 
-This is an resubmission of the `nomisr` package, version number 0.4.4. It 
-removes the use of the deprecated `tibble::as.tibble` function. 
-It also includes a second vignette showing a detailed package use case.
+This is an resubmission of the `nomisr` package, version number 0.4.5. It 
+features improved error messages and makes output less verbose when reading 
+CSV files.
 
 
 ## Test environments
-* local macOS install, R 4.0.3
+* local macOS install, R 4.1.1
 * win-builder (devel and release)
 * Windows Server 2019, release (on GitHub Actions)
 * macOS Catalina 10.15, release (on GitHub Actions)

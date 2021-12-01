@@ -42,8 +42,7 @@ Suggests:
     tidyr,
     magrittr,
     ggplot2,
-    scales,
-    treemapify
+    scales
 VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

@@ -29,8 +29,7 @@ The `nomis_data_info()` function is focused on the structure and coverage of the
 
 Use the `nomis_data_info()` function without any parameters to get a tibble with metadata for all available datasets:
 
-```{r all-datasets, echo=TRUE}
-library(nomisr)
+```
 x <- nomis_data_info()
 head(x)
 ```
@@ -39,6 +38,7 @@ head(x)
 `nomis_data_info()` can also be used to query metadata from a specific dataset, using its ID. The example below uses the "LC4408EW - Tenure by number of persons per bedroom in household by household type" dataset from the 2011 census, which has the ID "NM_893_1". 
 
 ```{r specific-dataset, echo=TRUE}
+library(nomisr)
 y <- nomis_data_info("NM_893_1")
 
 tibble::glimpse(y)

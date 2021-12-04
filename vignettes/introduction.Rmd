@@ -171,6 +171,8 @@ x <- nomis_get_data(id = "NM_893_1", time = "latest",
 
 ```{r jsa-claimaints}
 library(ggplot2)
+library(dplyr)
+library(nomisr)
 
 jsa <- nomis_get_data(id = "NM_1_1", time = "2020-01-2021-10",
                       geography = "TYPE480", measures=20201,

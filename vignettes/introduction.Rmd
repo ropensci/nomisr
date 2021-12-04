@@ -172,7 +172,7 @@ x <- nomis_get_data(id = "NM_893_1", time = "latest",
 ```{r jsa-claimaints}
 library(ggplot2)
 
-jsa <- nomis_get_data(id = "NM_1_1", time = "2018-01-2021-10",
+jsa <- nomis_get_data(id = "NM_1_1", time = "2020-01-2021-10",
                       geography = "TYPE480", measures=20201,
                       sex=c(5,6), item = 1, tidy = TRUE)
 
@@ -192,9 +192,7 @@ p_jsa <- ggplot(jsa, aes(x = date, y = obs_value, colour = sex_name)) +
   labs(x = "Date", y= "JSA Claimants (Percentage of Workforce)") + 
   facet_wrap(~geography_name, scales = "free_y")
 
-
 p_jsa
-
 ```
 
 

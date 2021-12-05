@@ -169,12 +169,12 @@ x <- nomis_get_data(id = "NM_893_1", time = "latest",
 `nomisr` also allows for time series queries. The example below shows how to retrieve the percentage of the workforce claiming Jobseekers Allowance from January 2015 to January 2020, inclusive, for each region of the UK, divided by male and female claimants, with an accompanying graph.
 
 
-```{r jsa-claimaints}
+```{r jsa-claimaints, eval=FALSE}
 library(ggplot2)
 library(dplyr)
 library(nomisr)
 
-jsa <- nomis_get_data(id = "NM_1_1", time = "2020-01-2021-10",
+jsa <- nomis_get_data(id = "NM_1_1", time = "2018-01-2021-10",
                       geography = "TYPE480", measures=20201,
                       sex=c(5,6), item = 1, tidy = TRUE)
 
@@ -197,5 +197,6 @@ p_jsa <- ggplot(jsa, aes(x = date, y = obs_value, colour = sex_name)) +
 p_jsa
 ```
 
+![](p_jsa.png)
 
 

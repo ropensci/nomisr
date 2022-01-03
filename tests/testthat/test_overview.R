@@ -7,7 +7,7 @@ test_that("nomis_overview return expected format", {
 
   q <- nomis_overview("NM_1650_1")
   expect_length(q, 2)
-  expect_equal(nrow(q), 20)
+  expect_equal(nrow(q), 21)
   expect_true(tibble::is_tibble(q))
 
   s <- nomis_overview("NM_1650_1", select = c("Units", "Keywords"))

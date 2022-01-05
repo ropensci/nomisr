@@ -5,7 +5,7 @@ test_that("nomis_get_data return expected format", {
   skip_on_cran()
 
   z <- nomis_get_data(
-    id = "NM_1_1", time = "latest",
+    id = "NM_1_1", time = "2021-11",
     measures = c(20100, 20201), sex = 5,
     exclude_missing = TRUE, geography = "TYPE499"
   )

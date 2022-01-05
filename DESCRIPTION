@@ -42,7 +42,8 @@ Suggests:
     tidyr,
     magrittr,
     ggplot2,
-    scales
+    scales, 
+    readr
 VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

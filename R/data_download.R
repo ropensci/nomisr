@@ -151,16 +151,12 @@
 #'   measures = c(20100, 20201), sex = 5
 #' )
 #'
-#' tibble::glimpse(jobseekers_country)
-#'
 #' # Return data on Jobseekers Allowance for Wigan
 #' jobseekers_wigan <- nomis_get_data(
 #'   id = "NM_1_1", time = "latest",
 #'   geography = "1879048226",
 #'   measures = c(20100, 20201), sex = "5"
 #' )
-#'
-#' tibble::glimpse(jobseekers_wigan)
 #'
 #' # annual population survey - regional - employment by occupation
 #' emp_by_occupation <- nomis_get_data(
@@ -172,8 +168,6 @@
 #'   )
 #' )
 #'
-#' tibble::glimpse(emp_by_occupation)
-#'
 #' # Deaths in 2016 and 2015 by three specified causes,
 #' # identified with nomis_get_metadata()
 #' death <- nomis_get_data("NM_161_1",
@@ -182,15 +176,11 @@
 #'   cause_of_death = c(10300, 102088, 270)
 #' )
 #'
-#' tibble::glimpse(death)
-#'
 #' # All causes of death in London in 2016
 #' london_death <- nomis_get_data("NM_161_1",
 #'   date = c("2016"),
 #'   geography = "2013265927", sex = 1, age = 0
 #' )
-#'
-#' tibble::glimpse(london_death)
 #' }
 #' \dontrun{
 #' # Results in an error because `measure` is mistaken for `measures`

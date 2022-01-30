@@ -20,7 +20,6 @@ knitr::opts_chunk$set(
 [![GitHub tag](https://img.shields.io/github/tag/ropensci/nomisr.svg)](https://github.com/ropensci/nomisr)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/nomisr)](https://cran.r-project.org/package=nomisr)
 [![R build status](https://github.com/ropensci/nomisr/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/nomisr/actions)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/evanodell/nomisr?branch=master&svg=true)](https://ci.appveyor.com/project/evanodell/nomisr)
 [![Coverage Status](https://img.shields.io/codecov/c/github/ropensci/nomisr/master.svg)](https://codecov.io/github/ropensci/nomisr?branch=master)
 [![ropensci](https://badges.ropensci.org/190_status.svg)](https://github.com/ropensci/software-review/issues/190)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1157908.svg)](https://doi.org/10.5281/zenodo.1157908)
@@ -52,9 +51,9 @@ devtools::install_github("ropensci/nomisr")
 
 `nomisr` contains functions to search for datasets, identify the query options for different datasets and retrieve data from queries, all done with [`tibbles`](https://tibble.tidyverse.org/), to take advantage of how `tibble` manages list-columns. The use of metadata queries, rather than simply downloading all available data, is useful to avoid overwhelming the rate limits of the API. 
 
-There are two `nomisr` vignettes. The [introduction](https://docs.evanodell.com/nomisr/articles/introduction.html) has details on all available functions and basic demonstrations of their use. The [Work and Health Indicators with nomisr](https://docs.evanodell.com/nomisr/articles/introduction-to-work-and-health-nomis-indicators) vignette shows a worked-through demonstration demonstrating the use of key indicators, courtesy of [Nina Robery](https://github.com/ninarobery) from Public Health England.
+There are `nomisr` vignette [introduction](https://docs.evanodell.com/nomisr/articles/introduction.html) has details on all available functions and basic demonstrations of their use.
 
-The example below demostrates a workflow to retrieve the latest data on Jobseeker's Allowance with rates and proportions, on a national level, with all male claimants and workforce.
+The example below demonstrates a workflow to retrieve the latest data on Jobseeker's Allowance with rates and proportions, on a national level, with all male claimants and workforce.
 
 ```{r example}
  library(nomisr)

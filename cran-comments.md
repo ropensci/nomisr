@@ -3,11 +3,11 @@
 
 This is an resubmission of the `nomisr` package, version number 0.4.5. It 
 features improved error messages and makes output less verbose when reading 
-CSV files.
-
+CSV files. It also removes a vignette that was causing erros due to reliance on 
+old package versions.
 
 ## Test environments
-* local macOS install, R 4.1.1
+* local macOS install, R 4.1.2
 * win-builder (devel and release)
 * Windows Server 2019, release (on GitHub Actions)
 * macOS Catalina 10.15, release (on GitHub Actions)

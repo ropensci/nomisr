@@ -1,7 +1,6 @@
 template:
   params:
    bootswatch: journal
-   ganalytics: UA-90706059-1
 
 
 authors:

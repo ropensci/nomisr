@@ -16,15 +16,11 @@
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-90706059-1"></script><script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-90706059-1');
-</script>
+<![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -37,14 +33,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nomisr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="https://docs.evanodell.com">Docs Home</a>
+  <a href="https://docs.evanodell.com" class="external-link">Docs Home</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -63,43 +59,44 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="https://docs.evanodell.com">Documentation Home</a>
+      <a href="https://docs.evanodell.com" class="external-link">Documentation Home</a>
     </li>
     <li class="divider">
-    <li>
-      <a href="https://docs.evanodell.com/hansard">hansard</a>
+    </li>
+<li>
+      <a href="https://docs.evanodell.com/hansard" class="external-link">hansard</a>
     </li>
     <li>
-      <a href="https://docs.evanodell.com/mnis">mnis</a>
+      <a href="https://docs.evanodell.com/mnis" class="external-link">mnis</a>
     </li>
     <li>
-      <a href="https://docs.evanodell.com/parlitools">parlitools</a>
+      <a href="https://docs.evanodell.com/parlitools" class="external-link">parlitools</a>
     </li>
     <li>
-      <a href="https://docs.evanodell.com/nomisr">nomisr</a>
+      <a href="https://docs.evanodell.com/nomisr" class="external-link">nomisr</a>
     </li>
     <li>
-      <a href="https://docs.evanodell.com/fixerapi">fixerapi</a>
+      <a href="https://docs.evanodell.com/fixerapi" class="external-link">fixerapi</a>
     </li>
     <li>
-      <a href="https://docs.evanodell.com/refuge">refuge</a>
+      <a href="https://docs.evanodell.com/refuge" class="external-link">refuge</a>
     </li>
     <li>
-      <a href="https://docs.evanodell.com/emisc">emisc</a>
+      <a href="https://docs.evanodell.com/emisc" class="external-link">emisc</a>
     </li>
   </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/ropensci/nomisr">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/ropensci/nomisr" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://evanodell.com">
-    <span class="fas fa-home fa-lg"></span>
+  <a href="https://evanodell.com" class="external-link">
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -113,462 +110,357 @@
 
       
 
-      </header><script src="introduction_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to nomisr</h1>
-                        <h4 class="author">Evan Odell</h4>
+                        <h4 data-toc-skip class="author">Evan Odell</h4>
             
-            <h4 class="date">2021-04-04</h4>
+            <h4 data-toc-skip class="date">2022-01-31</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/ropensci/nomisr/blob/master/../docs/vignettes/introduction.Rmd"><code>../docs/vignettes/introduction.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/nomisr/blob/HEAD/../docs/vignettes/introduction.Rmd" class="external-link"><code>../docs/vignettes/introduction.Rmd</code></a></small>
       <div class="hidden name"><code>introduction.Rmd</code></div>
 
     </div>
 
     
     
-<div id="introduction-to-the-nomis-api" class="section level1">
-<h1 class="hasAnchor">
-<a href="#introduction-to-the-nomis-api" class="anchor"></a>Introduction to the Nomis API</h1>
-<p><code>nomisr</code> is for accessing <a href="https://www.nomisweb.co.uk/">Nomis</a> data with R. The Nomis API is free to access without registration, and contains up-to-date official statistics, including data from the Census, the Labour Force Survey, DWP benefit statistics and other economic and demographic data. Nomis is maintained on behalf of the Office for National Statistics by the University of Durham.</p>
-<p>There is a lot of data available through Nomis, and there are some limits to the amount of data that can be retrieved within a certain period of time, although those are not published. For more details, see the <a href="https://www.nomisweb.co.uk/api/v01/help">full API documentation</a> from Nomis.</p>
-<p>Nomis data is based around administrative and statistical geographies, and a particular geography should be specified when downloading data.</p>
-<p><code>nomisr</code> is designed around a pipeline of three key functions: <code><a href="../reference/nomis_data_info.html">nomis_data_info()</a></code>, <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code> and <code><a href="../reference/nomis_get_data.html">nomis_get_data()</a></code>. The <code><a href="../reference/nomis_overview.html">nomis_overview()</a></code>, <code><a href="../reference/nomis_content_type.html">nomis_content_type()</a></code> and <code><a href="../reference/nomis_search.html">nomis_search()</a></code> functions can assist with this.</p>
-<div id="querying-data-availability" class="section level2">
-<h2 class="hasAnchor">
-<a href="#querying-data-availability" class="anchor"></a>Querying data availability</h2>
-<p>The <code><a href="../reference/nomis_data_info.html">nomis_data_info()</a></code> function is focused on the structure and coverage of the available datasets.</p>
-<p>Use the <code><a href="../reference/nomis_data_info.html">nomis_data_info()</a></code> function without any parameters to get a tibble with metadata for all available datasets:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/nomisr">nomisr</a></span><span class="op">)</span>
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_data_info.html">nomis_data_info</a></span><span class="op">(</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 14
-##   agencyid id     uri    version annotations.annotation components.attribute
-##   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;list&gt;                 &lt;list&gt;              
-## 1 NOMIS    NM_1_1 Nm-1d1       1 &lt;df[,2] [10 × 2]&gt;      &lt;df[,4] [7 × 4]&gt;    
-## 2 NOMIS    NM_2_1 Nm-2d1       1 &lt;df[,2] [6 × 2]&gt;       &lt;df[,4] [7 × 4]&gt;    
-## 3 NOMIS    NM_4_1 Nm-4d1       1 &lt;df[,2] [8 × 2]&gt;       &lt;df[,4] [7 × 4]&gt;    
-## 4 NOMIS    NM_5_1 Nm-5d1       1 &lt;df[,2] [5 × 2]&gt;       &lt;df[,4] [7 × 4]&gt;    
-## 5 NOMIS    NM_6_1 Nm-6d1       1 &lt;df[,2] [6 × 2]&gt;       &lt;df[,4] [7 × 4]&gt;    
-## 6 NOMIS    NM_7_1 Nm-7d1       1 &lt;df[,2] [6 × 2]&gt;       &lt;df[,4] [7 × 4]&gt;    
-## # … with 8 more variables: components.dimension &lt;list&gt;,
-## #   components.primarymeasure.conceptref &lt;chr&gt;,
-## #   components.timedimension.codelist &lt;chr&gt;,
-## #   components.timedimension.conceptref &lt;chr&gt;, description.value &lt;chr&gt;,
-## #   description.lang &lt;chr&gt;, name.value &lt;chr&gt;, name.lang &lt;chr&gt;</code></pre>
-<p><code><a href="../reference/nomis_data_info.html">nomis_data_info()</a></code> can also be used to query metadata from a specific dataset, using its ID. The example below uses the “LC4408EW - Tenure by number of persons per bedroom in household by household type” dataset from the 2011 census, which has the ID “NM_893_1”.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_data_info.html">nomis_data_info</a></span><span class="op">(</span><span class="st">"NM_893_1"</span><span class="op">)</span>
+<div class="section level1">
+<h1 id="introduction-to-the-nomis-api">Introduction to the Nomis API<a class="anchor" aria-label="anchor" href="#introduction-to-the-nomis-api"></a>
+</h1>
+<p><code>nomisr</code> is for accessing <a href="https://www.nomisweb.co.uk/" class="external-link">Nomis</a> data with R. The Nomis API
+is free to access without registration, and contains up-to-date official
+statistics, including data from the Census, the Labour Force Survey, DWP
+benefit statistics and other economic and demographic data. Nomis is
+maintained on behalf of the Office for National Statistics by the
+University of Durham.</p>
+<p>There is a lot of data available through Nomis, and there are some
+limits to the amount of data that can be retrieved within a certain
+period of time, although those are not published. For more details, see
+the <a href="https://www.nomisweb.co.uk/api/v01/help" class="external-link">full API
+documentation</a> from Nomis.</p>
+<p>Nomis data is based around administrative and statistical
+geographies, and a particular geography should be specified when
+downloading data.</p>
+<p><code>nomisr</code> is designed around a pipeline of three key
+functions: <code><a href="../reference/nomis_data_info.html">nomis_data_info()</a></code>,
+<code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code> and <code><a href="../reference/nomis_get_data.html">nomis_get_data()</a></code>. The
+<code><a href="../reference/nomis_overview.html">nomis_overview()</a></code>, <code><a href="../reference/nomis_content_type.html">nomis_content_type()</a></code> and
+<code><a href="../reference/nomis_search.html">nomis_search()</a></code> functions can assist with this.</p>
+<div class="section level2">
+<h2 id="querying-data-availability">Querying data availability<a class="anchor" aria-label="anchor" href="#querying-data-availability"></a>
+</h2>
+<p>The <code><a href="../reference/nomis_data_info.html">nomis_data_info()</a></code> function is focused on the
+structure and coverage of the available datasets.</p>
+<p>Use the <code><a href="../reference/nomis_data_info.html">nomis_data_info()</a></code> function without any
+parameters to get a tibble with metadata for all available datasets:</p>
+<pre><code><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_data_info.html">nomis_data_info</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre>
+<p><code><a href="../reference/nomis_data_info.html">nomis_data_info()</a></code> can also be used to query metadata
+from a specific dataset, using its ID. The example below uses the
+“LC4408EW - Tenure by number of persons per bedroom in household by
+household type” dataset from the 2011 census, which has the ID
+“NM_893_1”.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/nomisr" class="external-link">nomisr</a></span><span class="op">)</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_data_info.html">nomis_data_info</a></span><span class="op">(</span><span class="st">"NM_893_1"</span><span class="op">)</span>
 
-<span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></code></pre></div>
-<pre><code>## Rows: 1
-## Columns: 12
-## $ agencyid                             &lt;chr&gt; "NOMIS"
-## $ id                                   &lt;chr&gt; "NM_893_1"
-## $ uri                                  &lt;chr&gt; "Nm-893d1"
-## $ version                              &lt;dbl&gt; 1
-## $ annotations.annotation               &lt;list&gt; [&lt;data.frame[14 x 2]&gt;]
-## $ components.attribute                 &lt;list&gt; [&lt;data.frame[7 x 4]&gt;]
-## $ components.dimension                 &lt;list&gt; [&lt;data.frame[6 x 3]&gt;]
-## $ components.primarymeasure.conceptref &lt;chr&gt; "OBS_VALUE"
-## $ components.timedimension.codelist    &lt;chr&gt; "CL_893_1_TIME"
-## $ components.timedimension.conceptref  &lt;chr&gt; "TIME"
-## $ name.value                           &lt;chr&gt; "LC4408EW - Tenure by number of p…
-## $ name.lang                            &lt;chr&gt; "en"</code></pre>
-<p>When a tibble with metadata for all datasets or a specific dataset is returned, three of the columns, <code>annotations.annotation</code>, <code>components.attribute</code> and <code>components.dimension</code>, are list-columns of data frames. <code>annotations.annotation</code> contains metadata on the dataset, including units and current status. <code>components.attribute</code> contains more detailed status metadata. <code>components.dimension</code> contains the grouping and summary variables available in the dataset, which vary between different datasets.</p>
-<p>The example below shows how to access data stored in list columns returned from the Nomis API. In the case of requests for metadata from a single dataset, the three columns are all lists with a length of 1. If requesting all dataset information with <code><a href="../reference/nomis_data_info.html">nomis_data_info()</a></code>, each row is a list of length 1. Each list contains a data.frame, of varrying dimensions depending on the column and dataset. You can unnest individual list-columns to display their data in the same row as data from the rest of the tibble. Due to the differing lengths of the list-columns returned by <code><a href="../reference/nomis_data_info.html">nomis_data_info()</a></code>, only one list-column can be unnested at a time.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">F</span><span class="op">)</span>
+<span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Rows: 1</span>
+<span class="co">## Columns: 12</span>
+<span class="co">## $ agencyid                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "NOMIS"</span>
+<span class="co">## $ id                                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "NM_893_1"</span>
+<span class="co">## $ uri                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Nm-893d1"</span>
+<span class="co">## $ version                              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1</span>
+<span class="co">## $ annotations.annotation               <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[14 x 2]&gt;]</span>
+<span class="co">## $ components.attribute                 <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[7 x 4]&gt;]</span>
+<span class="co">## $ components.dimension                 <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[6 x 3]&gt;]</span>
+<span class="co">## $ components.primarymeasure.conceptref <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "OBS_VALUE"</span>
+<span class="co">## $ components.timedimension.codelist    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "CL_893_1_TIME"</span>
+<span class="co">## $ components.timedimension.conceptref  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "TIME"</span>
+<span class="co">## $ name.value                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "LC4408EW - Tenure by number of p…</span>
+<span class="co">## $ name.lang                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "en"</span></code></pre>
+<p>When a tibble with metadata for all datasets or a specific dataset is
+returned, three of the columns, <code>annotations.annotation</code>,
+<code>components.attribute</code> and <code>components.dimension</code>,
+are list-columns of data frames. <code>annotations.annotation</code>
+contains metadata on the dataset, including units and current status.
+<code>components.attribute</code> contains more detailed status
+metadata. <code>components.dimension</code> contains the grouping and
+summary variables available in the dataset, which vary between different
+datasets.</p>
+<p>The example below shows how to access data stored in list columns
+returned from the Nomis API. In the case of requests for metadata from a
+single dataset, the three columns are all lists with a length of 1. If
+requesting all dataset information with <code><a href="../reference/nomis_data_info.html">nomis_data_info()</a></code>,
+each row is a list of length 1. Each list contains a data.frame, of
+varrying dimensions depending on the column and dataset. You can unnest
+individual list-columns to display their data in the same row as data
+from the rest of the tibble. Due to the differing lengths of the
+list-columns returned by <code><a href="../reference/nomis_data_info.html">nomis_data_info()</a></code>, only one
+list-column can be unnested at a time.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">F</span><span class="op">)</span>
 
-<span class="va">y</span><span class="op">$</span><span class="va">annotations.annotation</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "list"</code></pre>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span><span class="op">$</span><span class="va">annotations.annotation</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span><span class="op">$</span><span class="va">annotations.annotation</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "data.frame"</code></pre>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">annotations.annotation</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "list"</code></pre>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">annotations.annotation</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="va">.</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "data.frame"</code></pre>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">annotations.annotation</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "list"</code></pre>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<span class="va">y</span><span class="op">$</span><span class="va">annotations.annotation</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "list"</span></code></pre>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span><span class="op">$</span><span class="va">annotations.annotation</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] 1</span></code></pre>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span><span class="op">$</span><span class="va">annotations.annotation</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "data.frame"</span></code></pre>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">annotations.annotation</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "list"</span></code></pre>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">annotations.annotation</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="va">.</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "data.frame"</span></code></pre>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">annotations.annotation</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "list"</span></code></pre>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Unnesting list columns</span>
-<span class="va">y</span> <span class="op">%&gt;%</span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">annotations.annotation</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Rows: 14
-## Columns: 13
-## $ agencyid                             &lt;chr&gt; "NOMIS", "NOMIS", "NOMIS", "NOMIS…
-## $ id                                   &lt;chr&gt; "NM_893_1", "NM_893_1", "NM_893_1…
-## $ uri                                  &lt;chr&gt; "Nm-893d1", "Nm-893d1", "Nm-893d1…
-## $ version                              &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
-## $ annotationtext                       &lt;chr&gt; "Current (being actively updated)…
-## $ annotationtitle                      &lt;chr&gt; "Status", "Keywords", "Units", "c…
-## $ components.attribute                 &lt;list&gt; [&lt;data.frame[7 x 4]&gt;], [&lt;data.fr…
-## $ components.dimension                 &lt;list&gt; [&lt;data.frame[6 x 3]&gt;], [&lt;data.fr…
-## $ components.primarymeasure.conceptref &lt;chr&gt; "OBS_VALUE", "OBS_VALUE", "OBS_VA…
-## $ components.timedimension.codelist    &lt;chr&gt; "CL_893_1_TIME", "CL_893_1_TIME",…
-## $ components.timedimension.conceptref  &lt;chr&gt; "TIME", "TIME", "TIME", "TIME", "…
-## $ name.value                           &lt;chr&gt; "LC4408EW - Tenure by number of p…
-## $ name.lang                            &lt;chr&gt; "en", "en", "en", "en", "en", "en…</code></pre>
-<div id="searching-for-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#searching-for-data" class="anchor"></a>Searching for data</h3>
-<p><code>nomisr</code> also contains the <code><a href="../reference/nomis_search.html">nomis_search()</a></code> function to search for datasets on particular topics. <code><a href="../reference/nomis_search.html">nomis_search()</a></code> can be used to search in one or more of dataset names, descriptions, keywords, content type and units. If using multiple parameters, <code><a href="../reference/nomis_search.html">nomis_search()</a></code> will return information on all datasets that match one or more parameters. Character vectors of strings can be used in searches, and likewise <code><a href="../reference/nomis_search.html">nomis_search()</a></code> will return information on datasets that match one or more queries. The * is used as a wildcard symbol. <code><a href="../reference/nomis_search.html">nomis_search()</a></code> returns metadata in the same format as <code><a href="../reference/nomis_data_info.html">nomis_data_info()</a></code>, including using list-columns. The <code><a href="../reference/nomis_content_type.html">nomis_content_type()</a></code> function can assist in identifying content type IDs for <code><a href="../reference/nomis_search.html">nomis_search()</a></code>.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<span class="va">y</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="va">annotations.annotation</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Rows: 14</span>
+<span class="co">## Columns: 13</span>
+<span class="co">## $ agencyid                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "NOMIS", "NOMIS", "NOMIS", "NOMIS…</span>
+<span class="co">## $ id                                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "NM_893_1", "NM_893_1", "NM_893_1…</span>
+<span class="co">## $ uri                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Nm-893d1", "Nm-893d1", "Nm-893d1…</span>
+<span class="co">## $ version                              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</span>
+<span class="co">## $ annotationtext                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Current (being actively updated)…</span>
+<span class="co">## $ annotationtitle                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Status", "Keywords", "Units", "c…</span>
+<span class="co">## $ components.attribute                 <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[7 x 4]&gt;], [&lt;data.fr…</span>
+<span class="co">## $ components.dimension                 <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[6 x 3]&gt;], [&lt;data.fr…</span>
+<span class="co">## $ components.primarymeasure.conceptref <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "OBS_VALUE", "OBS_VALUE", "OBS_VA…</span>
+<span class="co">## $ components.timedimension.codelist    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "CL_893_1_TIME", "CL_893_1_TIME",…</span>
+<span class="co">## $ components.timedimension.conceptref  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "TIME", "TIME", "TIME", "TIME", "…</span>
+<span class="co">## $ name.value                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "LC4408EW - Tenure by number of p…</span>
+<span class="co">## $ name.lang                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "en", "en", "en", "en", "en", "en…</span></code></pre>
+<div class="section level3">
+<h3 id="searching-for-data">Searching for data<a class="anchor" aria-label="anchor" href="#searching-for-data"></a>
+</h3>
+<p><code>nomisr</code> also contains the <code><a href="../reference/nomis_search.html">nomis_search()</a></code>
+function to search for datasets on particular topics.
+<code><a href="../reference/nomis_search.html">nomis_search()</a></code> can be used to search in one or more of
+dataset names, descriptions, keywords, content type and units. If using
+multiple parameters, <code><a href="../reference/nomis_search.html">nomis_search()</a></code> will return information
+on all datasets that match one or more parameters. Character vectors of
+strings can be used in searches, and likewise
+<code><a href="../reference/nomis_search.html">nomis_search()</a></code> will return information on datasets that
+match one or more queries. The * is used as a wildcard symbol.
+<code><a href="../reference/nomis_search.html">nomis_search()</a></code> returns metadata in the same format as
+<code><a href="../reference/nomis_data_info.html">nomis_data_info()</a></code>, including using list-columns. The
+<code><a href="../reference/nomis_content_type.html">nomis_content_type()</a></code> function can assist in identifying
+content type IDs for <code><a href="../reference/nomis_search.html">nomis_search()</a></code>.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_search.html">nomis_search</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">'*jobseekers*'</span>, keywords <span class="op">=</span> <span class="st">'Claimants'</span><span class="op">)</span>
 
-<span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></code></pre></div>
-<pre><code>## Rows: 33
-## Columns: 14
-## $ agencyid                             &lt;chr&gt; "NOMIS", "NOMIS", "NOMIS", "NOMIS…
-## $ id                                   &lt;chr&gt; "NM_1_1", "NM_2_1", "NM_6_1", "NM…
-## $ uri                                  &lt;chr&gt; "Nm-1d1", "Nm-2d1", "Nm-6d1", "Nm…
-## $ version                              &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
-## $ annotations.annotation               &lt;list&gt; [&lt;data.frame[10 x 2]&gt;], [&lt;data.f…
-## $ components.attribute                 &lt;list&gt; [&lt;data.frame[7 x 4]&gt;], [&lt;data.fr…
-## $ components.dimension                 &lt;list&gt; [&lt;data.frame[5 x 3]&gt;], [&lt;data.fr…
-## $ components.primarymeasure.conceptref &lt;chr&gt; "OBS_VALUE", "OBS_VALUE", "OBS_VA…
-## $ components.timedimension.codelist    &lt;chr&gt; "CL_1_1_TIME", "CL_2_1_TIME", "CL…
-## $ components.timedimension.conceptref  &lt;chr&gt; "TIME", "TIME", "TIME", "TIME", "…
-## $ description.value                    &lt;chr&gt; "Records the number of people cla…
-## $ description.lang                     &lt;chr&gt; "en", "en", "en", "en", NA, "en",…
-## $ name.value                           &lt;chr&gt; "Jobseeker's Allowance with rates…
-## $ name.lang                            &lt;chr&gt; "en", "en", "en", "en", "en", "en…</code></pre>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">a</span> <span class="op">%&gt;%</span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">components.attribute</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Rows: 231
-## Columns: 17
-## $ agencyid                             &lt;chr&gt; "NOMIS", "NOMIS", "NOMIS", "NOMIS…
-## $ id                                   &lt;chr&gt; "NM_1_1", "NM_1_1", "NM_1_1", "NM…
-## $ uri                                  &lt;chr&gt; "Nm-1d1", "Nm-1d1", "Nm-1d1", "Nm…
-## $ version                              &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
-## $ annotations.annotation               &lt;list&gt; [&lt;data.frame[10 x 2]&gt;], [&lt;data.f…
-## $ assignmentstatus                     &lt;chr&gt; "Mandatory", "Conditional", "Cond…
-## $ attachmentlevel                      &lt;chr&gt; "Observation", "Observation", "Ob…
-## $ codelist                             &lt;chr&gt; "CL_OBS_STATUS", "CL_OBS_CONF", "…
-## $ conceptref                           &lt;chr&gt; "OBS_STATUS", "OBS_CONF", "OBS_RO…
-## $ components.dimension                 &lt;list&gt; [&lt;data.frame[5 x 3]&gt;], [&lt;data.fr…
-## $ components.primarymeasure.conceptref &lt;chr&gt; "OBS_VALUE", "OBS_VALUE", "OBS_VA…
-## $ components.timedimension.codelist    &lt;chr&gt; "CL_1_1_TIME", "CL_1_1_TIME", "CL…
-## $ components.timedimension.conceptref  &lt;chr&gt; "TIME", "TIME", "TIME", "TIME", "…
-## $ description.value                    &lt;chr&gt; "Records the number of people cla…
-## $ description.lang                     &lt;chr&gt; "en", "en", "en", "en", "en", "en…
-## $ name.value                           &lt;chr&gt; "Jobseeker's Allowance with rates…
-## $ name.lang                            &lt;chr&gt; "en", "en", "en", "en", "en", "en…</code></pre>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_search.html">nomis_search</a></span><span class="op">(</span>keywords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Claimants'</span>, <span class="st">'*Year*'</span><span class="op">)</span><span class="op">)</span>
+<span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Rows: 33</span>
+<span class="co">## Columns: 14</span>
+<span class="co">## $ agencyid                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "NOMIS", "NOMIS", "NOMIS", "NOMIS…</span>
+<span class="co">## $ id                                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "NM_1_1", "NM_2_1", "NM_6_1", "NM…</span>
+<span class="co">## $ uri                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Nm-1d1", "Nm-2d1", "Nm-6d1", "Nm…</span>
+<span class="co">## $ version                              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</span>
+<span class="co">## $ annotations.annotation               <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[10 x 2]&gt;], [&lt;data.f…</span>
+<span class="co">## $ components.attribute                 <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[7 x 4]&gt;], [&lt;data.fr…</span>
+<span class="co">## $ components.dimension                 <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[5 x 3]&gt;], [&lt;data.fr…</span>
+<span class="co">## $ components.primarymeasure.conceptref <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "OBS_VALUE", "OBS_VALUE", "OBS_VA…</span>
+<span class="co">## $ components.timedimension.codelist    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "CL_1_1_TIME", "CL_2_1_TIME", "CL…</span>
+<span class="co">## $ components.timedimension.conceptref  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "TIME", "TIME", "TIME", "TIME", "…</span>
+<span class="co">## $ description.value                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Records the number of people cla…</span>
+<span class="co">## $ description.lang                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "en", "en", "en", "en", NA, "en",…</span>
+<span class="co">## $ name.value                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Jobseeker's Allowance with rates…</span>
+<span class="co">## $ name.lang                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "en", "en", "en", "en", "en", "en…</span></code></pre>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="va">components.attribute</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Rows: 231</span>
+<span class="co">## Columns: 17</span>
+<span class="co">## $ agencyid                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "NOMIS", "NOMIS", "NOMIS", "NOMIS…</span>
+<span class="co">## $ id                                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "NM_1_1", "NM_1_1", "NM_1_1", "NM…</span>
+<span class="co">## $ uri                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Nm-1d1", "Nm-1d1", "Nm-1d1", "Nm…</span>
+<span class="co">## $ version                              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</span>
+<span class="co">## $ annotations.annotation               <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[10 x 2]&gt;], [&lt;data.f…</span>
+<span class="co">## $ assignmentstatus                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Mandatory", "Conditional", "Cond…</span>
+<span class="co">## $ attachmentlevel                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Observation", "Observation", "Ob…</span>
+<span class="co">## $ codelist                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "CL_OBS_STATUS", "CL_OBS_CONF", "…</span>
+<span class="co">## $ conceptref                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "OBS_STATUS", "OBS_CONF", "OBS_RO…</span>
+<span class="co">## $ components.dimension                 <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[5 x 3]&gt;], [&lt;data.fr…</span>
+<span class="co">## $ components.primarymeasure.conceptref <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "OBS_VALUE", "OBS_VALUE", "OBS_VA…</span>
+<span class="co">## $ components.timedimension.codelist    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "CL_1_1_TIME", "CL_1_1_TIME", "CL…</span>
+<span class="co">## $ components.timedimension.conceptref  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "TIME", "TIME", "TIME", "TIME", "…</span>
+<span class="co">## $ description.value                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Records the number of people cla…</span>
+<span class="co">## $ description.lang                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "en", "en", "en", "en", "en", "en…</span>
+<span class="co">## $ name.value                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Jobseeker's Allowance with rates…</span>
+<span class="co">## $ name.lang                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "en", "en", "en", "en", "en", "en…</span></code></pre>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_search.html">nomis_search</a></span><span class="op">(</span>keywords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'Claimants'</span>, <span class="st">'*Year*'</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span></code></pre></div>
-<pre><code>## Rows: 85
-## Columns: 14
-## $ agencyid                             &lt;chr&gt; "NOMIS", "NOMIS", "NOMIS", "NOMIS…
-## $ id                                   &lt;chr&gt; "NM_1_1", "NM_2_1", "NM_5_1", "NM…
-## $ uri                                  &lt;chr&gt; "Nm-1d1", "Nm-2d1", "Nm-5d1", "Nm…
-## $ version                              &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
-## $ annotations.annotation               &lt;list&gt; [&lt;data.frame[10 x 2]&gt;], [&lt;data.f…
-## $ components.attribute                 &lt;list&gt; [&lt;data.frame[7 x 4]&gt;], [&lt;data.fr…
-## $ components.dimension                 &lt;list&gt; [&lt;data.frame[5 x 3]&gt;], [&lt;data.fr…
-## $ components.primarymeasure.conceptref &lt;chr&gt; "OBS_VALUE", "OBS_VALUE", "OBS_VA…
-## $ components.timedimension.codelist    &lt;chr&gt; "CL_1_1_TIME", "CL_2_1_TIME", "CL…
-## $ components.timedimension.conceptref  &lt;chr&gt; "TIME", "TIME", "TIME", "TIME", "…
-## $ description.value                    &lt;chr&gt; "Records the number of people cla…
-## $ description.lang                     &lt;chr&gt; "en", "en", "en", "en", "en", NA,…
-## $ name.value                           &lt;chr&gt; "Jobseeker's Allowance with rates…
-## $ name.lang                            &lt;chr&gt; "en", "en", "en", "en", "en", "en…</code></pre>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">b</span> <span class="op">%&gt;%</span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">components.attribute</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Rows: 595
-## Columns: 17
-## $ agencyid                             &lt;chr&gt; "NOMIS", "NOMIS", "NOMIS", "NOMIS…
-## $ id                                   &lt;chr&gt; "NM_1_1", "NM_1_1", "NM_1_1", "NM…
-## $ uri                                  &lt;chr&gt; "Nm-1d1", "Nm-1d1", "Nm-1d1", "Nm…
-## $ version                              &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
-## $ annotations.annotation               &lt;list&gt; [&lt;data.frame[10 x 2]&gt;], [&lt;data.f…
-## $ assignmentstatus                     &lt;chr&gt; "Mandatory", "Conditional", "Cond…
-## $ attachmentlevel                      &lt;chr&gt; "Observation", "Observation", "Ob…
-## $ codelist                             &lt;chr&gt; "CL_OBS_STATUS", "CL_OBS_CONF", "…
-## $ conceptref                           &lt;chr&gt; "OBS_STATUS", "OBS_CONF", "OBS_RO…
-## $ components.dimension                 &lt;list&gt; [&lt;data.frame[5 x 3]&gt;], [&lt;data.fr…
-## $ components.primarymeasure.conceptref &lt;chr&gt; "OBS_VALUE", "OBS_VALUE", "OBS_VA…
-## $ components.timedimension.codelist    &lt;chr&gt; "CL_1_1_TIME", "CL_1_1_TIME", "CL…
-## $ components.timedimension.conceptref  &lt;chr&gt; "TIME", "TIME", "TIME", "TIME", "…
-## $ description.value                    &lt;chr&gt; "Records the number of people cla…
-## $ description.lang                     &lt;chr&gt; "en", "en", "en", "en", "en", "en…
-## $ name.value                           &lt;chr&gt; "Jobseeker's Allowance with rates…
-## $ name.lang                            &lt;chr&gt; "en", "en", "en", "en", "en", "en…</code></pre>
+<span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Rows: 86</span>
+<span class="co">## Columns: 14</span>
+<span class="co">## $ agencyid                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "NOMIS", "NOMIS", "NOMIS", "NOMIS…</span>
+<span class="co">## $ id                                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "NM_1_1", "NM_2_1", "NM_5_1", "NM…</span>
+<span class="co">## $ uri                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Nm-1d1", "Nm-2d1", "Nm-5d1", "Nm…</span>
+<span class="co">## $ version                              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</span>
+<span class="co">## $ annotations.annotation               <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[10 x 2]&gt;], [&lt;data.f…</span>
+<span class="co">## $ components.attribute                 <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[7 x 4]&gt;], [&lt;data.fr…</span>
+<span class="co">## $ components.dimension                 <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[5 x 3]&gt;], [&lt;data.fr…</span>
+<span class="co">## $ components.primarymeasure.conceptref <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "OBS_VALUE", "OBS_VALUE", "OBS_VA…</span>
+<span class="co">## $ components.timedimension.codelist    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "CL_1_1_TIME", "CL_2_1_TIME", "CL…</span>
+<span class="co">## $ components.timedimension.conceptref  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "TIME", "TIME", "TIME", "TIME", "…</span>
+<span class="co">## $ description.value                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Records the number of people cla…</span>
+<span class="co">## $ description.lang                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "en", "en", "en", "en", "en", NA,…</span>
+<span class="co">## $ name.value                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Jobseeker's Allowance with rates…</span>
+<span class="co">## $ name.lang                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "en", "en", "en", "en", "en", "en…</span></code></pre>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">b</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="va">components.attribute</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Rows: 602</span>
+<span class="co">## Columns: 17</span>
+<span class="co">## $ agencyid                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "NOMIS", "NOMIS", "NOMIS", "NOMIS…</span>
+<span class="co">## $ id                                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "NM_1_1", "NM_1_1", "NM_1_1", "NM…</span>
+<span class="co">## $ uri                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Nm-1d1", "Nm-1d1", "Nm-1d1", "Nm…</span>
+<span class="co">## $ version                              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</span>
+<span class="co">## $ annotations.annotation               <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[10 x 2]&gt;], [&lt;data.f…</span>
+<span class="co">## $ assignmentstatus                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Mandatory", "Conditional", "Cond…</span>
+<span class="co">## $ attachmentlevel                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Observation", "Observation", "Ob…</span>
+<span class="co">## $ codelist                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "CL_OBS_STATUS", "CL_OBS_CONF", "…</span>
+<span class="co">## $ conceptref                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "OBS_STATUS", "OBS_CONF", "OBS_RO…</span>
+<span class="co">## $ components.dimension                 <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[5 x 3]&gt;], [&lt;data.fr…</span>
+<span class="co">## $ components.primarymeasure.conceptref <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "OBS_VALUE", "OBS_VALUE", "OBS_VA…</span>
+<span class="co">## $ components.timedimension.codelist    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "CL_1_1_TIME", "CL_1_1_TIME", "CL…</span>
+<span class="co">## $ components.timedimension.conceptref  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "TIME", "TIME", "TIME", "TIME", "…</span>
+<span class="co">## $ description.value                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Records the number of people cla…</span>
+<span class="co">## $ description.lang                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "en", "en", "en", "en", "en", "en…</span>
+<span class="co">## $ name.value                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Jobseeker's Allowance with rates…</span>
+<span class="co">## $ name.lang                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "en", "en", "en", "en", "en", "en…</span></code></pre>
 </div>
-<div id="other-ways-to-access-metadata" class="section level3">
-<h3 class="hasAnchor">
-<a href="#other-ways-to-access-metadata" class="anchor"></a>Other ways to access metadata</h3>
-<p><code><a href="../reference/nomis_overview.html">nomis_overview()</a></code> returns a tibble with a generalised overview of a given dataset.</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="section level3">
+<h3 id="other-ways-to-access-metadata">Other ways to access metadata<a class="anchor" aria-label="anchor" href="#other-ways-to-access-metadata"></a>
+</h3>
+<p><code><a href="../reference/nomis_overview.html">nomis_overview()</a></code> returns a tibble with a generalised
+overview of a given dataset.</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">q</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_overview.html">nomis_overview</a></span><span class="op">(</span><span class="st">"NM_1650_1"</span><span class="op">)</span>
 
-<span class="va">q</span> <span class="op">%&gt;%</span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Rows: 20
-## Columns: 2
-## $ name  &lt;chr&gt; "analyses", "analysisname", "analysisnumber", "contact", "conten…
-## $ value &lt;list&gt; [[&lt;data.frame[3 x 3]&gt;]], "output data for a single date or rang…</code></pre>
-<p><code><a href="../reference/nomis_overview.html">nomis_overview()</a></code> has a <code>select</code> parameter that can be used to select only particular elements of the overview to return.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_overview.html">nomis_overview</a></span><span class="op">(</span><span class="st">"NM_1650_1"</span>, select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"units"</span>, <span class="st">"keywords"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">q</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Rows: 21</span>
+<span class="co">## Columns: 2</span>
+<span class="co">## $ name  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "analyses", "analysisname", "analysisnumber", "contact", "conten…</span>
+<span class="co">## $ value <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [[&lt;data.frame[3 x 3]&gt;]], "output data for a single date or rang…</span></code></pre>
+<p><code><a href="../reference/nomis_overview.html">nomis_overview()</a></code> has a <code>select</code> parameter
+that can be used to select only particular elements of the overview to
+return.</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_overview.html">nomis_overview</a></span><span class="op">(</span><span class="st">"NM_1650_1"</span>, select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"units"</span>, <span class="st">"keywords"</span><span class="op">)</span><span class="op">)</span>
  
-<span class="va">s</span> <span class="op">%&gt;%</span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Rows: 3
-## Columns: 2
-## $ name  &lt;chr&gt; "id", "keywords", "units"
-## $ value &lt;list&gt; "NM_1650_1", "Year last worked", [["Persons"]]</code></pre>
+<span class="va">s</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Rows: 3</span>
+<span class="co">## Columns: 2</span>
+<span class="co">## $ name  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "id", "keywords", "units"</span>
+<span class="co">## $ value <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> "NM_1650_1", "Year last worked", [["Persons"]]</span></code></pre>
 </div>
 </div>
-<div id="querying-data-variables" class="section level2">
-<h2 class="hasAnchor">
-<a href="#querying-data-variables" class="anchor"></a>Querying data variables</h2>
-<p>Vast amounts of data are available through Nomis and so to avoid overwhelming the API, it is good practice to query what concepts are available, using <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code>. While the other metadata functions can return concept metadata, <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code> provides greater flexibility and specificity over the returned metadata than <code><a href="../reference/nomis_overview.html">nomis_overview()</a></code> and <code><a href="../reference/nomis_data_info.html">nomis_data_info()</a></code>.</p>
-<p>The example below queries some of the metadata available through the API for the “LC4408EW - Tenure bynumber of persons per bedroom in household by household type” dataset.</p>
-<div id="getting-concepts" class="section level3">
-<h3 class="hasAnchor">
-<a href="#getting-concepts" class="anchor"></a>Getting concepts</h3>
-<p>If provided with just a dataset ID, <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code> will return the concepts available for the given dataset.</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="section level2">
+<h2 id="querying-data-variables">Querying data variables<a class="anchor" aria-label="anchor" href="#querying-data-variables"></a>
+</h2>
+<p>Vast amounts of data are available through Nomis and so to avoid
+overwhelming the API, it is good practice to query what concepts are
+available, using <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code>. While the other
+metadata functions can return concept metadata,
+<code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code> provides greater flexibility and
+specificity over the returned metadata than
+<code><a href="../reference/nomis_overview.html">nomis_overview()</a></code> and <code><a href="../reference/nomis_data_info.html">nomis_data_info()</a></code>.</p>
+<p>The example below queries some of the metadata available through the
+API for the “LC4408EW - Tenure bynumber of persons per bedroom in
+household by household type” dataset.</p>
+<div class="section level3">
+<h3 id="getting-concepts">Getting concepts<a class="anchor" aria-label="anchor" href="#getting-concepts"></a>
+</h3>
+<p>If provided with just a dataset ID, <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code>
+will return the concepts available for the given dataset.</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_get_metadata.html">nomis_get_metadata</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"NM_893_1"</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 7 x 3
-##   codelist                conceptref     isfrequencydimension
-##   &lt;chr&gt;                   &lt;chr&gt;          &lt;chr&gt;               
-## 1 CL_893_1_GEOGRAPHY      GEOGRAPHY      false               
-## 2 CL_893_1_C_TENHUK11     C_TENHUK11     false               
-## 3 CL_893_1_C_PPBROOMHEW11 C_PPBROOMHEW11 false               
-## 4 CL_893_1_C_AHTHUK11     C_AHTHUK11     false               
-## 5 CL_893_1_MEASURES       MEASURES       false               
-## 6 CL_893_1_FREQ           FREQ           true                
-## 7 CL_893_1_TIME           TIME           false</code></pre>
+<span class="va">a</span></code></pre></div>
+<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 7 × 3</span></span>
+<span class="co">##   codelist                conceptref     isfrequencydimension</span>
+<span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               </span>
+<span class="co">## <span style="color: #BCBCBC;">1</span> CL_893_1_GEOGRAPHY      GEOGRAPHY      false               </span>
+<span class="co">## <span style="color: #BCBCBC;">2</span> CL_893_1_C_TENHUK11     C_TENHUK11     false               </span>
+<span class="co">## <span style="color: #BCBCBC;">3</span> CL_893_1_C_PPBROOMHEW11 C_PPBROOMHEW11 false               </span>
+<span class="co">## <span style="color: #BCBCBC;">4</span> CL_893_1_C_AHTHUK11     C_AHTHUK11     false               </span>
+<span class="co">## <span style="color: #BCBCBC;">5</span> CL_893_1_MEASURES       MEASURES       false               </span>
+<span class="co">## <span style="color: #BCBCBC;">6</span> CL_893_1_FREQ           FREQ           true                </span>
+<span class="co">## <span style="color: #BCBCBC;">7</span> CL_893_1_TIME           TIME           false</span></code></pre>
 </div>
-<div id="concept-values" class="section level3">
-<h3 class="hasAnchor">
-<a href="#concept-values" class="anchor"></a>Concept Values</h3>
-<p>If provided with a concept name it returns the available values for that concept. However, in some cases, espescially with the geography concept, there are multiple options available, which Nomis labels types. In that case <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code> returns the values of the lowest indexed type available.</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_get_metadata.html">nomis_get_metadata</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"NM_893_1"</span>, concept <span class="op">=</span> <span class="st">"GEOGRAPHY"</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 4
-##   id         parentCode label.en          description.en   
-##   &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;            
-## 1 2092957703 &lt;NA&gt;       England and Wales England and Wales
-## 2 2092957699 &lt;NA&gt;       England           England          
-## 3 2092957700 2092957700 Wales             Wales</code></pre>
-<p>We can now pass a generic “type” string to the <code>type</code> parameter in <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code>, which returns all available geography types for dataset “NM_893_1”.</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">c</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_get_metadata.html">nomis_get_metadata</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"NM_893_1"</span>, concept <span class="op">=</span> <span class="st">"geography"</span>, type <span class="op">=</span> <span class="st">"type"</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">c</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 22 x 3
-##    id      label.en                          description.en                     
-##    &lt;chr&gt;   &lt;chr&gt;                             &lt;chr&gt;                              
-##  1 TYPE265 NHS area teams                    NHS area teams                     
-##  2 TYPE266 clinical commissioning groups     clinical commissioning groups      
-##  3 TYPE267 built-up areas including subdivi… built-up areas including subdivisi…
-##  4 TYPE269 built-up areas                    built-up areas                     
-##  5 TYPE273 national assembly for wales elec… national assembly for wales electo…
-##  6 TYPE274 postcode areas                    postcode areas                     
-##  7 TYPE275 postcode districts                postcode districts                 
-##  8 TYPE276 postcode sectors                  postcode sectors                   
-##  9 TYPE277 national assembly for wales cons… national assembly for wales consti…
-## 10 TYPE279 parishes 2011                     parishes 2011                      
-## # … with 12 more rows</code></pre>
-<p>Passing a specific type to the <code>type</code> parameter, in this case “TYPE460” for all post-2010 parliamentary constituencies, returns a tibble with geographic codes for those specific constituencies, which can be used to filter queries.</p>
+<div class="section level3">
+<h3 id="concept-values">Concept Values<a class="anchor" aria-label="anchor" href="#concept-values"></a>
+</h3>
+<p>If provided with a concept name it returns the available values for
+that concept. However, in some cases, espescially with the geography
+concept, there are multiple options available, which Nomis labels types.
+In that case <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code> returns the values of the
+lowest indexed type available.</p>
+<pre><code><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_get_metadata.html">nomis_get_metadata</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"NM_893_1"</span>, concept <span class="op">=</span> <span class="st">"GEOGRAPHY"</span><span class="op">)</span></code></pre>
+<p>We can now pass a generic “type” string to the <code>type</code>
+parameter in <code><a href="../reference/nomis_get_metadata.html">nomis_get_metadata()</a></code>, which returns all
+available geography types for dataset “NM_893_1”.</p>
+<pre><code><span class="va">c</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_get_metadata.html">nomis_get_metadata</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"NM_893_1"</span>, concept <span class="op">=</span> <span class="st">"geography"</span>, type <span class="op">=</span> <span class="st">"type"</span><span class="op">)</span></code></pre>
+<p>Passing a specific type to the <code>type</code> parameter, in this
+case “TYPE460” for all post-2010 parliamentary constituencies, returns a
+tibble with geographic codes for those specific constituencies, which
+can be used to filter queries.</p>
+<pre><code><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_get_metadata.html">nomis_get_metadata</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"NM_893_1"</span>, concept <span class="op">=</span> <span class="st">"geography"</span>, type <span class="op">=</span> <span class="st">"TYPE460"</span><span class="op">)</span></code></pre>
+<p>The vast majority (98% as of February 2018) of Nomis datasets include
+a geographic variable.</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="downloading-data">Downloading data<a class="anchor" aria-label="anchor" href="#downloading-data"></a>
+</h2>
+<p>Using the information above, we can now query the latest data on
+bedroom occupancy per household type in different NHS clinical
+commissioning groups.</p>
+<pre><code><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_get_data.html">nomis_get_data</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"NM_893_1"</span>, time <span class="op">=</span> <span class="st">"latest"</span>, geography <span class="op">=</span> <span class="st">"TYPE266"</span><span class="op">)</span></code></pre>
+<p>We can also query bedroom occupancy per household type in the
+Manchester, Gorton and Manchester, Withington parliamentary
+constituencies.</p>
+<pre><code><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_get_data.html">nomis_get_data</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"NM_893_1"</span>, time <span class="op">=</span> <span class="st">"latest"</span>,
+                    geography <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1929380119"</span>, <span class="st">"1929380120"</span><span class="op">)</span><span class="op">)</span></code></pre>
+<p><code>nomisr</code> also allows for time series queries. The example
+below shows how to retrieve the percentage of the workforce claiming
+Jobseekers Allowance from January 2015 to January 2020, inclusive, for
+each region of the UK, divided by male and female claimants, with an
+accompanying graph.</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_get_metadata.html">nomis_get_metadata</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"NM_893_1"</span>, concept <span class="op">=</span> <span class="st">"geography"</span>, type <span class="op">=</span> <span class="st">"TYPE460"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/nomisr" class="external-link">nomisr</a></span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 573 x 4
-##    id         parentCode label.en           description.en    
-##    &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;              &lt;chr&gt;             
-##  1 1929379865 2013265921 Berwick-upon-Tweed Berwick-upon-Tweed
-##  2 1929379880 2013265921 Bishop Auckland    Bishop Auckland   
-##  3 1929379885 2013265921 Blaydon            Blaydon           
-##  4 1929379886 2013265921 Blyth Valley       Blyth Valley      
-##  5 1929379952 2013265921 City of Durham     City of Durham    
-##  6 1929379969 2013265921 Darlington         Darlington        
-##  7 1929379988 2013265921 Easington          Easington         
-##  8 1929380020 2013265921 Gateshead          Gateshead         
-##  9 1929380044 2013265921 Hartlepool         Hartlepool        
-## 10 1929380057 2013265921 Hexham             Hexham            
-## # … with 563 more rows</code></pre>
-<p>The vast majority (98% as of February 2018) of Nomis datasets include a geographic variable.</p>
-</div>
-</div>
-<div id="downloading-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#downloading-data" class="anchor"></a>Downloading data</h2>
-<p>Using the information above, we can now query the latest data on bedroom occupancy per household type in different NHS clinical commissioning groups.</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_get_data.html">nomis_get_data</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"NM_893_1"</span>, time <span class="op">=</span> <span class="st">"latest"</span>, geography <span class="op">=</span> <span class="st">"TYPE266"</span><span class="op">)</span></code></pre></div>
-<pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   .default = col_double(),
-##   DATE_TYPE = col_character(),
-##   GEOGRAPHY_NAME = col_character(),
-##   GEOGRAPHY_CODE = col_character(),
-##   GEOGRAPHY_TYPE = col_character(),
-##   C_TENHUK11_NAME = col_character(),
-##   C_TENHUK11_CODE = col_character(),
-##   C_TENHUK11_TYPE = col_character(),
-##   C_PPBROOMHEW11_NAME = col_character(),
-##   C_PPBROOMHEW11_CODE = col_character(),
-##   C_PPBROOMHEW11_TYPE = col_character(),
-##   C_AHTHUK11_NAME = col_character(),
-##   C_AHTHUK11_CODE = col_character(),
-##   C_AHTHUK11_TYPE = col_character(),
-##   MEASURES_NAME = col_character(),
-##   OBS_STATUS = col_character(),
-##   OBS_STATUS_NAME = col_character(),
-##   OBS_CONF = col_logical(),
-##   OBS_CONF_NAME = col_character(),
-##   URN = col_character()
-## )
-## ℹ Use `spec()` for the full column specifications.</code></pre>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 44,310 x 40
-##     DATE DATE_NAME DATE_CODE DATE_TYPE DATE_TYPECODE DATE_SORTORDER  GEOGRAPHY
-##    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;          &lt;dbl&gt;      &lt;dbl&gt;
-##  1  2011      2011      2011 date                  0              0 1115684920
-##  2  2011      2011      2011 date                  0              0 1115684920
-##  3  2011      2011      2011 date                  0              0 1115684920
-##  4  2011      2011      2011 date                  0              0 1115684920
-##  5  2011      2011      2011 date                  0              0 1115684920
-##  6  2011      2011      2011 date                  0              0 1115684920
-##  7  2011      2011      2011 date                  0              0 1115684920
-##  8  2011      2011      2011 date                  0              0 1115684920
-##  9  2011      2011      2011 date                  0              0 1115684920
-## 10  2011      2011      2011 date                  0              0 1115684920
-## # … with 44,300 more rows, and 33 more variables: GEOGRAPHY_NAME &lt;chr&gt;,
-## #   GEOGRAPHY_CODE &lt;chr&gt;, GEOGRAPHY_TYPE &lt;chr&gt;, GEOGRAPHY_TYPECODE &lt;dbl&gt;,
-## #   GEOGRAPHY_SORTORDER &lt;dbl&gt;, C_TENHUK11 &lt;dbl&gt;, C_TENHUK11_NAME &lt;chr&gt;,
-## #   C_TENHUK11_CODE &lt;chr&gt;, C_TENHUK11_TYPE &lt;chr&gt;, C_TENHUK11_TYPECODE &lt;dbl&gt;,
-## #   C_TENHUK11_SORTORDER &lt;dbl&gt;, C_PPBROOMHEW11 &lt;dbl&gt;,
-## #   C_PPBROOMHEW11_NAME &lt;chr&gt;, C_PPBROOMHEW11_CODE &lt;chr&gt;,
-## #   C_PPBROOMHEW11_TYPE &lt;chr&gt;, C_PPBROOMHEW11_TYPECODE &lt;dbl&gt;,
-## #   C_PPBROOMHEW11_SORTORDER &lt;dbl&gt;, C_AHTHUK11 &lt;dbl&gt;, C_AHTHUK11_NAME &lt;chr&gt;,
-## #   C_AHTHUK11_CODE &lt;chr&gt;, C_AHTHUK11_TYPE &lt;chr&gt;, C_AHTHUK11_TYPECODE &lt;dbl&gt;,
-## #   C_AHTHUK11_SORTORDER &lt;dbl&gt;, MEASURES &lt;dbl&gt;, MEASURES_NAME &lt;chr&gt;,
-## #   OBS_VALUE &lt;dbl&gt;, OBS_STATUS &lt;chr&gt;, OBS_STATUS_NAME &lt;chr&gt;, OBS_CONF &lt;lgl&gt;,
-## #   OBS_CONF_NAME &lt;chr&gt;, URN &lt;chr&gt;, RECORD_OFFSET &lt;dbl&gt;, RECORD_COUNT &lt;dbl&gt;</code></pre>
-<p>We can also query bedroom occupancy per household type in the Manchester, Gorton and Manchester, Withington parliamentary constituencies.</p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_get_data.html">nomis_get_data</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"NM_893_1"</span>, time <span class="op">=</span> <span class="st">"latest"</span>, geography <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1929380119"</span>, <span class="st">"1929380120"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   .default = col_double(),
-##   DATE_TYPE = col_character(),
-##   GEOGRAPHY_NAME = col_character(),
-##   GEOGRAPHY_CODE = col_character(),
-##   GEOGRAPHY_TYPE = col_character(),
-##   C_TENHUK11_NAME = col_character(),
-##   C_TENHUK11_CODE = col_character(),
-##   C_TENHUK11_TYPE = col_character(),
-##   C_PPBROOMHEW11_NAME = col_character(),
-##   C_PPBROOMHEW11_CODE = col_character(),
-##   C_PPBROOMHEW11_TYPE = col_character(),
-##   C_AHTHUK11_NAME = col_character(),
-##   C_AHTHUK11_CODE = col_character(),
-##   C_AHTHUK11_TYPE = col_character(),
-##   MEASURES_NAME = col_character(),
-##   OBS_STATUS = col_character(),
-##   OBS_STATUS_NAME = col_character(),
-##   OBS_CONF = col_logical(),
-##   OBS_CONF_NAME = col_character(),
-##   URN = col_character()
-## )
-## ℹ Use `spec()` for the full column specifications.</code></pre>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 420 x 40
-##     DATE DATE_NAME DATE_CODE DATE_TYPE DATE_TYPECODE DATE_SORTORDER  GEOGRAPHY
-##    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;          &lt;dbl&gt;      &lt;dbl&gt;
-##  1  2011      2011      2011 date                  0              0 1929380119
-##  2  2011      2011      2011 date                  0              0 1929380119
-##  3  2011      2011      2011 date                  0              0 1929380119
-##  4  2011      2011      2011 date                  0              0 1929380119
-##  5  2011      2011      2011 date                  0              0 1929380119
-##  6  2011      2011      2011 date                  0              0 1929380119
-##  7  2011      2011      2011 date                  0              0 1929380119
-##  8  2011      2011      2011 date                  0              0 1929380119
-##  9  2011      2011      2011 date                  0              0 1929380119
-## 10  2011      2011      2011 date                  0              0 1929380119
-## # … with 410 more rows, and 33 more variables: GEOGRAPHY_NAME &lt;chr&gt;,
-## #   GEOGRAPHY_CODE &lt;chr&gt;, GEOGRAPHY_TYPE &lt;chr&gt;, GEOGRAPHY_TYPECODE &lt;dbl&gt;,
-## #   GEOGRAPHY_SORTORDER &lt;dbl&gt;, C_TENHUK11 &lt;dbl&gt;, C_TENHUK11_NAME &lt;chr&gt;,
-## #   C_TENHUK11_CODE &lt;chr&gt;, C_TENHUK11_TYPE &lt;chr&gt;, C_TENHUK11_TYPECODE &lt;dbl&gt;,
-## #   C_TENHUK11_SORTORDER &lt;dbl&gt;, C_PPBROOMHEW11 &lt;dbl&gt;,
-## #   C_PPBROOMHEW11_NAME &lt;chr&gt;, C_PPBROOMHEW11_CODE &lt;chr&gt;,
-## #   C_PPBROOMHEW11_TYPE &lt;chr&gt;, C_PPBROOMHEW11_TYPECODE &lt;dbl&gt;,
-## #   C_PPBROOMHEW11_SORTORDER &lt;dbl&gt;, C_AHTHUK11 &lt;dbl&gt;, C_AHTHUK11_NAME &lt;chr&gt;,
-## #   C_AHTHUK11_CODE &lt;chr&gt;, C_AHTHUK11_TYPE &lt;chr&gt;, C_AHTHUK11_TYPECODE &lt;dbl&gt;,
-## #   C_AHTHUK11_SORTORDER &lt;dbl&gt;, MEASURES &lt;dbl&gt;, MEASURES_NAME &lt;chr&gt;,
-## #   OBS_VALUE &lt;dbl&gt;, OBS_STATUS &lt;chr&gt;, OBS_STATUS_NAME &lt;chr&gt;, OBS_CONF &lt;lgl&gt;,
-## #   OBS_CONF_NAME &lt;chr&gt;, URN &lt;chr&gt;, RECORD_OFFSET &lt;dbl&gt;, RECORD_COUNT &lt;dbl&gt;</code></pre>
-<p><code>nomisr</code> also allows for time series queries. The example below shows how to retrieve the percentage of the workforce claiming Jobseekers Allowance from January 2015 to January 2020, inclusive, for each region of the UK, divided by male and female claimants, with an accompanying graph.</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-
-<span class="va">jsa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_get_data.html">nomis_get_data</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"NM_1_1"</span>, time <span class="op">=</span> <span class="st">"2015-01-2020-01"</span>,
+<span class="va">jsa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nomis_get_data.html">nomis_get_data</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"NM_1_1"</span>, time <span class="op">=</span> <span class="st">"2018-01-2021-10"</span>,
                       geography <span class="op">=</span> <span class="st">"TYPE480"</span>, measures<span class="op">=</span><span class="fl">20201</span>,
-                      sex<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">6</span><span class="op">)</span>, item <span class="op">=</span> <span class="fl">1</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   .default = col_double(),
-##   DATE = col_character(),
-##   DATE_NAME = col_character(),
-##   DATE_CODE = col_character(),
-##   DATE_TYPE = col_character(),
-##   GEOGRAPHY_NAME = col_character(),
-##   GEOGRAPHY_CODE = col_character(),
-##   GEOGRAPHY_TYPE = col_character(),
-##   SEX_NAME = col_character(),
-##   SEX_TYPE = col_character(),
-##   ITEM_NAME = col_character(),
-##   ITEM_TYPE = col_character(),
-##   MEASURES_NAME = col_character(),
-##   OBS_STATUS = col_character(),
-##   OBS_STATUS_NAME = col_character(),
-##   OBS_CONF = col_logical(),
-##   OBS_CONF_NAME = col_character(),
-##   URN = col_character()
-## )
-## ℹ Use `spec()` for the full column specifications.</code></pre>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">jsa</span> <span class="op">&lt;-</span> <span class="va">jsa</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">date</span>, <span class="st">"-01"</span><span class="op">)</span><span class="op">)</span>,
+                      sex<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">6</span><span class="op">)</span>, item <span class="op">=</span> <span class="fl">1</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+
+<span class="va">jsa</span> <span class="op">&lt;-</span> <span class="va">jsa</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">date</span>, <span class="st">"-01"</span><span class="op">)</span><span class="op">)</span>,
          obs_value <span class="op">=</span> <span class="va">obs_value</span><span class="op">/</span><span class="fl">100</span><span class="op">)</span>
 
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html" class="external-link">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
-<span class="va">p_jsa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">jsa</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">obs_value</span>, colour <span class="op">=</span> <span class="va">sex_name</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1.15</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_colour_viridis_d</a></span><span class="op">(</span>end <span class="op">=</span> <span class="fl">0.75</span>, begin <span class="op">=</span> <span class="fl">0.1</span>, name <span class="op">=</span> <span class="st">"Gender"</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html">scale_x_date</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="st">"6 months"</span>, date_labels <span class="op">=</span> <span class="st">"%b %Y"</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org/reference/label_percent.html">percent</a></span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">30</span>, hjust <span class="op">=</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,
+<span class="va">p_jsa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">jsa</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">obs_value</span>, colour <span class="op">=</span> <span class="va">sex_name</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1.15</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_colour_viridis_d</a></span><span class="op">(</span>end <span class="op">=</span> <span class="fl">0.75</span>, begin <span class="op">=</span> <span class="fl">0.1</span>, name <span class="op">=</span> <span class="st">"Gender"</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html" class="external-link">scale_x_date</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="st">"6 months"</span>, date_labels <span class="op">=</span> <span class="st">"%b %Y"</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">percent</a></span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">30</span>, hjust <span class="op">=</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,
         legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Date"</span>, y<span class="op">=</span> <span class="st">"JSA Claimants (Percentage of Workforce)"</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">geography_name</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span>
-
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Date"</span>, y<span class="op">=</span> <span class="st">"JSA Claimants (Percentage of Workforce)"</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">geography_name</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span>
 
 <span class="va">p_jsa</span></code></pre></div>
-<p><img src="introduction_files/figure-html/jsa-claimaints-1.png" width="700"></p>
+<p><img src="p_jsa.png"></p>
 </div>
 </div>
   </div>
@@ -584,11 +476,14 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://evanodell.com">Evan Odell</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://evanodell.com" class="external-link">Evan Odell</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
+2.0.1.</p>
 </div>
 
       </footer>
@@ -596,6 +491,8 @@
 
   
 
+
+  
 
   </body>
 </html>

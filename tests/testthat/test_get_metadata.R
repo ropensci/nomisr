@@ -5,19 +5,10 @@ test_that("nomis_get_metadata return expected format", {
   skip_on_cran()
 
   expect_error(nomis_get_metadata(), "The dataset ID must be specified.")
-
-  a <- nomis_get_metadata("NM_1_1")
-  expect_length(a, 3)
-  expect_equal(nrow(a), 6)
-  expect_true(tibble::is_tibble(a))
   
   b <- nomis_get_metadata("NM_1_1", "item", search = "*married*")
   expect_equal(nrow(b), 1)
   expect_true(tibble::is_tibble(b))
-
-  c <- nomis_get_metadata("NM_1_1", "geography", "TYPE", tidy = TRUE)
-  expect_true(tibble::is_tibble(c))
-  expect_named(c, c("id", "label_en", "description_en"))
 
   d <- nomis_get_metadata(
     id = "NM_893_1", concept = "C_AHTHUK11", type = "1"

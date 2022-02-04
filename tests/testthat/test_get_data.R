@@ -66,18 +66,6 @@ test_that("nomis_get_data return expected format", {
     "The API request did not return any results. Please check your parameters."
   )
 
-  x_select <- nomis_get_data(
-    id = "NM_168_1", time = "latest",
-    geography = "2013265925", sex = "0",
-    select = c(
-      "geography_code", "C_OCCPUK11H_0_NAME",
-      "obs_vAlUE"
-    )
-  )
-  expect_length(x_select, 3)
-  expect_type(x_select, "list")
-  expect_true(tibble::is_tibble(x_select))
-
   select_no_obs <- nomis_get_data(
     id = "NM_1208_1", time = "latest",
     USUAL_RESIDENCE = "TYPE499",

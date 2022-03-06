@@ -57,15 +57,6 @@ test_that("nomis_get_data return expected format", {
   expect_equal(names(c)[[1]], "queryId")
   expect_equal(c$queryId[[543]], "my_query123")
 
-  expect_error(
-    nomis_get_data(
-      id = "NM_1_1", time = "latest",
-      measures = c(20100, 20201), sex = 0,
-      exclude_missing = FALSE, geography = "TYPE499"
-    ),
-    "The API request did not return any results. Please check your parameters."
-  )
-
   select_no_obs <- nomis_get_data(
     id = "NM_1208_1", time = "latest",
     USUAL_RESIDENCE = "TYPE499",
@@ -101,12 +92,4 @@ test_that("nomis_get_data return expected format", {
   expect_true(all.equal(mort_data2, mort_data1))
   expect_true(is.numeric(mort_data2$obs_value))
 
-  expect_error(
-    mort_data3 <- nomis_get_data(
-      id = "NM_161_1", date = "2016",
-      geography = "TYPE464", sex = 0,
-      cause_of_death = "10381",
-      age = 0, measure = 6
-    )
-  )
 })

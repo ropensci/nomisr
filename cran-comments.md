@@ -3,7 +3,7 @@
 
 This is an resubmission of the `nomisr` package, version number 0.4.5. It 
 features improved error messages and makes output less verbose when reading 
-CSV files. It also removes a vignette that was causing erros due to reliance on 
+CSV files. It also removes a vignette that was causing errors due to reliance on 
 old package versions.
 
 ## Test environments

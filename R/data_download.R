@@ -308,21 +308,7 @@ nomis_get_data <- function(id, time = NULL, date = NULL, geography = NULL,
 
   first_df <- nomis_get_data_util(query)
 
-  if (is.null(first_df)) {
-    stop("The API request did not return any results. ",
-      "Please check your parameters.",
-      call. = FALSE
-    )
-  }
-
   names(first_df) <- toupper(names(first_df))
-
-  if (nrow(first_df) <= 0) {
-    stop("The API request did not return any results. ",
-      "Please check your parameters.",
-      call. = FALSE
-    )
-  }
 
   if (as.numeric(first_df$RECORD_COUNT)[1] >= max_length) {
     # if amount available is over the limit of 15 total calls at a time

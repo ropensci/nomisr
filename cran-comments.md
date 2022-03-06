@@ -1,10 +1,9 @@
 
 ## Release summary
 
-This is an resubmission of the `nomisr` package, version number 0.4.5. It 
-features improved error messages and makes output less verbose when reading 
-CSV files. It also removes a vignette that was causing errors due to reliance on 
-old package versions.
+This is an resubmission of the `nomisr` package, version number 0.4.6. It 
+corrects a problem with non-graceful failings when the Nomis API is 
+offline.
 
 ## Test environments
 * local macOS install, R 4.1.2

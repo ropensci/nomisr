@@ -48,7 +48,7 @@ When a tibble with metadata for all datasets or a specific dataset is returned, 
 
 The example below shows how to access data stored in list columns returned from the Nomis API. In the case of requests for metadata from a single dataset, the three columns are all lists with a length of 1. If requesting all dataset information with `nomis_data_info()`, each row is a list of length 1. Each list contains a data.frame, of varrying dimensions depending on the column and dataset. You can unnest individual list-columns to display their data in the same row as data from the rest of the tibble. Due to the differing lengths of the list-columns returned by `nomis_data_info()`, only one list-column can be unnested at a time.
 
-```{r specific-dataset-exam, echo=TRUE}
+```{r specific-dataset-exam, eval=FALSE}
 library(dplyr, warn.conflicts = F)
 
 y$annotations.annotation %>% class()
@@ -71,7 +71,7 @@ y %>% tidyr::unnest(annotations.annotation) %>% glimpse()
 
 `nomisr` also contains the `nomis_search()` function to search for datasets on particular topics. `nomis_search()` can be used to search in one or more of dataset names, descriptions, keywords, content type and units. If using multiple parameters, `nomis_search()` will return information on all datasets that match one or more parameters. Character vectors of strings can be used in searches, and likewise `nomis_search()` will return information on datasets that match one or more queries. The * is used as a wildcard symbol. `nomis_search()` returns metadata in the same format as `nomis_data_info()`, including using list-columns. The `nomis_content_type()` function can assist in identifying content type IDs for `nomis_search()`.
 
-```{r data-searching, echo=TRUE}
+```{r data-searching, eval=FALSE}
 a <- nomis_search(name = '*jobseekers*', keywords = 'Claimants')
 
 tibble::glimpse(a)
@@ -92,7 +92,7 @@ b %>% tidyr::unnest(components.attribute) %>% glimpse()
 `nomis_overview()` returns a tibble with a generalised overview of a given dataset.
 
 
-```{r overview, echo=TRUE}
+```{r overview, eval=FALSE}
 q <- nomis_overview("NM_1650_1")
 
 q %>% tidyr::unnest(name) %>% glimpse()
@@ -101,7 +101,7 @@ q %>% tidyr::unnest(name) %>% glimpse()
 
 `nomis_overview()` has a `select` parameter that can be used to select only particular elements of the overview to return.
 
-```{r overview-select, echo=TRUE}
+```{r overview-select, eval=FALSE}
 s <- nomis_overview("NM_1650_1", select = c("units", "keywords"))
  
 s %>% tidyr::unnest(name) %>% glimpse()
@@ -118,32 +118,34 @@ The example below queries some of the metadata available through the API for the
 
 If provided with just a dataset ID, `nomis_get_metadata()` will return the concepts available for the given dataset. 
 
-```{r get-metadata, echo=TRUE}
+```{r get-metadata, eval=FALSE}
 a <- nomis_get_metadata(id = "NM_893_1")
-
-a
 ```
 
 ### Concept Values
   
 If provided with a concept name it returns the available values for that concept. However, in some cases, espescially with the geography concept, there are multiple options available, which Nomis labels types. In that case `nomis_get_metadata()` returns the values of the lowest indexed type available.
   
-```
+
+```{r concepts, eval=FALSE}
 b <- nomis_get_metadata(id = "NM_893_1", concept = "GEOGRAPHY")
 ```
 
 We can now pass a generic "type" string to the `type` parameter in `nomis_get_metadata()`, which returns all available geography types for dataset "NM_893_1".
 
   
-```
+
+```{r geographies, eval=FALSE}
 c <- nomis_get_metadata(id = "NM_893_1", concept = "geography", type = "type")
 ```
 
   
 Passing a specific type to the `type` parameter, in this case "TYPE460" for all post-2010 parliamentary constituencies, returns a tibble with geographic codes for those specific constituencies, which can be used to filter queries.
   
-```
-d <- nomis_get_metadata(id = "NM_893_1", concept = "geography", type = "TYPE460")
+
+```{r constituencies, eval=FALSE}
+d <- nomis_get_metadata(id = "NM_893_1",
+                        concept = "geography", type = "TYPE460")
 
 ```
 
@@ -154,13 +156,13 @@ The vast majority (98% as of February 2018) of Nomis datasets include a geograph
 
 Using the information above, we can now query the latest data on bedroom occupancy per household type in different NHS clinical commissioning groups.
 
-```
+```{r ccg, eval=FALSE}
 z <- nomis_get_data(id = "NM_893_1", time = "latest", geography = "TYPE266")
 ```
 
 We can also query bedroom occupancy per household type in the Manchester, Gorton and Manchester, Withington parliamentary constituencies.
 
-```
+```{r NM_893_1-gorton-withington, eval=FALSE}
 x <- nomis_get_data(id = "NM_893_1", time = "latest",
                     geography = c("1929380119", "1929380120"))
 ```

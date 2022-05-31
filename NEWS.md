@@ -1,5 +1,11 @@
 
 
+# nomisr 0.4.7
+
+* Checks for readr version to avoid error when reading CSV content
+
+* Sets encoding to UTF-8
+
 # nomisr 0.4.5
 
 * Better error message when API returns empty data in some circumstances.

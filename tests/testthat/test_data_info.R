@@ -23,5 +23,4 @@ test_that("nomis_data_info return expected format", {
   expect_equal(nrow(y), 1)
   expect_equal(y$id, "NM_1658_1")
   expect_true(y$uri %in% x$uri)
-
 })

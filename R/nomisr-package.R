@@ -19,7 +19,7 @@
 #' @importFrom tibble as_tibble enframe
 #' @importFrom httr http_type GET http_error status_code content
 #' @importFrom dplyr bind_rows
-#' @importFrom utils menu
+#' @importFrom utils menu packageVersion
 #' @importFrom rsdmx readSDMX
 #' @importFrom rlang list2
 #' @importFrom snakecase to_snake_case to_any_case

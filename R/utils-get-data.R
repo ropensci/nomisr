@@ -12,10 +12,14 @@ nomis_get_data_util <- function(query) {
     )
     return(invisible(NULL))
   }
-  
+
   df <- tryCatch(
     {
-      httr::content(api_get, show_col_types = FALSE)
+      if (packageVersion("readr") >= "2.1.2") {
+        httr::content(api_get, encoding = 'UTF-8', show_col_types = FALSE)
+      } else {
+        httr::content(api_get)
+      }
     },
     error = function(cond) {
       err <- conditionMessage(cond)
@@ -37,12 +41,12 @@ nomis_get_data_util <- function(query) {
     },
     warning = function(cond) {
       stop("The API request did not return any results. ",
-           "Please check your parameters.",
-           call. = FALSE
+        "Please check your parameters.",
+        call. = FALSE
       )
     }
   )
-  
+
   if ("OBS_VALUE" %in% names(df)) {
     df$OBS_VALUE <- as.double(df$OBS_VALUE)
   }

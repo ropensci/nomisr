@@ -91,5 +91,4 @@ test_that("nomis_get_data return expected format", {
 
   expect_true(all.equal(mort_data2, mort_data1))
   expect_true(is.numeric(mort_data2$obs_value))
-
 })

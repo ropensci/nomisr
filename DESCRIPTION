@@ -32,7 +32,8 @@ Imports:
     utils,
     rsdmx,
     rlang,
-    snakecase
+    snakecase,
+    readr (>= 2.1.2)
 RoxygenNote: 7.2.0
 Suggests:
     knitr,
@@ -42,8 +43,7 @@ Suggests:
     tidyr,
     magrittr,
     ggplot2,
-    scales, 
-    readr
+    scales
 VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

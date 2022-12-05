@@ -20,7 +20,7 @@ Description: Access UK official statistics from the 'Nomis' database.
     statistics and other economic and demographic data from the Office for 
     National Statistics, based around statistical geographies. See 
     <https://www.nomisweb.co.uk/api/v01/help> for full API documentation.
-URL: https://github.com/ropensci/nomisr, https://docs.evanodell.com/nomisr
+URL: https://github.com/ropensci/nomisr, https://docs.ropensci.org/nomisr
 BugReports: https://github.com/ropensci/nomisr/issues
 License: MIT + file LICENSE
 Depends: R (>= 3.4.0)

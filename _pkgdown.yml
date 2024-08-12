@@ -8,18 +8,13 @@ authors:
     href: https://evanodell.com
 
 
-name:
 navbar:
-  left:
-    - text: "Docs Home"
-      href: https://docs.evanodell.com
-    - text: "News"
-      href: news/index.html
-    - text: "Reference"
-      href: reference/index.html
-    - text: "Introduction"
-      href: articles/introduction.html
-    - text: "Packages"
+  structure:
+    left:  [intro, reference, articles, tutorials, news, packages]
+    right: [search, github, lightswitch]
+  components:
+    packages:
+      text: "Packages"
       menu:
         - text: "Documentation Home"
           href: https://docs.evanodell.com

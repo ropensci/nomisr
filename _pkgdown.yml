@@ -1,3 +1,5 @@
+url: https://docs.ropensci.org
+
 template:
   params:
    bootswatch: journal
@@ -11,8 +13,11 @@ authors:
 navbar:
   structure:
     left:  [intro, reference, articles, tutorials, news, packages]
-    right: [search, github, lightswitch]
+    right: [evan, search, github, lightswitch]
   components:
+    evan:
+      icon: fa-home fa-lg
+      href: https://evanodell.com
     packages:
       text: "Packages"
       menu:
@@ -34,8 +39,3 @@ navbar:
         - text: "emisc"
           href: https://docs.evanodell.com/emisc
 
-  right:
-    - icon: fa-github fa-lg
-      href: https://github.com/ropensci/nomisr
-    - icon: fa-home fa-lg
-      href: https://evanodell.com
